@@ -8,8 +8,7 @@ This project was made with me and my friend [Eduardo P. Gomez](https://github.co
 This project is a Ground Pound Guide for Super Mario 64, that can do Lorem Ipsum dolor sit amet...
 
 ## O que foi feito (quando terminado)
-|-----------------------------------------------------|
-| Feature                                    | STATUS |
+
+| FEATURE                                    | STATUS |
 |--------------------------------------------|--------|
-| Nothing                                    | YES    |
-|-----------------------------------------------------|
+| Nothing                                    |  DONE  |
