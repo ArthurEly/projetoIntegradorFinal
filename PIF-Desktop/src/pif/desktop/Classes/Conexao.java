@@ -1,4 +1,4 @@
-package pif.desktop;
+package pif.desktop.Classes;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
