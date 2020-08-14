@@ -5,6 +5,8 @@
  */
 package pif.desktop.TELAS;
 
+import pif.desktop.Classes.Conexao;
+
 /**
  *
  * @author arthu
@@ -29,7 +31,6 @@ public class CADASTRAR_OS_TELA extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setExtendedState(6);
-        setUndecorated(true);
         setResizable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -49,7 +50,7 @@ public class CADASTRAR_OS_TELA extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]) throws Exception {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -82,6 +83,7 @@ public class CADASTRAR_OS_TELA extends javax.swing.JFrame {
                 new CADASTRAR_OS_TELA().setVisible(true);
             }
         });
+        Conexao c = new Conexao();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
