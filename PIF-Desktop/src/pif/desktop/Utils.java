@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pif.desktop.Classes;
+package pif.desktop.TELAS;
 
-import java.io.IOException;
 import java.util.*;
 
 /**
@@ -14,13 +13,13 @@ import java.util.*;
  */
 public class Utils {
     
-    public void irDePara(javax.swing.JFrame desse, javax.swing.JFrame esse){
+    public void irDesseParaEsse(javax.swing.JFrame desse, javax.swing.JFrame esse){
         /*
             FUNÇÃO QUE LEVA DA TELA QUE TU ESTÁ PARA A TELA QUE QUER IR, INDO DESSE (PRIMEIRA TELA) PARA ESSE (SEGUNDA TELA)
         */        
         //abre a segunda
         esse.setVisible(true);
-        //fecha a primeria tela
+        //minimiza a primeria tela
         new Timer().schedule(
             new TimerTask(){
                 @Override
