@@ -40,7 +40,7 @@ public class JImage extends JComponent {
         }
 
         try {
-            image = ImageIO.read(new File("src/resources/icon.png"));
+            image = ImageIO.read(new File(urlFinal));
         } catch (IOException e) {
             e.printStackTrace();
         }
