@@ -40,20 +40,20 @@ public class C_OS_TELA extends javax.swing.JFrame {
     public static C_OS_TELA getC_OS() {
         return C_OS;
     }
-    
-    private TelaUtils u = new TelaUtils(); 
+
+    private TelaUtils u = new TelaUtils();
     private static RUD_OS_TELA RUD_OS = new RUD_OS_TELA();
     private static C_OS_TELA C_OS = new C_OS_TELA();
-    
+
     private static RUD_EQUIP_TELA RUD_EQUIP = new RUD_EQUIP_TELA();
     private static C_EQUIP_TELA C_EQUIP = new C_EQUIP_TELA();
-//    
+//
 //    public static RUD_TEC_TELA RUD_TEC = new RUD_TEC_TELA();
 //    public static C_TEC_TELA C_TEC = new C_TEC_TELA();
-//    
+//
 //    public static RUD_CLIENTE_TELA RUD_CLIENTE = new RUD_CLIENTE_TELA();
 //    public static C_CLIENTE_TELA C_CLIENTE = new C_CLIENTE_TELA();
-    
+
     /**
      * Creates new form CADASTRAR_OS
      */
@@ -240,7 +240,7 @@ public class C_OS_TELA extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(painelSeções, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(painelCRUD, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(painelCRUD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(painelFormulário, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -274,11 +274,11 @@ public class C_OS_TELA extends javax.swing.JFrame {
     }//GEN-LAST:event_irCadastroEquip
 
     private void irCadastroTec(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irCadastroTec
-       // u.irDePara(this, C_OS_TELA.getC_TEC());
+        // u.irDePara(this, C_OS_TELA.getC_TEC());
     }//GEN-LAST:event_irCadastroTec
 
     private void irCadastroCliente(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irCadastroCliente
-       // u.irDePara(this, C_OS_TELA.getC_CLIENTE());
+        // u.irDePara(this, C_OS_TELA.getC_CLIENTE());
     }//GEN-LAST:event_irCadastroCliente
 
     /**
@@ -288,7 +288,7 @@ public class C_OS_TELA extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -311,7 +311,7 @@ public class C_OS_TELA extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {                
+            public void run() {
                 getC_OS().setVisible(true);
             }
         });
