@@ -5,7 +5,7 @@
  */
 package pif.desktop.TELAS;
 
-import pif.desktop.Conexao;
+import pif.desktop.DAO.Conexao;
 
 /**
  *
