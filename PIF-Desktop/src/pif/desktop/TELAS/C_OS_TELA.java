@@ -5,6 +5,10 @@
  */
 package pif.desktop.TELAS;
 
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import pif.desktop.DAO.Conexao;
 
 /**
@@ -41,6 +45,7 @@ public class C_OS_TELA extends javax.swing.JFrame {
         return C_OS;
     }
 
+    Image icon;
     private TelaUtils u = new TelaUtils();
     private static RUD_OS_TELA RUD_OS = new RUD_OS_TELA();
     private static C_OS_TELA C_OS = new C_OS_TELA();
@@ -58,6 +63,11 @@ public class C_OS_TELA extends javax.swing.JFrame {
      * Creates new form CADASTRAR_OS
      */
     public C_OS_TELA() {
+        try {
+            icon = ImageIO.read(new File("src/resources/icon.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         initComponents();
     }
 
@@ -83,6 +93,7 @@ public class C_OS_TELA extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
+        setIconImage(icon);
         setMinimumSize(new java.awt.Dimension(800, 600));
         setPreferredSize(new java.awt.Dimension(800, 600));
 

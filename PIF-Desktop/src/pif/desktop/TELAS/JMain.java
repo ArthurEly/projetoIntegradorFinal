@@ -16,17 +16,35 @@
  */
 package pif.desktop.TELAS;
 
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import pif.desktop.JImage;
+
 /**
  *
  * @author eduar
  */
 public class JMain extends javax.swing.JFrame {
 
+    Image icon;
+
     /**
      * Creates new form JMain
      */
     public JMain() {
+        try {
+            icon = ImageIO.read(new File("src/resources/icon.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        JImage bg = new JImage("resources/banner.png", true);
+
         initComponents();
+
+        setContentPane(bg);
     }
 
     /**
@@ -39,6 +57,7 @@ public class JMain extends javax.swing.JFrame {
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(icon);
         setUndecorated(true);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

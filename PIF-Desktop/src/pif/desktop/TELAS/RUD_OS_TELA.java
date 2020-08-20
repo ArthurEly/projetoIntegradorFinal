@@ -5,18 +5,30 @@
  */
 package pif.desktop.TELAS;
 
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+
 /**
  *
  * @author arthu
  */
 public class RUD_OS_TELA extends javax.swing.JFrame {
 
+    Image icon;
     private TelaUtils u = new TelaUtils();
 
     /**
      * Creates new form CADASTRAR_OS
      */
     public RUD_OS_TELA() {
+        try {
+            icon = ImageIO.read(new File("src/resources/icon.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         initComponents();
     }
 

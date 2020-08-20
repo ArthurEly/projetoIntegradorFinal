@@ -5,18 +5,30 @@
  */
 package pif.desktop.TELAS;
 
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+
 /**
  *
  * @author arthu
  */
 public class RUD_EQUIP_TELA extends javax.swing.JFrame {
-    
+
+    Image icon;
     private TelaUtils u = new TelaUtils();
-    
+
     /**
      * Creates new form CADASTRAR_OS
      */
     public RUD_EQUIP_TELA() {
+        try {
+            icon = ImageIO.read(new File("src/resources/icon.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         initComponents();
     }
 
@@ -41,6 +53,7 @@ public class RUD_EQUIP_TELA extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(icon);
         setMinimumSize(new java.awt.Dimension(800, 600));
 
         painelSeções.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Para qual seção deseja ir?", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
@@ -197,7 +210,7 @@ public class RUD_EQUIP_TELA extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(painelSeções, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(painelCRUD, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(painelCRUD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(painelFormulário, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -226,11 +239,11 @@ public class RUD_EQUIP_TELA extends javax.swing.JFrame {
     }//GEN-LAST:event_irCadastroEquip
 
     private void irCadastroTec(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irCadastroTec
-       // u.irDePara(this, C_OS_TELA.getC_TEC());
+        // u.irDePara(this, C_OS_TELA.getC_TEC());
     }//GEN-LAST:event_irCadastroTec
 
     private void irCadastroCliente(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irCadastroCliente
-      //  u.irDePara(this, C_OS_TELA.getC_CLIENTE());
+        //  u.irDePara(this, C_OS_TELA.getC_CLIENTE());
     }//GEN-LAST:event_irCadastroCliente
 
     /**
@@ -240,7 +253,7 @@ public class RUD_EQUIP_TELA extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -259,9 +272,9 @@ public class RUD_EQUIP_TELA extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(RUD_EQUIP_TELA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>      
         //</editor-fold>
-        //</editor-fold>      
+        //</editor-fold>
+        //</editor-fold>
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
