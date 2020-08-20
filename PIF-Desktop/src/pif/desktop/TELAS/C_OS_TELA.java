@@ -12,10 +12,48 @@ import pif.desktop.DAO.Conexao;
  * @author arthu
  */
 public class C_OS_TELA extends javax.swing.JFrame {
+
+    /**
+     * @return the RUD_OS
+     */
+    public static RUD_OS_TELA getRUD_OS() {
+        return RUD_OS;
+    }
+
+    /**
+     * @param aRUD_OS the RUD_OS to set
+     */
+    public static void setRUD_OS(RUD_OS_TELA aRUD_OS) {
+        RUD_OS = aRUD_OS;
+    }
+
+    /**
+     * @return the C_OS
+     */
+    public static C_OS_TELA getC_OS() {
+        return C_OS;
+    }
+
+    /**
+     * @param aC_OS the C_OS to set
+     */
+    public static void setC_OS(C_OS_TELA aC_OS) {
+        C_OS = aC_OS;
+    }
     
-    private TelaUtils u = new TelaUtils();
-    public static RUD_OS_TELA RUD_OS = new RUD_OS_TELA();
-    public static C_OS_TELA C_OS = new C_OS_TELA();
+    private TelaUtils u = new TelaUtils(); 
+    private static RUD_OS_TELA RUD_OS = new RUD_OS_TELA();
+    private static C_OS_TELA C_OS = new C_OS_TELA();
+    
+//    public static RUD_EQUIP_TELA RUD_EQUIP = new RUD_EQUIP_TELA();
+//    public static C_EQUIP_TELA C_EQUIP = new C_EQUIP_TELA();
+//    
+//    public static RUD_TEC_TELA RUD_TEC = new RUD_TEC_TELA();
+//    public static C_TEC_TELA C_TEC = new C_TEC_TELA();
+//    
+//    public static RUD_CLIENTE_TELA RUD_CLIENTE = new RUD_CLIENTE_TELA();
+//    public static C_CLIENTE_TELA C_CLIENTE = new C_CLIENTE_TELA();
+    
     /**
      * Creates new form CADASTRAR_OS
      */
@@ -41,6 +79,7 @@ public class C_OS_TELA extends javax.swing.JFrame {
         btnIrCadastroOS = new javax.swing.JButton();
         btnIrCadastroOS1 = new javax.swing.JButton();
         painelFormulário = new javax.swing.JPanel();
+        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -55,6 +94,11 @@ public class C_OS_TELA extends javax.swing.JFrame {
         btnIrOS.setContentAreaFilled(false);
         btnIrOS.setFocusPainted(false);
         btnIrOS.setOpaque(true);
+        btnIrOS.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                irOS(evt);
+            }
+        });
 
         btnIrEquipamentos.setBackground(new java.awt.Color(210, 210, 210));
         btnIrEquipamentos.setForeground(new java.awt.Color(102, 102, 102));
@@ -64,6 +108,11 @@ public class C_OS_TELA extends javax.swing.JFrame {
         btnIrEquipamentos.setContentAreaFilled(false);
         btnIrEquipamentos.setFocusPainted(false);
         btnIrEquipamentos.setOpaque(true);
+        btnIrEquipamentos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                irEquip(evt);
+            }
+        });
 
         btnIrTecnicos.setBackground(new java.awt.Color(210, 210, 210));
         btnIrTecnicos.setForeground(new java.awt.Color(102, 102, 102));
@@ -72,6 +121,11 @@ public class C_OS_TELA extends javax.swing.JFrame {
         btnIrTecnicos.setContentAreaFilled(false);
         btnIrTecnicos.setFocusPainted(false);
         btnIrTecnicos.setOpaque(true);
+        btnIrTecnicos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                irTec(evt);
+            }
+        });
 
         btnIrClientes.setBackground(new java.awt.Color(210, 210, 210));
         btnIrClientes.setForeground(new java.awt.Color(102, 102, 102));
@@ -80,6 +134,11 @@ public class C_OS_TELA extends javax.swing.JFrame {
         btnIrClientes.setContentAreaFilled(false);
         btnIrClientes.setFocusPainted(false);
         btnIrClientes.setOpaque(true);
+        btnIrClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                irCliente(evt);
+            }
+        });
 
         javax.swing.GroupLayout painelSeçõesLayout = new javax.swing.GroupLayout(painelSeções);
         painelSeções.setLayout(painelSeçõesLayout);
@@ -87,13 +146,13 @@ public class C_OS_TELA extends javax.swing.JFrame {
             painelSeçõesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelSeçõesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnIrOS, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
+                .addComponent(btnIrOS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(btnIrEquipamentos, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                .addComponent(btnIrEquipamentos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(btnIrTecnicos, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                .addComponent(btnIrTecnicos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(btnIrClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                .addComponent(btnIrClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         painelSeçõesLayout.setVerticalGroup(
@@ -135,48 +194,56 @@ public class C_OS_TELA extends javax.swing.JFrame {
         painelCRUDLayout.setHorizontalGroup(
             painelCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelCRUDLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(10, 10, 10)
                 .addGroup(painelCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnIrCadastroOS1, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
-                    .addComponent(btnIrCadastroOS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(btnIrCadastroOS1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnIrCadastroOS, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10))
         );
         painelCRUDLayout.setVerticalGroup(
             painelCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelCRUDLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(15, 15, 15)
                 .addComponent(btnIrCadastroOS1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(10, 10, 10)
                 .addComponent(btnIrCadastroOS, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(330, Short.MAX_VALUE))
+                .addContainerGap(327, Short.MAX_VALUE))
         );
 
         painelFormulário.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cadastro de OS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+
+        jTextField1.setText("jTextField1");
 
         javax.swing.GroupLayout painelFormulárioLayout = new javax.swing.GroupLayout(painelFormulário);
         painelFormulário.setLayout(painelFormulárioLayout);
         painelFormulárioLayout.setHorizontalGroup(
             painelFormulárioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(painelFormulárioLayout.createSequentialGroup()
+                .addGap(223, 223, 223)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(191, Short.MAX_VALUE))
         );
         painelFormulárioLayout.setVerticalGroup(
             painelFormulárioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(painelFormulárioLayout.createSequentialGroup()
+                .addGap(136, 136, 136)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(painelSeções, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(painelCRUD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(painelFormulário, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(10, 10, 10))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,8 +262,24 @@ public class C_OS_TELA extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void irConsultaOS(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irConsultaOS
-        u.irDePara(this, RUD_OS);
+        u.irDePara(this, C_OS_TELA.getRUD_OS());
     }//GEN-LAST:event_irConsultaOS
+
+    private void irOS(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irOS
+        u.irDePara(this, C_OS_TELA.getC_OS());
+    }//GEN-LAST:event_irOS
+
+    private void irEquip(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irEquip
+        //u.irDePara(this, C_OS_TELA.C_EQUIP);
+    }//GEN-LAST:event_irEquip
+
+    private void irTec(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irTec
+       // u.irDePara(this, C_OS_TELA.C_TEC);
+    }//GEN-LAST:event_irTec
+
+    private void irCliente(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irCliente
+       // u.irDePara(this, C_OS_TELA.C_CLIENTE);
+    }//GEN-LAST:event_irCliente
 
     /**
      * @param args the command line arguments
@@ -225,13 +308,11 @@ public class C_OS_TELA extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {                
-                C_OS.setVisible(true);
+                getC_OS().setVisible(true);
             }
         });
         Conexao c = new Conexao();
@@ -245,6 +326,7 @@ public class C_OS_TELA extends javax.swing.JFrame {
     private javax.swing.JButton btnIrEquipamentos;
     private javax.swing.JButton btnIrOS;
     private javax.swing.JButton btnIrTecnicos;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel painelCRUD;
     private javax.swing.JPanel painelFormulário;
     private javax.swing.JPanel painelSeções;

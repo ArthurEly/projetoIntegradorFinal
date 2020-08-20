@@ -19,6 +19,7 @@ public class TelaUtils {
         */        
         //pega as posições e o tamanho da primeira tela e joga pra segunda
         esse.setBounds(desse.getX(), desse.getY(), desse.getWidth(), desse.getHeight());
+        esse.setExtendedState(desse.getExtendedState());
         //abre a segunda
         esse.setVisible(true);
         //fecha a primeria tela

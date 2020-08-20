@@ -12,6 +12,7 @@ package pif.desktop.TELAS;
 public class RUD_OS_TELA extends javax.swing.JFrame {
     
     private TelaUtils u = new TelaUtils();
+    
     /**
      * Creates new form CADASTRAR_OS
      */
@@ -37,6 +38,7 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
         btnIrCadastroOS = new javax.swing.JButton();
         btnIrCadastroOS1 = new javax.swing.JButton();
         painelFormulário = new javax.swing.JPanel();
+        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 600));
@@ -50,6 +52,11 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
         btnIrOS.setContentAreaFilled(false);
         btnIrOS.setFocusPainted(false);
         btnIrOS.setOpaque(true);
+        btnIrOS.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                irOS(evt);
+            }
+        });
 
         btnIrEquipamentos.setBackground(new java.awt.Color(210, 210, 210));
         btnIrEquipamentos.setForeground(new java.awt.Color(102, 102, 102));
@@ -59,6 +66,11 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
         btnIrEquipamentos.setContentAreaFilled(false);
         btnIrEquipamentos.setFocusPainted(false);
         btnIrEquipamentos.setOpaque(true);
+        btnIrEquipamentos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                irEquip(evt);
+            }
+        });
 
         btnIrTecnicos.setBackground(new java.awt.Color(210, 210, 210));
         btnIrTecnicos.setForeground(new java.awt.Color(102, 102, 102));
@@ -67,6 +79,11 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
         btnIrTecnicos.setContentAreaFilled(false);
         btnIrTecnicos.setFocusPainted(false);
         btnIrTecnicos.setOpaque(true);
+        btnIrTecnicos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                irTec(evt);
+            }
+        });
 
         btnIrClientes.setBackground(new java.awt.Color(210, 210, 210));
         btnIrClientes.setForeground(new java.awt.Color(102, 102, 102));
@@ -75,6 +92,11 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
         btnIrClientes.setContentAreaFilled(false);
         btnIrClientes.setFocusPainted(false);
         btnIrClientes.setOpaque(true);
+        btnIrClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                irCliente(evt);
+            }
+        });
 
         javax.swing.GroupLayout painelSeçõesLayout = new javax.swing.GroupLayout(painelSeções);
         painelSeções.setLayout(painelSeçõesLayout);
@@ -82,13 +104,13 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
             painelSeçõesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelSeçõesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnIrOS, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
+                .addComponent(btnIrOS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(btnIrEquipamentos, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                .addComponent(btnIrEquipamentos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(btnIrTecnicos, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                .addComponent(btnIrTecnicos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(btnIrClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                .addComponent(btnIrClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         painelSeçõesLayout.setVerticalGroup(
@@ -130,48 +152,56 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
         painelCRUDLayout.setHorizontalGroup(
             painelCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelCRUDLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(10, 10, 10)
                 .addGroup(painelCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnIrCadastroOS1, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
-                    .addComponent(btnIrCadastroOS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(btnIrCadastroOS, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnIrCadastroOS1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10))
         );
         painelCRUDLayout.setVerticalGroup(
             painelCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelCRUDLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(15, 15, 15)
                 .addComponent(btnIrCadastroOS1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(10, 10, 10)
                 .addComponent(btnIrCadastroOS, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         painelFormulário.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Consulta de OS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
+        jTextField1.setText("jTextField1");
+
         javax.swing.GroupLayout painelFormulárioLayout = new javax.swing.GroupLayout(painelFormulário);
         painelFormulário.setLayout(painelFormulárioLayout);
         painelFormulárioLayout.setHorizontalGroup(
             painelFormulárioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(painelFormulárioLayout.createSequentialGroup()
+                .addGap(223, 223, 223)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(181, Short.MAX_VALUE))
         );
         painelFormulárioLayout.setVerticalGroup(
             painelFormulárioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 432, Short.MAX_VALUE)
+            .addGroup(painelFormulárioLayout.createSequentialGroup()
+                .addGap(136, 136, 136)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(painelSeções, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(painelCRUD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(painelFormulário, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(10, 10, 10))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,8 +219,24 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void irCadastroOS(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irCadastroOS
-        u.irDePara(this, C_OS_TELA.C_OS);
+        u.irDePara(this, C_OS_TELA.getC_OS());
     }//GEN-LAST:event_irCadastroOS
+
+    private void irOS(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irOS
+        u.irDePara(this, C_OS_TELA.getC_OS());
+    }//GEN-LAST:event_irOS
+
+    private void irEquip(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irEquip
+       // u.irDePara(this, C_OS_TELA.C_EQUIP);
+    }//GEN-LAST:event_irEquip
+
+    private void irTec(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irTec
+       // u.irDePara(this, C_OS_TELA.C_TEC);
+    }//GEN-LAST:event_irTec
+
+    private void irCliente(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irCliente
+      //  u.irDePara(this, C_OS_TELA.C_CLIENTE);
+    }//GEN-LAST:event_irCliente
 
     /**
      * @param args the command line arguments
@@ -218,17 +264,7 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(RUD_OS_TELA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new RUD_OS_TELA().setVisible(true);
-            }
-        });
-        
+        //</editor-fold>      
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -238,6 +274,7 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
     private javax.swing.JButton btnIrEquipamentos;
     private javax.swing.JButton btnIrOS;
     private javax.swing.JButton btnIrTecnicos;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel painelCRUD;
     private javax.swing.JPanel painelFormulário;
     private javax.swing.JPanel painelSeções;
