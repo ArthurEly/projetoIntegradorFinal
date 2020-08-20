@@ -24,6 +24,6 @@ import pif.desktop.TELAS.JMain;
 public class Main {
 
     public static void main(String[] args) {
-        new JMain();
+        (new JMain()).setVisible(true);
     }
 }
