@@ -14,17 +14,24 @@ import pif.desktop.DAO.Conexao;
 public class C_OS_TELA extends javax.swing.JFrame {
 
     /**
+     * @return the RUD_EQUIP
+     */
+    public static RUD_EQUIP_TELA getRUD_EQUIP() {
+        return RUD_EQUIP;
+    }
+
+    /**
+     * @return the C_EQUIP
+     */
+    public static C_EQUIP_TELA getC_EQUIP() {
+        return C_EQUIP;
+    }
+
+    /**
      * @return the RUD_OS
      */
     public static RUD_OS_TELA getRUD_OS() {
         return RUD_OS;
-    }
-
-    /**
-     * @param aRUD_OS the RUD_OS to set
-     */
-    public static void setRUD_OS(RUD_OS_TELA aRUD_OS) {
-        RUD_OS = aRUD_OS;
     }
 
     /**
@@ -33,20 +40,13 @@ public class C_OS_TELA extends javax.swing.JFrame {
     public static C_OS_TELA getC_OS() {
         return C_OS;
     }
-
-    /**
-     * @param aC_OS the C_OS to set
-     */
-    public static void setC_OS(C_OS_TELA aC_OS) {
-        C_OS = aC_OS;
-    }
     
     private TelaUtils u = new TelaUtils(); 
     private static RUD_OS_TELA RUD_OS = new RUD_OS_TELA();
     private static C_OS_TELA C_OS = new C_OS_TELA();
     
-//    public static RUD_EQUIP_TELA RUD_EQUIP = new RUD_EQUIP_TELA();
-//    public static C_EQUIP_TELA C_EQUIP = new C_EQUIP_TELA();
+    private static RUD_EQUIP_TELA RUD_EQUIP = new RUD_EQUIP_TELA();
+    private static C_EQUIP_TELA C_EQUIP = new C_EQUIP_TELA();
 //    
 //    public static RUD_TEC_TELA RUD_TEC = new RUD_TEC_TELA();
 //    public static C_TEC_TELA C_TEC = new C_TEC_TELA();
@@ -96,7 +96,7 @@ public class C_OS_TELA extends javax.swing.JFrame {
         btnIrOS.setOpaque(true);
         btnIrOS.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                irOS(evt);
+                irCadastroOS(evt);
             }
         });
 
@@ -110,7 +110,7 @@ public class C_OS_TELA extends javax.swing.JFrame {
         btnIrEquipamentos.setOpaque(true);
         btnIrEquipamentos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                irEquip(evt);
+                irCadastroEquip(evt);
             }
         });
 
@@ -123,7 +123,7 @@ public class C_OS_TELA extends javax.swing.JFrame {
         btnIrTecnicos.setOpaque(true);
         btnIrTecnicos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                irTec(evt);
+                irCadastroTec(evt);
             }
         });
 
@@ -136,7 +136,7 @@ public class C_OS_TELA extends javax.swing.JFrame {
         btnIrClientes.setOpaque(true);
         btnIrClientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                irCliente(evt);
+                irCadastroCliente(evt);
             }
         });
 
@@ -221,7 +221,7 @@ public class C_OS_TELA extends javax.swing.JFrame {
             .addGroup(painelFormulárioLayout.createSequentialGroup()
                 .addGap(223, 223, 223)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(191, Short.MAX_VALUE))
+                .addContainerGap(193, Short.MAX_VALUE))
         );
         painelFormulárioLayout.setVerticalGroup(
             painelFormulárioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -240,7 +240,7 @@ public class C_OS_TELA extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(painelSeções, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(painelCRUD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(painelCRUD, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(painelFormulário, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -265,21 +265,21 @@ public class C_OS_TELA extends javax.swing.JFrame {
         u.irDePara(this, C_OS_TELA.getRUD_OS());
     }//GEN-LAST:event_irConsultaOS
 
-    private void irOS(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irOS
+    private void irCadastroOS(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irCadastroOS
         u.irDePara(this, C_OS_TELA.getC_OS());
-    }//GEN-LAST:event_irOS
+    }//GEN-LAST:event_irCadastroOS
 
-    private void irEquip(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irEquip
-        //u.irDePara(this, C_OS_TELA.C_EQUIP);
-    }//GEN-LAST:event_irEquip
+    private void irCadastroEquip(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irCadastroEquip
+        u.irDePara(this, C_OS_TELA.getC_EQUIP());
+    }//GEN-LAST:event_irCadastroEquip
 
-    private void irTec(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irTec
-       // u.irDePara(this, C_OS_TELA.C_TEC);
-    }//GEN-LAST:event_irTec
+    private void irCadastroTec(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irCadastroTec
+       // u.irDePara(this, C_OS_TELA.getC_TEC());
+    }//GEN-LAST:event_irCadastroTec
 
-    private void irCliente(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irCliente
-       // u.irDePara(this, C_OS_TELA.C_CLIENTE);
-    }//GEN-LAST:event_irCliente
+    private void irCadastroCliente(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irCadastroCliente
+       // u.irDePara(this, C_OS_TELA.getC_CLIENTE());
+    }//GEN-LAST:event_irCadastroCliente
 
     /**
      * @param args the command line arguments

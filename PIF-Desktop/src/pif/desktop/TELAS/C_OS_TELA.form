@@ -37,7 +37,7 @@
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="painelSeções" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="painelCRUD" min="-2" max="-2" attributes="0"/>
+                      <Component id="painelCRUD" min="-2" pref="250" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="painelFormulário" max="32767" attributes="0"/>
                   </Group>
@@ -117,7 +117,7 @@
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="irOS"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="irCadastroOS"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnIrEquipamentos">
@@ -136,7 +136,7 @@
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="irEquip"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="irCadastroEquip"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnIrTecnicos">
@@ -154,7 +154,7 @@
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="irTec"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="irCadastroTec"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnIrClientes">
@@ -172,7 +172,7 @@
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="irCliente"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="irCadastroCliente"/>
           </Events>
         </Component>
       </SubComponents>
@@ -259,7 +259,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="223" max="-2" attributes="0"/>
                   <Component id="jTextField1" min="-2" pref="100" max="-2" attributes="0"/>
-                  <EmptySpace pref="191" max="32767" attributes="0"/>
+                  <EmptySpace pref="193" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

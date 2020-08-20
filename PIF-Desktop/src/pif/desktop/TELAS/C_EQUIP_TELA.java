@@ -5,18 +5,20 @@
  */
 package pif.desktop.TELAS;
 
+import pif.desktop.DAO.Conexao;
+
 /**
  *
  * @author arthu
  */
-public class RUD_OS_TELA extends javax.swing.JFrame {
-    
-    private TelaUtils u = new TelaUtils();
+public class C_EQUIP_TELA extends javax.swing.JFrame {
+
+    private TelaUtils u = new TelaUtils(); 
     
     /**
      * Creates new form CADASTRAR_OS
      */
-    public RUD_OS_TELA() {
+    public C_EQUIP_TELA() {
         initComponents();
     }
 
@@ -41,8 +43,8 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 0, 0));
         setMinimumSize(new java.awt.Dimension(800, 600));
-        setPreferredSize(new java.awt.Dimension(800, 600));
 
         painelSeções.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Para qual seção deseja ir?", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
 
@@ -127,25 +129,25 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
 
         painelCRUD.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "O que deseja fazer?", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
-        btnIrCadastroOS.setBackground(new java.awt.Color(204, 204, 204));
-        btnIrCadastroOS.setText("Consultar uma OS");
+        btnIrCadastroOS.setBackground(new java.awt.Color(210, 210, 210));
+        btnIrCadastroOS.setForeground(new java.awt.Color(102, 102, 102));
+        btnIrCadastroOS.setText("Consultar um equipamento");
         btnIrCadastroOS.setBorderPainted(false);
         btnIrCadastroOS.setContentAreaFilled(false);
         btnIrCadastroOS.setFocusPainted(false);
         btnIrCadastroOS.setOpaque(true);
+        btnIrCadastroOS.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                irConsultaEquip(evt);
+            }
+        });
 
-        btnIrCadastroOS1.setBackground(new java.awt.Color(210, 210, 210));
-        btnIrCadastroOS1.setForeground(new java.awt.Color(102, 102, 102));
-        btnIrCadastroOS1.setText("Cadastrar uma OS");
+        btnIrCadastroOS1.setBackground(new java.awt.Color(204, 204, 204));
+        btnIrCadastroOS1.setText("Cadastrar um equipamento");
         btnIrCadastroOS1.setBorderPainted(false);
         btnIrCadastroOS1.setContentAreaFilled(false);
         btnIrCadastroOS1.setFocusPainted(false);
         btnIrCadastroOS1.setOpaque(true);
-        btnIrCadastroOS1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                irCadastroOS(evt);
-            }
-        });
 
         javax.swing.GroupLayout painelCRUDLayout = new javax.swing.GroupLayout(painelCRUD);
         painelCRUD.setLayout(painelCRUDLayout);
@@ -154,8 +156,8 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
             .addGroup(painelCRUDLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(painelCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnIrCadastroOS, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnIrCadastroOS1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnIrCadastroOS1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnIrCadastroOS, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10))
         );
         painelCRUDLayout.setVerticalGroup(
@@ -165,10 +167,10 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
                 .addComponent(btnIrCadastroOS1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(btnIrCadastroOS, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(327, Short.MAX_VALUE))
         );
 
-        painelFormulário.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Consulta de OS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+        painelFormulário.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cadastro de equipamento", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
         jTextField1.setText("jTextField1");
 
@@ -179,7 +181,7 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
             .addGroup(painelFormulárioLayout.createSequentialGroup()
                 .addGap(223, 223, 223)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(181, Short.MAX_VALUE))
+                .addContainerGap(193, Short.MAX_VALUE))
         );
         painelFormulárioLayout.setVerticalGroup(
             painelFormulárioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -210,20 +212,25 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
                 .addComponent(painelSeções, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(painelCRUD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(painelFormulário, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(painelFormulário, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(painelCRUD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(10, 10, 10))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void irConsultaEquip(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irConsultaEquip
+        u.irDePara(this, C_OS_TELA.getRUD_EQUIP());
+    }//GEN-LAST:event_irConsultaEquip
 
     private void irCadastroOS(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irCadastroOS
         u.irDePara(this, C_OS_TELA.getC_OS());
     }//GEN-LAST:event_irCadastroOS
 
     private void irCadastroEquip(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irCadastroEquip
-        u.irDePara(this, C_OS_TELA.getC_EQUIP());
+        //u.irDePara(this, C_OS_TELA.getC_EQUIP());
     }//GEN-LAST:event_irCadastroEquip
 
     private void irCadastroTec(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irCadastroTec
@@ -231,7 +238,7 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
     }//GEN-LAST:event_irCadastroTec
 
     private void irCadastroCliente(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irCadastroCliente
-      //  u.irDePara(this, C_OS_TELA.getC_CLIENTE());
+       // u.irDePara(this, C_OS_TELA.getC_CLIENTE());
     }//GEN-LAST:event_irCadastroCliente
 
     /**
@@ -251,16 +258,16 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RUD_OS_TELA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(C_EQUIP_TELA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RUD_OS_TELA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(C_EQUIP_TELA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RUD_OS_TELA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(C_EQUIP_TELA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RUD_OS_TELA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(C_EQUIP_TELA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>      
+        //</editor-fold>
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
