@@ -50,4 +50,10 @@ public class Conexao {
     public Connection getConexao(){
         return conexao;
     }
+    
+    public static void main(String[] agrs){
+        //só pra testar sem abrir a tela
+        Conexao c = new Conexao();
+        c.conectarAoBanco();
+    }
 }

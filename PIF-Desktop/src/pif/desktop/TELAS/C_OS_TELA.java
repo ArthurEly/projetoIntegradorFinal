@@ -97,11 +97,12 @@ public class C_OS_TELA extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(800, 600));
         setPreferredSize(new java.awt.Dimension(800, 600));
 
-        painelSeções.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Para qual seção deseja ir?", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
+        painelSeções.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 40, 40)), "Para qual seção deseja ir?", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
-        btnIrOS.setBackground(new java.awt.Color(204, 204, 204));
+        btnIrOS.setBackground(new java.awt.Color(100, 0, 0));
+        btnIrOS.setForeground(new java.awt.Color(255, 255, 255));
         btnIrOS.setText("Ordem de serviço");
-        btnIrOS.setBorderPainted(false);
+        btnIrOS.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(150, 0, 0)));
         btnIrOS.setContentAreaFilled(false);
         btnIrOS.setFocusPainted(false);
         btnIrOS.setOpaque(true);
@@ -111,11 +112,11 @@ public class C_OS_TELA extends javax.swing.JFrame {
             }
         });
 
-        btnIrEquipamentos.setBackground(new java.awt.Color(210, 210, 210));
-        btnIrEquipamentos.setForeground(new java.awt.Color(102, 102, 102));
+        btnIrEquipamentos.setBackground(new java.awt.Color(204, 0, 0));
+        btnIrEquipamentos.setForeground(new java.awt.Color(255, 255, 255));
         btnIrEquipamentos.setText("Equipamentos");
         btnIrEquipamentos.setToolTipText("");
-        btnIrEquipamentos.setBorderPainted(false);
+        btnIrEquipamentos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(130, 0, 0), new java.awt.Color(130, 0, 0), new java.awt.Color(204, 0, 0), new java.awt.Color(204, 0, 0)));
         btnIrEquipamentos.setContentAreaFilled(false);
         btnIrEquipamentos.setFocusPainted(false);
         btnIrEquipamentos.setOpaque(true);
@@ -125,10 +126,10 @@ public class C_OS_TELA extends javax.swing.JFrame {
             }
         });
 
-        btnIrTecnicos.setBackground(new java.awt.Color(210, 210, 210));
-        btnIrTecnicos.setForeground(new java.awt.Color(102, 102, 102));
+        btnIrTecnicos.setBackground(new java.awt.Color(204, 0, 0));
+        btnIrTecnicos.setForeground(new java.awt.Color(255, 255, 255));
         btnIrTecnicos.setText("Técnicos");
-        btnIrTecnicos.setBorderPainted(false);
+        btnIrTecnicos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(130, 0, 0), new java.awt.Color(130, 0, 0), new java.awt.Color(204, 0, 0), new java.awt.Color(204, 0, 0)));
         btnIrTecnicos.setContentAreaFilled(false);
         btnIrTecnicos.setFocusPainted(false);
         btnIrTecnicos.setOpaque(true);
@@ -138,10 +139,10 @@ public class C_OS_TELA extends javax.swing.JFrame {
             }
         });
 
-        btnIrClientes.setBackground(new java.awt.Color(210, 210, 210));
-        btnIrClientes.setForeground(new java.awt.Color(102, 102, 102));
+        btnIrClientes.setBackground(new java.awt.Color(204, 0, 0));
+        btnIrClientes.setForeground(new java.awt.Color(255, 255, 255));
         btnIrClientes.setText("Clientes");
-        btnIrClientes.setBorderPainted(false);
+        btnIrClientes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(130, 0, 0), new java.awt.Color(130, 0, 0), new java.awt.Color(204, 0, 0), new java.awt.Color(204, 0, 0)));
         btnIrClientes.setContentAreaFilled(false);
         btnIrClientes.setFocusPainted(false);
         btnIrClientes.setOpaque(true);
@@ -178,12 +179,12 @@ public class C_OS_TELA extends javax.swing.JFrame {
                 .addGap(10, 10, 10))
         );
 
-        painelCRUD.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "O que deseja fazer?", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+        painelCRUD.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 40, 40)), "O que deseja fazer?", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
-        btnIrCadastroOS.setBackground(new java.awt.Color(210, 210, 210));
-        btnIrCadastroOS.setForeground(new java.awt.Color(102, 102, 102));
+        btnIrCadastroOS.setBackground(new java.awt.Color(204, 0, 0));
+        btnIrCadastroOS.setForeground(new java.awt.Color(255, 255, 255));
         btnIrCadastroOS.setText("Consultar uma OS");
-        btnIrCadastroOS.setBorderPainted(false);
+        btnIrCadastroOS.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(130, 0, 0), new java.awt.Color(130, 0, 0), new java.awt.Color(204, 0, 0), new java.awt.Color(204, 0, 0)));
         btnIrCadastroOS.setContentAreaFilled(false);
         btnIrCadastroOS.setFocusPainted(false);
         btnIrCadastroOS.setOpaque(true);
@@ -193,8 +194,10 @@ public class C_OS_TELA extends javax.swing.JFrame {
             }
         });
 
-        btnIrCadastroOS1.setBackground(new java.awt.Color(204, 204, 204));
+        btnIrCadastroOS1.setBackground(new java.awt.Color(100, 0, 0));
+        btnIrCadastroOS1.setForeground(new java.awt.Color(255, 255, 255));
         btnIrCadastroOS1.setText("Cadastrar uma OS");
+        btnIrCadastroOS1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(150, 0, 0)));
         btnIrCadastroOS1.setBorderPainted(false);
         btnIrCadastroOS1.setContentAreaFilled(false);
         btnIrCadastroOS1.setFocusPainted(false);
@@ -218,10 +221,10 @@ public class C_OS_TELA extends javax.swing.JFrame {
                 .addComponent(btnIrCadastroOS1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(btnIrCadastroOS, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(327, Short.MAX_VALUE))
+                .addContainerGap(329, Short.MAX_VALUE))
         );
 
-        painelFormulário.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cadastro de OS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+        painelFormulário.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 40, 40)), "Cadastro de OS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
         jTextField1.setText("jTextField1");
 
@@ -232,7 +235,7 @@ public class C_OS_TELA extends javax.swing.JFrame {
             .addGroup(painelFormulárioLayout.createSequentialGroup()
                 .addGap(223, 223, 223)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(193, Short.MAX_VALUE))
+                .addContainerGap(197, Short.MAX_VALUE))
         );
         painelFormulárioLayout.setVerticalGroup(
             painelFormulárioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
