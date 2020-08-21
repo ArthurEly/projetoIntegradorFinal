@@ -18,6 +18,7 @@ package pif.desktop;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.image.ImageObserver;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -44,6 +45,8 @@ public class JImage extends JComponent {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        setSize(getImageWidth(), getImageHeight());
     }
 
     @Override
@@ -60,4 +63,11 @@ public class JImage extends JComponent {
         this.image = image;
     }
 
+    public int getImageWidth() {
+        return image.getWidth(null);
+    }
+
+    public int getImageHeight() {
+        return image.getHeight(null);
+    }
 }

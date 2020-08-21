@@ -16,6 +16,10 @@
  */
 package pif.desktop;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
+import pif.desktop.TELAS.JLogin;
 import pif.desktop.TELAS.JMain;
 
 /**
@@ -24,6 +28,18 @@ import pif.desktop.TELAS.JMain;
 public class Main {
 
     public static void main(String[] args) {
-        (new JMain()).setVisible(true);
+        JFrame principal = new JMain();
+        principal.setVisible(true);
+
+        //tenta esperar 2 segundos
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        principal.dispose();
+        principal = new JLogin();
+        principal.setVisible(true);
     }
 }
