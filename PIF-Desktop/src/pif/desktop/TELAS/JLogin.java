@@ -69,6 +69,7 @@ public class JLogin extends javax.swing.JFrame {
         imageFrame = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Login - ARTHOS");
         setBackground(new java.awt.Color(51, 51, 51));
         setIconImage(icon);
 
@@ -151,6 +152,7 @@ public class JLogin extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
