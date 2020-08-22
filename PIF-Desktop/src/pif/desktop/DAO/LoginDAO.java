@@ -17,7 +17,7 @@ import pif.desktop.TELAS.TelaUtils;
  */
 public class LoginDAO {
     
-    public boolean login(String user, String password){
+    public int login(String user, String password){
         /*
             MÉTODO PARA FAZER LOGIN
         */
@@ -32,7 +32,7 @@ public class LoginDAO {
         PreparedStatement pstm = null;
         ResultSet resultado=  null;
         TelaUtils u = new TelaUtils();
-        boolean logado = false;
+        int idUser = 0;
  
         try {
             //Cria uma conexão com o banco
@@ -51,9 +51,9 @@ public class LoginDAO {
             resultado = pstm.executeQuery();
             
             if (resultado.next()){
-                logado = true;
+                idUser = resultado.getInt("user_id");
             } else {
-                logado = false;
+                idUser = 0;
             }       
         } catch (Exception e) {
             e.printStackTrace();
@@ -73,6 +73,6 @@ public class LoginDAO {
                 e.printStackTrace();
             }
        }
-       return logado;
+       return idUser;
     } 
 }

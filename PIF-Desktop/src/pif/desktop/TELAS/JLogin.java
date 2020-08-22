@@ -196,9 +196,11 @@ public class JLogin extends javax.swing.JFrame {
 
     private void fazerLogin(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fazerLogin
         LoginDAO login = new LoginDAO();
-        boolean logado = login.login(campoUser.getText(), campoSenha.getText());
-        if (logado == true){
+        int id = login.login(campoUser.getText(), campoSenha.getText());
+        if (id != 0){
             u.irDePara(this, C_OS_TELA.getC_OS());
+            C_OS_TELA.getC_OS().setIdDoUser(id);
+            C_OS_TELA.getC_OS().getId().setText("ID do usuário é: " + C_OS_TELA.getC_OS().getIdDoUser());
         } else {
             System.out.println("Usuário não existe!!");
         }

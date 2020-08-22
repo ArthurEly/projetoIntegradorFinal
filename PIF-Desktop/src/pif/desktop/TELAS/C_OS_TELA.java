@@ -18,6 +18,34 @@ import pif.desktop.DAO.Conexao;
 public class C_OS_TELA extends javax.swing.JFrame {
 
     /**
+     * @return the id
+     */
+    public javax.swing.JLabel getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(javax.swing.JLabel id) {
+        this.id = id;
+    }
+
+    /**
+     * @return the idDoUser
+     */
+    public int getIdDoUser() {
+        return idDoUser;
+    }
+
+    /**
+     * @param idDoUser the idDoUser to set
+     */
+    public void setIdDoUser(int idDoUser) {
+        this.idDoUser = idDoUser;
+    }
+
+    /**
      * @return the RUD_EQUIP
      */
     public static RUD_EQUIP_TELA getRUD_EQUIP() {
@@ -46,6 +74,7 @@ public class C_OS_TELA extends javax.swing.JFrame {
     }
 
     Image icon;
+    private static int idDoUser;
     private TelaUtils u = new TelaUtils();
     private static RUD_OS_TELA RUD_OS = new RUD_OS_TELA();
     private static C_OS_TELA C_OS = new C_OS_TELA();
@@ -88,6 +117,7 @@ public class C_OS_TELA extends javax.swing.JFrame {
         painelCRUD = new javax.swing.JPanel();
         btnIrCadastroOS = new javax.swing.JButton();
         btnIrCadastroOS1 = new javax.swing.JButton();
+        id = new javax.swing.JLabel();
         painelFormulário = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
 
@@ -203,15 +233,22 @@ public class C_OS_TELA extends javax.swing.JFrame {
         btnIrCadastroOS1.setFocusPainted(false);
         btnIrCadastroOS1.setOpaque(true);
 
+        id.setText("ID do user logado: ");
+
         javax.swing.GroupLayout painelCRUDLayout = new javax.swing.GroupLayout(painelCRUD);
         painelCRUD.setLayout(painelCRUDLayout);
         painelCRUDLayout.setHorizontalGroup(
             painelCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelCRUDLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
                 .addGroup(painelCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnIrCadastroOS1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnIrCadastroOS, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(painelCRUDLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(painelCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnIrCadastroOS1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnIrCadastroOS, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(painelCRUDLayout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(id)))
                 .addGap(10, 10, 10))
         );
         painelCRUDLayout.setVerticalGroup(
@@ -221,7 +258,9 @@ public class C_OS_TELA extends javax.swing.JFrame {
                 .addComponent(btnIrCadastroOS1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(btnIrCadastroOS, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(329, Short.MAX_VALUE))
+                .addGap(112, 112, 112)
+                .addComponent(id)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         painelFormulário.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 40, 40)), "Cadastro de OS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
@@ -242,7 +281,7 @@ public class C_OS_TELA extends javax.swing.JFrame {
             .addGroup(painelFormulárioLayout.createSequentialGroup()
                 .addGap(136, 136, 136)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(188, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -340,6 +379,7 @@ public class C_OS_TELA extends javax.swing.JFrame {
     private javax.swing.JButton btnIrEquipamentos;
     private javax.swing.JButton btnIrOS;
     private javax.swing.JButton btnIrTecnicos;
+    private javax.swing.JLabel id;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel painelCRUD;
     private javax.swing.JPanel painelFormulário;
