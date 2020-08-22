@@ -21,7 +21,7 @@ public class Conexao {
      *  @throws Exception 
      * 
      */   
-    public void conectarAoBanco(){
+    public Connection conectarAoBanco(){
         try{
             System.out.println("Iniciando conexão com o banco de dados.");
             //Faz com que a classe seja carregada pela JVM
@@ -33,7 +33,8 @@ public class Conexao {
             System.out.println("Não conseguiu conectar com o banco de dados." + e);
         }catch(ClassNotFoundException e){
             System.out.println("Não achou a classe de conexão.");
-        }        
+        } 
+        return conexao;
     }
     
     public void desconectarDoBanco(){
