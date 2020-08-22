@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ARTHOS</string>
+    <string name="txt_email">Email</string>
+    <string name="welcome">Bem Vindo de Volta!</string>
+    <string name="txt_password">Senha</string>
+    <string name="txt_i_am_an_operator"><u>Sou um Operador</u></string>
+    <string name="txt_signon">Fazer o Login</string>
+</resources>
