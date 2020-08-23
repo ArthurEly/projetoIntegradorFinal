@@ -1,5 +1,6 @@
 package br.com.senac.pif_mobile;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.Dialog;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import androidx.annotation.Nullable;
 
 import java.sql.Connection;
 
+import br.com.senac.pif_mobile.util.ActivityUtils;
 import br.com.senac.pif_mobile.util.SQLUtils;
 import pif.desktop.dao.Conexao;
 
@@ -30,6 +32,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_client);
+        ActivityUtils.requestPermission(this, Manifest.permission.INTERNET);
 
         OPERATOR_SCREEN = findViewById(R.id.OPERATOR_SCREEN);
         LOGIN = findViewById(R.id.LOGIN);
