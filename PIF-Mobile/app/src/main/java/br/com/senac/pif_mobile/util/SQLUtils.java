@@ -1,6 +1,8 @@
 package br.com.senac.pif_mobile.util;
 
 import org.intellij.lang.annotations.Language;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -11,8 +13,19 @@ import java.util.Date;
 import br.com.senac.pif_mobile.User;
 
 public class SQLUtils {
-    public static User getUser(Connection sqlconn, String user_name, String user_password) {
+    /**
+     * Pega um usuário do banco de dados.
+     * Tente executar essa função dentro de outro processo ou <code>Thread</code> assim
+     * o app não vai travar durante a conexão via SQL.
+     *
+     * @param sqlconn
+     * @param user_name
+     * @param user_password
+     * @return o primeiro usuario da lista SQL
+     */
+    @Nullable public static User getUser(@NotNull Connection sqlconn, String user_name, String user_password) {
         try {
+            System.out.println(String.valueOf(sqlconn));
             ResultSet set = sqlconn.prepareStatement("SELECT * FROM users WHERE user_name=\"" + user_name + "\" AND user_password=\"" + user_password + "\"").executeQuery();
             set.first();
             User.PersonaType persona;
@@ -29,11 +42,19 @@ public class SQLUtils {
             return u;
         } catch (SQLException e) {
             e.printStackTrace();
-            return null;
+            return new User(-1,null,null,null,null,null,null);
         }
     }
 
-    public static ArrayList<User> getUserList(Connection sqlconn) {
+    /**
+     * Pega uma lista de 1000 usuários do banco de dados (1000 é o numero máximo no MySQL).
+     * Tente executar essa função dentro de outro processo ou <code>Thread</code> assim
+     * o app não vai travar durante a conexão via SQL.
+     *
+     * @param sqlconn
+     * @return ArrayList<User>
+     */
+    @NotNull public static ArrayList<User> getUserList(@NotNull Connection sqlconn) {
         ArrayList<User> ul = new ArrayList<User>();
         try {
             ResultSet set = sqlconn.prepareStatement("SELECT * FROM users").executeQuery();
@@ -51,14 +72,23 @@ public class SQLUtils {
                 User u = new User(persona,set.getString("user_name"),set.getString("user_email"),location,new Date(set.getDate("user_birth").getYear(),set.getDate("user_birth").getMonth(),set.getDate("user_birth").getDay()),set.getString("user_password"));
                 ul.add(u);
             }
-            return ul;
         } catch (SQLException e) {
             e.printStackTrace();
-            return ul;
         }
+
+        return ul;
     }
 
-    public static boolean insertUser(Connection sqlconn, User user) {
+    /**
+     * Cria um usuário dentro do banco de dados.
+     * Tente executar essa função dentro de outro processo ou <code>Thread</code> assim
+     * o app não vai travar durante a conexão via SQL.
+     *
+     * @param sqlconn
+     * @param user
+     * @return
+     */
+    public static boolean insertUser(@NotNull Connection sqlconn, @NotNull User user) {
         try {
             ResultSet set = sqlconn.prepareStatement("INSERT INTO `users`(" +
                     "   `user_id`, `user_cpf`, `user_cnpj`, `user_name`," +

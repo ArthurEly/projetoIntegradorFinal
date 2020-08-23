@@ -18,14 +18,18 @@ public class Conexao {
     public Connection conectarAoBanco() {
         System.out.println("Iniciando conexão com o banco de dados.");
         try{
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
             conexao = (Connection) DriverManager.getConnection(DATABASE_URL, USERNAME, PASSWORD);
             System.out.println("Sucesso!");          
         }catch(SQLException e){
-            System.err.println("Não conseguiu conectar com o banco de dados." + e);
+            System.err.println("Não conseguiu conectar com o banco de dados.\n\n" + e);
         }catch(ClassNotFoundException e){
             System.err.println("Não achou a classe de conexão.");
-        } 
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        }
         return conexao;
     }
     

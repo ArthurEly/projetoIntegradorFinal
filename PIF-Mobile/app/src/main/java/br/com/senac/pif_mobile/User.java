@@ -4,6 +4,11 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Date;
 
+/**
+ * a classe User é um bando de getters e setters com as informações do usuário
+ *
+ * @author Eduardo P. Gomez
+ */
 public class User {
     private int ID = 0;
     private PersonaType personaType;
