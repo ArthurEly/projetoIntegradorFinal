@@ -24,12 +24,12 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
      */
     public RUD_OS_TELA() {
         try {
-            icon = ImageIO.read(new File("src/resources/icon.png"));
+            icon = ImageIO.read(new File("src/resources/icon.png"));           
         } catch (IOException e) {
             e.printStackTrace();
-        }
-
+        }      
         initComponents();
+        painelDeRolagem.getVerticalScrollBar().setUnitIncrement(8);
     }
 
     /**
@@ -42,6 +42,7 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
     private void initComponents() {
 
         painelSeções = new javax.swing.JPanel();
+        painelSeções1 = new javax.swing.JPanel();
         btnIrOS = new javax.swing.JButton();
         btnIrEquipamentos = new javax.swing.JButton();
         btnIrTecnicos = new javax.swing.JButton();
@@ -49,23 +50,26 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
         painelCRUD = new javax.swing.JPanel();
         btnIrCadastroOS = new javax.swing.JButton();
         btnIrCadastroOS1 = new javax.swing.JButton();
-        painelFormulário = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        painelDeRolagem = new javax.swing.JScrollPane();
+        painelDoFormulário = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(icon);
         setMinimumSize(new java.awt.Dimension(800, 600));
         setPreferredSize(new java.awt.Dimension(800, 600));
+
+        painelSeções1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 40, 40)), "Para qual seção deseja ir?", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
         btnIrOS.setBackground(new java.awt.Color(100, 0, 0));
         btnIrOS.setForeground(new java.awt.Color(255, 255, 255));
         btnIrOS.setText("Ordem de serviço");
-        btnIrOS.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(150, 0, 0), 1, true));
+        btnIrOS.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(150, 0, 0)));
         btnIrOS.setContentAreaFilled(false);
         btnIrOS.setFocusPainted(false);
         btnIrOS.setOpaque(true);
         btnIrOS.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                irCadastroOS(evt);
+                btnIrOSirCadastroOS(evt);
             }
         });
 
@@ -79,7 +83,7 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
         btnIrEquipamentos.setOpaque(true);
         btnIrEquipamentos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                irCadastroEquip(evt);
+                btnIrEquipamentosirCadastroEquip(evt);
             }
         });
 
@@ -92,7 +96,7 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
         btnIrTecnicos.setOpaque(true);
         btnIrTecnicos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                irCadastroTec(evt);
+                btnIrTecnicosirCadastroTec(evt);
             }
         });
 
@@ -105,15 +109,15 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
         btnIrClientes.setOpaque(true);
         btnIrClientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                irCadastroCliente(evt);
+                btnIrClientesirCadastroCliente(evt);
             }
         });
 
-        javax.swing.GroupLayout painelSeçõesLayout = new javax.swing.GroupLayout(painelSeções);
-        painelSeções.setLayout(painelSeçõesLayout);
-        painelSeçõesLayout.setHorizontalGroup(
-            painelSeçõesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelSeçõesLayout.createSequentialGroup()
+        javax.swing.GroupLayout painelSeções1Layout = new javax.swing.GroupLayout(painelSeções1);
+        painelSeções1.setLayout(painelSeções1Layout);
+        painelSeções1Layout.setHorizontalGroup(
+            painelSeções1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelSeções1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnIrOS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
@@ -124,16 +128,29 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
                 .addComponent(btnIrClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        painelSeçõesLayout.setVerticalGroup(
-            painelSeçõesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelSeçõesLayout.createSequentialGroup()
+        painelSeções1Layout.setVerticalGroup(
+            painelSeções1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelSeções1Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addGroup(painelSeçõesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(painelSeções1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnIrOS, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnIrEquipamentos, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnIrTecnicos, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnIrClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10))
+        );
+
+        javax.swing.GroupLayout painelSeçõesLayout = new javax.swing.GroupLayout(painelSeções);
+        painelSeções.setLayout(painelSeçõesLayout);
+        painelSeçõesLayout.setHorizontalGroup(
+            painelSeçõesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(painelSeções1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        painelSeçõesLayout.setVerticalGroup(
+            painelSeçõesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelSeçõesLayout.createSequentialGroup()
+                .addComponent(painelSeções1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
 
         painelCRUD.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 40, 40)), "O que deseja fazer?", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
@@ -177,43 +194,38 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
                 .addComponent(btnIrCadastroOS1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(btnIrCadastroOS, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(329, Short.MAX_VALUE))
         );
 
-        painelFormulário.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 40, 40)), "Consulta de OS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+        painelDeRolagem.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(230, 40, 40), 1, true), "Formulário de consulta de OS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+        painelDeRolagem.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
-        jTextField1.setText("jTextField1");
+        javax.swing.GroupLayout painelDoFormulárioLayout = new javax.swing.GroupLayout(painelDoFormulário);
+        painelDoFormulário.setLayout(painelDoFormulárioLayout);
+        painelDoFormulárioLayout.setHorizontalGroup(
+            painelDoFormulárioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 638, Short.MAX_VALUE)
+        );
+        painelDoFormulárioLayout.setVerticalGroup(
+            painelDoFormulárioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 653, Short.MAX_VALUE)
+        );
 
-        javax.swing.GroupLayout painelFormulárioLayout = new javax.swing.GroupLayout(painelFormulário);
-        painelFormulário.setLayout(painelFormulárioLayout);
-        painelFormulárioLayout.setHorizontalGroup(
-            painelFormulárioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelFormulárioLayout.createSequentialGroup()
-                .addGap(223, 223, 223)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(185, Short.MAX_VALUE))
-        );
-        painelFormulárioLayout.setVerticalGroup(
-            painelFormulárioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelFormulárioLayout.createSequentialGroup()
-                .addGap(136, 136, 136)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        painelDeRolagem.setViewportView(painelDoFormulário);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(painelSeções, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(painelCRUD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(painelFormulário, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(painelDeRolagem, javax.swing.GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE)))
+                .addGap(10, 10, 10))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,8 +234,8 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
                 .addComponent(painelSeções, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(painelCRUD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(painelFormulário, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(painelDeRolagem, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(painelCRUD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(10, 10, 10))
         );
 
@@ -234,17 +246,21 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
         u.irDePara(this, C_OS_TELA.getC_OS());
     }//GEN-LAST:event_irCadastroOS
 
-    private void irCadastroEquip(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irCadastroEquip
-//        u.irDePara(this, C_OS_TELA.getC_EQUIP());
-    }//GEN-LAST:event_irCadastroEquip
+    private void btnIrOSirCadastroOS(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIrOSirCadastroOS
+        u.irDePara(this, C_OS_TELA.getC_OS());
+    }//GEN-LAST:event_btnIrOSirCadastroOS
 
-    private void irCadastroTec(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irCadastroTec
+    private void btnIrEquipamentosirCadastroEquip(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIrEquipamentosirCadastroEquip
+        //        u.irDePara(this, C_OS_TELA.getC_EQUIP());
+    }//GEN-LAST:event_btnIrEquipamentosirCadastroEquip
+
+    private void btnIrTecnicosirCadastroTec(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIrTecnicosirCadastroTec
         // u.irDePara(this, C_OS_TELA.getC_TEC());
-    }//GEN-LAST:event_irCadastroTec
+    }//GEN-LAST:event_btnIrTecnicosirCadastroTec
 
-    private void irCadastroCliente(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irCadastroCliente
-        //  u.irDePara(this, C_OS_TELA.getC_CLIENTE());
-    }//GEN-LAST:event_irCadastroCliente
+    private void btnIrClientesirCadastroCliente(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIrClientesirCadastroCliente
+        // u.irDePara(this, C_OS_TELA.getC_CLIENTE());
+    }//GEN-LAST:event_btnIrClientesirCadastroCliente
 
     /**
      * @param args the command line arguments
@@ -257,7 +273,7 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
+                if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -282,9 +298,10 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
     private javax.swing.JButton btnIrEquipamentos;
     private javax.swing.JButton btnIrOS;
     private javax.swing.JButton btnIrTecnicos;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel painelCRUD;
-    private javax.swing.JPanel painelFormulário;
+    private javax.swing.JScrollPane painelDeRolagem;
+    private javax.swing.JPanel painelDoFormulário;
     private javax.swing.JPanel painelSeções;
+    private javax.swing.JPanel painelSeções1;
     // End of variables declaration//GEN-END:variables
 }
