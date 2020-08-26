@@ -56,8 +56,6 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(800, 600));
         setPreferredSize(new java.awt.Dimension(800, 600));
 
-        painelSeções.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 40, 40), 1, true), "Para qual seção deseja ir?", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, null));
-
         btnIrOS.setBackground(new java.awt.Color(100, 0, 0));
         btnIrOS.setForeground(new java.awt.Color(255, 255, 255));
         btnIrOS.setText("Ordem de serviço");
@@ -221,7 +219,7 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addComponent(painelSeções, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(painelSeções, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(painelCRUD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -237,7 +235,7 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
     }//GEN-LAST:event_irCadastroOS
 
     private void irCadastroEquip(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irCadastroEquip
-        u.irDePara(this, C_OS_TELA.getC_EQUIP());
+//        u.irDePara(this, C_OS_TELA.getC_EQUIP());
     }//GEN-LAST:event_irCadastroEquip
 
     private void irCadastroTec(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irCadastroTec

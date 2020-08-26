@@ -385,4 +385,3 @@ public class C_OS_TELA extends javax.swing.JFrame {
     private javax.swing.JPanel painelFormulário;
     private javax.swing.JPanel painelSeções;
     // End of variables declaration//GEN-END:variables
-}

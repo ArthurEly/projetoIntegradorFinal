@@ -14,11 +14,10 @@ public class Conexao {
 
     }
 
-
     public Connection conectarAoBanco() {
         System.out.println("Iniciando conexão com o banco de dados.");
         try{
-            Class.forName("com.mysql.jdbc.Driver").newInstance();
+            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             conexao = (Connection) DriverManager.getConnection(DATABASE_URL, USERNAME, PASSWORD);
             System.out.println("Sucesso!");          
         }catch(SQLException e){

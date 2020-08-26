@@ -47,7 +47,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-              <Component id="painelSeções" min="-2" pref="120" max="-2" attributes="0"/>
+              <Component id="painelSeções" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="painelCRUD" max="32767" attributes="0"/>
@@ -60,8 +60,6 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JPanel" name="painelSe&#xe7;&#xf5;es">
-      <Properties>
-      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
