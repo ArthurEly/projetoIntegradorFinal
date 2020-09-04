@@ -5,149 +5,181 @@
  */
 package pif.desktop.Classes;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.sql.Blob;
 
 /**
  *
  * @author arthu
  */
 public class Equipamento {
-        
+    
     //declaração de variáveis
-    private String idEquipamento;
-    private String nomeEquipamento;
-    private String NSEquipamento;
-    private String marcaEquipamento;
-    private String modeloEquipamento;
-    private String acessoriosEquipamento;
-    private String configEquipamento;
-    private File fotoEquipamento; //precisa ver se esse é o jeito certo depois
-    private String obsEquipamento;
+    private String equipTipo;
+    private String equipModelo;
+    private String equipMarca;
+    private String equipNsOuImei;
+    private String equipAcessorios;
+    private Blob equipFoto;
+    private String equipObservacoes;
+    private String equipDefeitoCliente;
+    private String equipIdParecerTecnico;
+    private String equipSituacao;
+    private String equipSolucao;
     //declaração de variáveis
 
     /**
-     * @return the idEquipamento
+     * @return the equipTipo
      */
-    public String getIdEquipamento() {
-        return idEquipamento;
+    public String getEquipTipo() {
+        return equipTipo;
     }
 
     /**
-     * @param idEquipamento the idEquipamento to set
+     * @param equipTipo the equipTipo to set
      */
-    public void setIdEquipamento(String idEquipamento) {
-        this.idEquipamento = idEquipamento;
+    public void setEquipTipo(String equipTipo) {
+        this.equipTipo = equipTipo;
     }
 
     /**
-     * @return the nomeEquipamento
+     * @return the equipModelo
      */
-    public String getNomeEquipamento() {
-        return nomeEquipamento;
+    public String getEquipModelo() {
+        return equipModelo;
     }
 
     /**
-     * @param nomeEquipamento the nomeEquipamento to set
+     * @param equipModelo the equipModelo to set
      */
-    public void setNomeEquipamento(String nomeEquipamento) {
-        this.nomeEquipamento = nomeEquipamento;
+    public void setEquipModelo(String equipModelo) {
+        this.equipModelo = equipModelo;
     }
 
     /**
-     * @return the NSEquipamento
+     * @return the equipMarca
      */
-    public String getNSEquipamento() {
-        return NSEquipamento;
+    public String getEquipMarca() {
+        return equipMarca;
     }
 
     /**
-     * @param NSEquipamento the NSEquipamento to set
+     * @param equipMarca the equipMarca to set
      */
-    public void setNSEquipamento(String NSEquipamento) {
-        this.NSEquipamento = NSEquipamento;
+    public void setEquipMarca(String equipMarca) {
+        this.equipMarca = equipMarca;
     }
 
     /**
-     * @return the marcaEquipamento
+     * @return the equipNsOuImei
      */
-    public String getMarcaEquipamento() {
-        return marcaEquipamento;
+    public String getEquipNsOuImei() {
+        return equipNsOuImei;
     }
 
     /**
-     * @param marcaEquipamento the marcaEquipamento to set
+     * @param equipNsOuImei the equipNsOuImei to set
      */
-    public void setMarcaEquipamento(String marcaEquipamento) {
-        this.marcaEquipamento = marcaEquipamento;
+    public void setEquipNsOuImei(String equipNsOuImei) {
+        this.equipNsOuImei = equipNsOuImei;
     }
 
     /**
-     * @return the modeloEquipamento
+     * @return the equipAcessorios
      */
-    public String getModeloEquipamento() {
-        return modeloEquipamento;
+    public String getEquipAcessorios() {
+        return equipAcessorios;
     }
 
     /**
-     * @param modeloEquipamento the modeloEquipamento to set
+     * @param equipAcessorios the equipAcessorios to set
      */
-    public void setModeloEquipamento(String modeloEquipamento) {
-        this.modeloEquipamento = modeloEquipamento;
+    public void setEquipAcessorios(String equipAcessorios) {
+        this.equipAcessorios = equipAcessorios;
     }
 
     /**
-     * @return the acessoriosEquipamento
+     * @return the equipFoto
      */
-    public String getAcessoriosEquipamento() {
-        return acessoriosEquipamento;
+    public Blob getEquipFoto() {
+        return equipFoto;
     }
 
     /**
-     * @param acessoriosEquipamento the acessoriosEquipamento to set
+     * @param equipFoto the equipFoto to set
      */
-    public void setAcessoriosEquipamento(String acessoriosEquipamento) {
-        this.acessoriosEquipamento = acessoriosEquipamento;
+    public void setEquipFoto(Blob equipFoto) {
+        this.equipFoto = equipFoto;
     }
 
     /**
-     * @return the configEquipamento
+     * @return the equipObservacoes
      */
-    public String getConfigEquipamento() {
-        return configEquipamento;
+    public String getEquipObservacoes() {
+        return equipObservacoes;
     }
 
     /**
-     * @param configEquipamento the configEquipamento to set
+     * @param equipObservacoes the equipObservacoes to set
      */
-    public void setConfigEquipamento(String configEquipamento) {
-        this.configEquipamento = configEquipamento;
+    public void setEquipObservacoes(String equipObservacoes) {
+        this.equipObservacoes = equipObservacoes;
     }
 
     /**
-     * @return the fotoEquipamento
+     * @return the equipDefeitoCliente
      */
-    public File getFotoEquipamento() {
-        return fotoEquipamento;
+    public String getEquipDefeitoCliente() {
+        return equipDefeitoCliente;
     }
 
     /**
-     * @param fotoEquipamento the fotoEquipamento to set
+     * @param equipDefeitoCliente the equipDefeitoCliente to set
      */
-    public void setFotoEquipamento(File fotoEquipamento) {
-        this.fotoEquipamento = fotoEquipamento;
+    public void setEquipDefeitoCliente(String equipDefeitoCliente) {
+        this.equipDefeitoCliente = equipDefeitoCliente;
     }
 
     /**
-     * @return the obsEquipamento
+     * @return the equipIdParecerTecnico
      */
-    public String getObsEquipamento() {
-        return obsEquipamento;
+    public String getEquipIdParecerTecnico() {
+        return equipIdParecerTecnico;
     }
 
     /**
-     * @param obsEquipamento the obsEquipamento to set
+     * @param equipIdParecerTecnico the equipIdParecerTecnico to set
      */
-    public void setObsEquipamento(String obsEquipamento) {
-        this.obsEquipamento = obsEquipamento;
+    public void setEquipIdParecerTecnico(String equipIdParecerTecnico) {
+        this.equipIdParecerTecnico = equipIdParecerTecnico;
     }
+
+    /**
+     * @return the equipSituacao
+     */
+    public String getEquipSituacao() {
+        return equipSituacao;
+    }
+
+    /**
+     * @param equipSituacao the equipSituacao to set
+     */
+    public void setEquipSituacao(String equipSituacao) {
+        this.equipSituacao = equipSituacao;
+    }
+
+    /**
+     * @return the equipSolucao
+     */
+    public String getEquipSolucao() {
+        return equipSolucao;
+    }
+
+    /**
+     * @param equipSolucao the equipSolucao to set
+     */
+    public void setEquipSolucao(String equipSolucao) {
+        this.equipSolucao = equipSolucao;
+    } 
 }

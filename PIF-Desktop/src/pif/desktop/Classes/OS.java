@@ -12,110 +12,65 @@ package pif.desktop.Classes;
 public class OS {
     
     //declaração de variáveis
-    private String numeroOS;
-    private String dataAberturaOS;
-    private String dataEncerramentoOS;
-    private String obsOS;
-    private String cpfClienteOS;
-    private String idProdutoOS;
-    private String orçamentoAtualOS;
-    //declaração de variáveis    
+    private String osDataEntrada;
+    private String osPrevisaoSaida;
+    private String osDataSaida;
+    private String osOrcamentoAtual;
+    //declaração de variáveis  
 
     /**
-     * @return the numeroOS
+     * @return the osDataEntrada
      */
-    public String getNumeroOS() {
-        return numeroOS;
+    public String getOsDataEntrada() {
+        return osDataEntrada;
     }
 
     /**
-     * @param numeroOS the numeroOS to set
+     * @param osDataEntrada the osDataEntrada to set
      */
-    public void setNumeroOS(String numeroOS) {
-        this.numeroOS = numeroOS;
+    public void setOsDataEntrada(String osDataEntrada) {
+        this.osDataEntrada = osDataEntrada;
     }
 
     /**
-     * @return the dataAberturaOS
+     * @return the osPrevisaoSaida
      */
-    public String getDataAberturaOS() {
-        return dataAberturaOS;
+    public String getOsPrevisaoSaida() {
+        return osPrevisaoSaida;
     }
 
     /**
-     * @param dataAberturaOS the dataAberturaOS to set
+     * @param osPrevisaoSaida the osPrevisaoSaida to set
      */
-    public void setDataAberturaOS(String dataAberturaOS) {
-        this.dataAberturaOS = dataAberturaOS;
+    public void setOsPrevisaoSaida(String osPrevisaoSaida) {
+        this.osPrevisaoSaida = osPrevisaoSaida;
     }
 
     /**
-     * @return the dataEncerramentoOS
+     * @return the osDataSaida
      */
-    public String getDataEncerramentoOS() {
-        return dataEncerramentoOS;
+    public String getOsDataSaida() {
+        return osDataSaida;
     }
 
     /**
-     * @param dataEncerramentoOS the dataEncerramentoOS to set
+     * @param osDataSaida the osDataSaida to set
      */
-    public void setDataEncerramentoOS(String dataEncerramentoOS) {
-        this.dataEncerramentoOS = dataEncerramentoOS;
+    public void setOsDataSaida(String osDataSaida) {
+        this.osDataSaida = osDataSaida;
     }
 
     /**
-     * @return the obsOS
+     * @return the osOrcamentoAtual
      */
-    public String getObsOS() {
-        return obsOS;
+    public String getOsOrcamentoAtual() {
+        return osOrcamentoAtual;
     }
 
     /**
-     * @param obsOS the obsOS to set
+     * @param osOrcamentoAtual the osOrcamentoAtual to set
      */
-    public void setObsOS(String obsOS) {
-        this.obsOS = obsOS;
+    public void setOsOrcamentoAtual(String osOrcamentoAtual) {
+        this.osOrcamentoAtual = osOrcamentoAtual;
     }
-
-    /**
-     * @return the cpfClienteOS
-     */
-    public String getCpfClienteOS() {
-        return cpfClienteOS;
-    }
-
-    /**
-     * @param cpfClienteOS the cpfClienteOS to set
-     */
-    public void setCpfClienteOS(String cpfClienteOS) {
-        this.cpfClienteOS = cpfClienteOS;
-    }
-
-    /**
-     * @return the idProdutoOS
-     */
-    public String getIdProdutoOS() {
-        return idProdutoOS;
-    }
-
-    /**
-     * @param idProdutoOS the idProdutoOS to set
-     */
-    public void setIdProdutoOS(String idProdutoOS) {
-        this.idProdutoOS = idProdutoOS;
-    }
-
-    /**
-     * @return the orçamentoAtualOS
-     */
-    public String getOrçamentoAtualOS() {
-        return orçamentoAtualOS;
-    }
-
-    /**
-     * @param orçamentoAtualOS the orçamentoAtualOS to set
-     */
-    public void setOrçamentoAtualOS(String orçamentoAtualOS) {
-        this.orçamentoAtualOS = orçamentoAtualOS;
-    }  
 }
