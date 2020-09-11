@@ -6,27 +6,23 @@
 package pif.desktop.TELAS;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Image;
-import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.Timer;
 import java.util.TimerTask;
 import javax.imageio.ImageIO;
-import javax.swing.JTextField;
 import pif.desktop.Classes.Cliente;
 import pif.desktop.Classes.Colab;
 import pif.desktop.Classes.Contato;
-import pif.desktop.Classes.Equipamento;
+import pif.desktop.Classes.Veiculo;
 import pif.desktop.Classes.FormatacaoStrings;
 import pif.desktop.Classes.OS;
 import pif.desktop.Classes.VerificacaoStrings;
 import pif.desktop.DAO.CadastroDAO;
+import pif.desktop.DAO.ClienteDAO;
 import pif.desktop.DAO.Conexao;
+import pif.desktop.DAO.OsDAO;
 
 /**
  *
@@ -120,18 +116,16 @@ public class C_OS_TELA extends javax.swing.JFrame {
         painelSeções = new javax.swing.JPanel();
         btnIrOS = new javax.swing.JButton();
         btnIrEquipamentos = new javax.swing.JButton();
-        btnIrTecnicos = new javax.swing.JButton();
         btnIrClientes = new javax.swing.JButton();
         painelCRUD = new javax.swing.JPanel();
+        btnIrConsultaOS = new javax.swing.JButton();
         btnIrCadastroOS = new javax.swing.JButton();
-        btnIrCadastroOS1 = new javax.swing.JButton();
         txtNomeColab = new javax.swing.JLabel();
         painelDeRolagem = new javax.swing.JScrollPane();
         painelDoScroll = new javax.swing.JPanel();
         painelDoFormulario = new javax.swing.JPanel();
         titleNumeroOS = new javax.swing.JLabel();
         txtNumeroOS = new javax.swing.JLabel();
-        checkClienteJaCadastrado = new javax.swing.JCheckBox();
         titleCpfOuCnpj = new javax.swing.JLabel();
         titleNomeOuRazao = new javax.swing.JLabel();
         campoCpfOuCnpj = new javax.swing.JTextField();
@@ -163,41 +157,47 @@ public class C_OS_TELA extends javax.swing.JFrame {
         titleLogradComp = new javax.swing.JLabel();
         campoLogradComp = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
-        titleEquipTipo = new javax.swing.JLabel();
-        campoEquipTipo = new javax.swing.JTextField();
-        titleEquipMarca = new javax.swing.JLabel();
-        campoEquipMarca = new javax.swing.JTextField();
-        titleEquipModelo = new javax.swing.JLabel();
-        campoEquipModelo = new javax.swing.JTextField();
-        titleEquipNsOuImei = new javax.swing.JLabel();
-        campoEquipNsOuImei = new javax.swing.JTextField();
-        titleEquipAcessorios = new javax.swing.JLabel();
-        titleEquipDefeitoCliente = new javax.swing.JLabel();
-        campoEquipAcessorios = new javax.swing.JTextField();
+        titleVeiculoTipo = new javax.swing.JLabel();
+        campoVeiculoTipo = new javax.swing.JTextField();
+        titleVeiculoFabricante = new javax.swing.JLabel();
+        campoVeiculoFabricante = new javax.swing.JTextField();
+        titleVeiculoModelo = new javax.swing.JLabel();
+        campoVeiculoModelo = new javax.swing.JTextField();
+        titleVeiculoPlaca = new javax.swing.JLabel();
+        campoVeiculoPlaca = new javax.swing.JTextField();
+        titleVeiculoAcessorios = new javax.swing.JLabel();
+        titleVeiculoDefeitoCliente = new javax.swing.JLabel();
+        campoVeiculoAcessorios = new javax.swing.JTextField();
         jScrollPane5 = new javax.swing.JScrollPane();
-        campoEquipDefeitoCliente = new javax.swing.JTextArea();
+        campoVeiculoDefeitoCliente = new javax.swing.JTextArea();
         jScrollPane6 = new javax.swing.JScrollPane();
-        campoEquipObservacoes = new javax.swing.JTextArea();
-        titleEquipObservacoes = new javax.swing.JLabel();
+        campoVeiculoObservacoes = new javax.swing.JTextArea();
+        titleVeiculoObservacoes = new javax.swing.JLabel();
+        titleVeiculoCor = new javax.swing.JLabel();
+        campoVeiculoCor = new javax.swing.JTextField();
+        titleVeiculoAno = new javax.swing.JLabel();
+        campoVeiculoAno = new javax.swing.JTextField();
         titlePrevisaoSaida = new javax.swing.JLabel();
         btnCadastrar = new javax.swing.JButton();
         btnLimparCampos = new javax.swing.JButton();
         campoPrevisaoSaida = new javax.swing.JTextField();
         titleOrcamentoAtual = new javax.swing.JLabel();
         campoOrcamentoAtual = new javax.swing.JTextField();
+        cifrao = new javax.swing.JLabel();
+        txtAguardando = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        txtErroEquipPrevisaoSaida = new javax.swing.JLabel();
+        txtErroPrevisaoSaida = new javax.swing.JLabel();
         txtErroLogradNum = new javax.swing.JLabel();
         txtErroEstado = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        txtErroEquipOrcamento = new javax.swing.JLabel();
-        txtErroEquipObservacoes = new javax.swing.JLabel();
-        txtErroEquipDefeitoCliente = new javax.swing.JLabel();
-        txtErroEquipAcessorios = new javax.swing.JLabel();
-        txtErroEquipNsOuImei = new javax.swing.JLabel();
-        txtErroEquipModelo = new javax.swing.JLabel();
-        txtErroEquipMarca = new javax.swing.JLabel();
-        txtErroEquipTipo = new javax.swing.JLabel();
+        txtErroOrcamento = new javax.swing.JLabel();
+        txtErroVeiculoObservacoes = new javax.swing.JLabel();
+        txtErroVeiculoDefeitoCliente = new javax.swing.JLabel();
+        txtErroVeiculoAcessorios = new javax.swing.JLabel();
+        txtErroVeiculoPlaca = new javax.swing.JLabel();
+        txtErroVeiculoModelo = new javax.swing.JLabel();
+        txtErroVeiculoFabricante = new javax.swing.JLabel();
+        txtErroVeiculoTipo = new javax.swing.JLabel();
         txtErroLogradComp = new javax.swing.JLabel();
         txtErroLograd = new javax.swing.JLabel();
         txtErroBairro = new javax.swing.JLabel();
@@ -210,6 +210,9 @@ public class C_OS_TELA extends javax.swing.JFrame {
         txtErroNomeOuRazao = new javax.swing.JLabel();
         txtErroRgOuIe = new javax.swing.JLabel();
         txtErroCpfOuCnpj = new javax.swing.JLabel();
+        txtErroVeiculoCor = new javax.swing.JLabel();
+        txtErroVeiculoAno = new javax.swing.JLabel();
+        txtErroCadastrar = new javax.swing.JLabel();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -219,7 +222,6 @@ public class C_OS_TELA extends javax.swing.JFrame {
         setBackground(new java.awt.Color(0, 0, 0));
         setIconImage(icon);
         setMinimumSize(new java.awt.Dimension(800, 600));
-        setPreferredSize(new java.awt.Dimension(800, 600));
 
         painelSeções.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 40, 40)), "Para qual seção deseja ir?", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
@@ -250,19 +252,6 @@ public class C_OS_TELA extends javax.swing.JFrame {
             }
         });
 
-        btnIrTecnicos.setBackground(new java.awt.Color(204, 0, 0));
-        btnIrTecnicos.setForeground(new java.awt.Color(255, 255, 255));
-        btnIrTecnicos.setText("Técnicos");
-        btnIrTecnicos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(130, 0, 0), new java.awt.Color(130, 0, 0), new java.awt.Color(204, 0, 0), new java.awt.Color(204, 0, 0)));
-        btnIrTecnicos.setContentAreaFilled(false);
-        btnIrTecnicos.setFocusPainted(false);
-        btnIrTecnicos.setOpaque(true);
-        btnIrTecnicos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                irCadastroTec(evt);
-            }
-        });
-
         btnIrClientes.setBackground(new java.awt.Color(204, 0, 0));
         btnIrClientes.setForeground(new java.awt.Color(255, 255, 255));
         btnIrClientes.setText("Clientes");
@@ -286,8 +275,6 @@ public class C_OS_TELA extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btnIrEquipamentos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(btnIrTecnicos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
                 .addComponent(btnIrClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -298,34 +285,33 @@ public class C_OS_TELA extends javax.swing.JFrame {
                 .addGroup(painelSeçõesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnIrOS, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnIrEquipamentos, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnIrTecnicos, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnIrClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10))
         );
 
         painelCRUD.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 40, 40)), "O que deseja fazer?", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
-        btnIrCadastroOS.setBackground(new java.awt.Color(204, 0, 0));
-        btnIrCadastroOS.setForeground(new java.awt.Color(255, 255, 255));
-        btnIrCadastroOS.setText("Consultar uma OS");
-        btnIrCadastroOS.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(130, 0, 0), new java.awt.Color(130, 0, 0), new java.awt.Color(204, 0, 0), new java.awt.Color(204, 0, 0)));
-        btnIrCadastroOS.setContentAreaFilled(false);
-        btnIrCadastroOS.setFocusPainted(false);
-        btnIrCadastroOS.setOpaque(true);
-        btnIrCadastroOS.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnIrConsultaOS.setBackground(new java.awt.Color(204, 0, 0));
+        btnIrConsultaOS.setForeground(new java.awt.Color(255, 255, 255));
+        btnIrConsultaOS.setText("Consultar uma OS");
+        btnIrConsultaOS.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(130, 0, 0), new java.awt.Color(130, 0, 0), new java.awt.Color(204, 0, 0), new java.awt.Color(204, 0, 0)));
+        btnIrConsultaOS.setContentAreaFilled(false);
+        btnIrConsultaOS.setFocusPainted(false);
+        btnIrConsultaOS.setOpaque(true);
+        btnIrConsultaOS.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 irConsultaOS(evt);
             }
         });
 
-        btnIrCadastroOS1.setBackground(new java.awt.Color(100, 0, 0));
-        btnIrCadastroOS1.setForeground(new java.awt.Color(255, 255, 255));
-        btnIrCadastroOS1.setText("Cadastrar uma OS");
-        btnIrCadastroOS1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(150, 0, 0)));
-        btnIrCadastroOS1.setBorderPainted(false);
-        btnIrCadastroOS1.setContentAreaFilled(false);
-        btnIrCadastroOS1.setFocusPainted(false);
-        btnIrCadastroOS1.setOpaque(true);
+        btnIrCadastroOS.setBackground(new java.awt.Color(100, 0, 0));
+        btnIrCadastroOS.setForeground(new java.awt.Color(255, 255, 255));
+        btnIrCadastroOS.setText("Cadastrar uma OS");
+        btnIrCadastroOS.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(150, 0, 0)));
+        btnIrCadastroOS.setBorderPainted(false);
+        btnIrCadastroOS.setContentAreaFilled(false);
+        btnIrCadastroOS.setFocusPainted(false);
+        btnIrCadastroOS.setOpaque(true);
 
         txtNomeColab.setText("aaaaaaaaa");
 
@@ -338,8 +324,8 @@ public class C_OS_TELA extends javax.swing.JFrame {
                     .addGroup(painelCRUDLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(painelCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnIrCadastroOS1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnIrCadastroOS, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnIrCadastroOS, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnIrConsultaOS, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(painelCRUDLayout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addComponent(txtNomeColab)))
@@ -349,9 +335,9 @@ public class C_OS_TELA extends javax.swing.JFrame {
             painelCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelCRUDLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(btnIrCadastroOS1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
                 .addComponent(btnIrCadastroOS, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(btnIrConsultaOS, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(112, 112, 112)
                 .addComponent(txtNomeColab)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -362,20 +348,12 @@ public class C_OS_TELA extends javax.swing.JFrame {
 
         titleNumeroOS.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         titleNumeroOS.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleNumeroOS.setText("N° da OS: ");
+        titleNumeroOS.setText("Número da OS: ");
+        titleNumeroOS.setToolTipText("");
 
         txtNumeroOS.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtNumeroOS.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtNumeroOS.setText("00002020");
-
-        checkClienteJaCadastrado.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        checkClienteJaCadastrado.setText("Cliente já cadastado");
-        checkClienteJaCadastrado.setFocusPainted(false);
-        checkClienteJaCadastrado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkClienteJaCadastradoActionPerformed(evt);
-            }
-        });
+        txtNumeroOS.setText("...");
 
         titleCpfOuCnpj.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         titleCpfOuCnpj.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -383,37 +361,55 @@ public class C_OS_TELA extends javax.swing.JFrame {
 
         titleNomeOuRazao.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         titleNomeOuRazao.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleNomeOuRazao.setText("Nome/razao social:");
+        titleNomeOuRazao.setText("Nome ou razão social:");
 
         campoCpfOuCnpj.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        campoCpfOuCnpj.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        campoCpfOuCnpj.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         campoCpfOuCnpj.setToolTipText("");
-        campoCpfOuCnpj.setName("campoCpfOuCnpj"); // NOI18N
+        campoCpfOuCnpj.setName("cpfnj"); // NOI18N
         campoCpfOuCnpj.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                verificarCliente(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                teclada(evt);
+                tecladaCpf(evt);
             }
         });
 
         campoNomeOuRazao.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        campoNomeOuRazao.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        campoNomeOuRazao.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         campoNomeOuRazao.setName("campoNomeOuRazao"); // NOI18N
+        campoNomeOuRazao.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tecladaNomeOuRazao(evt);
+            }
+        });
 
         titleSobrenomeOuFantasia.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         titleSobrenomeOuFantasia.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleSobrenomeOuFantasia.setText("Sobronome/nome fantasia:");
+        titleSobrenomeOuFantasia.setText("Sobronome ou nome fantasia:");
 
         titleRgOuIe.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         titleRgOuIe.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleRgOuIe.setText("RG/IE:");
+        titleRgOuIe.setText("RG ou IE:");
 
         campoRgOuIe.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        campoRgOuIe.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        campoRgOuIe.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         campoRgOuIe.setName("campoRgOuIe"); // NOI18N
+        campoRgOuIe.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tecladaRg(evt);
+            }
+        });
 
         campoSobrenomeOuFantasia.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        campoSobrenomeOuFantasia.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        campoSobrenomeOuFantasia.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         campoSobrenomeOuFantasia.setName("campoSobrenomeOuFantasia"); // NOI18N
+        campoSobrenomeOuFantasia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tecladaSobrenomeOuFantasia(evt);
+            }
+        });
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 40, 40)), "Contato", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
@@ -422,21 +418,38 @@ public class C_OS_TELA extends javax.swing.JFrame {
         titleEmail.setText("Email do cliente:");
 
         campoEmail.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        campoEmail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        campoEmail.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        campoEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tecladaEmail(evt);
+            }
+        });
 
         titleNumTel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         titleNumTel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titleNumTel1.setText("Número de telefone principal:");
 
         campoNumTel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        campoNumTel1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        campoNumTel1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        campoNumTel1.setName("tel1"); // NOI18N
+        campoNumTel1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tecladaTel(evt);
+            }
+        });
 
         titleNumTel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         titleNumTel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titleNumTel2.setText("Número de telefone alternativo:");
 
         campoNumTel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        campoNumTel2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        campoNumTel2.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        campoNumTel2.setName("tel2"); // NOI18N
+        campoNumTel2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tecladaTel(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -488,14 +501,25 @@ public class C_OS_TELA extends javax.swing.JFrame {
         titleCep.setText("CEP:");
 
         campoCep.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        campoCep.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        campoCep.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        campoCep.setName("cep"); // NOI18N
+        campoCep.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tecladaCep(evt);
+            }
+        });
 
         titleCidade.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         titleCidade.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titleCidade.setText("Cidade:");
 
         campoCidade.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        campoCidade.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        campoCidade.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        campoCidade.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tecladoCidade(evt);
+            }
+        });
 
         caixaCombinacaoEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--", "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
         caixaCombinacaoEstado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 40, 40)));
@@ -506,28 +530,48 @@ public class C_OS_TELA extends javax.swing.JFrame {
         titleBairro.setText("Bairro:");
 
         campoBairro.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        campoBairro.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        campoBairro.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        campoBairro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tecladaBairro(evt);
+            }
+        });
 
         titleLograd.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         titleLograd.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titleLograd.setText("Logradouro:");
 
         campoLograd.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        campoLograd.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        campoLograd.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        campoLograd.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tecladaLograd(evt);
+            }
+        });
 
         titleLogradNum.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         titleLogradNum.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titleLogradNum.setText("N°:");
 
         campoLogradNum.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        campoLogradNum.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        campoLogradNum.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        campoLogradNum.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tecladaLogradNum(evt);
+            }
+        });
 
         titleLogradComp.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         titleLogradComp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titleLogradComp.setText("Complemento:");
 
         campoLogradComp.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        campoLogradComp.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        campoLogradComp.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        campoLogradComp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tecladaLogradComp(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -541,29 +585,32 @@ public class C_OS_TELA extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(campoLograd))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(titleEstado)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(caixaCombinacaoEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(54, 54, 54)
-                        .addComponent(titleCep)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(campoCep, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(titleCidade)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(campoCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(titleBairro)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(campoBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(titleLogradNum)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(campoLogradNum, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(titleLogradComp)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(campoLogradComp, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(titleEstado)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(caixaCombinacaoEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(60, 60, 60)
+                                .addComponent(titleCep)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(campoCep, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(titleCidade)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(campoCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(titleBairro)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(campoBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(titleLogradNum)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(campoLogradNum, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(titleLogradComp)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(campoLogradComp, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -597,60 +644,119 @@ public class C_OS_TELA extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 40, 40)), "Equipamento", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 40, 40)), "Veículo", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
-        titleEquipTipo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        titleEquipTipo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleEquipTipo.setText("Tipo:");
+        titleVeiculoTipo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        titleVeiculoTipo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleVeiculoTipo.setText("Tipo:");
 
-        campoEquipTipo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        campoEquipTipo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        campoVeiculoTipo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        campoVeiculoTipo.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        campoVeiculoTipo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tecladaVeiculoTipo(evt);
+            }
+        });
 
-        titleEquipMarca.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        titleEquipMarca.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleEquipMarca.setText("Marca:");
+        titleVeiculoFabricante.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        titleVeiculoFabricante.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleVeiculoFabricante.setText("Fabricante:");
 
-        campoEquipMarca.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        campoEquipMarca.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        campoVeiculoFabricante.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        campoVeiculoFabricante.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        campoVeiculoFabricante.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tecladaVeiculoFabricante(evt);
+            }
+        });
 
-        titleEquipModelo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        titleEquipModelo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleEquipModelo.setText("Modelo:");
+        titleVeiculoModelo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        titleVeiculoModelo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleVeiculoModelo.setText("Modelo:");
 
-        campoEquipModelo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        campoEquipModelo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        campoVeiculoModelo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        campoVeiculoModelo.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        campoVeiculoModelo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tecladaVeiculoModelo(evt);
+            }
+        });
 
-        titleEquipNsOuImei.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        titleEquipNsOuImei.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleEquipNsOuImei.setText("N/S ou IMEI:");
+        titleVeiculoPlaca.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        titleVeiculoPlaca.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleVeiculoPlaca.setText("Placa:");
 
-        campoEquipNsOuImei.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        campoEquipNsOuImei.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        campoVeiculoPlaca.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        campoVeiculoPlaca.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        campoVeiculoPlaca.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tecladaVeiculoPlaca(evt);
+            }
+        });
 
-        titleEquipAcessorios.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        titleEquipAcessorios.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleEquipAcessorios.setText("Acessórios:");
+        titleVeiculoAcessorios.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        titleVeiculoAcessorios.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleVeiculoAcessorios.setText("Acessórios:");
 
-        titleEquipDefeitoCliente.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        titleEquipDefeitoCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleEquipDefeitoCliente.setText("Defeito reclamado pelo cliente:");
-        titleEquipDefeitoCliente.setToolTipText("");
+        titleVeiculoDefeitoCliente.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        titleVeiculoDefeitoCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleVeiculoDefeitoCliente.setText("Defeito reclamado pelo cliente:");
+        titleVeiculoDefeitoCliente.setToolTipText("");
 
-        campoEquipAcessorios.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        campoEquipAcessorios.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        campoVeiculoAcessorios.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        campoVeiculoAcessorios.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        campoVeiculoAcessorios.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tecladaVeiculoAcessorios(evt);
+            }
+        });
 
-        campoEquipDefeitoCliente.setColumns(20);
-        campoEquipDefeitoCliente.setRows(5);
-        jScrollPane5.setViewportView(campoEquipDefeitoCliente);
+        campoVeiculoDefeitoCliente.setColumns(20);
+        campoVeiculoDefeitoCliente.setRows(5);
+        campoVeiculoDefeitoCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tecladaVeiculoDefeitoCliente(evt);
+            }
+        });
+        jScrollPane5.setViewportView(campoVeiculoDefeitoCliente);
 
-        campoEquipObservacoes.setColumns(20);
-        campoEquipObservacoes.setRows(5);
-        jScrollPane6.setViewportView(campoEquipObservacoes);
+        campoVeiculoObservacoes.setColumns(20);
+        campoVeiculoObservacoes.setRows(5);
+        campoVeiculoObservacoes.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tecladaVeiculoObservacoes(evt);
+            }
+        });
+        jScrollPane6.setViewportView(campoVeiculoObservacoes);
 
-        titleEquipObservacoes.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        titleEquipObservacoes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleEquipObservacoes.setText("Observações:");
-        titleEquipObservacoes.setToolTipText("");
+        titleVeiculoObservacoes.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        titleVeiculoObservacoes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleVeiculoObservacoes.setText("Observações:");
+        titleVeiculoObservacoes.setToolTipText("");
+
+        titleVeiculoCor.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        titleVeiculoCor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleVeiculoCor.setText("Cor:");
+
+        campoVeiculoCor.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        campoVeiculoCor.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        campoVeiculoCor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tecladaVeiculoCor(evt);
+            }
+        });
+
+        titleVeiculoAno.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        titleVeiculoAno.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleVeiculoAno.setText("Ano:");
+
+        campoVeiculoAno.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        campoVeiculoAno.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        campoVeiculoAno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tecladaVeiculoAno(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -659,76 +765,85 @@ public class C_OS_TELA extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(titleVeiculoModelo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(campoVeiculoModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(162, 162, 162))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(titleVeiculoPlaca)
+                            .addComponent(titleVeiculoAcessorios)
+                            .addComponent(titleVeiculoCor)
+                            .addComponent(titleVeiculoAno))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(campoVeiculoAcessorios)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(campoVeiculoCor, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(campoVeiculoPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(campoVeiculoAno, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(titleVeiculoObservacoes)
+                            .addComponent(titleVeiculoDefeitoCliente))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(titleEquipTipo)
+                                .addComponent(titleVeiculoFabricante)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(campoEquipTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(campoVeiculoFabricante, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(titleEquipModelo)
+                                .addComponent(titleVeiculoTipo)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(campoEquipModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(titleEquipMarca)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(campoEquipMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(117, 117, 117))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(titleEquipNsOuImei)
-                            .addComponent(titleEquipAcessorios))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(campoEquipNsOuImei)
-                            .addComponent(campoEquipAcessorios, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(titleEquipDefeitoCliente)
-                            .addComponent(titleEquipObservacoes))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addComponent(campoVeiculoTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(212, 212, 212)))
                 .addContainerGap())
-            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel4Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jScrollPane6)
-                    .addContainerGap()))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(titleEquipTipo)
-                    .addComponent(campoEquipTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(titleVeiculoTipo)
+                    .addComponent(campoVeiculoTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(titleEquipMarca)
-                    .addComponent(campoEquipMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(titleVeiculoFabricante)
+                    .addComponent(campoVeiculoFabricante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(titleEquipModelo)
-                    .addComponent(campoEquipModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(titleVeiculoModelo)
+                    .addComponent(campoVeiculoModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(titleEquipNsOuImei)
-                    .addComponent(campoEquipNsOuImei, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(titleEquipAcessorios)
-                    .addComponent(campoEquipAcessorios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(titleVeiculoPlaca)
+                    .addComponent(campoVeiculoPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
-                .addComponent(titleEquipDefeitoCliente)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(titleVeiculoCor)
+                    .addComponent(campoVeiculoCor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(titleVeiculoAno)
+                    .addComponent(campoVeiculoAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(titleVeiculoAcessorios)
+                    .addComponent(campoVeiculoAcessorios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addComponent(titleVeiculoDefeitoCliente)
+                .addGap(10, 10, 10)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(titleVeiculoObservacoes)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(titleEquipObservacoes)
-                .addGap(10, 10, 10))
-            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                    .addContainerGap(302, Short.MAX_VALUE)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap()))
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         titlePrevisaoSaida.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -776,12 +891,32 @@ public class C_OS_TELA extends javax.swing.JFrame {
         });
 
         campoPrevisaoSaida.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        campoPrevisaoSaida.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        campoPrevisaoSaida.setName("data"); // NOI18N
+        campoPrevisaoSaida.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tecladaPrevisaoSaida(evt);
+            }
+        });
 
         titleOrcamentoAtual.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         titleOrcamentoAtual.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titleOrcamentoAtual.setText("Orçamento atual:");
 
         campoOrcamentoAtual.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        campoOrcamentoAtual.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        campoOrcamentoAtual.setName("orcamento"); // NOI18N
+        campoOrcamentoAtual.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tecladaOrcamento(evt);
+            }
+        });
+
+        cifrao.setText("R$");
+
+        txtAguardando.setForeground(new java.awt.Color(240, 240, 240));
+        txtAguardando.setText("j");
+        txtAguardando.setToolTipText("");
 
         javax.swing.GroupLayout painelDoFormularioLayout = new javax.swing.GroupLayout(painelDoFormulario);
         painelDoFormulario.setLayout(painelDoFormularioLayout);
@@ -803,15 +938,14 @@ public class C_OS_TELA extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(painelDoFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(campoNomeOuRazao, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(painelDoFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(campoCpfOuCnpj, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(campoRgOuIe, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGroup(painelDoFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(campoCpfOuCnpj, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                    .addComponent(campoRgOuIe, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                    .addComponent(txtAguardando, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                     .addGroup(painelDoFormularioLayout.createSequentialGroup()
                         .addComponent(titleNumeroOS)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNumeroOS, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(checkClienteJaCadastrado)))
+                        .addComponent(txtNumeroOS, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelDoFormularioLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
@@ -820,35 +954,36 @@ public class C_OS_TELA extends javax.swing.JFrame {
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(painelDoFormularioLayout.createSequentialGroup()
-                        .addGroup(painelDoFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(painelDoFormularioLayout.createSequentialGroup()
-                                .addComponent(titlePrevisaoSaida)
-                                .addGap(18, 18, 18)
-                                .addComponent(campoPrevisaoSaida, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(titleOrcamentoAtual)
-                                .addGap(18, 18, 18)
-                                .addComponent(campoOrcamentoAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(painelDoFormularioLayout.createSequentialGroup()
-                                .addComponent(btnLimparCampos, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(5, 5, 5)))
+                        .addComponent(btnLimparCampos, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelDoFormularioLayout.createSequentialGroup()
+                        .addComponent(titlePrevisaoSaida)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(campoPrevisaoSaida, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(titleOrcamentoAtual)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cifrao)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(campoOrcamentoAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(19, 19, 19))
         );
         painelDoFormularioLayout.setVerticalGroup(
             painelDoFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelDoFormularioLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addGap(31, 31, 31)
                 .addGroup(painelDoFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(titleNumeroOS)
-                    .addComponent(txtNumeroOS)
-                    .addComponent(checkClienteJaCadastrado))
-                .addGap(20, 20, 20)
+                    .addComponent(txtNumeroOS))
+                .addGap(24, 24, 24)
                 .addGroup(painelDoFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(titleCpfOuCnpj)
                     .addComponent(campoCpfOuCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(2, 2, 2)
+                .addComponent(txtAguardando)
+                .addGap(2, 2, 2)
                 .addGroup(painelDoFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(titleRgOuIe)
                     .addComponent(campoRgOuIe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -866,22 +1001,23 @@ public class C_OS_TELA extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(30, 30, 30)
                 .addGroup(painelDoFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(titlePrevisaoSaida)
                     .addComponent(campoPrevisaoSaida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(titleOrcamentoAtual)
-                    .addComponent(campoOrcamentoAtual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(campoOrcamentoAtual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cifrao))
+                .addGap(18, 18, 18)
                 .addGroup(painelDoFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnLimparCampos, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24))
+                .addContainerGap())
         );
 
-        txtErroEquipPrevisaoSaida.setForeground(new java.awt.Color(240, 240, 240));
-        txtErroEquipPrevisaoSaida.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtErroEquipPrevisaoSaida.setText("jLabel1");
+        txtErroPrevisaoSaida.setForeground(new java.awt.Color(240, 240, 240));
+        txtErroPrevisaoSaida.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtErroPrevisaoSaida.setText("jLabel1");
 
         txtErroLogradNum.setForeground(new java.awt.Color(240, 240, 240));
         txtErroLogradNum.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -895,59 +1031,57 @@ public class C_OS_TELA extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtErroLogradNum, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtErroEstado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
-                            .addComponent(txtErroEquipPrevisaoSaida, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap())))
+                    .addComponent(txtErroEstado, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
+                    .addComponent(txtErroPrevisaoSaida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(305, 305, 305)
+                .addContainerGap()
                 .addComponent(txtErroEstado)
-                .addGap(110, 110, 110)
+                .addGap(76, 76, 76)
                 .addComponent(txtErroLogradNum)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtErroEquipPrevisaoSaida)
-                .addGap(181, 181, 181))
+                .addGap(622, 622, 622)
+                .addComponent(txtErroPrevisaoSaida)
+                .addGap(69, 69, 69))
         );
 
-        txtErroEquipOrcamento.setForeground(new java.awt.Color(240, 240, 240));
-        txtErroEquipOrcamento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtErroEquipOrcamento.setText("jLabel1");
+        txtErroOrcamento.setForeground(new java.awt.Color(240, 240, 240));
+        txtErroOrcamento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtErroOrcamento.setText("jLabel1");
 
-        txtErroEquipObservacoes.setForeground(new java.awt.Color(240, 240, 240));
-        txtErroEquipObservacoes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtErroEquipObservacoes.setText("jLabel1");
+        txtErroVeiculoObservacoes.setForeground(new java.awt.Color(240, 240, 240));
+        txtErroVeiculoObservacoes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtErroVeiculoObservacoes.setText("jLabel1");
 
-        txtErroEquipDefeitoCliente.setForeground(new java.awt.Color(240, 240, 240));
-        txtErroEquipDefeitoCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtErroEquipDefeitoCliente.setText("jLabel1");
+        txtErroVeiculoDefeitoCliente.setForeground(new java.awt.Color(240, 240, 240));
+        txtErroVeiculoDefeitoCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtErroVeiculoDefeitoCliente.setText("jLabel1");
 
-        txtErroEquipAcessorios.setForeground(new java.awt.Color(240, 240, 240));
-        txtErroEquipAcessorios.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtErroEquipAcessorios.setText("jLabel1");
+        txtErroVeiculoAcessorios.setForeground(new java.awt.Color(240, 240, 240));
+        txtErroVeiculoAcessorios.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtErroVeiculoAcessorios.setText("jLabel1");
 
-        txtErroEquipNsOuImei.setForeground(new java.awt.Color(240, 240, 240));
-        txtErroEquipNsOuImei.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtErroEquipNsOuImei.setText("jLabel1");
+        txtErroVeiculoPlaca.setForeground(new java.awt.Color(240, 240, 240));
+        txtErroVeiculoPlaca.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtErroVeiculoPlaca.setText("jLabel1");
 
-        txtErroEquipModelo.setForeground(new java.awt.Color(240, 240, 240));
-        txtErroEquipModelo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtErroEquipModelo.setText("jLabel1");
+        txtErroVeiculoModelo.setForeground(new java.awt.Color(240, 240, 240));
+        txtErroVeiculoModelo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtErroVeiculoModelo.setText("jLabel1");
 
-        txtErroEquipMarca.setForeground(new java.awt.Color(240, 240, 240));
-        txtErroEquipMarca.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtErroEquipMarca.setText("jLabel1");
+        txtErroVeiculoFabricante.setForeground(new java.awt.Color(240, 240, 240));
+        txtErroVeiculoFabricante.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtErroVeiculoFabricante.setText("jLabel1");
 
-        txtErroEquipTipo.setForeground(new java.awt.Color(240, 240, 240));
-        txtErroEquipTipo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtErroEquipTipo.setText("jLabel1");
+        txtErroVeiculoTipo.setForeground(new java.awt.Color(240, 240, 240));
+        txtErroVeiculoTipo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtErroVeiculoTipo.setText("jLabel1");
 
         txtErroLogradComp.setForeground(new java.awt.Color(240, 240, 240));
         txtErroLogradComp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -997,59 +1131,67 @@ public class C_OS_TELA extends javax.swing.JFrame {
         txtErroCpfOuCnpj.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtErroCpfOuCnpj.setText("jLabel1");
 
+        txtErroVeiculoCor.setForeground(new java.awt.Color(240, 240, 240));
+        txtErroVeiculoCor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtErroVeiculoCor.setText("jLabel1");
+
+        txtErroVeiculoAno.setForeground(new java.awt.Color(240, 240, 240));
+        txtErroVeiculoAno.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtErroVeiculoAno.setText("jLabel1");
+
+        txtErroCadastrar.setForeground(new java.awt.Color(240, 240, 240));
+        txtErroCadastrar.setText("jLabel2");
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtErroEquipAcessorios, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(txtErroEquipNsOuImei, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 58, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                                .addComponent(txtErroRgOuIe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtErroCpfOuCnpj, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(txtErroNomeOuRazao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtErroSobrenomeOuFantasia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtErroEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtErroNumTel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtErroNumTel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtErroCep, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtErroCidade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtErroBairro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtErroLograd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtErroLogradComp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtErroEquipTipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtErroEquipMarca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtErroEquipModelo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtErroEquipDefeitoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtErroEquipObservacoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtErroEquipOrcamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(txtErroNomeOuRazao, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+                    .addComponent(txtErroVeiculoPlaca, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtErroVeiculoAcessorios, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtErroRgOuIe, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtErroVeiculoDefeitoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtErroEmail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtErroNumTel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtErroNumTel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtErroSobrenomeOuFantasia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtErroCpfOuCnpj, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtErroCep, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtErroVeiculoTipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtErroVeiculoFabricante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtErroVeiculoModelo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtErroVeiculoCor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtErroVeiculoAno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtErroLograd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtErroLogradComp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtErroBairro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtErroCidade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtErroCadastrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtErroOrcamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtErroVeiculoObservacoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtErroRgOuIe)
-                    .addComponent(txtErroCpfOuCnpj))
-                .addGap(18, 18, 18)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addComponent(txtErroCpfOuCnpj)
+                .addGap(26, 26, 26)
+                .addComponent(txtErroRgOuIe)
+                .addGap(26, 26, 26)
                 .addComponent(txtErroNomeOuRazao)
-                .addGap(28, 28, 28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtErroSobrenomeOuFantasia)
-                .addGap(40, 40, 40)
+                .addGap(37, 37, 37)
                 .addComponent(txtErroEmail)
                 .addGap(18, 18, 18)
                 .addComponent(txtErroNumTel1)
                 .addGap(18, 18, 18)
                 .addComponent(txtErroNumTel2)
-                .addGap(42, 42, 42)
+                .addGap(18, 18, 18)
                 .addComponent(txtErroCep)
                 .addGap(18, 18, 18)
                 .addComponent(txtErroCidade)
@@ -1059,23 +1201,29 @@ public class C_OS_TELA extends javax.swing.JFrame {
                 .addComponent(txtErroLograd)
                 .addGap(18, 18, 18)
                 .addComponent(txtErroLogradComp)
-                .addGap(47, 47, 47)
-                .addComponent(txtErroEquipTipo)
-                .addGap(18, 18, 18)
-                .addComponent(txtErroEquipMarca)
-                .addGap(18, 18, 18)
-                .addComponent(txtErroEquipModelo)
-                .addGap(18, 18, 18)
-                .addComponent(txtErroEquipNsOuImei)
-                .addGap(18, 18, 18)
-                .addComponent(txtErroEquipAcessorios)
-                .addGap(79, 79, 79)
-                .addComponent(txtErroEquipDefeitoCliente)
-                .addGap(111, 111, 111)
-                .addComponent(txtErroEquipObservacoes)
-                .addGap(76, 76, 76)
-                .addComponent(txtErroEquipOrcamento)
-                .addGap(84, 84, 84))
+                .addGap(58, 58, 58)
+                .addComponent(txtErroVeiculoTipo)
+                .addGap(10, 10, 10)
+                .addComponent(txtErroVeiculoFabricante)
+                .addGap(10, 10, 10)
+                .addComponent(txtErroVeiculoModelo)
+                .addGap(10, 10, 10)
+                .addComponent(txtErroVeiculoPlaca)
+                .addGap(10, 10, 10)
+                .addComponent(txtErroVeiculoCor)
+                .addGap(10, 10, 10)
+                .addComponent(txtErroVeiculoAno)
+                .addGap(10, 10, 10)
+                .addComponent(txtErroVeiculoAcessorios)
+                .addGap(63, 63, 63)
+                .addComponent(txtErroVeiculoDefeitoCliente)
+                .addGap(97, 97, 97)
+                .addComponent(txtErroVeiculoObservacoes)
+                .addGap(55, 55, 55)
+                .addComponent(txtErroOrcamento)
+                .addGap(61, 61, 61)
+                .addComponent(txtErroCadastrar)
+                .addGap(63, 63, 63))
         );
 
         javax.swing.GroupLayout painelDoScrollLayout = new javax.swing.GroupLayout(painelDoScroll);
@@ -1083,25 +1231,24 @@ public class C_OS_TELA extends javax.swing.JFrame {
         painelDoScrollLayout.setHorizontalGroup(
             painelDoScrollLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelDoScrollLayout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
+                .addContainerGap(52, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(painelDoFormulario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         painelDoScrollLayout.setVerticalGroup(
             painelDoScrollLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(painelDoScrollLayout.createSequentialGroup()
                 .addGroup(painelDoScrollLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelDoScrollLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(painelDoFormulario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(painelDoFormulario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(21, 21, 21))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         painelDeRolagem.setViewportView(painelDoScroll);
@@ -1117,8 +1264,8 @@ public class C_OS_TELA extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(painelCRUD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(painelDeRolagem, javax.swing.GroupLayout.DEFAULT_SIZE, 1012, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addComponent(painelDeRolagem)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1128,7 +1275,7 @@ public class C_OS_TELA extends javax.swing.JFrame {
                 .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(painelCRUD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(painelDeRolagem))
+                    .addComponent(painelDeRolagem, javax.swing.GroupLayout.DEFAULT_SIZE, 1212, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -1148,65 +1295,77 @@ public class C_OS_TELA extends javax.swing.JFrame {
 //        u.irDePara(this, C_OS_TELA.getC_EQUIP());
     }//GEN-LAST:event_irCadastroEquip
 
-    private void irCadastroTec(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irCadastroTec
-        // u.irDePara(this, C_OS_TELA.getC_TEC());
-    }//GEN-LAST:event_irCadastroTec
-
     private void irCadastroCliente(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irCadastroCliente
         // u.irDePara(this, C_OS_TELA.getC_CLIENTE());
     }//GEN-LAST:event_irCadastroCliente
-
-    private void checkClienteJaCadastradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkClienteJaCadastradoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_checkClienteJaCadastradoActionPerformed
 
     private void cadastrarDados(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cadastrarDados
         /*
             MÉTODO RESPONSÁVEL POR CADASTRAR OS DADOS DO CLIENTE
         */
         btnClicado(evt);
-        
-        Cliente cliente = new Cliente();
-        cliente.setClienteCpfOuCnpj(campoCpfOuCnpj.getText());
-        cliente.setClienteRgOuIe(campoRgOuIe.getText());       
-        cliente.setClienteNomeOuRazao(campoNomeOuRazao.getText());
-        cliente.setClienteSobrenomeOuFantasia(campoSobrenomeOuFantasia.getText());
-        if (campoCpfOuCnpj.getText().length() > 14){
-            cliente.setClientePj(true);
-        } else {
-            cliente.setClientePj(false);
+        if (vazioForm() == true){
+            txtErroCadastrar.setText("Algum campo do formulário está vazio.");
+            txtErroCadastrar.setForeground(new Color(255,0,0));
+        } else if (erroForm()){
+            txtErroCadastrar.setText("Algum campo do formulário apresenta um erro.");
+            txtErroCadastrar.setForeground(new Color(255,0,0));
+        }else{
+            Cliente cliente = new Cliente();
+            cliente.setClienteCpfOuCnpj(fs.retirarFormatacao(campoCpfOuCnpj.getText()));
+            cliente.setClienteRgOuIe(campoRgOuIe.getText());       
+            cliente.setClienteNomeOuRazao(campoNomeOuRazao.getText());
+            cliente.setClienteSobrenomeOuFantasia(campoSobrenomeOuFantasia.getText());
+            if (campoCpfOuCnpj.getText().length() > 14){
+                cliente.setClientePj(true);
+            } else {
+                cliente.setClientePj(false);
+            }
+            cliente.setClienteEndEstado(caixaCombinacaoEstado.getSelectedItem().toString());
+            cliente.setClienteEndCep(fs.retirarFormatacao(campoCep.getText()));
+            cliente.setClienteEndCidade(campoCidade.getText());
+            cliente.setClienteEndBairro(campoBairro.getText());
+            cliente.setClienteEndLograd(campoLograd.getText());
+            cliente.setClienteEndLogradNum(campoLogradNum.getText());
+            cliente.setClienteEndLogradComp(campoLogradComp.getText());
+
+            Contato contato = new Contato();
+            contato.setClienteContatoEmail(campoEmail.getText());
+            contato.setClienteContatoNumTel1(fs.retirarFormatacao(campoNumTel1.getText()));
+            contato.setClienteContatoNumTel2(fs.retirarFormatacao(campoNumTel2.getText()));
+
+            OS os = new OS();
+            os.setOsPrevisaoSaida(fs.retirarFormatacaoData(campoPrevisaoSaida.getText()));
+            os.setOsOrcamentoAtual(campoOrcamentoAtual.getText());
+
+            Veiculo veiculo = new Veiculo();
+            veiculo.setVeiculoTipo(campoVeiculoTipo.getText());
+            veiculo.setVeiculoFabricante(campoVeiculoFabricante.getText());
+            veiculo.setVeiculoModelo(campoVeiculoModelo.getText());
+            veiculo.setVeiculoPlaca(campoVeiculoPlaca.getText());
+            veiculo.setVeiculoCor(campoVeiculoCor.getText());
+            veiculo.setVeiculoAno(campoVeiculoAno.getText());
+            veiculo.setVeiculoAcessorios(campoVeiculoAcessorios.getText());
+            veiculo.setVeiculoDefeitoCliente(campoVeiculoDefeitoCliente.getText());
+            veiculo.setVeiculoObservacoes(campoVeiculoObservacoes.getText());
+
+            Colab colab = new Colab();
+            colab.setColabNome(txtNomeColab.getText());
+
+            CadastroDAO cadastrar = new CadastroDAO();
+            try {
+                if (campoRgOuIe.isEnabled()){
+                    cadastrar.cadastrarDados(cliente, contato, veiculo, os, colab,false);
+                }else{
+                    cadastrar.cadastrarDados(cliente, contato, veiculo, os, colab,true);
+                }               
+                txtErroCadastrar.setForeground(new Color(0, 160, 40));
+                txtErroCadastrar.setText("Usuário cadastrado com sucesso!");
+                limparCampos();
+            }catch(Exception e){
+                System.out.println("Erro cadastro: "+e);
+            }           
         }
-        cliente.setClienteEndEstado(caixaCombinacaoEstado.getSelectedItem().toString());
-        cliente.setClienteEndCep(campoCep.getText());
-        cliente.setClienteEndCidade(campoCidade.getText());
-        cliente.setClienteEndBairro(campoBairro.getText());
-        cliente.setClienteEndLograd(campoLograd.getText());
-        cliente.setClienteEndLogradNum(campoLogradNum.getText());
-        cliente.setClienteEndLogradComp(campoLogradComp.getText());
-        
-        Contato contato = new Contato();
-        contato.setClienteContatoEmail(campoEmail.getText());
-        contato.setClienteContatoNumTel1(campoNumTel1.getText());
-        contato.setClienteContatoNumTel2(campoNumTel2.getText());
-        
-        OS os = new OS();
-        os.setOsPrevisaoSaida(campoPrevisaoSaida.getText());
-        os.setOsOrcamentoAtual(campoOrcamentoAtual.getText());
-      
-        Equipamento equip = new Equipamento();
-        equip.setEquipTipo(campoEquipTipo.getText());
-        equip.setEquipMarca(campoEquipMarca.getText());
-        equip.setEquipModelo(campoEquipModelo.getText());
-        equip.setEquipNsOuImei(campoEquipNsOuImei.getText());
-        equip.setEquipAcessorios(campoEquipAcessorios.getText());
-        equip.setEquipDefeitoCliente(campoEquipDefeitoCliente.getText());
-        equip.setEquipObservacoes(campoEquipObservacoes.getText());
-        
-        Colab colab = new Colab();
-        colab.setColabNome(txtNomeColab.getText());
-        
-        CadastroDAO cadastrar = new CadastroDAO();
-        cadastrar.cadastrarDados(cliente, contato, equip, os, colab);
     }//GEN-LAST:event_cadastrarDados
 
     private void btnPressionado(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPressionado
@@ -1232,24 +1391,433 @@ public class C_OS_TELA extends javax.swing.JFrame {
         btnClicado(evt);
         limparCampos();
     }//GEN-LAST:event_limparDados
+    
+    //<editor-fold defaultstate="collapsed" desc="métodos teclados">
+    private void tecladaRg(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaRg
+        if (vs.rgOuIe(evt, campoRgOuIe.getText()) == ""){
+            txtErroRgOuIe.setForeground(new Color(240,240,240));           
+        } else {
+            String txt = vs.rgOuIe(evt, campoRgOuIe.getText());
+            txtErroRgOuIe.setText(txt);
+            if (txt.endsWith(".")){
+                txtErroRgOuIe.setForeground(new Color(255,0,0));
+            } else {
+                txtErroRgOuIe.setForeground(new Color(0, 160, 40));
+            }           
+        }              
+    }//GEN-LAST:event_tecladaRg
+    
+    private void tecladaNomeOuRazao(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaNomeOuRazao
+        if (vs.nomes30(evt, campoNomeOuRazao.getText()) == ""){
+            txtErroNomeOuRazao.setForeground(new Color(240,240,240));           
+        } else {
+            String txt = vs.nomes30(evt, campoNomeOuRazao.getText());
+            txtErroNomeOuRazao.setText(txt);
+            if (txt.endsWith(".")){
+                txtErroNomeOuRazao.setForeground(new Color(255,0,0));
+            } else {
+                txtErroNomeOuRazao.setForeground(new Color(0, 160, 40));
+            }           
+        }
+    }//GEN-LAST:event_tecladaNomeOuRazao
 
-    private void teclada(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_teclada
+    private void tecladaSobrenomeOuFantasia(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaSobrenomeOuFantasia
+        if (vs.sobrenomeOuFantasia(evt, campoSobrenomeOuFantasia.getText()) == ""){
+            txtErroSobrenomeOuFantasia.setForeground(new Color(240,240,240));           
+        } else {
+            String txt = vs.sobrenomeOuFantasia(evt, campoSobrenomeOuFantasia.getText());
+            txtErroSobrenomeOuFantasia.setText(txt);
+            if (txt.endsWith(".")){
+                txtErroSobrenomeOuFantasia.setForeground(new Color(255,0,0));
+            } else {
+                txtErroSobrenomeOuFantasia.setForeground(new Color(0, 160, 40));
+            }           
+        }
+    }//GEN-LAST:event_tecladaSobrenomeOuFantasia
+
+    private void tecladaEmail(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaEmail
+        if (vs.email(evt, campoEmail.getText()) == ""){
+            txtErroEmail.setForeground(new Color(240,240,240));           
+        } else {
+            String txt = vs.email(evt, campoEmail.getText());
+            txtErroEmail.setText(txt);
+            if (txt.endsWith(".")){
+                txtErroEmail.setForeground(new Color(255,0,0));
+            } else {
+                txtErroEmail.setForeground(new Color(0, 160, 40));
+            }           
+        }
+    }//GEN-LAST:event_tecladaEmail
+
+    private void tecladaCpf(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaCpf
         /*
-            SERVE PARA AS VERIFICAÇÕES E FORMATAÇÕES DE STRINGS
+        SERVE PARA AS VERIFICAÇÕES E FORMATAÇÕES DE STRINGS
         */
-        
         if ("\b".equals(Character.toString(evt.getKeyChar()))){
             campoCpfOuCnpj.setText(fs.apagar(campoCpfOuCnpj.getText(), evt.getComponent().getName()));
         }
         if (vs.cpfOuCnpj(evt, campoCpfOuCnpj.getText()) == ""){
-            txtErroCpfOuCnpj.setForeground(new Color(240,240,240));           
+            txtErroCpfOuCnpj.setForeground(new Color(240,240,240));
         } else {
-            txtErroCpfOuCnpj.setText(vs.cpfOuCnpj(evt, campoCpfOuCnpj.getText()));
-            txtErroCpfOuCnpj.setForeground(new Color(255,0,0));
-        }              
+            String txt = vs.cpfOuCnpj(evt, campoCpfOuCnpj.getText());
+            txtErroCpfOuCnpj.setText(txt);
+            if (txt.endsWith(".")){
+                txtErroCpfOuCnpj.setForeground(new Color(255,0,0));
+            } else {
+                txtErroCpfOuCnpj.setForeground(new Color(0, 160, 40));
+            }
+        }
         String txt = fs.cpfOuCnpj(evt, campoCpfOuCnpj.getText());
-        campoCpfOuCnpj.setText(txt);   
-    }//GEN-LAST:event_teclada
+        campoCpfOuCnpj.setText(txt);  
+    }//GEN-LAST:event_tecladaCpf
+
+    private void tecladaTel(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaTel
+        if ("tel1".equals(evt.getComponent().getName())){
+            if ("\b".equals(Character.toString(evt.getKeyChar()))){
+            campoNumTel1.setText(fs.apagar(campoNumTel1.getText(), evt.getComponent().getName()));
+            }
+            if (vs.telefone(evt, campoNumTel1.getText()) == ""){
+                txtErroNumTel1.setForeground(new Color(240,240,240));
+            } else {
+                String txt = vs.telefone(evt, campoNumTel1.getText());
+                txtErroNumTel1.setText(txt);
+                if (txt.endsWith(".")){
+                    txtErroNumTel1.setForeground(new Color(255,0,0));
+                } else {
+                    txtErroNumTel1.setForeground(new Color(0, 160, 40));
+                }
+            }
+            String txt = fs.telefone1(evt, campoNumTel1.getText());
+            campoNumTel1.setText(txt);
+        } else {
+            if ("\b".equals(Character.toString(evt.getKeyChar()))){
+            campoNumTel2.setText(fs.apagar(campoNumTel2.getText(), evt.getComponent().getName()));
+            }
+            if (vs.telefone(evt, campoNumTel2.getText()) == ""){
+                txtErroNumTel2.setForeground(new Color(240,240,240));
+            } else {
+                String txt = vs.telefone(evt, campoNumTel2.getText());
+                txtErroNumTel2.setText(txt);
+                if (txt.endsWith(".")){
+                    txtErroNumTel2.setForeground(new Color(255,0,0));
+                } else {
+                    txtErroNumTel2.setForeground(new Color(0, 160, 40));
+                }
+            }
+            String txt = fs.telefone2(evt, campoNumTel2.getText());
+            campoNumTel2.setText(txt);
+        }       
+    }//GEN-LAST:event_tecladaTel
+
+    private void tecladaCep(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaCep
+        if ("\b".equals(Character.toString(evt.getKeyChar()))){
+            campoCep.setText(fs.apagar(campoCep.getText(), evt.getComponent().getName()));
+            }
+            if (vs.cep(evt, campoCep.getText()) == ""){
+                txtErroCep.setForeground(new Color(240,240,240));
+            } else {
+                String txt = vs.cep(evt, campoCep.getText());
+                txtErroCep.setText(txt);
+                if (txt.endsWith(".")){
+                    txtErroCep.setForeground(new Color(255,0,0));
+                } else {
+                    txtErroCep.setForeground(new Color(0, 160, 40));
+                }
+            }
+            String txt = fs.cep(campoCep.getText());
+            campoCep.setText(txt);
+    }//GEN-LAST:event_tecladaCep
+
+    private void tecladoCidade(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladoCidade
+        if (vs.nomes30(evt, campoCidade.getText()) == ""){
+            txtErroCidade.setForeground(new Color(240,240,240));           
+        } else {
+            String txt = vs.nomes30(evt, campoCidade.getText());
+            txtErroCidade.setText(txt);
+            if (txt.endsWith(".")){
+                txtErroCidade.setForeground(new Color(255,0,0));
+            } else {
+                txtErroCidade.setForeground(new Color(0, 160, 40));
+            }           
+        }
+    }//GEN-LAST:event_tecladoCidade
+
+    private void tecladaBairro(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaBairro
+        if (vs.nomes30(evt, campoBairro.getText()) == ""){
+            txtErroBairro.setForeground(new Color(240,240,240));           
+        } else {
+            String txt = vs.nomes30(evt, campoBairro.getText());
+            txtErroBairro.setText(txt);
+            if (txt.endsWith(".")){
+                txtErroBairro.setForeground(new Color(255,0,0));
+            } else {
+                txtErroBairro.setForeground(new Color(0, 160, 40));
+            }           
+        }
+    }//GEN-LAST:event_tecladaBairro
+
+    private void tecladaLograd(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaLograd
+        if (vs.lograd(evt, campoLograd.getText()) == ""){
+            txtErroLograd.setForeground(new Color(240,240,240));           
+        } else {
+            String txt = vs.lograd(evt, campoLograd.getText());
+            txtErroLograd.setText(txt);
+            if (txt.endsWith(".")){
+                txtErroLograd.setForeground(new Color(255,0,0));
+            } else {
+                txtErroLograd.setForeground(new Color(0, 160, 40));
+            }           
+        }
+    }//GEN-LAST:event_tecladaLograd
+
+    private void tecladaLogradNum(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaLogradNum
+        if (vs.logradNum(evt, campoLogradNum.getText()) == ""){
+            txtErroLogradNum.setForeground(new Color(240,240,240));           
+        } else {
+            String txt = vs.logradNum(evt, campoLogradNum.getText());
+            txtErroLogradNum.setText(txt);
+            if (txt.endsWith(".")){
+                txtErroLogradNum.setForeground(new Color(255,0,0));
+            } else {
+                txtErroLogradNum.setForeground(new Color(0, 160, 40));
+            }           
+        }
+    }//GEN-LAST:event_tecladaLogradNum
+
+    private void tecladaLogradComp(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaLogradComp
+        if (vs.nomes30(evt, campoLogradComp.getText()) == ""){
+            txtErroLogradComp.setForeground(new Color(240,240,240));           
+        } else {
+            String txt = vs.nomes30(evt, campoLogradComp.getText());
+            txtErroLogradComp.setText(txt);
+            if (txt.endsWith(".")){
+                txtErroLogradComp.setForeground(new Color(255,0,0));
+            } else {
+                txtErroLogradComp.setForeground(new Color(0, 160, 40));
+            }           
+        }
+    }//GEN-LAST:event_tecladaLogradComp
+
+    private void tecladaVeiculoTipo(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaVeiculoTipo
+        if (vs.veiculo25(evt, campoVeiculoTipo.getText()) == ""){
+            txtErroVeiculoTipo.setForeground(new Color(240,240,240));           
+        } else {
+            String txt = vs.veiculo25(evt, campoVeiculoTipo.getText());
+            txtErroVeiculoTipo.setText(txt);
+            if (txt.endsWith(".")){
+                txtErroVeiculoTipo.setForeground(new Color(255,0,0));
+            } else {
+                txtErroVeiculoTipo.setForeground(new Color(0, 160, 40));
+            }           
+        }
+    }//GEN-LAST:event_tecladaVeiculoTipo
+
+    private void tecladaVeiculoFabricante(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaVeiculoFabricante
+        if (vs.veiculo25(evt, campoVeiculoFabricante.getText()) == ""){
+            txtErroVeiculoFabricante.setForeground(new Color(240,240,240));           
+        } else {
+            String txt = vs.veiculo25(evt, campoVeiculoFabricante.getText());
+            txtErroVeiculoFabricante.setText(txt);
+            if (txt.endsWith(".")){
+                txtErroVeiculoFabricante.setForeground(new Color(255,0,0));
+            } else {
+                txtErroVeiculoFabricante.setForeground(new Color(0, 160, 40));
+            }           
+        }
+    }//GEN-LAST:event_tecladaVeiculoFabricante
+
+    private void tecladaVeiculoModelo(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaVeiculoModelo
+        if (vs.veiculo25(evt, campoVeiculoModelo.getText()) == ""){
+            txtErroVeiculoModelo.setForeground(new Color(240,240,240));           
+        } else {
+            String txt = vs.veiculo25(evt, campoVeiculoModelo.getText());
+            txtErroVeiculoModelo.setText(txt);
+            if (txt.endsWith(".")){
+                txtErroVeiculoModelo.setForeground(new Color(255,0,0));
+            } else {
+                txtErroVeiculoModelo.setForeground(new Color(0, 160, 40));
+            }           
+        }
+    }//GEN-LAST:event_tecladaVeiculoModelo
+
+    private void tecladaVeiculoPlaca(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaVeiculoPlaca
+        if (vs.veiculoPlaca(evt, campoVeiculoPlaca.getText()) == ""){
+            txtErroVeiculoPlaca.setForeground(new Color(240,240,240));           
+        } else {
+            String txt = vs.veiculoPlaca(evt, campoVeiculoPlaca.getText());
+            txtErroVeiculoPlaca.setText(txt);
+            if (txt.endsWith(".")){
+                txtErroVeiculoPlaca.setForeground(new Color(255,0,0));
+            } else {
+                txtErroVeiculoPlaca.setForeground(new Color(0, 160, 40));
+            }           
+        }
+        if (campoVeiculoPlaca.getText().length() > 7){
+            int calc = campoVeiculoPlaca.getText().length() - 7;
+            campoVeiculoPlaca.setText(campoVeiculoPlaca.getText().substring(0,campoVeiculoPlaca.getText().length()-calc));
+        }
+    }//GEN-LAST:event_tecladaVeiculoPlaca
+
+    private void tecladaVeiculoCor(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaVeiculoCor
+        if (vs.veiculo25(evt, campoVeiculoCor.getText()) == ""){
+            txtErroVeiculoCor.setForeground(new Color(240,240,240));           
+        } else {
+            String txt = vs.veiculo25(evt, campoVeiculoCor.getText());
+            txtErroVeiculoCor.setText(txt);
+            if (txt.endsWith(".")){
+                txtErroVeiculoCor.setForeground(new Color(255,0,0));
+            } else {
+                txtErroVeiculoCor.setForeground(new Color(0, 160, 40));
+            }           
+        }
+    }//GEN-LAST:event_tecladaVeiculoCor
+
+    private void tecladaVeiculoAno(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaVeiculoAno
+        if (vs.veiculoAno(evt, campoVeiculoAno.getText()) == ""){
+            txtErroVeiculoAno.setForeground(new Color(240,240,240));           
+        } else {
+            String txt = vs.veiculoAno(evt, campoVeiculoAno.getText());
+            txtErroVeiculoAno.setText(txt);
+            if (txt.endsWith(".")){
+                txtErroVeiculoAno.setForeground(new Color(255,0,0));
+            } else {
+                txtErroVeiculoAno.setForeground(new Color(0, 160, 40));
+            }           
+        }
+    }//GEN-LAST:event_tecladaVeiculoAno
+
+    private void tecladaVeiculoAcessorios(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaVeiculoAcessorios
+        if (vs.veiculo255(evt, campoVeiculoAcessorios.getText()) == ""){
+            txtErroVeiculoAcessorios.setForeground(new Color(240,240,240));           
+        } else {
+            String txt = vs.veiculo255(evt, campoVeiculoAcessorios.getText());
+            txtErroVeiculoAcessorios.setText(txt);
+            if (txt.endsWith(".")){
+                txtErroVeiculoAcessorios.setForeground(new Color(255,0,0));
+            } else {
+                txtErroVeiculoAcessorios.setForeground(new Color(0, 160, 40));
+            }           
+        }
+    }//GEN-LAST:event_tecladaVeiculoAcessorios
+
+    private void tecladaVeiculoObservacoes(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaVeiculoObservacoes
+        if (vs.veiculo255(evt, campoVeiculoObservacoes.getText()) == ""){
+            txtErroVeiculoObservacoes.setForeground(new Color(240,240,240));           
+        } else {
+            String txt = vs.veiculo255(evt, campoVeiculoObservacoes.getText());
+            txtErroVeiculoObservacoes.setText(txt);
+            if (txt.endsWith(".")){
+                txtErroVeiculoObservacoes.setForeground(new Color(255,0,0));
+            } else {
+                txtErroVeiculoObservacoes.setForeground(new Color(0, 160, 40));
+            }           
+        }
+    }//GEN-LAST:event_tecladaVeiculoObservacoes
+
+    private void tecladaOrcamento(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaOrcamento
+        if ("\b".equals(Character.toString(evt.getKeyChar()))){
+            campoOrcamentoAtual.setText(fs.apagar(campoOrcamentoAtual.getText(), evt.getComponent().getName()));
+        }
+        String txt = vs.orcamento(evt, campoOrcamentoAtual.getText());        
+        if ("".equals(txt)){
+            if (campoOrcamentoAtual.getText().length() >= 10){
+                evt.consume();
+                txtErroOrcamento.setForeground(new Color(255,0,0));
+                txtErroOrcamento.setText("Tamanho máximo atingido.");
+            } else {
+                txtErroOrcamento.setForeground(new Color(240,240,240));
+                String txtF = fs.dinheiro(evt,campoOrcamentoAtual.getText());
+                campoOrcamentoAtual.setText(txtF);
+            } 
+        } 
+        else{ 
+            txtErroOrcamento.setText(txt);
+            if (txt.endsWith("números.")){
+                txtErroOrcamento.setForeground(new Color(255,0,0));
+            }            
+        }            
+    }//GEN-LAST:event_tecladaOrcamento
+
+    private void tecladaPrevisaoSaida(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaPrevisaoSaida
+        if ("\b".equals(Character.toString(evt.getKeyChar()))){
+            campoPrevisaoSaida.setText(fs.apagar(campoPrevisaoSaida.getText(), evt.getComponent().getName()));
+        }
+        if (vs.data(evt, campoPrevisaoSaida.getText()) == ""){
+            txtErroPrevisaoSaida.setForeground(new Color(240,240,240));           
+        } 
+        else if (vs.data(evt, campoPrevisaoSaida.getText()).endsWith("números.")){
+            campoPrevisaoSaida.setText(campoPrevisaoSaida.getText().substring(0, campoPrevisaoSaida.getText().length()-1));
+        } 
+        else{
+            String txt = vs.data(evt, campoPrevisaoSaida.getText());
+            txtErroPrevisaoSaida.setText(txt);
+            if (txt.endsWith(".")){
+                txtErroPrevisaoSaida.setForeground(new Color(255,0,0));
+            } else {
+                txtErroPrevisaoSaida.setForeground(new Color(0, 160, 40));
+            }           
+        }
+        if (campoPrevisaoSaida.getText().length() > 10){
+            int calc = campoPrevisaoSaida.getText().length() - 10;
+            campoPrevisaoSaida.setText(campoPrevisaoSaida.getText().substring(0,campoPrevisaoSaida.getText().length()-calc));
+        }
+        String txt = fs.data(campoPrevisaoSaida.getText());
+        campoPrevisaoSaida.setText(txt);
+    }//GEN-LAST:event_tecladaPrevisaoSaida
+
+    private void tecladaVeiculoDefeitoCliente(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaVeiculoDefeitoCliente
+        if (vs.veiculo255(evt, campoVeiculoDefeitoCliente.getText()) == ""){
+            txtErroVeiculoDefeitoCliente.setForeground(new Color(240,240,240));           
+        } else {
+            String txt = vs.veiculo255(evt, campoVeiculoDefeitoCliente.getText());
+            txtErroVeiculoDefeitoCliente.setText(txt);
+            if (txt.endsWith(".")){
+                txtErroVeiculoDefeitoCliente.setForeground(new Color(255,0,0));
+            } else {
+                txtErroVeiculoDefeitoCliente.setForeground(new Color(0, 160, 40));
+            }           
+        }
+    }//GEN-LAST:event_tecladaVeiculoDefeitoCliente
+    //</editor-fold>
+    
+    private void verificarCliente(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_verificarCliente
+        if (campoCpfOuCnpj.getText().length() == 14 || campoCpfOuCnpj.getText().length() == 18){            
+            ClienteDAO cdao = new ClienteDAO();
+            if (cdao.verificarCliente(campoCpfOuCnpj.getText(),"cliente_teste")){
+                campoRgOuIe.setEnabled(false);
+                campoNomeOuRazao.setEnabled(false);
+                campoSobrenomeOuFantasia.setEnabled(false);
+                campoEmail.setEnabled(false);
+                campoNumTel1.setEnabled(false);
+                campoNumTel2.setEnabled(false);
+                caixaCombinacaoEstado.setEnabled(false);
+                campoCep.setEnabled(false);
+                campoCidade.setEnabled(false);
+                campoBairro.setEnabled(false);
+                campoLograd.setEnabled(false);
+                campoLogradNum.setEnabled(false);
+                campoLogradComp.setEnabled(false);
+                txtErroCpfOuCnpj.setForeground(new Color(0,160,40));
+                txtErroCpfOuCnpj.setText("Cliente já cadastrado!");
+            } else {
+                System.out.println("Cliente top.");
+            }        
+        } else {
+            campoRgOuIe.setEnabled(true);
+            campoNomeOuRazao.setEnabled(true);
+            campoSobrenomeOuFantasia.setEnabled(true);
+            campoEmail.setEnabled(true);
+            campoNumTel1.setEnabled(true);
+            campoNumTel2.setEnabled(true);
+            caixaCombinacaoEstado.setEnabled(true);
+            campoCep.setEnabled(true);
+            campoCidade.setEnabled(true);
+            campoBairro.setEnabled(true);
+            campoLograd.setEnabled(true);
+            campoLogradNum.setEnabled(true);
+            campoLogradComp.setEnabled(true);
+        }
+    }//GEN-LAST:event_verificarCliente
 
     /**
      * @param args the command line arguments
@@ -1276,25 +1844,25 @@ public class C_OS_TELA extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(C_OS_TELA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-
+        //</editor-fold>     
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 getC_OS().setVisible(true);
             }
-        });       
+        });  
+        OsDAO os = new OsDAO();
+        txtNumeroOS.setText(os.numeroOsAtual());            
     }
-
+    
+    //<editor-fold defaultstate="collapsed" desc="Coisas do javax">
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;
     private javax.swing.JButton btnIrCadastroOS;
-    private javax.swing.JButton btnIrCadastroOS1;
     private javax.swing.JButton btnIrClientes;
+    private javax.swing.JButton btnIrConsultaOS;
     private javax.swing.JButton btnIrEquipamentos;
     private javax.swing.JButton btnIrOS;
-    private javax.swing.JButton btnIrTecnicos;
     private javax.swing.JButton btnLimparCampos;
     private javax.swing.JComboBox<String> caixaCombinacaoEstado;
     private javax.swing.JTextField campoBairro;
@@ -1302,13 +1870,6 @@ public class C_OS_TELA extends javax.swing.JFrame {
     private javax.swing.JTextField campoCidade;
     private javax.swing.JTextField campoCpfOuCnpj;
     private javax.swing.JTextField campoEmail;
-    private javax.swing.JTextField campoEquipAcessorios;
-    private javax.swing.JTextArea campoEquipDefeitoCliente;
-    private javax.swing.JTextField campoEquipMarca;
-    private javax.swing.JTextField campoEquipModelo;
-    private javax.swing.JTextField campoEquipNsOuImei;
-    private javax.swing.JTextArea campoEquipObservacoes;
-    private javax.swing.JTextField campoEquipTipo;
     private javax.swing.JTextField campoLograd;
     private javax.swing.JTextField campoLogradComp;
     private javax.swing.JTextField campoLogradNum;
@@ -1319,7 +1880,16 @@ public class C_OS_TELA extends javax.swing.JFrame {
     private javax.swing.JTextField campoPrevisaoSaida;
     private javax.swing.JTextField campoRgOuIe;
     private javax.swing.JTextField campoSobrenomeOuFantasia;
-    private javax.swing.JCheckBox checkClienteJaCadastrado;
+    private javax.swing.JTextField campoVeiculoAcessorios;
+    private javax.swing.JTextField campoVeiculoAno;
+    private javax.swing.JTextField campoVeiculoCor;
+    private javax.swing.JTextArea campoVeiculoDefeitoCliente;
+    private javax.swing.JTextField campoVeiculoFabricante;
+    private javax.swing.JTextField campoVeiculoModelo;
+    private javax.swing.JTextArea campoVeiculoObservacoes;
+    private javax.swing.JTextField campoVeiculoPlaca;
+    private javax.swing.JTextField campoVeiculoTipo;
+    private javax.swing.JLabel cifrao;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -1339,13 +1909,6 @@ public class C_OS_TELA extends javax.swing.JFrame {
     private javax.swing.JLabel titleCidade;
     private javax.swing.JLabel titleCpfOuCnpj;
     private javax.swing.JLabel titleEmail;
-    private javax.swing.JLabel titleEquipAcessorios;
-    private javax.swing.JLabel titleEquipDefeitoCliente;
-    private javax.swing.JLabel titleEquipMarca;
-    private javax.swing.JLabel titleEquipModelo;
-    private javax.swing.JLabel titleEquipNsOuImei;
-    private javax.swing.JLabel titleEquipObservacoes;
-    private javax.swing.JLabel titleEquipTipo;
     private javax.swing.JLabel titleEstado;
     private javax.swing.JLabel titleLograd;
     private javax.swing.JLabel titleLogradComp;
@@ -1358,20 +1921,22 @@ public class C_OS_TELA extends javax.swing.JFrame {
     private javax.swing.JLabel titlePrevisaoSaida;
     private javax.swing.JLabel titleRgOuIe;
     private javax.swing.JLabel titleSobrenomeOuFantasia;
+    private javax.swing.JLabel titleVeiculoAcessorios;
+    private javax.swing.JLabel titleVeiculoAno;
+    private javax.swing.JLabel titleVeiculoCor;
+    private javax.swing.JLabel titleVeiculoDefeitoCliente;
+    private javax.swing.JLabel titleVeiculoFabricante;
+    private javax.swing.JLabel titleVeiculoModelo;
+    private javax.swing.JLabel titleVeiculoObservacoes;
+    private javax.swing.JLabel titleVeiculoPlaca;
+    private javax.swing.JLabel titleVeiculoTipo;
+    private javax.swing.JLabel txtAguardando;
     private javax.swing.JLabel txtErroBairro;
+    private javax.swing.JLabel txtErroCadastrar;
     private javax.swing.JLabel txtErroCep;
     private javax.swing.JLabel txtErroCidade;
     private javax.swing.JLabel txtErroCpfOuCnpj;
     private javax.swing.JLabel txtErroEmail;
-    private javax.swing.JLabel txtErroEquipAcessorios;
-    private javax.swing.JLabel txtErroEquipDefeitoCliente;
-    private javax.swing.JLabel txtErroEquipMarca;
-    private javax.swing.JLabel txtErroEquipModelo;
-    private javax.swing.JLabel txtErroEquipNsOuImei;
-    private javax.swing.JLabel txtErroEquipObservacoes;
-    private javax.swing.JLabel txtErroEquipOrcamento;
-    private javax.swing.JLabel txtErroEquipPrevisaoSaida;
-    private javax.swing.JLabel txtErroEquipTipo;
     private javax.swing.JLabel txtErroEstado;
     private javax.swing.JLabel txtErroLograd;
     private javax.swing.JLabel txtErroLogradComp;
@@ -1379,17 +1944,28 @@ public class C_OS_TELA extends javax.swing.JFrame {
     private javax.swing.JLabel txtErroNomeOuRazao;
     private javax.swing.JLabel txtErroNumTel1;
     private javax.swing.JLabel txtErroNumTel2;
+    private javax.swing.JLabel txtErroOrcamento;
+    private javax.swing.JLabel txtErroPrevisaoSaida;
     private javax.swing.JLabel txtErroRgOuIe;
     private javax.swing.JLabel txtErroSobrenomeOuFantasia;
+    private javax.swing.JLabel txtErroVeiculoAcessorios;
+    private javax.swing.JLabel txtErroVeiculoAno;
+    private javax.swing.JLabel txtErroVeiculoCor;
+    private javax.swing.JLabel txtErroVeiculoDefeitoCliente;
+    private javax.swing.JLabel txtErroVeiculoFabricante;
+    private javax.swing.JLabel txtErroVeiculoModelo;
+    private javax.swing.JLabel txtErroVeiculoObservacoes;
+    private javax.swing.JLabel txtErroVeiculoPlaca;
+    private javax.swing.JLabel txtErroVeiculoTipo;
     private javax.swing.JLabel txtNomeColab;
-    private javax.swing.JLabel txtNumeroOS;
+    private static javax.swing.JLabel txtNumeroOS;
     // End of variables declaration//GEN-END:variables
-   
+    //</editor-fold>
+    
     private void limparCampos(){
         /*
             MÉTODO REPSONSÁVEL POR LIMPAR OS CAMPOS
         */
-        checkClienteJaCadastrado.setSelected(false);
         campoCpfOuCnpj.setText("");
         campoRgOuIe.setText("");        
         campoNomeOuRazao.setText("");
@@ -1404,15 +1980,41 @@ public class C_OS_TELA extends javax.swing.JFrame {
         campoLograd.setText("");
         campoLogradNum.setText("");
         campoLogradComp.setText("");
-        campoEquipTipo.setText("");
-        campoEquipMarca.setText("");
-        campoEquipModelo.setText("");
-        campoEquipNsOuImei.setText("");
-        campoEquipAcessorios.setText("");
-        campoEquipDefeitoCliente.setText("");
+        campoVeiculoTipo.setText("");
+        campoVeiculoFabricante.setText("");
+        campoVeiculoModelo.setText("");
+        campoVeiculoPlaca.setText("");
+        campoVeiculoCor.setText("");
+        campoVeiculoAno.setText("");
+        campoVeiculoAcessorios.setText("");
+        campoVeiculoDefeitoCliente.setText("");
         campoPrevisaoSaida.setText("");
-        campoEquipObservacoes.setText("");
+        campoVeiculoObservacoes.setText("");
         campoOrcamentoAtual.setText("");
+        txtErroBairro.setForeground(new Color(240, 240, 240));
+        txtErroCep.setForeground(new Color(240, 240, 240));
+        txtErroCidade.setForeground(new Color(240, 240, 240));
+        txtErroCpfOuCnpj.setForeground(new Color(240, 240, 240)); 
+        txtErroEmail.setForeground(new Color(240, 240, 240)); 
+        txtErroLograd.setForeground(new Color(240, 240, 240)); 
+        txtErroLogradComp.setForeground(new Color(240, 240, 240));
+        txtErroLogradNum.setForeground(new Color(240, 240, 240));
+        txtErroNomeOuRazao.setForeground(new Color(240, 240, 240)); 
+        txtErroNumTel1.setForeground(new Color(240, 240, 240)); 
+        txtErroNumTel2.setForeground(new Color(240, 240, 240));
+        txtErroOrcamento.setForeground(new Color(240, 240, 240)); 
+        txtErroPrevisaoSaida.setForeground(new Color(240, 240, 240)); 
+        txtErroRgOuIe.setForeground(new Color(240, 240, 240));
+        txtErroSobrenomeOuFantasia.setForeground(new Color(240, 240, 240));
+        txtErroVeiculoAcessorios.setForeground(new Color(240, 240, 240));
+        txtErroVeiculoAno.setForeground(new Color(240, 240, 240));
+        txtErroVeiculoCor.setForeground(new Color(240, 240, 240)); 
+        txtErroVeiculoDefeitoCliente.setForeground(new Color(240, 240, 240));
+        txtErroVeiculoFabricante.setForeground(new Color(240, 240, 240));
+        txtErroVeiculoModelo.setForeground(new Color(240, 240, 240));
+        txtErroVeiculoObservacoes.setForeground(new Color(240, 240, 240));
+        txtErroVeiculoPlaca.setForeground(new Color(240, 240, 240));
+        txtErroVeiculoTipo.setForeground(new Color(240, 240, 240));
     }
     
     private void btnClicado(java.awt.event.MouseEvent evt){
@@ -1430,5 +2032,80 @@ public class C_OS_TELA extends javax.swing.JFrame {
                 }
         }, 50);
     }
-
+    
+    private boolean vazioForm(){
+        boolean vazio=true;
+        if (campoRgOuIe.isEnabled()){
+            if (     
+            campoCpfOuCnpj.getText().equals("") ||
+            campoCpfOuCnpj.getText().equals("") ||
+            campoRgOuIe.getText().equals("") ||
+            campoNomeOuRazao.getText().equals("") ||
+            campoSobrenomeOuFantasia.getText().equals("") ||
+            campoEmail.getText().equals("") ||
+            campoNumTel1.getText().equals("") ||
+            caixaCombinacaoEstado.getSelectedIndex() == 0 ||
+            campoCep.getText().equals("") ||
+            campoCidade.getText().equals("") ||
+            campoBairro.getText().equals("") ||
+            campoLograd.getText().equals("") ||
+            campoLogradNum.getText().equals("") ||
+            campoLogradComp.getText().equals("") ||
+            campoVeiculoTipo.getText().equals("") ||
+            campoVeiculoFabricante.getText().equals("") ||
+            campoVeiculoModelo.getText().equals("") ||
+            campoVeiculoPlaca.getText().equals("") ||
+            campoVeiculoCor.getText().equals("") ||
+            campoVeiculoAno.getText().equals("") ||
+            campoVeiculoAcessorios.getText().equals("") ||
+            campoVeiculoDefeitoCliente.getText().equals("") ||
+            campoPrevisaoSaida.getText().equals("") ||
+            campoVeiculoObservacoes.getText().equals("") ||
+            campoOrcamentoAtual.getText().equals("") 
+            ){
+                vazio = true;
+            }
+            else{
+                vazio = false;
+            } 
+        } else {
+            vazio = false;
+        }           
+        return vazio;
+    }
+    
+    private boolean erroForm(){       
+        boolean erro;
+        if (
+            txtErroBairro.getForeground().getRed() == 255 || 
+            txtErroCep.getForeground().getRed() == 255 || 
+            txtErroCidade.getForeground().getRed() == 255 ||  
+            txtErroCpfOuCnpj.getForeground().getRed() == 255 || 
+            txtErroEmail.getForeground().getRed() == 255 || 
+            txtErroLograd.getForeground().getRed() == 255 ||  
+            txtErroLogradComp.getForeground().getRed() == 255 ||  
+            txtErroLogradNum.getForeground().getRed() == 255 || 
+            txtErroNomeOuRazao.getForeground().getRed() == 255 || 
+            txtErroNumTel1.getForeground().getRed() == 255 ||  
+            txtErroNumTel2.getForeground().getRed() == 255 || 
+            txtErroOrcamento.getForeground().getRed() == 255 ||  
+            txtErroPrevisaoSaida.getForeground().getRed() == 255 || 
+            txtErroRgOuIe.getForeground().getRed() == 255 || 
+            txtErroSobrenomeOuFantasia.getForeground().getRed() == 255 ||  
+            txtErroVeiculoAcessorios.getForeground().getRed() == 255 || 
+            txtErroVeiculoAno.getForeground().getRed() == 255 || 
+            txtErroVeiculoCor.getForeground().getRed() == 255 || 
+            txtErroVeiculoDefeitoCliente.getForeground().getRed() == 255 ||  
+            txtErroVeiculoFabricante.getForeground().getRed() == 255 ||  
+            txtErroVeiculoModelo.getForeground().getRed() == 255 ||  
+            txtErroVeiculoObservacoes.getForeground().getRed() == 255 || 
+            txtErroVeiculoPlaca.getForeground().getRed() == 255 || 
+            txtErroVeiculoTipo.getForeground().getRed() == 255                 
+            ){
+            erro = true;
+        }else{
+            erro = false;
+        }
+        return erro;
+    }   
 }

@@ -9,6 +9,6 @@ package pif.desktop.DAO;
  *
  * @author arthu
  */
-public class EquipDAO {
+public class VeiculoDAO {
     
 }

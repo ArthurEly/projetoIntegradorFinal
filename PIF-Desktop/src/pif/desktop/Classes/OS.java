@@ -10,13 +10,74 @@ package pif.desktop.Classes;
  * @author arthu
  */
 public class OS {
-    
+ 
     //declaração de variáveis
     private String osDataEntrada;
     private String osPrevisaoSaida;
     private String osDataSaida;
     private String osOrcamentoAtual;
+    private String osCpfnj;
+    private String osVeiculoPlaca;
+    private String osVeiculoSituacao;
+    private String osColabNome;
+    private String osNumero;
     //declaração de variáveis  
+
+    /**
+     * @return the osCpfnj
+     */
+    public String getOsCpfnj() {
+        return osCpfnj;
+    }
+
+    /**
+     * @param osCpfnj the osCpfnj to set
+     */
+    public void setOsCpfnj(String osCpfnj) {
+        this.osCpfnj = osCpfnj;
+    }
+
+    /**
+     * @return the osVeiculoPlaca
+     */
+    public String getOsVeiculoPlaca() {
+        return osVeiculoPlaca;
+    }
+
+    /**
+     * @param osVeiculoPlaca the osVeiculoPlaca to set
+     */
+    public void setOsVeiculoPlaca(String osVeiculoPlaca) {
+        this.osVeiculoPlaca = osVeiculoPlaca;
+    }
+
+    /**
+     * @return the osVeiculoSituacao
+     */
+    public String getOsVeiculoSituacao() {
+        return osVeiculoSituacao;
+    }
+
+    /**
+     * @param osVeiculoSituacao the osVeiculoSituacao to set
+     */
+    public void setOsVeiculoSituacao(String osVeiculoSituacao) {
+        this.osVeiculoSituacao = osVeiculoSituacao;
+    }
+
+    /**
+     * @return the osColabNome
+     */
+    public String getOsColabNome() {
+        return osColabNome;
+    }
+
+    /**
+     * @param osColabNome the osColabNome to set
+     */
+    public void setOsColabNome(String osColabNome) {
+        this.osColabNome = osColabNome;
+    }
 
     /**
      * @return the osDataEntrada
@@ -73,4 +134,19 @@ public class OS {
     public void setOsOrcamentoAtual(String osOrcamentoAtual) {
         this.osOrcamentoAtual = osOrcamentoAtual;
     }
+    
+    /**
+     * @return the osNumero
+     */
+    public String getOsNumero() {
+        return osNumero;
+    }
+
+    /**
+     * @param osNumero the osNumero to set
+     */
+    public void setOsNumero(String osNumero) {
+        this.osNumero = osNumero;
+    }
+    
 }

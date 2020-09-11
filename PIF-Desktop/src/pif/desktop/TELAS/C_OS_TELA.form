@@ -29,9 +29,6 @@
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[800, 600]"/>
     </Property>
-    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[800, 600]"/>
-    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -59,10 +56,10 @@
                   <Group type="102" attributes="0">
                       <Component id="painelCRUD" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="painelDeRolagem" pref="1012" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="painelDeRolagem" max="32767" attributes="0"/>
                   </Group>
               </Group>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -74,7 +71,7 @@
               <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="painelCRUD" max="32767" attributes="0"/>
-                  <Component id="painelDeRolagem" max="32767" attributes="0"/>
+                  <Component id="painelDeRolagem" pref="1212" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
@@ -105,9 +102,7 @@
                   <Component id="btnIrOS" max="32767" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnIrEquipamentos" max="32767" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="btnIrTecnicos" max="32767" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Component id="btnIrClientes" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -120,7 +115,6 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnIrOS" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
                       <Component id="btnIrEquipamentos" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
-                      <Component id="btnIrTecnicos" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
                       <Component id="btnIrClientes" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
@@ -181,33 +175,6 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="irCadastroEquip"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnIrTecnicos">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="cc" type="rgb"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="T&#xe9;cnicos"/>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
-                <BevelBorder>
-                  <Color PropertyName="highlightOuter" blue="0" green="0" red="82" type="rgb"/>
-                  <Color PropertyName="highlightInner" blue="0" green="0" red="82" type="rgb"/>
-                  <Color PropertyName="shadowOuter" blue="0" green="0" red="cc" type="rgb"/>
-                  <Color PropertyName="shadowInner" blue="0" green="0" red="cc" type="rgb"/>
-                </BevelBorder>
-              </Border>
-            </Property>
-            <Property name="contentAreaFilled" type="boolean" value="false"/>
-            <Property name="focusPainted" type="boolean" value="false"/>
-            <Property name="opaque" type="boolean" value="true"/>
-          </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="irCadastroTec"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JButton" name="btnIrClientes">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -260,8 +227,8 @@
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="btnIrCadastroOS1" min="-2" pref="220" max="-2" attributes="0"/>
-                              <Component id="btnIrCadastroOS" alignment="0" min="-2" pref="220" max="-2" attributes="0"/>
+                              <Component id="btnIrCadastroOS" min="-2" pref="220" max="-2" attributes="0"/>
+                              <Component id="btnIrConsultaOS" alignment="0" min="-2" pref="220" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -277,9 +244,9 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                  <Component id="btnIrCadastroOS1" min="-2" pref="40" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                   <Component id="btnIrCadastroOS" min="-2" pref="40" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                  <Component id="btnIrConsultaOS" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
                   <Component id="txtNomeColab" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
@@ -288,7 +255,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="btnIrCadastroOS">
+        <Component class="javax.swing.JButton" name="btnIrConsultaOS">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="cc" type="rgb"/>
@@ -315,7 +282,7 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="irConsultaOS"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnIrCadastroOS1">
+        <Component class="javax.swing.JButton" name="btnIrCadastroOS">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="64" type="rgb"/>
@@ -368,29 +335,28 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace pref="20" max="32767" attributes="0"/>
+                      <EmptySpace pref="52" max="32767" attributes="0"/>
                       <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="painelDoFormulario" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="20" max="32767" attributes="0"/>
+                      <EmptySpace pref="53" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jPanel1" alignment="1" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jPanel5" max="32767" attributes="0"/>
+                              <Component id="painelDoFormulario" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="painelDoFormulario" max="32767" attributes="0"/>
+                          <Component id="jPanel1" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jPanel5" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="21" pref="21" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -419,9 +385,10 @@
                                       <EmptySpace max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="campoNomeOuRazao" min="-2" pref="250" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="campoCpfOuCnpj" alignment="1" min="-2" pref="150" max="-2" attributes="0"/>
-                                              <Component id="campoRgOuIe" alignment="1" min="-2" pref="150" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="campoCpfOuCnpj" alignment="1" pref="150" max="32767" attributes="0"/>
+                                              <Component id="campoRgOuIe" alignment="1" pref="150" max="32767" attributes="0"/>
+                                              <Component id="txtAguardando" alignment="1" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -430,8 +397,6 @@
                                   <Component id="titleNumeroOS" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="txtNumeroOS" min="-2" pref="69" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="checkClienteJaCadastrado" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
@@ -443,23 +408,21 @@
                               <Component id="jPanel3" max="32767" attributes="0"/>
                               <Component id="jPanel4" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="titlePrevisaoSaida" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="campoPrevisaoSaida" min="-2" pref="70" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="titleOrcamentoAtual" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="campoOrcamentoAtual" min="-2" pref="70" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <Component id="btnLimparCampos" min="-2" pref="150" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="btnCadastrar" min="-2" pref="150" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
+                                  <Component id="btnLimparCampos" min="-2" pref="150" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="btnCadastrar" min="-2" pref="150" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="titlePrevisaoSaida" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="campoPrevisaoSaida" min="-2" pref="70" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="titleOrcamentoAtual" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="cifrao" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="campoOrcamentoAtual" min="-2" pref="100" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
@@ -469,18 +432,19 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="titleNumeroOS" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtNumeroOS" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="checkClienteJaCadastrado" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="titleCpfOuCnpj" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="campoCpfOuCnpj" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                          <Component id="txtAguardando" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="titleRgOuIe" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="campoRgOuIe" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -501,19 +465,20 @@
                           <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="titlePrevisaoSaida" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="campoPrevisaoSaida" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="titleOrcamentoAtual" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="campoOrcamentoAtual" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cifrao" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btnCadastrar" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                               <Component id="btnLimparCampos" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -525,7 +490,8 @@
                       <Font name="Tahoma" size="12" style="0"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="N&#xb0; da OS: "/>
+                    <Property name="text" type="java.lang.String" value="N&#xfa;mero da OS: "/>
+                    <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="txtNumeroOS">
@@ -534,20 +500,11 @@
                       <Font name="Tahoma" size="12" style="0"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="00002020"/>
+                    <Property name="text" type="java.lang.String" value="..."/>
                   </Properties>
-                </Component>
-                <Component class="javax.swing.JCheckBox" name="checkClienteJaCadastrado">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tahoma" size="12" style="0"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Cliente j&#xe1; cadastado"/>
-                    <Property name="focusPainted" type="boolean" value="false"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkClienteJaCadastradoActionPerformed"/>
-                  </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="titleCpfOuCnpj">
                   <Properties>
@@ -564,7 +521,7 @@
                       <Font name="Tahoma" size="12" style="0"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="Nome/razao social:"/>
+                    <Property name="text" type="java.lang.String" value="Nome ou raz&#xe3;o social:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="campoCpfOuCnpj">
@@ -572,12 +529,13 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Tahoma" size="12" style="0"/>
                     </Property>
-                    <Property name="horizontalAlignment" type="int" value="0"/>
+                    <Property name="horizontalAlignment" type="int" value="2"/>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
-                    <Property name="name" type="java.lang.String" value="campoCpfOuCnpj" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="cpfnj" noResource="true"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="teclada"/>
+                    <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="verificarCliente"/>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tecladaCpf"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="campoNomeOuRazao">
@@ -585,9 +543,12 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Tahoma" size="12" style="0"/>
                     </Property>
-                    <Property name="horizontalAlignment" type="int" value="0"/>
+                    <Property name="horizontalAlignment" type="int" value="2"/>
                     <Property name="name" type="java.lang.String" value="campoNomeOuRazao" noResource="true"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tecladaNomeOuRazao"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="titleSobrenomeOuFantasia">
                   <Properties>
@@ -595,7 +556,7 @@
                       <Font name="Tahoma" size="12" style="0"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="Sobronome/nome fantasia:"/>
+                    <Property name="text" type="java.lang.String" value="Sobronome ou nome fantasia:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="titleRgOuIe">
@@ -604,7 +565,7 @@
                       <Font name="Tahoma" size="12" style="0"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="RG/IE:"/>
+                    <Property name="text" type="java.lang.String" value="RG ou IE:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="campoRgOuIe">
@@ -612,18 +573,24 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Tahoma" size="12" style="0"/>
                     </Property>
-                    <Property name="horizontalAlignment" type="int" value="0"/>
+                    <Property name="horizontalAlignment" type="int" value="2"/>
                     <Property name="name" type="java.lang.String" value="campoRgOuIe" noResource="true"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tecladaRg"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="campoSobrenomeOuFantasia">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Tahoma" size="12" style="0"/>
                     </Property>
-                    <Property name="horizontalAlignment" type="int" value="0"/>
+                    <Property name="horizontalAlignment" type="int" value="2"/>
                     <Property name="name" type="java.lang.String" value="campoSobrenomeOuFantasia" noResource="true"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tecladaSobrenomeOuFantasia"/>
+                  </Events>
                 </Component>
                 <Container class="javax.swing.JPanel" name="jPanel2">
                   <Properties>
@@ -705,8 +672,11 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="12" style="0"/>
                         </Property>
-                        <Property name="horizontalAlignment" type="int" value="0"/>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tecladaEmail"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="titleNumTel1">
                       <Properties>
@@ -722,8 +692,12 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="12" style="0"/>
                         </Property>
-                        <Property name="horizontalAlignment" type="int" value="0"/>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
+                        <Property name="name" type="java.lang.String" value="tel1" noResource="true"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tecladaTel"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="titleNumTel2">
                       <Properties>
@@ -739,8 +713,12 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="12" style="0"/>
                         </Property>
-                        <Property name="horizontalAlignment" type="int" value="0"/>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
+                        <Property name="name" type="java.lang.String" value="tel2" noResource="true"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tecladaTel"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -770,33 +748,38 @@
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="campoLograd" max="32767" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="titleEstado" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="caixaCombinacaoEstado" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                                      <Component id="titleCep" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="campoCep" min="-2" pref="150" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="titleCidade" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="campoCidade" min="-2" pref="215" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="titleBairro" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="campoBairro" min="-2" pref="215" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="titleLogradNum" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="campoLogradNum" min="-2" pref="60" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="titleLogradComp" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="campoLogradComp" min="-2" pref="215" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="titleEstado" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="caixaCombinacaoEstado" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                                              <Component id="titleCep" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="campoCep" min="-2" pref="150" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="titleCidade" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="campoCidade" min="-2" pref="215" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="titleBairro" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="campoBairro" min="-2" pref="215" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="titleLogradNum" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="campoLogradNum" min="-2" pref="60" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="titleLogradComp" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="campoLogradComp" min="-2" pref="215" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -867,8 +850,12 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="12" style="0"/>
                         </Property>
-                        <Property name="horizontalAlignment" type="int" value="0"/>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
+                        <Property name="name" type="java.lang.String" value="cep" noResource="true"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tecladaCep"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="titleCidade">
                       <Properties>
@@ -884,8 +871,11 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="12" style="0"/>
                         </Property>
-                        <Property name="horizontalAlignment" type="int" value="0"/>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tecladoCidade"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JComboBox" name="caixaCombinacaoEstado">
                       <Properties>
@@ -948,8 +938,11 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="12" style="0"/>
                         </Property>
-                        <Property name="horizontalAlignment" type="int" value="0"/>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tecladaBairro"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="titleLograd">
                       <Properties>
@@ -965,8 +958,11 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="12" style="0"/>
                         </Property>
-                        <Property name="horizontalAlignment" type="int" value="0"/>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tecladaLograd"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="titleLogradNum">
                       <Properties>
@@ -982,8 +978,11 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="12" style="0"/>
                         </Property>
-                        <Property name="horizontalAlignment" type="int" value="0"/>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tecladaLogradNum"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="titleLogradComp">
                       <Properties>
@@ -999,8 +998,11 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="12" style="0"/>
                         </Property>
-                        <Property name="horizontalAlignment" type="int" value="0"/>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tecladaLogradComp"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -1008,7 +1010,7 @@
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder justification="2" title="Equipamento">
+                        <TitledBorder justification="2" title="Ve&#xed;culo">
                           <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder>
                               <Color PropertyName="color" blue="28" green="28" red="e6" type="rgb"/>
@@ -1025,54 +1027,58 @@
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jScrollPane5" alignment="1" max="32767" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Component id="titleEquipTipo" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="campoEquipTipo" min="-2" pref="215" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" attributes="0">
-                                              <Component id="titleEquipModelo" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="campoEquipModelo" min="-2" pref="215" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" attributes="0">
-                                              <Component id="titleEquipMarca" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="campoEquipMarca" min="-2" pref="215" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="117" max="-2" attributes="0"/>
+                                      <Component id="titleVeiculoModelo" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="campoVeiculoModelo" min="-2" pref="170" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="162" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="titleEquipNsOuImei" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="titleEquipAcessorios" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="titleVeiculoPlaca" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="titleVeiculoAcessorios" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="titleVeiculoCor" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="titleVeiculoAno" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="campoEquipNsOuImei" max="32767" attributes="0"/>
-                                          <Component id="campoEquipAcessorios" alignment="1" max="32767" attributes="0"/>
+                                          <Component id="campoVeiculoAcessorios" max="32767" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="campoVeiculoCor" min="-2" pref="110" max="-2" attributes="0"/>
+                                                  <Component id="campoVeiculoPlaca" min="-2" pref="80" max="-2" attributes="0"/>
+                                                  <Component id="campoVeiculoAno" alignment="0" min="-2" pref="80" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          </Group>
                                       </Group>
                                   </Group>
-                                  <Component id="jScrollPane5" alignment="1" max="32767" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="titleEquipDefeitoCliente" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="titleEquipObservacoes" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="titleVeiculoObservacoes" min="-2" max="-2" attributes="0"/>
+                                          <Component id="titleVeiculoDefeitoCliente" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
+                                  <Component id="jScrollPane6" alignment="1" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="titleVeiculoFabricante" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
+                                              <Component id="campoVeiculoFabricante" min="-2" pref="120" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="titleVeiculoTipo" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
+                                              <Component id="campoVeiculoTipo" min="-2" pref="120" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="212" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jScrollPane6" max="32767" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                              </Group>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1080,49 +1086,54 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="titleEquipTipo" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="campoEquipTipo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="titleVeiculoTipo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="campoVeiculoTipo" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="titleEquipMarca" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="campoEquipMarca" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="titleVeiculoFabricante" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="campoVeiculoFabricante" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="titleEquipModelo" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="campoEquipModelo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="titleVeiculoModelo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="campoVeiculoModelo" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="titleEquipNsOuImei" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="campoEquipNsOuImei" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="titleEquipAcessorios" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="campoEquipAcessorios" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="titleVeiculoPlaca" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="campoVeiculoPlaca" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Component id="titleEquipDefeitoCliente" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="titleVeiculoCor" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="campoVeiculoCor" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="titleVeiculoAno" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="campoVeiculoAno" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="titleVeiculoAcessorios" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="campoVeiculoAcessorios" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                              <Component id="titleVeiculoDefeitoCliente" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                               <Component id="jScrollPane5" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="titleEquipObservacoes" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace pref="302" max="32767" attributes="0"/>
-                                  <Component id="jScrollPane6" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="titleVeiculoObservacoes" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jScrollPane6" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JLabel" name="titleEquipTipo">
+                    <Component class="javax.swing.JLabel" name="titleVeiculoTipo">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="12" style="0"/>
@@ -1131,32 +1142,38 @@
                         <Property name="text" type="java.lang.String" value="Tipo:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="campoEquipTipo">
+                    <Component class="javax.swing.JTextField" name="campoVeiculoTipo">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="12" style="0"/>
+                        </Property>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tecladaVeiculoTipo"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="titleVeiculoFabricante">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="12" style="0"/>
                         </Property>
                         <Property name="horizontalAlignment" type="int" value="0"/>
+                        <Property name="text" type="java.lang.String" value="Fabricante:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="titleEquipMarca">
+                    <Component class="javax.swing.JTextField" name="campoVeiculoFabricante">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="12" style="0"/>
                         </Property>
-                        <Property name="horizontalAlignment" type="int" value="0"/>
-                        <Property name="text" type="java.lang.String" value="Marca:"/>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tecladaVeiculoFabricante"/>
+                      </Events>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="campoEquipMarca">
-                      <Properties>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Tahoma" size="12" style="0"/>
-                        </Property>
-                        <Property name="horizontalAlignment" type="int" value="0"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="titleEquipModelo">
+                    <Component class="javax.swing.JLabel" name="titleVeiculoModelo">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="12" style="0"/>
@@ -1165,32 +1182,38 @@
                         <Property name="text" type="java.lang.String" value="Modelo:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="campoEquipModelo">
+                    <Component class="javax.swing.JTextField" name="campoVeiculoModelo">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="12" style="0"/>
+                        </Property>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tecladaVeiculoModelo"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="titleVeiculoPlaca">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="12" style="0"/>
                         </Property>
                         <Property name="horizontalAlignment" type="int" value="0"/>
+                        <Property name="text" type="java.lang.String" value="Placa:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="titleEquipNsOuImei">
+                    <Component class="javax.swing.JTextField" name="campoVeiculoPlaca">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="12" style="0"/>
                         </Property>
-                        <Property name="horizontalAlignment" type="int" value="0"/>
-                        <Property name="text" type="java.lang.String" value="N/S ou IMEI:"/>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tecladaVeiculoPlaca"/>
+                      </Events>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="campoEquipNsOuImei">
-                      <Properties>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Tahoma" size="12" style="0"/>
-                        </Property>
-                        <Property name="horizontalAlignment" type="int" value="0"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="titleEquipAcessorios">
+                    <Component class="javax.swing.JLabel" name="titleVeiculoAcessorios">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="12" style="0"/>
@@ -1199,7 +1222,7 @@
                         <Property name="text" type="java.lang.String" value="Acess&#xf3;rios:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="titleEquipDefeitoCliente">
+                    <Component class="javax.swing.JLabel" name="titleVeiculoDefeitoCliente">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="12" style="0"/>
@@ -1209,13 +1232,16 @@
                         <Property name="toolTipText" type="java.lang.String" value=""/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="campoEquipAcessorios">
+                    <Component class="javax.swing.JTextField" name="campoVeiculoAcessorios">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="12" style="0"/>
                         </Property>
-                        <Property name="horizontalAlignment" type="int" value="0"/>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tecladaVeiculoAcessorios"/>
+                      </Events>
                     </Component>
                     <Container class="javax.swing.JScrollPane" name="jScrollPane5">
                       <AuxValues>
@@ -1224,11 +1250,14 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTextArea" name="campoEquipDefeitoCliente">
+                        <Component class="javax.swing.JTextArea" name="campoVeiculoDefeitoCliente">
                           <Properties>
                             <Property name="columns" type="int" value="20"/>
                             <Property name="rows" type="int" value="5"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tecladaVeiculoDefeitoCliente"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -1239,15 +1268,18 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTextArea" name="campoEquipObservacoes">
+                        <Component class="javax.swing.JTextArea" name="campoVeiculoObservacoes">
                           <Properties>
                             <Property name="columns" type="int" value="20"/>
                             <Property name="rows" type="int" value="5"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tecladaVeiculoObservacoes"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
-                    <Component class="javax.swing.JLabel" name="titleEquipObservacoes">
+                    <Component class="javax.swing.JLabel" name="titleVeiculoObservacoes">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="12" style="0"/>
@@ -1256,6 +1288,46 @@
                         <Property name="text" type="java.lang.String" value="Observa&#xe7;&#xf5;es:"/>
                         <Property name="toolTipText" type="java.lang.String" value=""/>
                       </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="titleVeiculoCor">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="12" style="0"/>
+                        </Property>
+                        <Property name="horizontalAlignment" type="int" value="0"/>
+                        <Property name="text" type="java.lang.String" value="Cor:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="campoVeiculoCor">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="12" style="0"/>
+                        </Property>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tecladaVeiculoCor"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="titleVeiculoAno">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="12" style="0"/>
+                        </Property>
+                        <Property name="horizontalAlignment" type="int" value="0"/>
+                        <Property name="text" type="java.lang.String" value="Ano:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="campoVeiculoAno">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="12" style="0"/>
+                        </Property>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tecladaVeiculoAno"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -1333,7 +1405,12 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Tahoma" size="12" style="0"/>
                     </Property>
+                    <Property name="horizontalAlignment" type="int" value="2"/>
+                    <Property name="name" type="java.lang.String" value="data" noResource="true"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tecladaPrevisaoSaida"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="titleOrcamentoAtual">
                   <Properties>
@@ -1349,6 +1426,25 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Tahoma" size="12" style="0"/>
                     </Property>
+                    <Property name="horizontalAlignment" type="int" value="2"/>
+                    <Property name="name" type="java.lang.String" value="orcamento" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tecladaOrcamento"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="cifrao">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="R$"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="txtAguardando">
+                  <Properties>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="f0" green="f0" red="f0" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="j"/>
+                    <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -1358,37 +1454,33 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtErroLogradNum" alignment="0" max="32767" attributes="0"/>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtErroEstado" alignment="1" pref="280" max="32767" attributes="0"/>
-                                      <Component id="txtErroEquipPrevisaoSaida" alignment="1" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                              </Group>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="txtErroLogradNum" max="32767" attributes="0"/>
+                              <Component id="txtErroEstado" alignment="1" pref="280" max="32767" attributes="0"/>
+                              <Component id="txtErroPrevisaoSaida" alignment="1" max="32767" attributes="0"/>
                           </Group>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="305" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="txtErroEstado" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
                           <Component id="txtErroLogradNum" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="txtErroEquipPrevisaoSaida" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="181" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="622" max="-2" attributes="0"/>
+                          <Component id="txtErroPrevisaoSaida" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="txtErroEquipPrevisaoSaida">
+                <Component class="javax.swing.JLabel" name="txtErroPrevisaoSaida">
                   <Properties>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="f0" green="f0" red="f0" type="rgb"/>
@@ -1423,38 +1515,31 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtErroEquipAcessorios" alignment="1" max="32767" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="txtErroEquipNsOuImei" min="-2" pref="222" max="-2" attributes="0"/>
-                                          <EmptySpace min="0" pref="58" max="32767" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="txtErroRgOuIe" max="32767" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="txtErroCpfOuCnpj" max="32767" attributes="0"/>
-                                      </Group>
-                                      <Component id="txtErroNomeOuRazao" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtErroSobrenomeOuFantasia" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtErroEmail" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtErroNumTel1" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtErroNumTel2" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtErroCep" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtErroCidade" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtErroBairro" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtErroLograd" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtErroLogradComp" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtErroEquipTipo" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtErroEquipMarca" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtErroEquipModelo" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtErroEquipDefeitoCliente" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtErroEquipObservacoes" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtErroEquipOrcamento" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <Component id="txtErroNomeOuRazao" pref="400" max="32767" attributes="0"/>
+                              <Component id="txtErroVeiculoPlaca" alignment="1" max="32767" attributes="0"/>
+                              <Component id="txtErroVeiculoAcessorios" alignment="1" max="32767" attributes="0"/>
+                              <Component id="txtErroRgOuIe" alignment="1" max="32767" attributes="0"/>
+                              <Component id="txtErroVeiculoDefeitoCliente" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtErroEmail" alignment="1" max="32767" attributes="0"/>
+                              <Component id="txtErroNumTel1" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtErroNumTel2" alignment="1" max="32767" attributes="0"/>
+                              <Component id="txtErroSobrenomeOuFantasia" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtErroCpfOuCnpj" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtErroCep" alignment="1" max="32767" attributes="0"/>
+                              <Component id="txtErroVeiculoTipo" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtErroVeiculoFabricante" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtErroVeiculoModelo" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtErroVeiculoCor" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtErroVeiculoAno" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtErroLograd" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtErroLogradComp" max="32767" attributes="0"/>
+                              <Component id="txtErroBairro" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtErroCidade" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtErroCadastrar" alignment="1" max="32767" attributes="0"/>
+                              <Component id="txtErroOrcamento" max="32767" attributes="0"/>
+                              <Component id="txtErroVeiculoObservacoes" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -1462,23 +1547,22 @@
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtErroRgOuIe" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtErroCpfOuCnpj" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                          <Component id="txtErroCpfOuCnpj" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                          <Component id="txtErroRgOuIe" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           <Component id="txtErroNomeOuRazao" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                           <Component id="txtErroSobrenomeOuFantasia" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                           <Component id="txtErroEmail" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="txtErroNumTel1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="txtErroNumTel2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="txtErroCep" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="txtErroCidade" min="-2" max="-2" attributes="0"/>
@@ -1488,29 +1572,35 @@
                           <Component id="txtErroLograd" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="txtErroLogradComp" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                          <Component id="txtErroEquipTipo" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="txtErroEquipMarca" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                          <Component id="txtErroEquipModelo" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                          <Component id="txtErroEquipNsOuImei" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                          <Component id="txtErroEquipAcessorios" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
-                          <Component id="txtErroEquipDefeitoCliente" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="111" max="-2" attributes="0"/>
-                          <Component id="txtErroEquipObservacoes" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
-                          <Component id="txtErroEquipOrcamento" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                          <Component id="txtErroVeiculoTipo" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                          <Component id="txtErroVeiculoFabricante" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                          <Component id="txtErroVeiculoModelo" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                          <Component id="txtErroVeiculoPlaca" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                          <Component id="txtErroVeiculoCor" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                          <Component id="txtErroVeiculoAno" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                          <Component id="txtErroVeiculoAcessorios" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+                          <Component id="txtErroVeiculoDefeitoCliente" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
+                          <Component id="txtErroVeiculoObservacoes" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                          <Component id="txtErroOrcamento" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+                          <Component id="txtErroCadastrar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="txtErroEquipOrcamento">
+                <Component class="javax.swing.JLabel" name="txtErroOrcamento">
                   <Properties>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="f0" green="f0" red="f0" type="rgb"/>
@@ -1519,7 +1609,7 @@
                     <Property name="text" type="java.lang.String" value="jLabel1"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="txtErroEquipObservacoes">
+                <Component class="javax.swing.JLabel" name="txtErroVeiculoObservacoes">
                   <Properties>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="f0" green="f0" red="f0" type="rgb"/>
@@ -1528,7 +1618,7 @@
                     <Property name="text" type="java.lang.String" value="jLabel1"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="txtErroEquipDefeitoCliente">
+                <Component class="javax.swing.JLabel" name="txtErroVeiculoDefeitoCliente">
                   <Properties>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="f0" green="f0" red="f0" type="rgb"/>
@@ -1537,7 +1627,7 @@
                     <Property name="text" type="java.lang.String" value="jLabel1"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="txtErroEquipAcessorios">
+                <Component class="javax.swing.JLabel" name="txtErroVeiculoAcessorios">
                   <Properties>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="f0" green="f0" red="f0" type="rgb"/>
@@ -1546,7 +1636,7 @@
                     <Property name="text" type="java.lang.String" value="jLabel1"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="txtErroEquipNsOuImei">
+                <Component class="javax.swing.JLabel" name="txtErroVeiculoPlaca">
                   <Properties>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="f0" green="f0" red="f0" type="rgb"/>
@@ -1555,7 +1645,7 @@
                     <Property name="text" type="java.lang.String" value="jLabel1"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="txtErroEquipModelo">
+                <Component class="javax.swing.JLabel" name="txtErroVeiculoModelo">
                   <Properties>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="f0" green="f0" red="f0" type="rgb"/>
@@ -1564,7 +1654,7 @@
                     <Property name="text" type="java.lang.String" value="jLabel1"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="txtErroEquipMarca">
+                <Component class="javax.swing.JLabel" name="txtErroVeiculoFabricante">
                   <Properties>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="f0" green="f0" red="f0" type="rgb"/>
@@ -1573,7 +1663,7 @@
                     <Property name="text" type="java.lang.String" value="jLabel1"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="txtErroEquipTipo">
+                <Component class="javax.swing.JLabel" name="txtErroVeiculoTipo">
                   <Properties>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="f0" green="f0" red="f0" type="rgb"/>
@@ -1688,6 +1778,32 @@
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="jLabel1"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="txtErroVeiculoCor">
+                  <Properties>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="f0" green="f0" red="f0" type="rgb"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
+                    <Property name="text" type="java.lang.String" value="jLabel1"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="txtErroVeiculoAno">
+                  <Properties>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="f0" green="f0" red="f0" type="rgb"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
+                    <Property name="text" type="java.lang.String" value="jLabel1"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="txtErroCadastrar">
+                  <Properties>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="f0" green="f0" red="f0" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="jLabel2"/>
                   </Properties>
                 </Component>
               </SubComponents>

@@ -5,13 +5,9 @@
  */
 package pif.desktop.DAO;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import pif.desktop.Classes.Cliente;
-import pif.desktop.Classes.Colab;
-import pif.desktop.Classes.Contato;
-import pif.desktop.Classes.Equipamento;
-import pif.desktop.Classes.OS;
+import java.sql.ResultSet;
 
 /**
  *
@@ -19,8 +15,34 @@ import pif.desktop.Classes.OS;
  */
 public class ClienteDAO {
  
-    public void buscarCliente(String busca){
-    
+    public boolean verificarCliente(String cpfnj, String tabela){
+        boolean cadastrado=false;
+        String select = "SELECT * FROM "+tabela+" WHERE cliente_cpf_ou_cnpj = ?";
+        Conexao c = new Conexao();
+        Connection conexao = null;
+        PreparedStatement preparador = null;
+        ResultSet resultado = null;
+        cpfnj = cpfnj.replaceAll("\\.","");
+        cpfnj = cpfnj.replaceAll("\\-","");
+        cpfnj = cpfnj.replaceAll("\\/","");
+        while (cpfnj.startsWith("0")){
+            cpfnj = cpfnj.substring(1);
+        }
+        try{
+            conexao = c.conectarAoBanco();           
+            preparador = conexao.prepareStatement(select);
+            preparador.setString(1, cpfnj);
+            resultado = preparador.executeQuery();
+            if (resultado.next()){
+                cadastrado = true;
+            } else {
+                cadastrado = false;
+            }
+            conexao.close();
+        }catch(Exception e){
+            System.out.println("Erro na verificação:  "+e);
+        }
+        return cadastrado;
     }
     
     public void atualizarCliente(String cpf){

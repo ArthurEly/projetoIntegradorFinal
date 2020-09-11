@@ -33,7 +33,7 @@ public class Conexao {
             System.out.println("Não conseguiu conectar com o banco de dados." + e);
         }catch(ClassNotFoundException e){
             System.out.println("Não achou a classe de conexão.");
-        } 
+        }
         return conexao;
     }
     

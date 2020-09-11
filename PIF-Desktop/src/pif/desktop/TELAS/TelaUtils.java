@@ -32,6 +32,17 @@ public class TelaUtils {
         }, 100);
 
     }
+    
+    public void irDeParaDiferenciado(javax.swing.JFrame desse, javax.swing.JFrame esse){
+        /*
+            FUNÇÃO QUE LEVA DA TELA QUE TU ESTÁ PARA A TELA QUE QUER IR, INDO DESSE (PRIMEIRA TELA) PARA ESSE (SEGUNDA TELA)
+        */        
+        //pega as posições e o tamanho da primeira tela e joga pra segunda
+        esse.setBounds(desse.getX(), desse.getY(),1300,800);
+        esse.setExtendedState(desse.getExtendedState());
+        //abre a segunda
+        esse.setVisible(true);
+    }
 }
 
 
