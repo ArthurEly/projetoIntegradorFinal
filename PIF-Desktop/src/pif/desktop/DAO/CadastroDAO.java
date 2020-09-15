@@ -12,6 +12,7 @@ import pif.desktop.Classes.Colab;
 import pif.desktop.Classes.Contato;
 import pif.desktop.Classes.Veiculo;
 import pif.desktop.Classes.OS;
+import pif.desktop.Classes.Orcamento;
 import pif.desktop.Classes.data;
 
 /**
@@ -20,7 +21,7 @@ import pif.desktop.Classes.data;
  */
 public class CadastroDAO {
     
-    public void cadastrarDados(Cliente cliente, Contato contato, Veiculo veiculo, OS os, Colab colab, boolean jaCadastrado){
+    public void cadastrarDados(Cliente cliente, Contato contato, Veiculo veiculo, OS os, Colab colab, Orcamento o, boolean jaCadastrado){
         /*
             MÉTODO RESPONSÁVEL POR CADASTRAR (CREATE) AS INFORMAÇÕES NO BANCO DE DADOS
         */
@@ -77,7 +78,7 @@ public class CadastroDAO {
        
         try{
             String sqlEquip = "INSERT INTO `veiculo_teste`(`veiculo_placa`, `veiculo_tipo`, `veiculo_fabricante`, `veiculo_modelo`, `veiculo_cor`, `veiculo_ano`, `veiculo_acessorios`, "
-                    + "`veiculo_observacoes`, `veiculo_defeito_cliente`, `veiculo_dono`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    + "`veiculo_observacoes`, `veiculo_defeito_cliente`,`parecer_tecnico`,`os_numero`, `veiculo_dono`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             //prepara a query sql acima para jogar dentro do banco de dados
             PreparedStatement consultaVeiculo = c.getConexao().prepareStatement(sqlEquip);
             //bota os parametros nos lugares correspondentes
@@ -90,11 +91,13 @@ public class CadastroDAO {
             consultaVeiculo.setString(7, veiculo.getVeiculoAcessorios());
             consultaVeiculo.setString(8, veiculo.getVeiculoObservacoes());
             consultaVeiculo.setString(9, veiculo.getVeiculoDefeitoCliente());
-            consultaVeiculo.setString(10, cliente.getClienteCpfOuCnpj());
+            consultaVeiculo.setString(10, os.getOsNumero());
+            consultaVeiculo.setString(11, os.getOsNumero());
+            consultaVeiculo.setString(12, cliente.getClienteCpfOuCnpj());
             //executa a query no banco de dados
             consultaVeiculo.execute();
         }catch(SQLException ex){
-            System.out.println("Deu treta no equip: " + ex);
+            System.out.println("Deu treta no veiculo: " + ex);
         }   
         
         try{
@@ -108,16 +111,40 @@ public class CadastroDAO {
             consultaOs.setString(2, veiculo.getVeiculoPlaca());
             consultaOs.setString(3, dataHoje);
             consultaOs.setString(4, os.getOsPrevisaoSaida());
-            consultaOs.setString(5, os.getOsOrcamentoAtual());
+            consultaOs.setString(5, os.getOsNumero());
             consultaOs.setString(6, colab.getColabNome());
             //executa a query no banco de dados
             consultaOs.execute();
             //fecha a consulta ao banco e se desconecta dele
-            consultaOs.close();
-            c.desconectarDoBanco();               
+            consultaOs.close();             
         }catch(SQLException ex){
             System.out.println("Deu treta na OS: " + ex);
         } 
+        
+        try{
+            String sqlOrc = "INSERT INTO `orcamento_teste`(`os_numero`, `orcamento_preco_pecas`,"
+                    + " `orcamento_descricao_pecas`, `orcamento_preco_servicos`, `orcamento_descricao_servicos`, "
+                    + "`orcamento_data`) VALUES ("
+                    + "?,?,?,?,?,?)";
+            //prepara a query sql acima para jogar dentro do banco de dados
+            PreparedStatement consultaOrc = c.getConexao().prepareStatement(sqlOrc);
+            //bota os parametros nos lugares correspondentes
+            data d = new data();
+            String dataHoje = d.dataFormatada();
+            consultaOrc.setString(1, os.getOsNumero());
+            consultaOrc.setString(2, o.getOrcamento_preco_pecas());
+            consultaOrc.setString(3, o.getOrcamento_descricao_pecas());
+            consultaOrc.setString(4, o.getOrcamento_preco_servicos());
+            consultaOrc.setString(5, o.getOrcamento_descricao_servicos());
+            consultaOrc.setString(6, dataHoje);
+            //executa a query no banco de dados
+            consultaOrc.execute();
+            //fecha a consulta ao banco e se desconecta dele
+            consultaOrc.close();
+            c.desconectarDoBanco();               
+        }catch(SQLException ex){
+            System.out.println("Deu treta no orçamento: " + ex);
+        }
     }
     
 }

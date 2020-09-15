@@ -99,11 +99,11 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnIrOS" pref="391" max="32767" attributes="0"/>
+                  <Component id="btnIrOS" max="32767" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="btnIrEquipamentos" pref="376" max="32767" attributes="0"/>
+                  <Component id="btnIrVeiculo" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                  <Component id="btnIrClientes" pref="352" max="32767" attributes="0"/>
+                  <Component id="btnIrClientes" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -114,7 +114,7 @@
                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnIrOS" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
-                      <Component id="btnIrEquipamentos" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
+                      <Component id="btnIrVeiculo" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
                       <Component id="btnIrClientes" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
@@ -147,7 +147,7 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="irCadastroOS"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnIrEquipamentos">
+        <Component class="javax.swing.JButton" name="btnIrVeiculo">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="cc" type="rgb"/>
@@ -155,7 +155,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Equipamentos"/>
+            <Property name="text" type="java.lang.String" value="Ve&#xed;culos"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">

@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import pif.desktop.Classes.OS;
+import pif.desktop.Classes.data;
 
 /**
  *
@@ -44,7 +45,7 @@ public class OsDAO {
 
     public List<OS> consultaOs(String campo, String valor){
         List<OS> OSs = new ArrayList<OS>();
-        String select = "SELECT * FROM `os_teste` WHERE "+campo+" LIKE "+valor;
+        String select = "SELECT * FROM `os_teste` WHERE "+campo+" = "+valor;
         Conexao c = new Conexao();
         Connection conexao = null;
         PreparedStatement preparador = null;
@@ -95,5 +96,34 @@ public class OsDAO {
             System.out.println("Erro na verificação:  "+e);
         }
         return cadastrado;
+    }
+
+    public void atualizarOs(String numeroOs, String previsaoSaida, String situacaoVeiculo) {
+        String select = "UPDATE `os_teste` SET `veiculo_situacao`='"+situacaoVeiculo+"',`os_previsao_saida`='"+previsaoSaida+"' WHERE `os_numero` = "+numeroOs;
+        Conexao c = new Conexao();
+        PreparedStatement preparador = null;
+        try{
+            preparador = c.conectarAoBanco().prepareStatement(select);         
+            preparador.execute();
+            preparador.close();
+        }catch(Exception e){
+            System.out.println("Erro na verificação:  "+e);
+        }
+    }
+
+    public void concluirOs(String osNumero) {
+        String select = "UPDATE `os_teste` SET `os_data_saida`= ? WHERE `os_numero` = "+osNumero;
+        Conexao c = new Conexao();
+        PreparedStatement preparador = null;
+        data d = new data();
+        String dataHoje = d.dataFormatada();
+        try{
+            preparador = c.conectarAoBanco().prepareStatement(select);   
+            preparador.setString(1, dataHoje);
+            preparador.execute();
+            preparador.close();
+        }catch(Exception e){
+            System.out.println("Erro na verificação:  "+e);
+        }
     }
 }

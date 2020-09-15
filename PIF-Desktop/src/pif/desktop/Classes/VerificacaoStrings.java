@@ -238,7 +238,7 @@ public class VerificacaoStrings {
                 }
             }              
             if(tamanhoMaximo(evt,s,18) == false){
-                avaliacao = "O limite de 14 dígitos foi atingido.";
+                avaliacao = "Tamanho máximo atingido.";
             } 
         }   
         return avaliacao; 
@@ -260,7 +260,7 @@ public class VerificacaoStrings {
                 }
             }             
             if(tamanhoMaximo(evt,s,10) == false){
-                avaliacao = "O limite de 10 dígitos foi atingido.";
+                avaliacao = "Tamanho máximo atingido.";
             } 
         }   
         return avaliacao; 
@@ -339,7 +339,7 @@ public class VerificacaoStrings {
     public String lograd (KeyEvent evt, String s){
         String avaliacao = "";
         if (liberado(evt) == false){
-            avaliacao = "Digite apenas letras ou números.";
+            avaliacao = "Digite letras ou números.";
         }       
         if (tamanhoMaximo(evt,s,60) == false){
             avaliacao = "Tamanho máximo atingido.";
@@ -387,7 +387,7 @@ public class VerificacaoStrings {
     public String veiculo255 (KeyEvent evt, String s){
         String avaliacao = "";
         if (liberado(evt) == false && numeros(evt) == false ){
-            avaliacao = "Digite apenas letras ou números."; 
+            avaliacao = "Digite letras ou números."; 
         }        
         if (tamanhoMaximo(evt,s,255) == false){
             avaliacao = "Tamanho máximo atingido.";
@@ -398,7 +398,7 @@ public class VerificacaoStrings {
     public String veiculoPlaca (KeyEvent evt, String s){
         String avaliacao = "";
         if (placa(evt) == false){
-            avaliacao = "Digite apenas letras ou números."; 
+            avaliacao = "Digite letras ou números."; 
         } else if (tamanhoValido(evt,s,7) == false){
             avaliacao = "Placa inválida.";
         } 
@@ -444,7 +444,7 @@ public class VerificacaoStrings {
             avaliacao = "Digite apenas números.";                         
         }        
         if(tamanhoMaximo(evt,s,10) == false){
-            avaliacao = "O limite de 10 dígitos foi atingido.";
+            avaliacao = "Tamanho máximo atingido.";
         }           
         return avaliacao; 
     }

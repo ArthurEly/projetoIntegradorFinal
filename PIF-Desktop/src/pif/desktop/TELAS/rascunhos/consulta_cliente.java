@@ -3,34 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pif.desktop.TELAS;
-
-import java.awt.Color;
-import java.awt.Image;
-import java.io.File;
-import java.io.IOException;
-import java.util.Timer;
-import java.util.TimerTask;
-import javax.imageio.ImageIO;
+package pif.desktop.TELAS.rascunhos;
 
 /**
  *
  * @author arthu
  */
-public class consulta_os_tela extends javax.swing.JFrame {
+public class consulta_cliente extends javax.swing.JFrame {
 
     /**
-     * Creates new form consulta_tela
+     * Creates new form consulta_cliente
      */
-    Image icon;
-    
-    public consulta_os_tela() {
+    public consulta_cliente() {
         initComponents();
-        try {
-            icon = ImageIO.read(new File("src/resources/icon.png"));           
-        } catch (IOException e) {
-            e.printStackTrace();
-        }       
     }
 
     /**
@@ -42,8 +27,7 @@ public class consulta_os_tela extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setIconImage(icon);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -57,7 +41,6 @@ public class consulta_os_tela extends javax.swing.JFrame {
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -71,26 +54,26 @@ public class consulta_os_tela extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
+                if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(consulta_os_tela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(consulta_cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(consulta_os_tela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(consulta_cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(consulta_os_tela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(consulta_cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(consulta_os_tela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(consulta_cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new consulta_os_tela().setVisible(true);
+                new consulta_cliente().setVisible(true);
             }
         });
     }

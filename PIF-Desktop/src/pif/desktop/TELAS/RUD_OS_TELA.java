@@ -9,7 +9,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Image;
-import java.awt.Rectangle;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,13 +18,14 @@ import java.util.TimerTask;
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import pif.desktop.Classes.FormatacaoStrings;
 import pif.desktop.Classes.OS;
+import pif.desktop.Classes.Orcamento;
 import pif.desktop.Classes.VerificacaoStrings;
 import pif.desktop.DAO.ClienteDAO;
+import pif.desktop.DAO.OrcamentoDAO;
 import pif.desktop.DAO.OsDAO;
-import pif.desktop.TELAS.rascunhos.rascunho_consulta_os;
+import pif.desktop.TELAS.rascunhos.consulta_os;
 
 /**
  *
@@ -33,17 +33,31 @@ import pif.desktop.TELAS.rascunhos.rascunho_consulta_os;
  */
 public class RUD_OS_TELA extends javax.swing.JFrame {
 
+    /**
+     * @return the OSs
+     */
+    public List<OS> getOSs() {
+        return OSs;
+    }
+
+    /**
+     * @return the i
+     */
+    public int getI() {
+        return i;
+    }
+
     Image icon;
     private TelaUtils u = new TelaUtils();
     private VerificacaoStrings vs = new VerificacaoStrings();
-    private FormatacaoStrings fs = new FormatacaoStrings();
-    private rascunho_consulta_os CONSULTA_TELA = new rascunho_consulta_os();
+    private FormatacaoStrings fs = new FormatacaoStrings();  
+    private List<OS> OSs = new ArrayList<>();  
+    private List<Orcamento> Orcs = new ArrayList<>();  
+    private int i;
+    
 //    private static RUD_EQUIP_TELA RUD_EQUIP = new RUD_EQUIP_TELA();
 //    private static C_EQUIP_TELA C_EQUIP = new C_EQUIP_TELA();
-//
-//    public static RUD_TEC_TELA RUD_TEC = new RUD_TEC_TELA();
-//    public static C_TEC_TELA C_TEC = new C_TEC_TELA();
-//
+
 //    public static RUD_CLIENTE_TELA RUD_CLIENTE = new RUD_CLIENTE_TELA();
 //    public static C_CLIENTE_TELA C_CLIENTE = new C_CLIENTE_TELA();
 
@@ -72,7 +86,7 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         painelSeções = new javax.swing.JPanel();
         btnIrOS = new javax.swing.JButton();
-        btnIrEquipamentos = new javax.swing.JButton();
+        btnIrVeiculo = new javax.swing.JButton();
         btnIrClientes = new javax.swing.JButton();
         painelCRUD = new javax.swing.JPanel();
         btnIrConsultaOS = new javax.swing.JButton();
@@ -116,15 +130,15 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
             }
         });
 
-        btnIrEquipamentos.setBackground(new java.awt.Color(204, 0, 0));
-        btnIrEquipamentos.setForeground(new java.awt.Color(255, 255, 255));
-        btnIrEquipamentos.setText("Equipamentos");
-        btnIrEquipamentos.setToolTipText("");
-        btnIrEquipamentos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(130, 0, 0), new java.awt.Color(130, 0, 0), new java.awt.Color(204, 0, 0), new java.awt.Color(204, 0, 0)));
-        btnIrEquipamentos.setContentAreaFilled(false);
-        btnIrEquipamentos.setFocusPainted(false);
-        btnIrEquipamentos.setOpaque(true);
-        btnIrEquipamentos.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnIrVeiculo.setBackground(new java.awt.Color(204, 0, 0));
+        btnIrVeiculo.setForeground(new java.awt.Color(255, 255, 255));
+        btnIrVeiculo.setText("Veículos");
+        btnIrVeiculo.setToolTipText("");
+        btnIrVeiculo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(130, 0, 0), new java.awt.Color(130, 0, 0), new java.awt.Color(204, 0, 0), new java.awt.Color(204, 0, 0)));
+        btnIrVeiculo.setContentAreaFilled(false);
+        btnIrVeiculo.setFocusPainted(false);
+        btnIrVeiculo.setOpaque(true);
+        btnIrVeiculo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 irCadastroEquip(evt);
             }
@@ -149,11 +163,11 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
             painelSeçõesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelSeçõesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnIrOS, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
+                .addComponent(btnIrOS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(btnIrEquipamentos, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
+                .addComponent(btnIrVeiculo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(btnIrClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE)
+                .addComponent(btnIrClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         painelSeçõesLayout.setVerticalGroup(
@@ -162,7 +176,7 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addGroup(painelSeçõesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnIrOS, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnIrEquipamentos, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnIrVeiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnIrClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10))
         );
@@ -429,9 +443,10 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
 
     private void consultarOs(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_consultarOs
         btnClicado(evt);
-        try {
+//        try {
             String campo = "";
             String valor = "";
+            boolean numOS = false;
             if (vazioForm()){
                 txtErroConsulta.setForeground(Color.RED);
                 txtErroConsulta.setText("Preencha os campos.");   
@@ -446,63 +461,75 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
                                 
                             } else {
                                 campo = "cliente_cpf_ou_cnpj";     
-                                valor = campoCpfOuCnpj.getText();
+                                valor = fs.retirarCpfOuCnpj(campoCpfOuCnpj.getText());
                             }
                         }                        
                     }else if(campoPlaca.isEnabled()){
                         campo = "veiculo_placa";
-                        valor = campoPlaca.getText();
+                        valor = "'"+campoPlaca.getText()+"'";                       
                     }else if(campoNumeroOS.isEnabled()){
                         campo = "os_numero";
                         valor = campoNumeroOS.getText();
+                        numOS = true;
                     }
-                    if ("".equals(valor) || "".equals(campo)){
+                    valor = fs.retirarFormatacao(valor);
+                    OsDAO osDao = new OsDAO();                       
+                    OSs = osDao.consultaOs(campo, valor); 
+                    if (OSs.size() == 0){
                         txtErroConsulta.setForeground(Color.RED);
-                        txtErroConsulta.setText("Não há cadastro com esses dados.");
-                    } else {
-                        valor = fs.retirarFormatacao(valor);
-                        OsDAO osDao = new OsDAO();
-                        List<OS> OSs = new ArrayList<OS>();
-                        OSs = osDao.consultaOs(campo, valor);
-                        //<editor-fold defaultstate="collapsed" desc="Tela">
-                        consulta_os_tela consultaTelaOs = new consulta_os_tela();
-                        JPanel jPai = new JPanel();
-                        jPai.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 40, 0)), "Escolha o número de OS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
-                        consultaTelaOs.setLayout(new GridLayout(1,1));                                                                                
-                        for(int i=0; i<=OSs.size()-1;i++){
-                            OS os = new OS();
-                            os =OSs.get(i);
-                            JButton butao = new JButton();
-                            butao.setBackground(new java.awt.Color(204, 0, 0));
-                            butao.setForeground(new java.awt.Color(255, 255, 255));
-                            butao.setPreferredSize(new Dimension(100, 30));
-                            butao.setText(os.getOsNumero());
-                            butao.setName(os.getOsNumero());
-                            butao.setFocusable(false);
-                            butao.setToolTipText("");
-                            butao.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(130, 0, 0), new java.awt.Color(130, 0, 0), new java.awt.Color(204, 0, 0), new java.awt.Color(204, 0, 0)));
-                            butao.setContentAreaFilled(false);
-                            butao.setOpaque(true);
-                            butao.addMouseListener(new java.awt.event.MouseAdapter() {
-                                        @Override
-                                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                                            btnClicado(evt);
-                                            mudarTela(evt);
-                                        }
-                                    });
-                            jPai.add(butao);
-                        } 
-                        consultaTelaOs.add(jPai);
-                        consultaTelaOs.setLocationRelativeTo(null);
-                        consultaTelaOs.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-                        consultaTelaOs.setVisible(true);
-                        //</editor-fold>
-                    }                                      
+                        txtErroConsulta.setText("Ordem de serviço inexistente."); 
+                    } else{
+                        if(OSs.size() == 1){
+                            OrcamentoDAO orcDao = new OrcamentoDAO();                        
+                            Orcs = orcDao.consultarOrcamento(OSs.get(0).getOsNumero());    
+                            System.out.println("1");
+                            consulta_os CONSULTA_TELA = new consulta_os(OSs.get(0),Orcs);
+                            System.out.println("2");
+                            u.irDeParaDiferenciado(this, CONSULTA_TELA,1350,800);
+                            System.out.println("3");
+                        }
+                        else{
+                            //<editor-fold defaultstate="collapsed" desc="Tela">
+                            consulta_os_tela consultaTelaOs = new consulta_os_tela();
+                            JPanel jPai = new JPanel();
+                            jPai.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 40, 0)), "Escolha o número de OS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+                            consultaTelaOs.setLayout(new GridLayout(1,1));                                                                                
+                            for(int i=0; i<=getOSs().size()-1;i++){
+                                OS os;
+                                os = getOSs().get(i);
+                                JButton butao = new JButton();
+                                butao.setForeground(new java.awt.Color(255, 255, 255));
+                                butao.setBackground(new java.awt.Color(204, 0, 0));  
+                                butao.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(130, 0, 0), new java.awt.Color(130, 0, 0), new java.awt.Color(204, 0, 0), new java.awt.Color(204, 0, 0)));                             
+                                butao.setPreferredSize(new Dimension(100, 30));
+                                butao.setText(os.getOsNumero());
+                                butao.setName(String.valueOf(i));
+                                butao.setFocusable(false);
+                                butao.setToolTipText("");                                
+                                butao.setContentAreaFilled(false);
+                                butao.setOpaque(true);
+                                butao.addMouseListener(new java.awt.event.MouseAdapter() {
+                                            @Override
+                                            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                                                btnClicado(evt);
+                                                mudarTela(evt);
+                                            }
+                                        });
+                                jPai.add(butao);
+                            } 
+                            consultaTelaOs.add(jPai);
+                            consultaTelaOs.setLocationRelativeTo(null);
+                            consultaTelaOs.setIconImage(icon);
+                            consultaTelaOs.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+                            consultaTelaOs.setVisible(true);
+                            //</editor-fold>
+                        }
+                    }
                 }  
             }                        
-        }catch(Exception e){
-            System.out.println("Erro aca: "+e);
-        }   
+//        }catch(Exception e){
+//            System.out.println("Erro aca: "+e);
+//        }   
     }//GEN-LAST:event_consultarOs
 
     private void limparCampos(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_limparCampos
@@ -512,7 +539,8 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
         campoPlaca.setEnabled(true);
         campoNumeroOS.setEnabled(true);
     }//GEN-LAST:event_limparCampos
-
+    
+    //<editor-fold defaultstate="collapsed" desc="métodos teclados">
     private void tecladaNumOs(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaNumOs
         if (vs.numeroOS(evt, campoNumeroOS.getText()) == ""){
             txtErroConsulta.setForeground(new Color(240,240,240));           
@@ -550,6 +578,9 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
             campoNumeroOS.setEnabled(true);
             campoCpfOuCnpj.setEnabled(true);
         }
+        
+        String txt = fs.placa(campoPlaca.getText());
+        campoPlaca.setText(txt);
     }//GEN-LAST:event_tecladaPlaca
 
     private void tecladaCpf(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaCpf
@@ -570,7 +601,8 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
         String txt = fs.cpfOuCnpj(evt, campoCpfOuCnpj.getText());
         campoCpfOuCnpj.setText(txt);       
     }//GEN-LAST:event_tecladaCpf
-
+    //</editor-fold>
+    
     private void desabilitarCampos(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_desabilitarCampos
         if (evt.getComponent().getName().equals("cpfnj")){
             if (campoCpfOuCnpj.getText().length() >=1 && !"".equals(campoCpfOuCnpj.getText())){
@@ -621,12 +653,13 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                C_OS_TELA.getRUD_OS().setVisible(true);
+                RUD_OS_TELA ss = new RUD_OS_TELA();
+                ss.setVisible(true);                            
             }
         });       
     }
     
-    //<editor-fold defaultstate="collapsed" desc="Coisas javax">
+    //<editor-fold defaultstate="collapsed" desc="Coisas do javax">
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel RcpfOuCnpj;
     private javax.swing.JLabel RnumOs;
@@ -635,8 +668,8 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
     private javax.swing.JButton btnIrCadastroOS;
     private javax.swing.JButton btnIrClientes;
     private javax.swing.JButton btnIrConsultaOS;
-    private javax.swing.JButton btnIrEquipamentos;
     private javax.swing.JButton btnIrOS;
+    private javax.swing.JButton btnIrVeiculo;
     private javax.swing.JButton btnLimparCampos;
     private javax.swing.JTextField campoCpfOuCnpj;
     private javax.swing.JTextField campoNumeroOS;
@@ -658,9 +691,7 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
         /*
             MÉTODO RESPONSÁVEL POR MUDAR A COR DE FUNDO DO BOTAO QUANDO FOR CLICADO
         */
-        //muda a cor de fundo
         evt.getComponent().setBackground(new Color(100,0,0));
-        //apos algum tempo, retorna a cor de fundo que tava
         new Timer().schedule(
             new TimerTask(){
                 @Override
@@ -670,9 +701,12 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
         }, 50);
     }
     
-    private void mudarTela(java.awt.event.MouseEvent evt){
-        u.irDeParaDiferenciado(this, CONSULTA_TELA);
-        //muda a cor de fundo
+    private void mudarTela(java.awt.event.MouseEvent evt){         
+        i = Integer.parseInt(evt.getComponent().getName());  
+        OrcamentoDAO orcDao = new OrcamentoDAO();                          
+        Orcs = orcDao.consultarOrcamento(OSs.get(i).getOsNumero());                          
+        consulta_os CONSULTA_TELA = new consulta_os(OSs.get(i),Orcs);
+        u.irDeParaDiferenciado(this, CONSULTA_TELA,1350,800);
     }
  
     private void limparCampos(){

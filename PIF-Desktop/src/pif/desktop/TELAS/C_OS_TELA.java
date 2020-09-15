@@ -18,10 +18,10 @@ import pif.desktop.Classes.Contato;
 import pif.desktop.Classes.Veiculo;
 import pif.desktop.Classes.FormatacaoStrings;
 import pif.desktop.Classes.OS;
+import pif.desktop.Classes.Orcamento;
 import pif.desktop.Classes.VerificacaoStrings;
 import pif.desktop.DAO.CadastroDAO;
 import pif.desktop.DAO.ClienteDAO;
-import pif.desktop.DAO.Conexao;
 import pif.desktop.DAO.OsDAO;
 
 /**
@@ -29,6 +29,20 @@ import pif.desktop.DAO.OsDAO;
  * @author arthu
  */
 public class C_OS_TELA extends javax.swing.JFrame {
+
+    /**
+     * @param aRUD_OS the RUD_OS to set
+     */
+    public static void setRUD_OS(RUD_OS_TELA aRUD_OS) {
+        RUD_OS = aRUD_OS;
+    }
+
+    /**
+     * @param aC_OS the C_OS to set
+     */
+    public static void setC_OS(C_OS_TELA aC_OS) {
+        C_OS = aC_OS;
+    }
 
     /**
      * @return the id
@@ -75,6 +89,7 @@ public class C_OS_TELA extends javax.swing.JFrame {
     Image icon;
     private static int idDoUser;
     private TelaUtils u = new TelaUtils();
+    private boolean rudAberto;
     private static RUD_OS_TELA RUD_OS = new RUD_OS_TELA();
     private static C_OS_TELA C_OS = new C_OS_TELA();
     private FormatacaoStrings fs = new FormatacaoStrings();
@@ -115,7 +130,7 @@ public class C_OS_TELA extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         painelSeções = new javax.swing.JPanel();
         btnIrOS = new javax.swing.JButton();
-        btnIrEquipamentos = new javax.swing.JButton();
+        btnIrVeículos = new javax.swing.JButton();
         btnIrClientes = new javax.swing.JButton();
         painelCRUD = new javax.swing.JPanel();
         btnIrConsultaOS = new javax.swing.JButton();
@@ -181,37 +196,49 @@ public class C_OS_TELA extends javax.swing.JFrame {
         btnCadastrar = new javax.swing.JButton();
         btnLimparCampos = new javax.swing.JButton();
         campoPrevisaoSaida = new javax.swing.JTextField();
-        titleOrcamentoAtual = new javax.swing.JLabel();
-        campoOrcamentoAtual = new javax.swing.JTextField();
+        painelOrcamento = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        titlePrecoPeca = new javax.swing.JLabel();
+        campoPrecoPeca = new javax.swing.JTextField();
         cifrao = new javax.swing.JLabel();
-        txtAguardando = new javax.swing.JLabel();
+        titleDescricaoPeca = new javax.swing.JLabel();
+        campoDescricaoPeca = new javax.swing.JTextField();
+        jPanel7 = new javax.swing.JPanel();
+        titlePrecoServico = new javax.swing.JLabel();
+        campoPrecoServico = new javax.swing.JTextField();
+        cifrao2 = new javax.swing.JLabel();
+        titleDescricaoServico = new javax.swing.JLabel();
+        campoDescricaoServico = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         txtErroPrevisaoSaida = new javax.swing.JLabel();
         txtErroLogradNum = new javax.swing.JLabel();
         txtErroEstado = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        txtErroOrcamento = new javax.swing.JLabel();
-        txtErroVeiculoObservacoes = new javax.swing.JLabel();
-        txtErroVeiculoDefeitoCliente = new javax.swing.JLabel();
-        txtErroVeiculoAcessorios = new javax.swing.JLabel();
-        txtErroVeiculoPlaca = new javax.swing.JLabel();
-        txtErroVeiculoModelo = new javax.swing.JLabel();
-        txtErroVeiculoFabricante = new javax.swing.JLabel();
-        txtErroVeiculoTipo = new javax.swing.JLabel();
+        txtErroCpfOuCnpj = new javax.swing.JLabel();
+        txtErroRgOuIe = new javax.swing.JLabel();
+        txtErroNomeOuRazao = new javax.swing.JLabel();
+        txtErroSobrenomeOuFantasia = new javax.swing.JLabel();
+        txtErroEmail = new javax.swing.JLabel();
+        txtErroNumTel1 = new javax.swing.JLabel();
+        txtErroNumTel2 = new javax.swing.JLabel();
+        txtErroCep = new javax.swing.JLabel();
+        txtErroCidade = new javax.swing.JLabel();
+        txtErroBairro = new javax.swing.JLabel();
         txtErroLogradComp = new javax.swing.JLabel();
         txtErroLograd = new javax.swing.JLabel();
-        txtErroBairro = new javax.swing.JLabel();
-        txtErroCidade = new javax.swing.JLabel();
-        txtErroCep = new javax.swing.JLabel();
-        txtErroNumTel2 = new javax.swing.JLabel();
-        txtErroNumTel1 = new javax.swing.JLabel();
-        txtErroEmail = new javax.swing.JLabel();
-        txtErroSobrenomeOuFantasia = new javax.swing.JLabel();
-        txtErroNomeOuRazao = new javax.swing.JLabel();
-        txtErroRgOuIe = new javax.swing.JLabel();
-        txtErroCpfOuCnpj = new javax.swing.JLabel();
+        txtErroVeiculoTipo = new javax.swing.JLabel();
+        txtErroVeiculoFabricante = new javax.swing.JLabel();
+        txtErroVeiculoModelo = new javax.swing.JLabel();
+        txtErroVeiculoPlaca = new javax.swing.JLabel();
         txtErroVeiculoCor = new javax.swing.JLabel();
+        txtErroVeiculoAcessorios = new javax.swing.JLabel();
         txtErroVeiculoAno = new javax.swing.JLabel();
+        txtErroVeiculoObservacoes = new javax.swing.JLabel();
+        txtErroVeiculoDefeitoCliente = new javax.swing.JLabel();
+        txtErroDescricaoPeca = new javax.swing.JLabel();
+        txtErroPrecoPeca = new javax.swing.JLabel();
+        txtErroPrecoServico = new javax.swing.JLabel();
+        txtErroDescricaoServico = new javax.swing.JLabel();
         txtErroCadastrar = new javax.swing.JLabel();
 
         jTextArea1.setColumns(20);
@@ -220,6 +247,8 @@ public class C_OS_TELA extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setFocusCycleRoot(false);
         setIconImage(icon);
         setMinimumSize(new java.awt.Dimension(800, 600));
 
@@ -238,15 +267,15 @@ public class C_OS_TELA extends javax.swing.JFrame {
             }
         });
 
-        btnIrEquipamentos.setBackground(new java.awt.Color(204, 0, 0));
-        btnIrEquipamentos.setForeground(new java.awt.Color(255, 255, 255));
-        btnIrEquipamentos.setText("Equipamentos");
-        btnIrEquipamentos.setToolTipText("");
-        btnIrEquipamentos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(130, 0, 0), new java.awt.Color(130, 0, 0), new java.awt.Color(204, 0, 0), new java.awt.Color(204, 0, 0)));
-        btnIrEquipamentos.setContentAreaFilled(false);
-        btnIrEquipamentos.setFocusPainted(false);
-        btnIrEquipamentos.setOpaque(true);
-        btnIrEquipamentos.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnIrVeículos.setBackground(new java.awt.Color(204, 0, 0));
+        btnIrVeículos.setForeground(new java.awt.Color(255, 255, 255));
+        btnIrVeículos.setText("Veículos");
+        btnIrVeículos.setToolTipText("");
+        btnIrVeículos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(130, 0, 0), new java.awt.Color(130, 0, 0), new java.awt.Color(204, 0, 0), new java.awt.Color(204, 0, 0)));
+        btnIrVeículos.setContentAreaFilled(false);
+        btnIrVeículos.setFocusPainted(false);
+        btnIrVeículos.setOpaque(true);
+        btnIrVeículos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 irCadastroEquip(evt);
             }
@@ -273,7 +302,7 @@ public class C_OS_TELA extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(btnIrOS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(btnIrEquipamentos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnIrVeículos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(btnIrClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -284,7 +313,7 @@ public class C_OS_TELA extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addGroup(painelSeçõesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnIrOS, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnIrEquipamentos, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnIrVeículos, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnIrClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10))
         );
@@ -899,24 +928,160 @@ public class C_OS_TELA extends javax.swing.JFrame {
             }
         });
 
-        titleOrcamentoAtual.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        titleOrcamentoAtual.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleOrcamentoAtual.setText("Orçamento atual:");
+        painelOrcamento.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 40, 40)), "Orçamento", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
-        campoOrcamentoAtual.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        campoOrcamentoAtual.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        campoOrcamentoAtual.setName("orcamento"); // NOI18N
-        campoOrcamentoAtual.addKeyListener(new java.awt.event.KeyAdapter() {
+        jPanel6.setBackground(new java.awt.Color(220, 220, 220));
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Peças", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+
+        titlePrecoPeca.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        titlePrecoPeca.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titlePrecoPeca.setText("Preço da peça:");
+
+        campoPrecoPeca.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        campoPrecoPeca.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        campoPrecoPeca.setName("orcamento"); // NOI18N
+        campoPrecoPeca.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                tecladaOrcamento(evt);
+                tecladaPrecoPeca(evt);
             }
         });
 
         cifrao.setText("R$");
 
-        txtAguardando.setForeground(new java.awt.Color(240, 240, 240));
-        txtAguardando.setText("j");
-        txtAguardando.setToolTipText("");
+        titleDescricaoPeca.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        titleDescricaoPeca.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleDescricaoPeca.setText("Descrição da peça:");
+
+        campoDescricaoPeca.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        campoDescricaoPeca.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        campoDescricaoPeca.setName("orcamento"); // NOI18N
+        campoDescricaoPeca.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tecladaDescricaoPecas(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(titlePrecoPeca)
+                        .addGap(32, 32, 32)
+                        .addComponent(cifrao)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(campoPrecoPeca, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(titleDescricaoPeca)
+                        .addGap(29, 29, 29)
+                        .addComponent(campoDescricaoPeca)))
+                .addContainerGap())
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(titlePrecoPeca)
+                    .addComponent(campoPrecoPeca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cifrao))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(titleDescricaoPeca)
+                    .addComponent(campoDescricaoPeca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel7.setBackground(new java.awt.Color(220, 220, 220));
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Serviços", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+
+        titlePrecoServico.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        titlePrecoServico.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titlePrecoServico.setText("Preço do serviço:");
+
+        campoPrecoServico.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        campoPrecoServico.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        campoPrecoServico.setName("orcamento"); // NOI18N
+        campoPrecoServico.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tecladaPrecoServico(evt);
+            }
+        });
+
+        cifrao2.setText("R$");
+
+        titleDescricaoServico.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        titleDescricaoServico.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleDescricaoServico.setText("Descrição da serviço:");
+
+        campoDescricaoServico.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        campoDescricaoServico.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        campoDescricaoServico.setName("orcamento"); // NOI18N
+        campoDescricaoServico.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tecladaDescricaoServico(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(titlePrecoServico)
+                    .addComponent(titleDescricaoServico))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(cifrao2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(campoPrecoServico, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(campoDescricaoServico)))
+                .addGap(17, 17, 17))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(titlePrecoServico)
+                    .addComponent(campoPrecoServico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cifrao2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(titleDescricaoServico)
+                    .addComponent(campoDescricaoServico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout painelOrcamentoLayout = new javax.swing.GroupLayout(painelOrcamento);
+        painelOrcamento.setLayout(painelOrcamentoLayout);
+        painelOrcamentoLayout.setHorizontalGroup(
+            painelOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelOrcamentoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(painelOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        painelOrcamentoLayout.setVerticalGroup(
+            painelOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelOrcamentoLayout.createSequentialGroup()
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout painelDoFormularioLayout = new javax.swing.GroupLayout(painelDoFormulario);
         painelDoFormulario.setLayout(painelDoFormularioLayout);
@@ -924,28 +1089,27 @@ public class C_OS_TELA extends javax.swing.JFrame {
             painelDoFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelDoFormularioLayout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addGroup(painelDoFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(painelDoFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(painelDoFormularioLayout.createSequentialGroup()
-                            .addComponent(titleSobrenomeOuFantasia)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(campoSobrenomeOuFantasia, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelDoFormularioLayout.createSequentialGroup()
-                            .addGroup(painelDoFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(titleNomeOuRazao)
-                                .addComponent(titleRgOuIe)
-                                .addComponent(titleCpfOuCnpj))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(painelDoFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(campoNomeOuRazao, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(painelDoFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(campoCpfOuCnpj, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                                    .addComponent(campoRgOuIe, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                                    .addComponent(txtAguardando, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                .addGroup(painelDoFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(painelDoFormularioLayout.createSequentialGroup()
+                        .addComponent(titleSobrenomeOuFantasia)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(campoSobrenomeOuFantasia, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelDoFormularioLayout.createSequentialGroup()
+                        .addGroup(painelDoFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(titleNomeOuRazao)
+                            .addComponent(titleRgOuIe)
+                            .addComponent(titleCpfOuCnpj))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(painelDoFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(campoNomeOuRazao, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(painelDoFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(campoCpfOuCnpj, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                .addComponent(campoRgOuIe, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))))
                     .addGroup(painelDoFormularioLayout.createSequentialGroup()
                         .addComponent(titleNumeroOS)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNumeroOS, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtNumeroOS, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(128, 128, 128)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelDoFormularioLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
@@ -961,29 +1125,22 @@ public class C_OS_TELA extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelDoFormularioLayout.createSequentialGroup()
                         .addComponent(titlePrevisaoSaida)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(campoPrevisaoSaida, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(titleOrcamentoAtual)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cifrao)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(campoOrcamentoAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(campoPrevisaoSaida, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(painelOrcamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(19, 19, 19))
         );
         painelDoFormularioLayout.setVerticalGroup(
             painelDoFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelDoFormularioLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addGap(28, 28, 28)
                 .addGroup(painelDoFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(titleNumeroOS)
                     .addComponent(txtNumeroOS))
-                .addGap(24, 24, 24)
+                .addGap(27, 27, 27)
                 .addGroup(painelDoFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(titleCpfOuCnpj)
                     .addComponent(campoCpfOuCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(2, 2, 2)
-                .addComponent(txtAguardando)
-                .addGap(2, 2, 2)
+                .addGap(18, 18, 18)
                 .addGroup(painelDoFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(titleRgOuIe)
                     .addComponent(campoRgOuIe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1004,20 +1161,22 @@ public class C_OS_TELA extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(painelDoFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(titlePrevisaoSaida)
-                    .addComponent(campoPrevisaoSaida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(titleOrcamentoAtual)
-                    .addComponent(campoOrcamentoAtual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cifrao))
+                    .addComponent(campoPrevisaoSaida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addComponent(painelOrcamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addGroup(painelDoFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnLimparCampos, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
+        jPanel1.setMaximumSize(new java.awt.Dimension(302, 827));
+        jPanel1.setMinimumSize(new java.awt.Dimension(302, 827));
+
         txtErroPrevisaoSaida.setForeground(new java.awt.Color(240, 240, 240));
         txtErroPrevisaoSaida.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtErroPrevisaoSaida.setText("jLabel1");
+        txtErroPrevisaoSaida.setText("Jbalekkk");
 
         txtErroLogradNum.setForeground(new java.awt.Color(240, 240, 240));
         txtErroLogradNum.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -1031,116 +1190,101 @@ public class C_OS_TELA extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtErroLogradNum, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtErroEstado, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
-                    .addComponent(txtErroPrevisaoSaida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtErroPrevisaoSaida, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtErroLogradNum, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtErroEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtErroEstado)
-                .addGap(76, 76, 76)
-                .addComponent(txtErroLogradNum)
-                .addGap(622, 622, 622)
-                .addComponent(txtErroPrevisaoSaida)
-                .addGap(69, 69, 69))
+                .addComponent(txtErroEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(88, 88, 88)
+                .addComponent(txtErroLogradNum, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(534, 534, 534)
+                .addComponent(txtErroPrevisaoSaida, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(306, 306, 306))
         );
 
-        txtErroOrcamento.setForeground(new java.awt.Color(240, 240, 240));
-        txtErroOrcamento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtErroOrcamento.setText("jLabel1");
-
-        txtErroVeiculoObservacoes.setForeground(new java.awt.Color(240, 240, 240));
-        txtErroVeiculoObservacoes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtErroVeiculoObservacoes.setText("jLabel1");
-
-        txtErroVeiculoDefeitoCliente.setForeground(new java.awt.Color(240, 240, 240));
-        txtErroVeiculoDefeitoCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtErroVeiculoDefeitoCliente.setText("jLabel1");
-
-        txtErroVeiculoAcessorios.setForeground(new java.awt.Color(240, 240, 240));
-        txtErroVeiculoAcessorios.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtErroVeiculoAcessorios.setText("jLabel1");
-
-        txtErroVeiculoPlaca.setForeground(new java.awt.Color(240, 240, 240));
-        txtErroVeiculoPlaca.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtErroVeiculoPlaca.setText("jLabel1");
-
-        txtErroVeiculoModelo.setForeground(new java.awt.Color(240, 240, 240));
-        txtErroVeiculoModelo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtErroVeiculoModelo.setText("jLabel1");
-
-        txtErroVeiculoFabricante.setForeground(new java.awt.Color(240, 240, 240));
-        txtErroVeiculoFabricante.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtErroVeiculoFabricante.setText("jLabel1");
-
-        txtErroVeiculoTipo.setForeground(new java.awt.Color(240, 240, 240));
-        txtErroVeiculoTipo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtErroVeiculoTipo.setText("jLabel1");
-
-        txtErroLogradComp.setForeground(new java.awt.Color(240, 240, 240));
-        txtErroLogradComp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtErroLogradComp.setText("jLabel1");
-
-        txtErroLograd.setForeground(new java.awt.Color(240, 240, 240));
-        txtErroLograd.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtErroLograd.setText("jLabel1");
-
-        txtErroBairro.setForeground(new java.awt.Color(240, 240, 240));
-        txtErroBairro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtErroBairro.setText("jLabel1");
-
-        txtErroCidade.setForeground(new java.awt.Color(240, 240, 240));
-        txtErroCidade.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtErroCidade.setText("jLabel1");
-
-        txtErroCep.setForeground(new java.awt.Color(240, 240, 240));
-        txtErroCep.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtErroCep.setText("jLabel1");
-
-        txtErroNumTel2.setForeground(new java.awt.Color(240, 240, 240));
-        txtErroNumTel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtErroNumTel2.setText("jLabel1");
-
-        txtErroNumTel1.setForeground(new java.awt.Color(240, 240, 240));
-        txtErroNumTel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtErroNumTel1.setText("jLabel1");
-
-        txtErroEmail.setForeground(new java.awt.Color(240, 240, 240));
-        txtErroEmail.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtErroEmail.setText("jLabel1");
-
-        txtErroSobrenomeOuFantasia.setForeground(new java.awt.Color(240, 240, 240));
-        txtErroSobrenomeOuFantasia.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtErroSobrenomeOuFantasia.setText("jLabel1");
-
-        txtErroNomeOuRazao.setForeground(new java.awt.Color(240, 240, 240));
-        txtErroNomeOuRazao.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtErroNomeOuRazao.setText("jLabel1");
+        txtErroCpfOuCnpj.setForeground(new java.awt.Color(240, 240, 240));
+        txtErroCpfOuCnpj.setText("Digite letras ou números.");
 
         txtErroRgOuIe.setForeground(new java.awt.Color(240, 240, 240));
-        txtErroRgOuIe.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtErroRgOuIe.setText("jLabel1");
+        txtErroRgOuIe.setText("Digite letras ou números.");
 
-        txtErroCpfOuCnpj.setForeground(new java.awt.Color(240, 240, 240));
-        txtErroCpfOuCnpj.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtErroCpfOuCnpj.setText("jLabel1");
+        txtErroNomeOuRazao.setForeground(new java.awt.Color(240, 240, 240));
+        txtErroNomeOuRazao.setText("Digite letras ou números.");
+
+        txtErroSobrenomeOuFantasia.setForeground(new java.awt.Color(240, 240, 240));
+        txtErroSobrenomeOuFantasia.setText("Digite letras ou números.");
+
+        txtErroEmail.setForeground(new java.awt.Color(240, 240, 240));
+        txtErroEmail.setText("Digite letras ou números.");
+
+        txtErroNumTel1.setForeground(new java.awt.Color(240, 240, 240));
+        txtErroNumTel1.setText("Digite letras ou números.");
+
+        txtErroNumTel2.setForeground(new java.awt.Color(240, 240, 240));
+        txtErroNumTel2.setText("Digite letras ou números.");
+
+        txtErroCep.setForeground(new java.awt.Color(240, 240, 240));
+        txtErroCep.setText("Digite letras ou números.");
+
+        txtErroCidade.setForeground(new java.awt.Color(240, 240, 240));
+        txtErroCidade.setText("Digite letras ou números.");
+
+        txtErroBairro.setForeground(new java.awt.Color(240, 240, 240));
+        txtErroBairro.setText("Digite letras ou números.");
+
+        txtErroLogradComp.setForeground(new java.awt.Color(240, 240, 240));
+        txtErroLogradComp.setText("Digite letras ou números.");
+
+        txtErroLograd.setForeground(new java.awt.Color(240, 240, 240));
+        txtErroLograd.setText("Digite letras ou números.");
+
+        txtErroVeiculoTipo.setForeground(new java.awt.Color(240, 240, 240));
+        txtErroVeiculoTipo.setText("Digite letras ou números.");
+
+        txtErroVeiculoFabricante.setForeground(new java.awt.Color(240, 240, 240));
+        txtErroVeiculoFabricante.setText("Digite letras ou números.");
+
+        txtErroVeiculoModelo.setForeground(new java.awt.Color(240, 240, 240));
+        txtErroVeiculoModelo.setText("Digite letras ou números.");
+
+        txtErroVeiculoPlaca.setForeground(new java.awt.Color(240, 240, 240));
+        txtErroVeiculoPlaca.setText("Digite letras ou números.");
 
         txtErroVeiculoCor.setForeground(new java.awt.Color(240, 240, 240));
-        txtErroVeiculoCor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtErroVeiculoCor.setText("jLabel1");
+        txtErroVeiculoCor.setText("Digite letras ou números.");
+
+        txtErroVeiculoAcessorios.setForeground(new java.awt.Color(240, 240, 240));
+        txtErroVeiculoAcessorios.setText("Digite letras ou números.");
 
         txtErroVeiculoAno.setForeground(new java.awt.Color(240, 240, 240));
-        txtErroVeiculoAno.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtErroVeiculoAno.setText("jLabel1");
+        txtErroVeiculoAno.setText("Digite letras ou números.");
+
+        txtErroVeiculoObservacoes.setForeground(new java.awt.Color(240, 240, 240));
+        txtErroVeiculoObservacoes.setText("Digite letras ou números.");
+
+        txtErroVeiculoDefeitoCliente.setForeground(new java.awt.Color(240, 240, 240));
+        txtErroVeiculoDefeitoCliente.setText("Digite letras ou números.");
+
+        txtErroDescricaoPeca.setForeground(new java.awt.Color(240, 240, 240));
+        txtErroDescricaoPeca.setText("Digite letras ou números.");
+
+        txtErroPrecoPeca.setForeground(new java.awt.Color(240, 240, 240));
+        txtErroPrecoPeca.setText("Digite letras ou números.");
+
+        txtErroPrecoServico.setForeground(new java.awt.Color(240, 240, 240));
+        txtErroPrecoServico.setText("Digite letras ou números.");
+
+        txtErroDescricaoServico.setForeground(new java.awt.Color(240, 240, 240));
+        txtErroDescricaoServico.setText("Digite letras ou números.");
 
         txtErroCadastrar.setForeground(new java.awt.Color(240, 240, 240));
-        txtErroCadastrar.setText("jLabel2");
+        txtErroCadastrar.setText("Digite letras ou números.");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -1149,49 +1293,62 @@ public class C_OS_TELA extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtErroNomeOuRazao, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
-                    .addComponent(txtErroVeiculoPlaca, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtErroVeiculoAcessorios, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtErroRgOuIe, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtErroVeiculoDefeitoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtErroEmail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtErroNumTel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtErroNumTel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtErroSobrenomeOuFantasia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtErroCpfOuCnpj, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtErroCep, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtErroVeiculoTipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtErroVeiculoFabricante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtErroVeiculoModelo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtErroVeiculoCor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtErroVeiculoAno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtErroLograd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtErroLogradComp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtErroBairro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtErroCidade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtErroCadastrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtErroOrcamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtErroVeiculoObservacoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtErroRgOuIe)
+                                    .addComponent(txtErroCpfOuCnpj)
+                                    .addComponent(txtErroNomeOuRazao)
+                                    .addComponent(txtErroSobrenomeOuFantasia)
+                                    .addComponent(txtErroEmail)
+                                    .addComponent(txtErroNumTel1)
+                                    .addComponent(txtErroNumTel2)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtErroCep)
+                                        .addComponent(txtErroCidade)
+                                        .addComponent(txtErroBairro)))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtErroLograd)
+                                    .addComponent(txtErroLogradComp)))
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtErroVeiculoTipo)
+                                .addComponent(txtErroVeiculoFabricante)
+                                .addComponent(txtErroVeiculoModelo)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtErroVeiculoPlaca)
+                                    .addComponent(txtErroVeiculoCor)))
+                            .addComponent(txtErroVeiculoAno)
+                            .addComponent(txtErroVeiculoAcessorios)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtErroVeiculoDefeitoCliente)
+                                .addComponent(txtErroVeiculoObservacoes)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtErroPrecoPeca)
+                            .addComponent(txtErroDescricaoPeca)))
+                    .addComponent(txtErroPrecoServico)
+                    .addComponent(txtErroDescricaoServico)
+                    .addComponent(txtErroCadastrar))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(56, 56, 56)
+                .addContainerGap()
                 .addComponent(txtErroCpfOuCnpj)
-                .addGap(26, 26, 26)
+                .addGap(30, 30, 30)
                 .addComponent(txtErroRgOuIe)
-                .addGap(26, 26, 26)
+                .addGap(25, 25, 25)
                 .addComponent(txtErroNomeOuRazao)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(23, 23, 23)
                 .addComponent(txtErroSobrenomeOuFantasia)
-                .addGap(37, 37, 37)
+                .addGap(38, 38, 38)
                 .addComponent(txtErroEmail)
                 .addGap(18, 18, 18)
                 .addComponent(txtErroNumTel1)
                 .addGap(18, 18, 18)
                 .addComponent(txtErroNumTel2)
-                .addGap(18, 18, 18)
+                .addGap(49, 49, 49)
                 .addComponent(txtErroCep)
                 .addGap(18, 18, 18)
                 .addComponent(txtErroCidade)
@@ -1199,31 +1356,37 @@ public class C_OS_TELA extends javax.swing.JFrame {
                 .addComponent(txtErroBairro)
                 .addGap(18, 18, 18)
                 .addComponent(txtErroLograd)
-                .addGap(18, 18, 18)
+                .addGap(21, 21, 21)
                 .addComponent(txtErroLogradComp)
-                .addGap(58, 58, 58)
+                .addGap(40, 40, 40)
                 .addComponent(txtErroVeiculoTipo)
-                .addGap(10, 10, 10)
+                .addGap(18, 18, 18)
                 .addComponent(txtErroVeiculoFabricante)
-                .addGap(10, 10, 10)
+                .addGap(18, 18, 18)
                 .addComponent(txtErroVeiculoModelo)
-                .addGap(10, 10, 10)
+                .addGap(18, 18, 18)
                 .addComponent(txtErroVeiculoPlaca)
-                .addGap(10, 10, 10)
+                .addGap(18, 18, 18)
                 .addComponent(txtErroVeiculoCor)
-                .addGap(10, 10, 10)
+                .addGap(18, 18, 18)
                 .addComponent(txtErroVeiculoAno)
-                .addGap(10, 10, 10)
+                .addGap(18, 18, 18)
                 .addComponent(txtErroVeiculoAcessorios)
-                .addGap(63, 63, 63)
+                .addGap(82, 82, 82)
                 .addComponent(txtErroVeiculoDefeitoCliente)
-                .addGap(97, 97, 97)
+                .addGap(112, 112, 112)
                 .addComponent(txtErroVeiculoObservacoes)
-                .addGap(55, 55, 55)
-                .addComponent(txtErroOrcamento)
-                .addGap(61, 61, 61)
+                .addGap(167, 167, 167)
+                .addComponent(txtErroPrecoPeca)
+                .addGap(18, 18, 18)
+                .addComponent(txtErroDescricaoPeca)
+                .addGap(65, 65, 65)
+                .addComponent(txtErroPrecoServico)
+                .addGap(18, 18, 18)
+                .addComponent(txtErroDescricaoServico)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addComponent(txtErroCadastrar)
-                .addGap(63, 63, 63))
+                .addGap(30, 30, 30))
         );
 
         javax.swing.GroupLayout painelDoScrollLayout = new javax.swing.GroupLayout(painelDoScroll);
@@ -1231,24 +1394,25 @@ public class C_OS_TELA extends javax.swing.JFrame {
         painelDoScrollLayout.setHorizontalGroup(
             painelDoScrollLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelDoScrollLayout.createSequentialGroup()
-                .addContainerGap(52, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(painelDoFormulario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         painelDoScrollLayout.setVerticalGroup(
             painelDoScrollLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelDoScrollLayout.createSequentialGroup()
-                .addGroup(painelDoScrollLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(painelDoScrollLayout.createSequentialGroup()
-                        .addComponent(painelDoFormulario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGroup(painelDoScrollLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(painelDoFormulario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 52, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelDoScrollLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44))
         );
 
         painelDeRolagem.setViewportView(painelDoScroll);
@@ -1263,7 +1427,7 @@ public class C_OS_TELA extends javax.swing.JFrame {
                     .addComponent(painelSeções, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(painelCRUD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(6, 6, 6)
                         .addComponent(painelDeRolagem)))
                 .addContainerGap())
         );
@@ -1275,7 +1439,7 @@ public class C_OS_TELA extends javax.swing.JFrame {
                 .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(painelCRUD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(painelDeRolagem, javax.swing.GroupLayout.DEFAULT_SIZE, 1212, Short.MAX_VALUE))
+                    .addComponent(painelDeRolagem, javax.swing.GroupLayout.DEFAULT_SIZE, 1457, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -1284,7 +1448,15 @@ public class C_OS_TELA extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void irConsultaOS(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irConsultaOS
-        u.irDePara(this, C_OS_TELA.getRUD_OS());
+        if (!rudAberto){
+            RUD_OS_TELA ss = new RUD_OS_TELA();
+            u.irDePara(this, ss);
+            C_OS_TELA.setRUD_OS(ss); 
+            rudAberto = true;
+        } else {
+            u.irDePara(this, getRUD_OS());
+        }
+         
     }//GEN-LAST:event_irConsultaOS
 
     private void irCadastroOS(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irCadastroOS
@@ -1336,7 +1508,7 @@ public class C_OS_TELA extends javax.swing.JFrame {
 
             OS os = new OS();
             os.setOsPrevisaoSaida(fs.retirarFormatacaoData(campoPrevisaoSaida.getText()));
-            os.setOsOrcamentoAtual(campoOrcamentoAtual.getText());
+            os.setOsNumero(txtNumeroOS.getText());
 
             Veiculo veiculo = new Veiculo();
             veiculo.setVeiculoTipo(campoVeiculoTipo.getText());
@@ -1348,23 +1520,27 @@ public class C_OS_TELA extends javax.swing.JFrame {
             veiculo.setVeiculoAcessorios(campoVeiculoAcessorios.getText());
             veiculo.setVeiculoDefeitoCliente(campoVeiculoDefeitoCliente.getText());
             veiculo.setVeiculoObservacoes(campoVeiculoObservacoes.getText());
+            
+            Orcamento o = new Orcamento();           
+            o.setOrcamento_preco_pecas(fs.retirarFormatacaoDinheiro(campoPrecoPeca.getText()));
+            o.setOrcamento_preco_servicos(fs.retirarFormatacaoDinheiro(campoPrecoServico.getText()));
+            o.setOrcamento_descricao_pecas(fs.retirarFormatacaoDinheiro(campoDescricaoPeca.getText()));
+            o.setOrcamento_descricao_servicos(fs.retirarFormatacaoDinheiro(campoDescricaoServico.getText()));
 
             Colab colab = new Colab();
             colab.setColabNome(txtNomeColab.getText());
 
             CadastroDAO cadastrar = new CadastroDAO();
-            try {
-                if (campoRgOuIe.isEnabled()){
-                    cadastrar.cadastrarDados(cliente, contato, veiculo, os, colab,false);
-                }else{
-                    cadastrar.cadastrarDados(cliente, contato, veiculo, os, colab,true);
-                }               
-                txtErroCadastrar.setForeground(new Color(0, 160, 40));
-                txtErroCadastrar.setText("Usuário cadastrado com sucesso!");
-                limparCampos();
-            }catch(Exception e){
-                System.out.println("Erro cadastro: "+e);
-            }           
+            if (campoRgOuIe.isEnabled()){
+                cadastrar.cadastrarDados(cliente, contato, veiculo, os, colab, o, false);
+            }else{
+                cadastrar.cadastrarDados(cliente, contato, veiculo, os, colab, o, true);
+            }               
+            txtErroCadastrar.setForeground(new Color(0, 160, 40));
+            txtErroCadastrar.setText("Usuário cadastrado com sucesso!");
+            OsDAO osdao = new OsDAO();
+            txtNumeroOS.setText(osdao.numeroOsAtual());
+            limparCampos();           
         }
     }//GEN-LAST:event_cadastrarDados
 
@@ -1503,6 +1679,9 @@ public class C_OS_TELA extends javax.swing.JFrame {
                 } else {
                     txtErroNumTel2.setForeground(new Color(0, 160, 40));
                 }
+            }
+            if (campoNumTel2.getText().length() == 0){
+                txtErroNumTel2.setForeground(new Color(240,240,240));
             }
             String txt = fs.telefone2(evt, campoNumTel2.getText());
             campoNumTel2.setText(txt);
@@ -1656,6 +1835,8 @@ public class C_OS_TELA extends javax.swing.JFrame {
             int calc = campoVeiculoPlaca.getText().length() - 7;
             campoVeiculoPlaca.setText(campoVeiculoPlaca.getText().substring(0,campoVeiculoPlaca.getText().length()-calc));
         }
+        String txt = fs.placa(campoVeiculoPlaca.getText());
+        campoVeiculoPlaca.setText(txt);
     }//GEN-LAST:event_tecladaVeiculoPlaca
 
     private void tecladaVeiculoCor(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaVeiculoCor
@@ -1714,29 +1895,29 @@ public class C_OS_TELA extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tecladaVeiculoObservacoes
 
-    private void tecladaOrcamento(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaOrcamento
+    private void tecladaPrecoPeca(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaPrecoPeca
         if ("\b".equals(Character.toString(evt.getKeyChar()))){
-            campoOrcamentoAtual.setText(fs.apagar(campoOrcamentoAtual.getText(), evt.getComponent().getName()));
+            campoPrecoPeca.setText(fs.apagar(campoPrecoPeca.getText(), evt.getComponent().getName()));
         }
-        String txt = vs.orcamento(evt, campoOrcamentoAtual.getText());        
+        String txt = vs.orcamento(evt, campoPrecoPeca.getText());        
         if ("".equals(txt)){
-            if (campoOrcamentoAtual.getText().length() >= 10){
+            if (campoPrecoPeca.getText().length() >= 10){
                 evt.consume();
-                txtErroOrcamento.setForeground(new Color(255,0,0));
-                txtErroOrcamento.setText("Tamanho máximo atingido.");
+                txtErroPrecoPeca.setForeground(new Color(255,0,0));
+                txtErroPrecoPeca.setText("Tamanho máximo atingido.");
             } else {
-                txtErroOrcamento.setForeground(new Color(240,240,240));
-                String txtF = fs.dinheiro(evt,campoOrcamentoAtual.getText());
-                campoOrcamentoAtual.setText(txtF);
+                txtErroPrecoPeca.setForeground(new Color(240,240,240));
+                String txtF = fs.dinheiro(evt,campoPrecoPeca.getText());
+                campoPrecoPeca.setText(txtF);
             } 
         } 
         else{ 
-            txtErroOrcamento.setText(txt);
+            txtErroPrecoPeca.setText(txt);
             if (txt.endsWith("números.")){
-                txtErroOrcamento.setForeground(new Color(255,0,0));
+                txtErroPrecoPeca.setForeground(new Color(255,0,0));
             }            
         }            
-    }//GEN-LAST:event_tecladaOrcamento
+    }//GEN-LAST:event_tecladaPrecoPeca
 
     private void tecladaPrevisaoSaida(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaPrevisaoSaida
         if ("\b".equals(Character.toString(evt.getKeyChar()))){
@@ -1779,7 +1960,7 @@ public class C_OS_TELA extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tecladaVeiculoDefeitoCliente
     //</editor-fold>
-    
+       
     private void verificarCliente(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_verificarCliente
         if (campoCpfOuCnpj.getText().length() == 14 || campoCpfOuCnpj.getText().length() == 18){            
             ClienteDAO cdao = new ClienteDAO();
@@ -1818,7 +1999,61 @@ public class C_OS_TELA extends javax.swing.JFrame {
             campoLogradComp.setEnabled(true);
         }
     }//GEN-LAST:event_verificarCliente
+    
+    //<editor-fold defaultstate="collapsed" desc="métodos teclados">
+    private void tecladaDescricaoPecas(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaDescricaoPecas
+        if (vs.nome30(evt, campoDescricaoPeca.getText()) == ""){
+            txtErroPrecoPeca.setForeground(new Color(240,240,240));           
+        } else {
+            String txt = vs.nome30(evt, campoDescricaoPeca.getText());
+            txtErroPrecoPeca.setText(txt);
+            if (txt.endsWith(".")){
+                txtErroPrecoPeca.setForeground(new Color(255,0,0));
+            } else {
+                txtErroPrecoPeca.setForeground(new Color(0, 160, 40));
+            }           
+        }
+    }//GEN-LAST:event_tecladaDescricaoPecas
 
+    private void tecladaPrecoServico(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaPrecoServico
+        if ("\b".equals(Character.toString(evt.getKeyChar()))){
+            campoPrecoServico.setText(fs.apagar(campoPrecoServico.getText(), evt.getComponent().getName()));
+        }
+        String txt = vs.orcamento(evt, campoPrecoServico.getText());        
+        if ("".equals(txt)){
+            if (campoPrecoServico.getText().length() >= 10){
+                evt.consume();
+                txtErroPrecoServico.setForeground(new Color(255,0,0));
+                txtErroPrecoServico.setText("Tamanho máximo atingido.");
+            } else {
+                txtErroPrecoServico.setForeground(new Color(240,240,240));
+                String txtF = fs.dinheiro(evt,campoPrecoServico.getText());
+                campoPrecoServico.setText(txtF);
+            } 
+        } 
+        else{ 
+            txtErroPrecoServico.setText(txt);
+            if (txt.endsWith("números.")){
+                txtErroPrecoServico.setForeground(new Color(255,0,0));
+            }            
+        } 
+    }//GEN-LAST:event_tecladaPrecoServico
+
+    private void tecladaDescricaoServico(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaDescricaoServico
+        if (vs.nome30(evt, campoDescricaoServico.getText()) == ""){
+            txtErroPrecoServico.setForeground(new Color(240,240,240));           
+        } else {
+            String txt = vs.nome30(evt, campoDescricaoServico.getText());
+            txtErroPrecoServico.setText(txt);
+            if (txt.endsWith(".")){
+                txtErroPrecoServico.setForeground(new Color(255,0,0));
+            } else {
+                txtErroPrecoServico.setForeground(new Color(0, 160, 40));
+            }           
+        }
+    }//GEN-LAST:event_tecladaDescricaoServico
+    //</editor-fold>
+    
     /**
      * @param args the command line arguments
      */
@@ -1848,11 +2083,13 @@ public class C_OS_TELA extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                getC_OS().setVisible(true);
+                C_OS_TELA ss = new C_OS_TELA();                
+                ss.setVisible(true);                               
+                setC_OS(ss); 
+                OsDAO os = new OsDAO();
+                txtNumeroOS.setText(os.numeroOsAtual());
             }
-        });  
-        OsDAO os = new OsDAO();
-        txtNumeroOS.setText(os.numeroOsAtual());            
+        });                   
     }
     
     //<editor-fold defaultstate="collapsed" desc="Coisas do javax">
@@ -1861,14 +2098,16 @@ public class C_OS_TELA extends javax.swing.JFrame {
     private javax.swing.JButton btnIrCadastroOS;
     private javax.swing.JButton btnIrClientes;
     private javax.swing.JButton btnIrConsultaOS;
-    private javax.swing.JButton btnIrEquipamentos;
     private javax.swing.JButton btnIrOS;
+    private javax.swing.JButton btnIrVeículos;
     private javax.swing.JButton btnLimparCampos;
     private javax.swing.JComboBox<String> caixaCombinacaoEstado;
     private javax.swing.JTextField campoBairro;
     private javax.swing.JTextField campoCep;
     private javax.swing.JTextField campoCidade;
     private javax.swing.JTextField campoCpfOuCnpj;
+    private javax.swing.JTextField campoDescricaoPeca;
+    private javax.swing.JTextField campoDescricaoServico;
     private javax.swing.JTextField campoEmail;
     private javax.swing.JTextField campoLograd;
     private javax.swing.JTextField campoLogradComp;
@@ -1876,7 +2115,8 @@ public class C_OS_TELA extends javax.swing.JFrame {
     private javax.swing.JTextField campoNomeOuRazao;
     private javax.swing.JTextField campoNumTel1;
     private javax.swing.JTextField campoNumTel2;
-    private javax.swing.JTextField campoOrcamentoAtual;
+    private javax.swing.JTextField campoPrecoPeca;
+    private javax.swing.JTextField campoPrecoServico;
     private javax.swing.JTextField campoPrevisaoSaida;
     private javax.swing.JTextField campoRgOuIe;
     private javax.swing.JTextField campoSobrenomeOuFantasia;
@@ -1890,11 +2130,14 @@ public class C_OS_TELA extends javax.swing.JFrame {
     private javax.swing.JTextField campoVeiculoPlaca;
     private javax.swing.JTextField campoVeiculoTipo;
     private javax.swing.JLabel cifrao;
+    private javax.swing.JLabel cifrao2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
@@ -1903,11 +2146,14 @@ public class C_OS_TELA extends javax.swing.JFrame {
     private javax.swing.JScrollPane painelDeRolagem;
     private javax.swing.JPanel painelDoFormulario;
     private javax.swing.JPanel painelDoScroll;
+    private javax.swing.JPanel painelOrcamento;
     private javax.swing.JPanel painelSeções;
     private javax.swing.JLabel titleBairro;
     private javax.swing.JLabel titleCep;
     private javax.swing.JLabel titleCidade;
     private javax.swing.JLabel titleCpfOuCnpj;
+    private javax.swing.JLabel titleDescricaoPeca;
+    private javax.swing.JLabel titleDescricaoServico;
     private javax.swing.JLabel titleEmail;
     private javax.swing.JLabel titleEstado;
     private javax.swing.JLabel titleLograd;
@@ -1917,7 +2163,8 @@ public class C_OS_TELA extends javax.swing.JFrame {
     private javax.swing.JLabel titleNumTel1;
     private javax.swing.JLabel titleNumTel2;
     private javax.swing.JLabel titleNumeroOS;
-    private javax.swing.JLabel titleOrcamentoAtual;
+    private javax.swing.JLabel titlePrecoPeca;
+    private javax.swing.JLabel titlePrecoServico;
     private javax.swing.JLabel titlePrevisaoSaida;
     private javax.swing.JLabel titleRgOuIe;
     private javax.swing.JLabel titleSobrenomeOuFantasia;
@@ -1930,12 +2177,13 @@ public class C_OS_TELA extends javax.swing.JFrame {
     private javax.swing.JLabel titleVeiculoObservacoes;
     private javax.swing.JLabel titleVeiculoPlaca;
     private javax.swing.JLabel titleVeiculoTipo;
-    private javax.swing.JLabel txtAguardando;
     private javax.swing.JLabel txtErroBairro;
     private javax.swing.JLabel txtErroCadastrar;
     private javax.swing.JLabel txtErroCep;
     private javax.swing.JLabel txtErroCidade;
     private javax.swing.JLabel txtErroCpfOuCnpj;
+    private javax.swing.JLabel txtErroDescricaoPeca;
+    private javax.swing.JLabel txtErroDescricaoServico;
     private javax.swing.JLabel txtErroEmail;
     private javax.swing.JLabel txtErroEstado;
     private javax.swing.JLabel txtErroLograd;
@@ -1944,7 +2192,8 @@ public class C_OS_TELA extends javax.swing.JFrame {
     private javax.swing.JLabel txtErroNomeOuRazao;
     private javax.swing.JLabel txtErroNumTel1;
     private javax.swing.JLabel txtErroNumTel2;
-    private javax.swing.JLabel txtErroOrcamento;
+    private javax.swing.JLabel txtErroPrecoPeca;
+    private javax.swing.JLabel txtErroPrecoServico;
     private javax.swing.JLabel txtErroPrevisaoSaida;
     private javax.swing.JLabel txtErroRgOuIe;
     private javax.swing.JLabel txtErroSobrenomeOuFantasia;
@@ -1990,7 +2239,10 @@ public class C_OS_TELA extends javax.swing.JFrame {
         campoVeiculoDefeitoCliente.setText("");
         campoPrevisaoSaida.setText("");
         campoVeiculoObservacoes.setText("");
-        campoOrcamentoAtual.setText("");
+        campoPrecoPeca.setText("");
+        campoPrecoServico.setText(""); 
+        campoDescricaoPeca.setText("");
+        campoDescricaoServico.setText("");
         txtErroBairro.setForeground(new Color(240, 240, 240));
         txtErroCep.setForeground(new Color(240, 240, 240));
         txtErroCidade.setForeground(new Color(240, 240, 240));
@@ -2002,7 +2254,10 @@ public class C_OS_TELA extends javax.swing.JFrame {
         txtErroNomeOuRazao.setForeground(new Color(240, 240, 240)); 
         txtErroNumTel1.setForeground(new Color(240, 240, 240)); 
         txtErroNumTel2.setForeground(new Color(240, 240, 240));
-        txtErroOrcamento.setForeground(new Color(240, 240, 240)); 
+        txtErroPrecoPeca.setForeground(new Color(240, 240, 240)); 
+        txtErroPrecoServico.setForeground(new Color(240, 240, 240)); 
+        txtErroDescricaoPeca.setForeground(new Color(240, 240, 240)); 
+        txtErroDescricaoServico.setForeground(new Color(240, 240, 240));
         txtErroPrevisaoSaida.setForeground(new Color(240, 240, 240)); 
         txtErroRgOuIe.setForeground(new Color(240, 240, 240));
         txtErroSobrenomeOuFantasia.setForeground(new Color(240, 240, 240));
@@ -2061,7 +2316,7 @@ public class C_OS_TELA extends javax.swing.JFrame {
             campoVeiculoDefeitoCliente.getText().equals("") ||
             campoPrevisaoSaida.getText().equals("") ||
             campoVeiculoObservacoes.getText().equals("") ||
-            campoOrcamentoAtual.getText().equals("") 
+            campoPrecoPeca.getText().equals("") 
             ){
                 vazio = true;
             }
@@ -2088,7 +2343,10 @@ public class C_OS_TELA extends javax.swing.JFrame {
             txtErroNomeOuRazao.getForeground().getRed() == 255 || 
             txtErroNumTel1.getForeground().getRed() == 255 ||  
             txtErroNumTel2.getForeground().getRed() == 255 || 
-            txtErroOrcamento.getForeground().getRed() == 255 ||  
+            txtErroPrecoPeca.getForeground().getRed() == 255 ||  
+            txtErroPrecoServico.getForeground().getRed() == 255 || 
+            txtErroDescricaoPeca.getForeground().getRed() == 255 || 
+            txtErroDescricaoServico.getForeground().getRed() == 255 || 
             txtErroPrevisaoSaida.getForeground().getRed() == 255 || 
             txtErroRgOuIe.getForeground().getRed() == 255 || 
             txtErroSobrenomeOuFantasia.getForeground().getRed() == 255 ||  

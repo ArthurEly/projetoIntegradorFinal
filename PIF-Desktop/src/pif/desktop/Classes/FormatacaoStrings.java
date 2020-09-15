@@ -50,9 +50,24 @@ public class FormatacaoStrings {
         return s;
     }
     
+    public String botarCpfOuCnpj(String s){
+        while (s.length() < 11){
+            s = "0"+s;
+        }
+        if (s.length() == 11){
+            char[] cpf = {s.charAt(0),s.charAt(1),s.charAt(2),'.',s.charAt(3),s.charAt(4),s.charAt(5),'.',s.charAt(6),s.charAt(7),s.charAt(8),'-',s.charAt(9),s.charAt(10)};
+            String cpfF = new String(cpf);
+            s = cpfF;
+        } else if(s.length() == 14){
+            char[] cnpj = {s.charAt(0),s.charAt(1),'.',s.charAt(2),s.charAt(3),s.charAt(4),'.',s.charAt(5),s.charAt(6),s.charAt(7),'/',s.charAt(8),s.charAt(9),s.charAt(10),s.charAt(11),'-',s.charAt(12),s.charAt(13)};
+            String cnpjF = new String(cnpj);
+            s = cnpjF;
+        }
+        return s;
+    }
+  
     public String telefone1(KeyEvent evt, String tel){
         if ((tel.length()+1) <= 12 && jaTel1 == false){ 
-            System.out.println("if: "+(tel.length()+1));
             if (tel.length()+1 == 3){
             tel =  tel + " " ;
             }                     
@@ -61,7 +76,6 @@ public class FormatacaoStrings {
             }
             jaTel1 = false;  
         } else if ((tel.length()+1) <= 14 && jaTel1 == true){
-            System.out.println("esle if: "+(tel.length()+1));
             tel = tel.replaceAll("\\-", "");
             tel = tel.replaceAll("\\ ", "");
             System.out.println(tel);
@@ -70,7 +84,6 @@ public class FormatacaoStrings {
             jaTel1 = false;
         } 
         else {
-            System.out.println("else: "+(tel.length()+1));
             jaTel1 = true;
             if (tel.length() == 12){
                 tel = tel.replaceAll("\\-", "");
@@ -82,7 +95,7 @@ public class FormatacaoStrings {
         }
         return tel;
     }
-    
+     
     public String telefone2(KeyEvent evt, String tel){
         if ((tel.length()+1) <= 12 && jaTel2 == false){ 
             System.out.println("if: "+(tel.length()+1));
@@ -93,7 +106,7 @@ public class FormatacaoStrings {
                 tel = tel + "-";
             }
             jaTel2 = false;  
-        } else if ((tel.length()+1) <= 14 && jaTel2 == true){
+        } else if ((tel.length()+1) <= 14 && jaTel1 == true){
             System.out.println("esle if: "+(tel.length()+1));
             tel = tel.replaceAll("\\-", "");
             tel = tel.replaceAll("\\ ", "");
@@ -114,6 +127,10 @@ public class FormatacaoStrings {
             }                     
         }
         return tel;
+    }
+    
+    public String botarTelefone(String s){
+        return s;
     }
     
     public String dinheiro (KeyEvent evt, String d){
@@ -172,12 +189,41 @@ public class FormatacaoStrings {
         }
         return dindin;
     }
-      
+    
+    public String botarDinheiro(String s){ 
+        if (s == null){
+            s = "-";
+        } else if (s.length() <= 6){
+            s = s.replaceAll("\\.", ",");
+        } else {
+            s = s.replaceAll("\\.", ",");
+            while(s.length()>6 && s.length()<9){
+            s = "0"+s;
+            }
+            char[] dindin = {s.charAt(0),s.charAt(1),s.charAt(2),'.',s.charAt(3),s.charAt(4),s.charAt(5),s.charAt(6),s.charAt(7),s.charAt(8)};
+            String dindinFormatado = new String(dindin);
+            while(dindinFormatado.startsWith("0")){
+                dindinFormatado = dindinFormatado.substring(1);   
+            }
+            return dindinFormatado;
+        } 
+        return s;
+    }
+    
+    public String placa(String s){
+        s = s.toUpperCase();
+        return s;
+    }
+    
     public String cep (String cep){
         if ((cep.length()+1) == 6){
             cep = cep + "-";
         }
         return cep;
+    }
+    
+    public String botarCep(String s){
+        return s;
     }
    
     public String data (String data){
@@ -185,6 +231,17 @@ public class FormatacaoStrings {
             data = data + "/";
         }
         return data;
+    }
+    
+    public String botarData(String s){
+        char[] data = {s.charAt(8),s.charAt(9),'/',s.charAt(5),s.charAt(6),'/',s.charAt(0),s.charAt(1),s.charAt(2),s.charAt(3)};
+        String dataF = new String(data);
+        if (s.length() > 10){
+            char[] hora = {s.charAt(11),s.charAt(12),s.charAt(13),s.charAt(14),s.charAt(15),s.charAt(16),s.charAt(17),s.charAt(18)};
+            String horaF = new String(hora);
+            dataF = dataF + " às " + horaF;
+        }  
+        return dataF;
     }
     
     public String retirarFormatacao(String s){
@@ -195,10 +252,16 @@ public class FormatacaoStrings {
         return s;
     }
     
+    public String retirarFormatacaoDinheiro(String s){
+        s = s.replaceAll("\\.", "");
+        s = s.replaceAll("\\,", ".");
+        System.out.println(s);
+        return s;
+    }
+    
     public String retirarFormatacaoData(String s){
         s = s.replaceAll("\\/", "");
         char dataFormatadaC[] = {s.charAt(4),s.charAt(5),s.charAt(6),s.charAt(7),'-',s.charAt(2),s.charAt(3),'-',s.charAt(0),s.charAt(1)};  
-        System.out.println(dataFormatadaC);
         String dataFormatada = new String(dataFormatadaC);
         return dataFormatada;
     }
@@ -228,7 +291,7 @@ public class FormatacaoStrings {
             }
         }
         
-        if (campo.equals("orcamento")){
+        if (campo.equals("pecas") || campo.equals("servicos")){
             if (s.length() == 3){
                 s = s.replaceAll(",","");
                 jaDecimal = false;
@@ -237,5 +300,12 @@ public class FormatacaoStrings {
             }
         }
         return s;
+    }
+
+    public String retirarCpfOuCnpj(String text) {
+        while (text.startsWith("0")){
+            text = text.substring(1);
+        }
+        return text;
     }
 }

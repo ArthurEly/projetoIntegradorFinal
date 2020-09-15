@@ -10,15 +10,32 @@ package pif.desktop.Classes;
  * @author arthu
  */
 public class Orcamento {
-
+  
     //declaração de variáveis
+    private String orcamento_os_numero;
     private String orcamento_preco_pecas;
     private String orcamento_descricao_pecas;
     private String orcamento_preco_servicos;
     private String orcamento_descricao_servicos;
+    private String orcamento_data;
     //declaração de variáveis
     
-        /**
+    
+    /**
+     * @return the orcamento_os_numero
+     */
+    public String getOrcamento_os_numero() {
+        return orcamento_os_numero;
+    }
+
+    /**
+     * @param orcamento_os_numero the orcamento_os_numero to set
+     */
+    public void setOrcamento_os_numero(String orcamento_os_numero) {
+        this.orcamento_os_numero = orcamento_os_numero;
+    }
+    
+    /**
      * @return the orcamento_preco_pecas
      */
     public String getOrcamento_preco_pecas() {
@@ -72,6 +89,20 @@ public class Orcamento {
      */
     public void setOrcamento_descricao_servicos(String orcamento_descricao_servicos) {
         this.orcamento_descricao_servicos = orcamento_descricao_servicos;
+    }
+    
+    /**
+     * @return the orcamento_data
+     */
+    public String getOrcamento_data() {
+        return orcamento_data;
+    }
+
+    /**
+     * @param orcamento_data the orcamento_data to set
+     */
+    public void setOrcamento_data(String orcamento_data) {
+        this.orcamento_data = orcamento_data;
     }
     
 }

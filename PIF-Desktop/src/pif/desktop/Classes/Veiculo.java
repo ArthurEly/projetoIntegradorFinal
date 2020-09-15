@@ -11,7 +11,7 @@ package pif.desktop.Classes;
  * @author arthu
  */
 public class Veiculo {
-    
+   
     //declaração de variáveis
     private String veiculoTipo;
     private String veiculoModelo;
@@ -22,9 +22,10 @@ public class Veiculo {
     private String veiculoAno;
     private String veiculoObservacoes;
     private String veiculoDefeitoCliente;
-    private String veiculoIdParecerTecnico;
+    private String veiculoParecerTecnico;
     private String veiculoSituacao;
-    private String veiculoSolucao;
+    private String veiculoNumOs;
+    private String veiculoDono;
     //declaração de variáveis   
 
     /**
@@ -156,15 +157,15 @@ public class Veiculo {
     /**
      * @return the veiculoIdParecerTecnico
      */
-    public String getVeiculoIdParecerTecnico() {
-        return veiculoIdParecerTecnico;
+    public String getVeiculoParecerTecnico() {
+        return veiculoParecerTecnico;
     }
 
     /**
      * @param veiculoIdParecerTecnico the veiculoIdParecerTecnico to set
      */
-    public void setVeiculoIdParecerTecnico(String veiculoIdParecerTecnico) {
-        this.veiculoIdParecerTecnico = veiculoIdParecerTecnico;
+    public void setVeiculoParecerTecnico(String veiculoIdParecerTecnico) {
+        this.veiculoParecerTecnico = veiculoIdParecerTecnico;
     }
 
     /**
@@ -179,19 +180,33 @@ public class Veiculo {
      */
     public void setVeiculoSituacao(String veiculoSituacao) {
         this.veiculoSituacao = veiculoSituacao;
+    } 
+    
+    /**
+     * @return the veiculoNumOs
+     */
+    public String getVeiculoNumOs() {
+        return veiculoNumOs;
     }
 
     /**
-     * @return the veiculoSolucao
+     * @param veiculoNumOs the veiculoNumOs to set
      */
-    public String getVeiculoSolucao() {
-        return veiculoSolucao;
+    public void setVeiculoNumOs(String veiculoNumOs) {
+        this.veiculoNumOs = veiculoNumOs;
     }
 
     /**
-     * @param veiculoSolucao the veiculoSolucao to set
+     * @return the veiculoDono
      */
-    public void setVeiculoSolucao(String veiculoSolucao) {
-        this.veiculoSolucao = veiculoSolucao;
-    }  
+    public String getVeiculoDono() {
+        return veiculoDono;
+    }
+
+    /**
+     * @param veiculoDono the veiculoDono to set
+     */
+    public void setVeiculoDono(String veiculoDono) {
+        this.veiculoDono = veiculoDono;
+    }
 }
