@@ -4,20 +4,17 @@ import android.Manifest;
 import android.app.Activity;
 import android.app.Dialog;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
-
 import java.sql.Connection;
 
 import br.com.senac.pif_mobile.util.ActivityUtils;
-import br.com.senac.pif_mobile.util.SQLUtils;
-import pif.desktop.dao.Conexao;
+import br.com.senac.pif_mobile.util.Linux;
+import br.com.senac.pif_mobile.util.NetworkUtils;
 
 public class LoginActivity extends Activity implements View.OnClickListener {
     TextView OPERATOR_SCREEN;
@@ -55,16 +52,21 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
                 //cria um novo processo para se conectar,
                 //se fizer direto o app vai travar
-                new Handler().post(new Runnable() {
+                new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        Conexao x = new Conexao();
-                        c = x.conectarAoBanco();
-                        usuario = SQLUtils.getUser(c, EMAIL.getText().toString(), PASSWORD.getText().toString());
+                        String result = "NULL";
+                        result = Linux.curl(null,NetworkUtils.urlizeGet(NetworkUtils.DB_TABLE_CLIENTE));
+                        final String finalResult = result;
 
-                        Toast.makeText(EMAIL.getContext(),usuario.getID(),Toast.LENGTH_LONG);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(EMAIL.getContext(),finalResult,Toast.LENGTH_LONG).show();
+                            }
+                        });
                     }
-                });
+                }).start();
 
                 break;
         }

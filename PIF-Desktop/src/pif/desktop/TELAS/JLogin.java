@@ -35,7 +35,7 @@ public class JLogin extends javax.swing.JFrame {
     Image icon;
     JImage logo;
     TelaUtils u = new TelaUtils();
-    
+
     /**
      * Creates new form JLogin
      */
@@ -159,6 +159,11 @@ public class JLogin extends javax.swing.JFrame {
                 fazerLogin(evt);
             }
         });
+        btnFazerLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFazerLoginActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -167,16 +172,14 @@ public class JLogin extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(painelLogo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(painelForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(painelLogo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(painelForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnFazerLogin))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnFazerLogin)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,7 +200,7 @@ public class JLogin extends javax.swing.JFrame {
     private void fazerLogin(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fazerLogin
         LoginDAO login = new LoginDAO();
         int id = login.login(campoUser.getText(), campoSenha.getText());
-        if (id != 0){
+        if (id != 0) {
             u.irDePara(this, C_OS_TELA.getC_OS());
             C_OS_TELA.getC_OS().setIdDoUser(id);
             C_OS_TELA.getC_OS().getId().setText("ID do usuário é: " + C_OS_TELA.getC_OS().getIdDoUser());
@@ -205,6 +208,10 @@ public class JLogin extends javax.swing.JFrame {
             System.out.println("Usuário não existe!!");
         }
     }//GEN-LAST:event_fazerLogin
+
+    private void btnFazerLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFazerLoginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnFazerLoginActionPerformed
 
     /**
      * @param args the command line arguments
