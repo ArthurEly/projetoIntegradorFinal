@@ -5,17 +5,92 @@
  */
 package pif.desktop.TELAS.rascunhos;
 
+import java.awt.Color;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
+import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
+import pif.desktop.Classes.Cliente;
+import pif.desktop.Classes.Contato;
+import pif.desktop.Classes.FormatacaoStrings;
+import pif.desktop.Classes.OS;
+import pif.desktop.Classes.Orcamento;
+import pif.desktop.Classes.VerificacaoStrings;
+import pif.desktop.DAO.ClienteDAO;
+import pif.desktop.DAO.ContatoDAO;
+import pif.desktop.DAO.OrcamentoDAO;
+import pif.desktop.DAO.OsDAO;
+
 /**
  *
  * @author arthu
  */
 public class consulta_cliente extends javax.swing.JFrame {
 
+    Image icon;
+    FormatacaoStrings fs = new FormatacaoStrings();
+    VerificacaoStrings vs = new VerificacaoStrings();
+    int contadorEditar;
+    Cliente cliente = new Cliente();
+    Contato contato = new Contato();
     /**
      * Creates new form consulta_cliente
      */
-    public consulta_cliente() {
+    public consulta_cliente(Cliente c, Contato ctt) {
         initComponents();
+        try {
+            icon = ImageIO.read(new File("src/resources/icon.png"));           
+        } catch (IOException e) {
+            e.printStackTrace();
+        }   
+        setIconImage(icon);         
+        cliente = c;
+        contato = ctt;
+        if (c.isClientePj()==true){
+            titleCpfnj.setText("CNPJ do cliente:");
+            titleRgIe.setText("IE do cliente:");
+            titleNomeRazao.setText("Razão social do cliente:");
+            titleSobrenomeFantasia.setText("Nome fantasia do cliente:");
+            titleDataNasc.setText("Data de registro do cliente:");
+            setTitle("Cliente "+c.getClienteNomeOuRazao());
+        } else {           
+            titleCpfnj.setText("CPF do cliente:");
+            titleRgIe.setText("RG do cliente:");
+            titleNomeRazao.setText("Nome do cliente:");
+            titleSobrenomeFantasia.setText("Sobrenome do cliente:");
+            titleDataNasc.setText("Data de nascimento do cliente:");
+            setTitle("Cliente "+c.getClienteNomeOuRazao()+" "+c.getClienteSobrenomeOuFantasia());
+        }
+        campoCpfnj.setText(fs.botarCpfOuCnpj(c.getClienteCpfOuCnpj()));
+        campoRgIe.setText(c.getClienteRgOuIe());
+        campoNomeRazao.setText(c.getClienteNomeOuRazao());
+        campoSobrenomeFantasia.setText(c.getClienteSobrenomeOuFantasia());
+        campoDataNasc.setText(fs.botarData(c.getClienteDataNasc()));
+        
+        campoEmail.setText(ctt.getClienteContatoEmail());
+        campoNumTel1.setText(fs.botarTelefone(ctt.getClienteContatoNumTel1()));
+        campoNumTel2.setText(fs.botarTelefone(ctt.getClienteContatoNumTel2()));
+        
+        String[] estados = {"--", "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"};
+        int length = estados.length;
+        int i;
+        for (i=0;i<length;i++){
+            if (c.getClienteEndEstado().equals(estados[i])){
+                break;
+            }
+        }
+        caixaCombinacaoEstado.setSelectedIndex(i);
+        campoCep.setText(fs.botarCep(c.getClienteEndCep()));
+        campoCidade.setText(c.getClienteEndCidade());
+        campoBairro.setText(c.getClienteEndBairro());
+        campoLograd.setText(c.getClienteEndLograd());
+        campoLogradNum.setText(c.getClienteEndLogradNum());
+        campoLogradComp.setText(c.getClienteEndLogradComp());
     }
 
     /**
@@ -27,21 +102,686 @@ public class consulta_cliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        titleNomeRazao = new javax.swing.JLabel();
+        campoNomeRazao = new javax.swing.JTextField();
+        titleSobrenomeFantasia = new javax.swing.JLabel();
+        campoSobrenomeFantasia = new javax.swing.JTextField();
+        titleRgIe = new javax.swing.JLabel();
+        campoRgIe = new javax.swing.JTextField();
+        campoCpfnj = new javax.swing.JTextField();
+        titleCpfnj = new javax.swing.JLabel();
+        painelContato = new javax.swing.JPanel();
+        titleEmail = new javax.swing.JLabel();
+        campoEmail = new javax.swing.JTextField();
+        titleNumTel1 = new javax.swing.JLabel();
+        campoNumTel1 = new javax.swing.JTextField();
+        titleNumTel2 = new javax.swing.JLabel();
+        campoNumTel2 = new javax.swing.JTextField();
+        txtErroNumTel1 = new javax.swing.JLabel();
+        txtErroNumTel2 = new javax.swing.JLabel();
+        txtErroEmail = new javax.swing.JLabel();
+        painelEndereco = new javax.swing.JPanel();
+        titleEstado = new javax.swing.JLabel();
+        titleCep = new javax.swing.JLabel();
+        campoCep = new javax.swing.JTextField();
+        titleCidade = new javax.swing.JLabel();
+        campoCidade = new javax.swing.JTextField();
+        caixaCombinacaoEstado = new javax.swing.JComboBox<>();
+        titleBairro = new javax.swing.JLabel();
+        campoBairro = new javax.swing.JTextField();
+        titleLograd = new javax.swing.JLabel();
+        campoLograd = new javax.swing.JTextField();
+        titleLogradNum = new javax.swing.JLabel();
+        campoLogradNum = new javax.swing.JTextField();
+        titleLogradComp = new javax.swing.JLabel();
+        campoLogradComp = new javax.swing.JTextField();
+        titleDataNasc = new javax.swing.JLabel();
+        campoDataNasc = new javax.swing.JTextField();
+        txtErroEndereco = new javax.swing.JLabel();
+        btnEditarOs = new javax.swing.JButton();
+
+        jLabel1.setText("jLabel1");
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setIconImage(icon);
+
+        titleNomeRazao.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        titleNomeRazao.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleNomeRazao.setText("jLabel2");
+
+        campoNomeRazao.setBackground(new java.awt.Color(240, 240, 240));
+        campoNomeRazao.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        campoNomeRazao.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        campoNomeRazao.setText("jTextField1");
+        campoNomeRazao.setBorder(null);
+        campoNomeRazao.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        campoNomeRazao.setEnabled(false);
+
+        titleSobrenomeFantasia.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        titleSobrenomeFantasia.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleSobrenomeFantasia.setText("jLabel2");
+
+        campoSobrenomeFantasia.setBackground(new java.awt.Color(240, 240, 240));
+        campoSobrenomeFantasia.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        campoSobrenomeFantasia.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        campoSobrenomeFantasia.setText("jTextField1");
+        campoSobrenomeFantasia.setBorder(null);
+        campoSobrenomeFantasia.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        campoSobrenomeFantasia.setEnabled(false);
+
+        titleRgIe.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        titleRgIe.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleRgIe.setText("Data de nascimento:");
+
+        campoRgIe.setBackground(new java.awt.Color(240, 240, 240));
+        campoRgIe.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        campoRgIe.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        campoRgIe.setText("jTextField1");
+        campoRgIe.setBorder(null);
+        campoRgIe.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        campoRgIe.setEnabled(false);
+
+        campoCpfnj.setBackground(new java.awt.Color(240, 240, 240));
+        campoCpfnj.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        campoCpfnj.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        campoCpfnj.setText("jTextField1");
+        campoCpfnj.setBorder(null);
+        campoCpfnj.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        campoCpfnj.setEnabled(false);
+
+        titleCpfnj.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        titleCpfnj.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleCpfnj.setText("Nome fantasia do cliente:");
+
+        painelContato.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 40, 40)), "Contato", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+
+        titleEmail.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        titleEmail.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleEmail.setText("Email do cliente:");
+
+        campoEmail.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        campoEmail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        campoEmail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240)));
+        campoEmail.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        campoEmail.setEnabled(false);
+        campoEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tecladaEmail(evt);
+            }
+        });
+
+        titleNumTel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        titleNumTel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleNumTel1.setText("Número de telefone principal:");
+
+        campoNumTel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        campoNumTel1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        campoNumTel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240)));
+        campoNumTel1.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        campoNumTel1.setEnabled(false);
+        campoNumTel1.setName("tel1"); // NOI18N
+        campoNumTel1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tecladaTel(evt);
+            }
+        });
+
+        titleNumTel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        titleNumTel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleNumTel2.setText("Número de telefone alternativo:");
+
+        campoNumTel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        campoNumTel2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        campoNumTel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240)));
+        campoNumTel2.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        campoNumTel2.setEnabled(false);
+        campoNumTel2.setName("tel2"); // NOI18N
+        campoNumTel2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tecladaTel(evt);
+            }
+        });
+
+        txtErroNumTel1.setForeground(new java.awt.Color(240, 240, 240));
+        txtErroNumTel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtErroNumTel1.setText("jLabel8");
+
+        txtErroNumTel2.setForeground(new java.awt.Color(240, 240, 240));
+        txtErroNumTel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtErroNumTel2.setText("jLabel8");
+
+        txtErroEmail.setForeground(new java.awt.Color(240, 240, 240));
+        txtErroEmail.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtErroEmail.setText("jLabel8");
+
+        javax.swing.GroupLayout painelContatoLayout = new javax.swing.GroupLayout(painelContato);
+        painelContato.setLayout(painelContatoLayout);
+        painelContatoLayout.setHorizontalGroup(
+            painelContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelContatoLayout.createSequentialGroup()
+                .addGap(120, 120, 120)
+                .addGroup(painelContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(painelContatoLayout.createSequentialGroup()
+                        .addComponent(titleEmail)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(campoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(painelContatoLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(painelContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(titleNumTel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(titleNumTel2, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(painelContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(campoNumTel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(campoNumTel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(painelContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtErroNumTel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtErroNumTel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtErroEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        painelContatoLayout.setVerticalGroup(
+            painelContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelContatoLayout.createSequentialGroup()
+                .addGroup(painelContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(titleEmail)
+                    .addComponent(campoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtErroEmail))
+                .addGap(30, 30, 30)
+                .addGroup(painelContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(titleNumTel1)
+                    .addComponent(campoNumTel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtErroNumTel1))
+                .addGap(30, 30, 30)
+                .addGroup(painelContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(titleNumTel2)
+                    .addComponent(campoNumTel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtErroNumTel2))
+                .addGap(14, 14, 14))
+        );
+
+        painelEndereco.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 40, 40)), "Endereço", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+
+        titleEstado.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        titleEstado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleEstado.setText("Estado:");
+
+        titleCep.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        titleCep.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleCep.setText("CEP:");
+
+        campoCep.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        campoCep.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        campoCep.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240)));
+        campoCep.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        campoCep.setEnabled(false);
+        campoCep.setName("cep"); // NOI18N
+        campoCep.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tecladaCep(evt);
+            }
+        });
+
+        titleCidade.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        titleCidade.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleCidade.setText("Cidade:");
+
+        campoCidade.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        campoCidade.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        campoCidade.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240)));
+        campoCidade.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        campoCidade.setEnabled(false);
+        campoCidade.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tecladoCidade(evt);
+            }
+        });
+
+        caixaCombinacaoEstado.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        caixaCombinacaoEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--", "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
+        caixaCombinacaoEstado.setBorder(null);
+        caixaCombinacaoEstado.setEnabled(false);
+        caixaCombinacaoEstado.setFocusable(false);
+
+        titleBairro.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        titleBairro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleBairro.setText("Bairro:");
+
+        campoBairro.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        campoBairro.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        campoBairro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240)));
+        campoBairro.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        campoBairro.setEnabled(false);
+        campoBairro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tecladaBairro(evt);
+            }
+        });
+
+        titleLograd.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        titleLograd.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleLograd.setText("Logradouro:");
+
+        campoLograd.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        campoLograd.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        campoLograd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240)));
+        campoLograd.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        campoLograd.setEnabled(false);
+        campoLograd.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tecladaLograd(evt);
+            }
+        });
+
+        titleLogradNum.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        titleLogradNum.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleLogradNum.setText("N°:");
+
+        campoLogradNum.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        campoLogradNum.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        campoLogradNum.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240)));
+        campoLogradNum.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        campoLogradNum.setEnabled(false);
+        campoLogradNum.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tecladaLogradNum(evt);
+            }
+        });
+
+        titleLogradComp.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        titleLogradComp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleLogradComp.setText("Complemento:");
+
+        campoLogradComp.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        campoLogradComp.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        campoLogradComp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240)));
+        campoLogradComp.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        campoLogradComp.setEnabled(false);
+        campoLogradComp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tecladaLogradComp(evt);
+            }
+        });
+
+        javax.swing.GroupLayout painelEnderecoLayout = new javax.swing.GroupLayout(painelEndereco);
+        painelEndereco.setLayout(painelEnderecoLayout);
+        painelEnderecoLayout.setHorizontalGroup(
+            painelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelEnderecoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(painelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(painelEnderecoLayout.createSequentialGroup()
+                        .addComponent(titleLograd)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(campoLograd))
+                    .addGroup(painelEnderecoLayout.createSequentialGroup()
+                        .addComponent(titleLogradNum)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(campoLogradNum, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(titleLogradComp)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(campoLogradComp))
+                    .addGroup(painelEnderecoLayout.createSequentialGroup()
+                        .addGroup(painelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(painelEnderecoLayout.createSequentialGroup()
+                                .addComponent(titleCidade)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(campoCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(painelEnderecoLayout.createSequentialGroup()
+                                .addComponent(titleEstado)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(caixaCombinacaoEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(painelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(painelEnderecoLayout.createSequentialGroup()
+                                .addGap(8, 8, 8)
+                                .addComponent(titleCep)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(campoCep))
+                            .addGroup(painelEnderecoLayout.createSequentialGroup()
+                                .addComponent(titleBairro)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(campoBairro, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)))))
+                .addContainerGap())
+        );
+        painelEnderecoLayout.setVerticalGroup(
+            painelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelEnderecoLayout.createSequentialGroup()
+                .addGroup(painelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(titleEstado)
+                    .addComponent(caixaCombinacaoEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(titleCep)
+                    .addComponent(campoCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(painelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(titleCidade)
+                    .addComponent(campoCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(titleBairro)
+                    .addComponent(campoBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(painelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(titleLograd)
+                    .addComponent(campoLograd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(painelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(painelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(titleLogradComp)
+                        .addComponent(campoLogradComp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(painelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(titleLogradNum)
+                        .addComponent(campoLogradNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        titleDataNasc.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        titleDataNasc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleDataNasc.setText("Data de nascimento:");
+
+        campoDataNasc.setBackground(new java.awt.Color(240, 240, 240));
+        campoDataNasc.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        campoDataNasc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        campoDataNasc.setText("jTextField1");
+        campoDataNasc.setBorder(null);
+        campoDataNasc.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        campoDataNasc.setEnabled(false);
+
+        txtErroEndereco.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtErroEndereco.setForeground(new java.awt.Color(240, 240, 240));
+        txtErroEndereco.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtErroEndereco.setText("jLabel8");
+
+        btnEditarOs.setBackground(new java.awt.Color(204, 0, 0));
+        btnEditarOs.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditarOs.setText("Editar OS");
+        btnEditarOs.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(130, 0, 0), new java.awt.Color(130, 0, 0), new java.awt.Color(204, 0, 0), new java.awt.Color(204, 0, 0)));
+        btnEditarOs.setContentAreaFilled(false);
+        btnEditarOs.setFocusPainted(false);
+        btnEditarOs.setOpaque(true);
+        btnEditarOs.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEditarOseditarOs(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(titleNomeRazao, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(campoNomeRazao))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtErroEndereco, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(painelEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(painelContato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnEditarOs, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(titleSobrenomeFantasia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(titleRgIe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(titleDataNasc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(titleCpfnj, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(campoDataNasc)
+                                    .addComponent(campoCpfnj)
+                                    .addComponent(campoRgIe)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(campoSobrenomeFantasia)))))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(titleNomeRazao)
+                    .addComponent(campoNomeRazao, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(titleSobrenomeFantasia)
+                    .addComponent(campoSobrenomeFantasia, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(titleCpfnj)
+                    .addComponent(campoCpfnj, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(titleRgIe)
+                    .addComponent(campoRgIe, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(titleDataNasc)
+                    .addComponent(campoDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addComponent(painelContato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(painelEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtErroEndereco)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addComponent(btnEditarOs, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 689, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tecladaEmail(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaEmail
+        String txtV = vs.email(evt, campoEmail.getText());
+        if (txtV == ""){
+            txtErroEmail.setForeground(new Color(240,240,240));
+        } else {
+            txtErroEmail.setText(txtV);
+            if (txtV.endsWith(".")){
+                txtErroEmail.setForeground(new Color(255,0,0));
+            } else {
+                txtErroEmail.setForeground(new Color(0, 160, 40));
+            }
+        }
+    }//GEN-LAST:event_tecladaEmail
+
+    private void tecladaTel(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaTel
+        if ("tel1".equals(evt.getComponent().getName())){
+            if ("\b".equals(Character.toString(evt.getKeyChar()))){
+                campoNumTel1.setText(fs.apagar(campoNumTel1.getText(), evt.getComponent().getName()));
+            }
+            String txtV = vs.telefone(evt, campoNumTel1.getText());
+            if (txtV == ""){
+                txtErroNumTel1.setForeground(new Color(240,240,240));
+            } else {
+                txtErroNumTel1.setText(txtV);
+                if (txtV.endsWith(".")){
+                    txtErroNumTel1.setForeground(new Color(255,0,0));
+                } else {
+                    txtErroNumTel1.setForeground(new Color(0, 160, 40));
+                }
+            }
+            String txtF = fs.telefone1Editar(evt, campoNumTel1.getText());
+            campoNumTel1.setText(txtF);
+        } else {
+            if ("\b".equals(Character.toString(evt.getKeyChar()))){
+                campoNumTel2.setText(fs.apagar(campoNumTel2.getText(), evt.getComponent().getName()));
+            }
+            String txtV = vs.telefone(evt, campoNumTel2.getText());
+            if (txtV == ""){
+                txtErroNumTel2.setForeground(new Color(240,240,240));
+            } else {
+                txtErroNumTel2.setText(txtV);
+                if (txtV.endsWith(".")){
+                    txtErroNumTel2.setForeground(new Color(255,0,0));
+                } else {
+                    txtErroNumTel2.setForeground(new Color(0, 160, 40));
+                }
+            }
+            if (campoNumTel2.getText().length() == 0){
+                txtErroNumTel2.setForeground(new Color(240,240,240));
+            }
+            String txtF = fs.telefone2Editar(evt, campoNumTel2.getText());
+            campoNumTel2.setText(txtF);
+        }
+    }//GEN-LAST:event_tecladaTel
+
+    private void tecladaCep(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaCep
+        if ("\b".equals(Character.toString(evt.getKeyChar()))){
+            campoCep.setText(fs.apagar(campoCep.getText(), evt.getComponent().getName()));
+        }
+        String txtV = vs.cep(evt, campoCep.getText());
+        if (txtV == ""){
+            txtErroEndereco.setForeground(new Color(240,240,240));
+        } else {
+            txtErroEndereco.setText(txtV);
+            if (txtV.endsWith(".")){
+                txtErroEndereco.setForeground(new Color(255,0,0));
+            } else {
+                txtErroEndereco.setForeground(new Color(0, 160, 40));
+            }
+        }
+        String txtF = fs.cep(campoCep.getText());
+        campoCep.setText(txtF);
+    }//GEN-LAST:event_tecladaCep
+
+    private void tecladoCidade(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladoCidade
+        String txtV = vs.nomes30(evt, campoCidade.getText());
+        if (txtV == ""){
+            txtErroEndereco.setForeground(new Color(240,240,240));
+        } else {
+            txtErroEndereco.setText(txtV);
+            if (txtV.endsWith(".")){
+                txtErroEndereco.setForeground(new Color(255,0,0));
+            } else {
+                txtErroEndereco.setForeground(new Color(0, 160, 40));
+            }
+        }
+    }//GEN-LAST:event_tecladoCidade
+
+    private void tecladaBairro(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaBairro
+        String txtV = vs.nomes30(evt, campoBairro.getText());
+        if (txtV == ""){
+            txtErroEndereco.setForeground(new Color(240,240,240));
+        } else {
+            txtErroEndereco.setText(txtV);
+            if (txtV.endsWith(".")){
+                txtErroEndereco.setForeground(new Color(255,0,0));
+            } else {
+                txtErroEndereco.setForeground(new Color(0, 160, 40));
+            }
+        }
+    }//GEN-LAST:event_tecladaBairro
+
+    private void tecladaLograd(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaLograd
+        String txtV = vs.lograd(evt, campoLograd.getText());
+        if (txtV == ""){
+            txtErroEndereco.setForeground(new Color(240,240,240));
+        } else {
+            txtErroEndereco.setText(txtV);
+            if (txtV.endsWith(".")){
+                txtErroEndereco.setForeground(new Color(255,0,0));
+            } else {
+                txtErroEndereco.setForeground(new Color(0, 160, 40));
+            }
+        }
+    }//GEN-LAST:event_tecladaLograd
+
+    private void tecladaLogradNum(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaLogradNum
+        String txtV = vs.logradNum(evt, campoLogradNum.getText());
+        if (txtV == ""){
+            txtErroEndereco.setForeground(new Color(240,240,240));
+        } else {
+            txtErroEndereco.setText(txtV);
+            if (txtV.endsWith(".")){
+                txtErroEndereco.setForeground(new Color(255,0,0));
+            } else {
+                txtErroEndereco.setForeground(new Color(0, 160, 40));
+            }
+        }
+    }//GEN-LAST:event_tecladaLogradNum
+
+    private void tecladaLogradComp(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaLogradComp
+        String txtV = vs.nomes30(evt, campoLogradComp.getText());
+        if (txtV == ""){
+            txtErroEndereco.setForeground(new Color(240,240,240));
+        } else {
+            txtErroEndereco.setText(txtV);
+            if (txtV.endsWith(".")){
+                txtErroEndereco.setForeground(new Color(255,0,0));
+            } else {
+                txtErroEndereco.setForeground(new Color(0, 160, 40));
+            }
+        }
+    }//GEN-LAST:event_tecladaLogradComp
+
+    private void btnEditarOseditarOs(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarOseditarOs
+        btnClicado(evt);
+        contadorEditar++;
+        if (contadorEditar == 1){
+            int dialogButton = JOptionPane.YES_NO_OPTION;
+            int dialogResult = JOptionPane.showConfirmDialog (null, "Tem certeza que deseja habilitar os campos para a edição?","Aviso!",dialogButton);
+            if(dialogResult == JOptionPane.YES_OPTION){
+                habilitarCampos();
+            } else {
+                contadorEditar--;
+            }
+        }
+        else if (contadorEditar == 2){
+            int dialogButton = JOptionPane.YES_NO_OPTION;
+            int dialogResult = JOptionPane.showConfirmDialog (null, "Tem certeza que deseja editar os dados dessa ordem de serviço?","Aviso!",dialogButton);
+            if(dialogResult == JOptionPane.YES_OPTION){
+                Cliente c = new Cliente();
+                ClienteDAO cdao = new ClienteDAO();
+                Contato ctt = new Contato();
+                ContatoDAO cttdao = new ContatoDAO();
+                c.setClienteCpfOuCnpj(cliente.getClienteCpfOuCnpj());
+                c.setClienteEndBairro(campoBairro.getText());
+                c.setClienteEndEstado(caixaCombinacaoEstado.getSelectedItem().toString());
+                c.setClienteEndCep(fs.retirarFormatacao(campoCep.getText()));
+                c.setClienteEndCidade(campoCidade.getText());
+                c.setClienteEndLograd(campoLograd.getText());
+                c.setClienteEndLogradNum(campoLogradNum.getText());
+                c.setClienteEndLogradComp(campoLogradComp.getText());
+                ctt.setClienteContatoCpfnj(cliente.getClienteCpfOuCnpj());
+                ctt.setClienteContatoEmail(campoEmail.getText());
+                ctt.setClienteContatoNumTel1(fs.retirarFormatacao(campoNumTel1.getText()));
+                ctt.setClienteContatoNumTel2(fs.retirarFormatacao(campoNumTel2.getText()));
+                cdao.atualizarCliente(c);
+                cttdao.atualizarContato(ctt);
+                atualizarTela();
+            } else {
+                contadorEditar--;
+            }
+        }
+    }//GEN-LAST:event_btnEditarOseditarOs
 
     /**
      * @param args the command line arguments
@@ -73,11 +813,125 @@ public class consulta_cliente extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new consulta_cliente().setVisible(true);
+//                new consulta_cliente().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEditarOs;
+    private javax.swing.JComboBox<String> caixaCombinacaoEstado;
+    private javax.swing.JTextField campoBairro;
+    private javax.swing.JTextField campoCep;
+    private javax.swing.JTextField campoCidade;
+    private javax.swing.JTextField campoCpfnj;
+    private javax.swing.JTextField campoDataNasc;
+    private javax.swing.JTextField campoEmail;
+    private javax.swing.JTextField campoLograd;
+    private javax.swing.JTextField campoLogradComp;
+    private javax.swing.JTextField campoLogradNum;
+    private javax.swing.JTextField campoNomeRazao;
+    private javax.swing.JTextField campoNumTel1;
+    private javax.swing.JTextField campoNumTel2;
+    private javax.swing.JTextField campoRgIe;
+    private javax.swing.JTextField campoSobrenomeFantasia;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel painelContato;
+    private javax.swing.JPanel painelEndereco;
+    private javax.swing.JLabel titleBairro;
+    private javax.swing.JLabel titleCep;
+    private javax.swing.JLabel titleCidade;
+    private javax.swing.JLabel titleCpfnj;
+    private javax.swing.JLabel titleDataNasc;
+    private javax.swing.JLabel titleEmail;
+    private javax.swing.JLabel titleEstado;
+    private javax.swing.JLabel titleLograd;
+    private javax.swing.JLabel titleLogradComp;
+    private javax.swing.JLabel titleLogradNum;
+    private javax.swing.JLabel titleNomeRazao;
+    private javax.swing.JLabel titleNumTel1;
+    private javax.swing.JLabel titleNumTel2;
+    private javax.swing.JLabel titleRgIe;
+    private javax.swing.JLabel titleSobrenomeFantasia;
+    private javax.swing.JLabel txtErroEmail;
+    private javax.swing.JLabel txtErroEndereco;
+    private javax.swing.JLabel txtErroNumTel1;
+    private javax.swing.JLabel txtErroNumTel2;
     // End of variables declaration//GEN-END:variables
+
+    private void btnClicado(java.awt.event.MouseEvent evt){
+        /*
+            MÉTODO RESPONSÁVEL POR MUDAR A COR DE FUNDO DO BOTAO QUANDO FOR CLICADO
+        */
+        //muda a cor de fundo
+        evt.getComponent().setBackground(new Color(100,0,0));
+        //apos algum tempo, retorna a cor de fundo que tava
+        new Timer().schedule(
+            new TimerTask(){
+                @Override
+                public void run(){
+                    evt.getComponent().setBackground(new Color(204,0,0));
+                }
+        }, 50);
+    }
+    
+    private void habilitarCampos(){
+        campoEmail.setEnabled(true);
+        campoEmail.setBackground(Color.white);
+        campoEmail.setForeground(Color.black);
+        campoEmail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        campoNumTel1.setEnabled(true);
+        campoNumTel1.setBackground(Color.white);
+        campoNumTel1.setForeground(Color.black);
+        campoNumTel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        campoNumTel2.setEnabled(true);
+        campoNumTel2.setBackground(Color.white);
+        campoNumTel2.setForeground(Color.black);
+        campoNumTel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        caixaCombinacaoEstado.setEnabled(true);
+        caixaCombinacaoEstado.setBackground(Color.white);
+        caixaCombinacaoEstado.setForeground(Color.black);
+        caixaCombinacaoEstado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        campoCep.setEnabled(true);
+        campoCep.setBackground(Color.white);
+        campoCep.setForeground(Color.black);
+        campoCep.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        campoCidade.setEnabled(true);
+        campoCidade.setBackground(Color.white);
+        campoCidade.setForeground(Color.black);
+        campoCidade.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        campoBairro.setEnabled(true);
+        campoBairro.setBackground(Color.white);
+        campoBairro.setForeground(Color.black);
+        campoBairro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        campoLograd.setEnabled(true);
+        campoLograd.setBackground(Color.white);
+        campoLograd.setForeground(Color.black);
+        campoLograd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        campoLogradNum.setEnabled(true);
+        campoLogradNum.setBackground(Color.white);
+        campoLogradNum.setForeground(Color.black);
+        campoLogradNum.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        campoLogradComp.setEnabled(true);
+        campoLogradComp.setBackground(Color.white);
+        campoLogradComp.setForeground(Color.black);
+        campoLogradComp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+    }
+    
+    private void atualizarTela(){
+        this.setVisible(false);
+        List<Orcamento> orcs = new ArrayList<>();
+        List<OS> OSs = new ArrayList<>();
+        OrcamentoDAO orcDao = new OrcamentoDAO();
+        OsDAO osDao = new OsDAO();                       
+//        OSs = osDao.consultaOs("os_numero", os.getOsNumero());
+//        orcs = orcDao.consultarOrcamento(os.getOsNumero());
+//        consulta_os novaTela = new consulta_os(OSs.get(0),orcs);
+//        //por algum motivo, o método de mudar de tela ta dando erro. Tentar arrumar depois
+//        novaTela.setBounds(this.getX(), this.getY(),this.getWidth(),this.getHeight());
+//        novaTela.setExtendedState(this.getExtendedState());
+//        this.dispose();
+//        novaTela.setVisible(true);
+    } 
 }

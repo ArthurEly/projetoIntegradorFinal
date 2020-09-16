@@ -17,12 +17,9 @@ public class TelaUtils {
         /*
             FUNÇÃO QUE LEVA DA TELA QUE TU ESTÁ PARA A TELA QUE QUER IR, INDO DESSE (PRIMEIRA TELA) PARA ESSE (SEGUNDA TELA)
         */        
-        //pega as posições e o tamanho da primeira tela e joga pra segunda
         esse.setBounds(desse.getX(), desse.getY(), desse.getWidth(), desse.getHeight());
         esse.setExtendedState(desse.getExtendedState());
-        //abre a segunda
         esse.setVisible(true);
-        //fecha a primeria tela
         new Timer().schedule(
             new TimerTask(){
                 @Override
@@ -37,10 +34,8 @@ public class TelaUtils {
         /*
             FUNÇÃO QUE LEVA DA TELA QUE TU ESTÁ PARA A TELA QUE QUER IR, INDO DESSE (PRIMEIRA TELA) PARA ESSE (SEGUNDA TELA)
         */        
-        //pega as posições e o tamanho da primeira tela e joga pra segunda
         esse.setBounds(desse.getX(), desse.getY(),largura,altura);
         esse.setExtendedState(desse.getExtendedState());
-        //abre a segunda
         esse.setVisible(true);
     }
     
@@ -48,10 +43,8 @@ public class TelaUtils {
         /*
             FUNÇÃO QUE LEVA DA TELA QUE TU ESTÁ PARA A TELA QUE QUER IR, INDO DESSE (PRIMEIRA TELA) PARA ESSE (SEGUNDA TELA)
         */        
-        //pega as posições e o tamanho da primeira tela e joga pra segunda
         esse.setBounds(desse.getX(), desse.getY(),largura,altura);
         esse.setExtendedState(desse.getExtendedState());
-        //abre a segunda
         desse.dispose();
         esse.setVisible(true);
     }

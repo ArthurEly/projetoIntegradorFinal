@@ -40,6 +40,7 @@ public class OsDAO {
         }catch(NullPointerException e){
             System.out.println("Nao tem internet fio");
         }
+        c.desconectarDoBanco();
         return numOs;
     }
 
@@ -63,7 +64,6 @@ public class OsDAO {
                 os.setOsDataEntrada(resultado.getString("os_data_entrada"));
                 os.setOsPrevisaoSaida(resultado.getString("os_previsao_saida"));
                 os.setOsDataSaida(resultado.getString("os_data_saida"));
-                os.setOsOrcamentoAtual(resultado.getString("os_orcamento_atual"));
                 os.setOsColabNome(resultado.getString("colaborador_nome_atendimento"));  
                 OSs.add(os);
             }          
@@ -71,6 +71,7 @@ public class OsDAO {
         }catch(SQLException e){
             System.out.println("ajfoldsa:  "+e);
         }
+        c.desconectarDoBanco();
         return OSs;
     }
     
@@ -95,6 +96,7 @@ public class OsDAO {
         }catch(Exception e){
             System.out.println("Erro na verificação:  "+e);
         }
+        c.desconectarDoBanco();
         return cadastrado;
     }
 
@@ -109,6 +111,7 @@ public class OsDAO {
         }catch(Exception e){
             System.out.println("Erro na verificação:  "+e);
         }
+        c.desconectarDoBanco();
     }
 
     public void concluirOs(String osNumero) {
@@ -125,5 +128,22 @@ public class OsDAO {
         }catch(Exception e){
             System.out.println("Erro na verificação:  "+e);
         }
+        c.desconectarDoBanco();
+    }
+    
+    public void atualizarSituacaoOs(String veiculoNumOs, String situacao, String placa){
+        String updateSituacao = "UPDATE `os_teste` SET `veiculo_situacao`='"+situacao+"' "
+                + "WHERE os_numero = "+veiculoNumOs;
+        Conexao c = new Conexao();
+        PreparedStatement preparador = null;
+        preparador = null;
+        try{
+            preparador = c.conectarAoBanco().prepareStatement(updateSituacao);         
+            preparador.execute();
+            preparador.close();           
+        }catch(Exception e){
+            System.out.println("Erro na verificação:  "+e);
+        }
+        c.desconectarDoBanco();
     }
 }

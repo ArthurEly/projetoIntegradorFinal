@@ -95,29 +95,26 @@ public class FormatacaoStrings {
         }
         return tel;
     }
-     
-    public String telefone2(KeyEvent evt, String tel){
-        if ((tel.length()+1) <= 12 && jaTel2 == false){ 
-            System.out.println("if: "+(tel.length()+1));
+    
+    public String telefone1Editar(KeyEvent evt, String tel){
+        if ((tel.length()+1) <= 12 && jaTel1 == false){ 
             if (tel.length()+1 == 3){
             tel =  tel + " " ;
             }                     
             if (tel.length()+1 == 8){
                 tel = tel + "-";
             }
-            jaTel2 = false;  
+            jaTel1 = false;  
         } else if ((tel.length()+1) <= 14 && jaTel1 == true){
-            System.out.println("esle if: "+(tel.length()+1));
             tel = tel.replaceAll("\\-", "");
             tel = tel.replaceAll("\\ ", "");
             System.out.println(tel);
-            char cnpj[] = {tel.charAt(0),tel.charAt(1),' ', tel.charAt(2), tel.charAt(3), tel.charAt(4), tel.charAt(5), '-', tel.charAt(6), tel.charAt(7), tel.charAt(8), tel.charAt(9)};  
+            char cnpj[] = {tel.charAt(0),tel.charAt(1),' ', tel.charAt(2), tel.charAt(3), tel.charAt(4), tel.charAt(5), '-', tel.charAt(6), tel.charAt(7), tel.charAt(8)};  
             tel = new String(cnpj);
-            jaTel2 = false;
+            jaTel1 = false;
         } 
         else {
-            System.out.println("else: "+(tel.length()+1));
-            jaTel2 = true;
+            jaTel1 = true;
             if (tel.length() == 12){
                 tel = tel.replaceAll("\\-", "");
                 System.out.println(tel);
@@ -128,8 +125,85 @@ public class FormatacaoStrings {
         }
         return tel;
     }
+     
+    public String telefone2(KeyEvent evt, String tel){
+        if (tel == null){/*nadinha*/}else{
+            if ((tel.length()+1) <= 12 && jaTel2 == false){ 
+                System.out.println("if: "+(tel.length()+1));
+                if (tel.length()+1 == 3){
+                tel =  tel + " " ;
+                }                     
+                if (tel.length()+1 == 8){
+                    tel = tel + "-";
+                }
+                jaTel2 = false;  
+            } else if ((tel.length()+1) <= 14 && jaTel2 == true){
+                System.out.println("esle if: "+(tel.length()+1));
+                tel = tel.replaceAll("\\-", "");
+                tel = tel.replaceAll("\\ ", "");
+                System.out.println(tel);
+                char cnpj[] = {tel.charAt(0),tel.charAt(1),' ', tel.charAt(2), tel.charAt(3), tel.charAt(4), tel.charAt(5), '-', tel.charAt(6), tel.charAt(7), tel.charAt(8), tel.charAt(9)};  
+                tel = new String(cnpj);
+                jaTel2 = false;
+            } 
+            else {
+                System.out.println("else: "+(tel.length()+1));
+                jaTel2 = true;
+                if ((tel.length()+1) == 13){
+                    tel = tel.replaceAll("\\-", "");
+                    System.out.println(tel);
+                    System.out.println(tel.length());
+                    char cnpj[] = {tel.charAt(0),tel.charAt(1), tel.charAt(2), tel.charAt(3),' ',tel.charAt(4), tel.charAt(5), tel.charAt(6), tel.charAt(7),'-',tel.charAt(8),tel.charAt(9),tel.charAt(10)};  
+                    tel = new String(cnpj);
+                }                     
+            }
+        }
+        return tel;
+    }
+    
+    public String telefone2Editar(KeyEvent evt, String tel){
+        if (tel == null){/*nadinha*/}else{
+            if ((tel.length()+1) <= 12 && jaTel2 == false){ 
+                System.out.println("if: "+(tel.length()+1));
+                if (tel.length()+1 == 3){
+                tel =  tel + " " ;
+                }                     
+                if (tel.length()+1 == 8){
+                    tel = tel + "-";
+                }
+                jaTel2 = false;  
+            } else if ((tel.length()+1) <= 14 && jaTel2 == true){
+                System.out.println("esle if: "+(tel.length()+1));
+                tel = tel.replaceAll("\\-", "");
+                tel = tel.replaceAll("\\ ", "");
+                System.out.println(tel);
+                char cnpj[] = {tel.charAt(0),tel.charAt(1),' ', tel.charAt(2), tel.charAt(3), tel.charAt(4), tel.charAt(5), '-', tel.charAt(6), tel.charAt(7), tel.charAt(8)};  
+                tel = new String(cnpj);
+                jaTel2 = false;
+            } 
+            else {
+                System.out.println("else: "+(tel.length()+1));
+                jaTel2 = true;
+                if (tel.length() == 12){
+                    tel = tel.replaceAll("\\-", "");
+                    System.out.println(tel);
+                    System.out.println(tel.length());
+                    char cnpj[] = {tel.charAt(0),tel.charAt(1), tel.charAt(2), tel.charAt(3),' ',tel.charAt(4), tel.charAt(5), tel.charAt(6), tel.charAt(7),'-',tel.charAt(8),tel.charAt(9),tel.charAt(10)};  
+                    tel = new String(cnpj);
+                }                     
+            }
+        }
+        return tel;
+    }
     
     public String botarTelefone(String s){
+        if (s.length() == 10){
+            char telF[] = {s.charAt(0),s.charAt(1),' ',s.charAt(2),s.charAt(3),s.charAt(4),s.charAt(5),'-',s.charAt(6),s.charAt(7),s.charAt(8),s.charAt(9)};
+            s = new String(telF);
+        } else {
+            char telF[] = {s.charAt(0),s.charAt(1),' ',s.charAt(2), ' ',s.charAt(3),s.charAt(4),s.charAt(5),s.charAt(6),'-',s.charAt(7),s.charAt(8),s.charAt(9),s.charAt(10)};
+            s = new String(telF);
+        }
         return s;
     }
     
@@ -223,6 +297,8 @@ public class FormatacaoStrings {
     }
     
     public String botarCep(String s){
+        char cepF[] = {s.charAt(0), s.charAt(1),s.charAt(2),s.charAt(3),s.charAt(4),'-',s.charAt(5),s.charAt(6),s.charAt(7)};
+        s = new String(cepF);
         return s;
     }
    
@@ -302,7 +378,7 @@ public class FormatacaoStrings {
         return s;
     }
 
-    public String retirarCpfOuCnpj(String text) {
+    public String zerosAEsquerda(String text) {
         while (text.startsWith("0")){
             text = text.substring(1);
         }

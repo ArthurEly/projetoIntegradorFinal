@@ -52,7 +52,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="painelSeções" max="32767" attributes="0"/>
+                  <Component id="painelSecoes" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="painelCRUD" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -67,7 +67,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-              <Component id="painelSeções" min="-2" pref="120" max="-2" attributes="0"/>
+              <Component id="painelSecoes" min="-2" pref="120" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="painelCRUD" max="32767" attributes="0"/>
@@ -79,7 +79,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="painelSe&#xe7;&#xf5;es">
+    <Container class="javax.swing.JPanel" name="painelSecoes">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -97,14 +97,12 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Component id="btnIrOS" max="32767" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="btnIrVeiculo" max="32767" attributes="0"/>
-                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                  <Component id="btnIrClientes" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                  <Component id="btnIrUsuario" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -114,8 +112,7 @@
                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnIrOS" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
-                      <Component id="btnIrVeiculo" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
-                      <Component id="btnIrClientes" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
+                      <Component id="btnIrUsuario" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
               </Group>
@@ -147,7 +144,7 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="irCadastroOS"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnIrVeiculo">
+        <Component class="javax.swing.JButton" name="btnIrUsuario">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="cc" type="rgb"/>
@@ -155,8 +152,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Ve&#xed;culos"/>
-            <Property name="toolTipText" type="java.lang.String" value=""/>
+            <Property name="text" type="java.lang.String" value="Suas informa&#xe7;&#xf5;es"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                 <BevelBorder>
@@ -172,34 +168,7 @@
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="irCadastroEquip"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnIrClientes">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="cc" type="rgb"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Clientes"/>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
-                <BevelBorder>
-                  <Color PropertyName="highlightOuter" blue="0" green="0" red="82" type="rgb"/>
-                  <Color PropertyName="highlightInner" blue="0" green="0" red="82" type="rgb"/>
-                  <Color PropertyName="shadowOuter" blue="0" green="0" red="cc" type="rgb"/>
-                  <Color PropertyName="shadowInner" blue="0" green="0" red="cc" type="rgb"/>
-                </BevelBorder>
-              </Border>
-            </Property>
-            <Property name="contentAreaFilled" type="boolean" value="false"/>
-            <Property name="focusPainted" type="boolean" value="false"/>
-            <Property name="opaque" type="boolean" value="true"/>
-          </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="irCadastroCliente"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="irInfoUser"/>
           </Events>
         </Component>
       </SubComponents>
@@ -223,18 +192,10 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
+                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="btnIrCadastroOS" min="-2" pref="220" max="-2" attributes="0"/>
-                              <Component id="btnIrConsultaOS" alignment="0" min="-2" pref="220" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                          <Component id="txtNomeColab" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="btnIrCadastroOS" min="-2" pref="220" max="-2" attributes="0"/>
+                      <Component id="btnIrConsultaOS" alignment="0" min="-2" pref="220" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
               </Group>
@@ -247,9 +208,7 @@
                   <Component id="btnIrCadastroOS" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                   <Component id="btnIrConsultaOS" min="-2" pref="40" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
-                  <Component id="txtNomeColab" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="202" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -306,11 +265,6 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="irCadastroOS"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="txtNomeColab">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="aaaaaaaaa"/>
-          </Properties>
-        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="painelFormularioConsulta">
@@ -343,7 +297,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="180" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

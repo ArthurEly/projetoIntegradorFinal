@@ -20,12 +20,16 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import pif.desktop.Classes.Cliente;
+import pif.desktop.Classes.Contato;
 import pif.desktop.Classes.FormatacaoStrings;
 import pif.desktop.Classes.OS;
 import pif.desktop.Classes.Orcamento;
 import pif.desktop.Classes.ParecerTecnico;
 import pif.desktop.Classes.Veiculo;
 import pif.desktop.Classes.VerificacaoStrings;
+import pif.desktop.DAO.ClienteDAO;
+import pif.desktop.DAO.ContatoDAO;
 import pif.desktop.DAO.OrcamentoDAO;
 import pif.desktop.DAO.OsDAO;
 import pif.desktop.DAO.ParecerDAO;
@@ -692,13 +696,13 @@ public class consulta_os extends javax.swing.JFrame {
                     .addComponent(txtErroPlaca, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(painelOsLayout.createSequentialGroup()
                         .addGroup(painelOsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtErroSituacaoVeiculo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(titleSituacaoVeiculo)
                             .addComponent(titleAtendente))
                         .addGap(25, 25, 25)
                         .addGroup(painelOsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(campoSituacaoVeiculo, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
-                            .addComponent(campoAtendente))))
+                            .addComponent(campoAtendente)))
+                    .addComponent(txtErroSituacaoVeiculo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(26, 26, 26)
                 .addGroup(painelOsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelOsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -823,15 +827,24 @@ public class consulta_os extends javax.swing.JFrame {
         List<ParecerTecnico> prcs = new ArrayList<>();
         v = vdao.consultarVeiculo("'"+os.getOsVeiculoPlaca()+"'",os.getOsNumero());
         prcs = pdao.consultarPareceres(os.getOsNumero());
-        consulta_veiculo CONSULTA_TELA = new consulta_veiculo(v,prcs);
-        CONSULTA_TELA.setLocation(this.getX(), this.getY());
-        CONSULTA_TELA.setExtendedState(this.getExtendedState());
-        this.dispose();
-        CONSULTA_TELA.setVisible(true);
+        consulta_veiculo consultaTela = new consulta_veiculo(v,prcs);
+        consultaTela.setLocation(this.getX(), this.getY());
+        consultaTela.setExtendedState(this.getExtendedState());
+        consultaTela.setVisible(true);
     }//GEN-LAST:event_irAoVeiculo
 
     private void irAoCliente(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irAoCliente
-        btnClicado(evt);       
+        btnClicado(evt);
+        ClienteDAO cdao = new ClienteDAO();
+        ContatoDAO cttdao = new ContatoDAO();
+        Cliente c = new Cliente();
+        Contato ctt= new Contato();
+        c = cdao.consultarCliente(os.getOsCpfnj());
+        ctt = cttdao.consultarContato(os.getOsCpfnj());
+        consulta_cliente consultaTela = new consulta_cliente(c,ctt);
+        consultaTela.setLocation(this.getX(), this.getY());
+        consultaTela.setExtendedState(this.getExtendedState());
+        consultaTela.setVisible(true);      
     }//GEN-LAST:event_irAoCliente
 
     private void editarOs(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarOs

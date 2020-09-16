@@ -25,6 +25,7 @@ public class Cliente {
     private String clienteEndLograd;
     private String clienteEndLogradNum;
     private String clienteEndLogradComp;
+    private String clienteDataNasc;
     //declaração de variáveis
 
     /**
@@ -207,5 +208,19 @@ public class Cliente {
      */
     public void setClienteEndLogradComp(String clienteEndLogradComp) {
         this.clienteEndLogradComp = clienteEndLogradComp;
+    }
+    
+     /**
+     * @return the clienteDataNasc
+     */
+    public String getClienteDataNasc() {
+        return clienteDataNasc;
+    }
+
+    /**
+     * @param clienteDataNasc the clienteDataNasc to set
+     */
+    public void setClienteDataNasc(String clienteDataNasc) {
+        this.clienteDataNasc = clienteDataNasc;
     }
 }

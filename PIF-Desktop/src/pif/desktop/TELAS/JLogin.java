@@ -23,7 +23,10 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
-import pif.desktop.DAO.LoginDAO;
+import pif.desktop.Classes.Colab;
+import pif.desktop.Classes.Contato;
+import pif.desktop.DAO.ColabDAO;
+import pif.desktop.DAO.ContatoDAO;
 import pif.desktop.JImage;
 
 /**
@@ -40,18 +43,33 @@ public class JLogin extends javax.swing.JFrame {
      * Creates new form JLogin
      */
     public JLogin() {
+        JLogin.setDefaultLookAndFeelDecorated(true);
         try {
             icon = ImageIO.read(new File("src/resources/icon.png"));
         } catch (IOException ex) {
             Logger.getLogger(JLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Windows".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(JLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(JLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(JLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(JLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
         initComponents();
-
         logo = new JImage("resources/logo.png", true);
         logo.setSize(logo.getImageWidth(), logo.getImageHeight());
         imageFrame.add(logo);
-        this.getContentPane().setBackground(Color.DARK_GRAY);
+        this.getContentPane().setBackground(new Color(102,102,102));
     }
 
     /**
@@ -67,10 +85,12 @@ public class JLogin extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         campoUser = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        campoSenha = new javax.swing.JTextField();
+        campoSenha = new javax.swing.JPasswordField();
         painelLogo = new javax.swing.JPanel();
         imageFrame = new javax.swing.JPanel();
-        btnFazerLogin = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        btnEditarVeiculo = new javax.swing.JButton();
+        txtErroLogin = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login - ARTHOS");
@@ -84,6 +104,8 @@ public class JLogin extends javax.swing.JFrame {
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Senha:");
+
+        campoSenha.setText("jPasswordField1");
 
         javax.swing.GroupLayout painelFormLayout = new javax.swing.GroupLayout(painelForm);
         painelForm.setLayout(painelFormLayout);
@@ -103,8 +125,8 @@ public class JLogin extends javax.swing.JFrame {
                             .addGroup(painelFormLayout.createSequentialGroup()
                                 .addGap(12, 12, 12)
                                 .addGroup(painelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(campoSenha, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(campoUser))))
+                                    .addComponent(campoUser)
+                                    .addComponent(campoSenha))))
                         .addContainerGap())))
         );
         painelFormLayout.setVerticalGroup(
@@ -118,7 +140,7 @@ public class JLogin extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(campoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         painelLogo.setOpaque(false);
@@ -153,12 +175,49 @@ public class JLogin extends javax.swing.JFrame {
                 .addComponent(imageFrame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        btnFazerLogin.setText("jButton1");
-        btnFazerLogin.addMouseListener(new java.awt.event.MouseAdapter() {
+        jPanel3.setBackground(new java.awt.Color(102, 102, 102));
+
+        btnEditarVeiculo.setBackground(new java.awt.Color(204, 0, 0));
+        btnEditarVeiculo.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditarVeiculo.setText("Fazer login:");
+        btnEditarVeiculo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(130, 0, 0), new java.awt.Color(130, 0, 0), new java.awt.Color(204, 0, 0), new java.awt.Color(204, 0, 0)));
+        btnEditarVeiculo.setContentAreaFilled(false);
+        btnEditarVeiculo.setFocusPainted(false);
+        btnEditarVeiculo.setOpaque(true);
+        btnEditarVeiculo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 fazerLogin(evt);
             }
         });
+
+        txtErroLogin.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtErroLogin.setForeground(new java.awt.Color(102, 102, 102));
+        txtErroLogin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtErroLogin.setText("jLabel3");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnEditarVeiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(txtErroLogin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnEditarVeiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtErroLogin)
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -167,26 +226,23 @@ public class JLogin extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(painelForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(painelLogo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(painelLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnFazerLogin)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(40, Short.MAX_VALUE)
+                .addContainerGap(50, Short.MAX_VALUE)
                 .addComponent(painelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addComponent(painelForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnFazerLogin)
+                .addGap(20, 20, 20)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -195,14 +251,23 @@ public class JLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void fazerLogin(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fazerLogin
-        LoginDAO login = new LoginDAO();
-        int id = login.login(campoUser.getText(), campoSenha.getText());
-        if (id != 0){
-            u.irDePara(this, C_OS_TELA.getC_OS());
-            C_OS_TELA.getC_OS().setIdDoUser(id);
-            C_OS_TELA.getC_OS().getId().setText("ID do usuário é: " + C_OS_TELA.getC_OS().getIdDoUser());
+        ColabDAO cbdao = new ColabDAO();
+        ContatoDAO cttdao = new ContatoDAO();
+        Contato ctt = new Contato();
+        ctt = cttdao.consultarContatoLogin(campoUser.getText());
+        if (ctt.getClienteContatoCpfnj() == null){            
+            txtErroLogin.setText("Usuário não cadastrado!");
+            txtErroLogin.setForeground(Color.white);
         } else {
-            System.out.println("Usuário não existe!!");
+            Colab co = cbdao.verificarColab(ctt.getClienteContatoCpfnj());
+            if (campoSenha.getText().equals(co.getColabSenha())){
+                boolean fecharTela = true;
+                u.irDeParaDiferenciado(this, new C_OS_TELA(co, ctt),800,600, fecharTela);
+            } else {
+                System.out.println("doois");
+                txtErroLogin.setText("Senhas não coincidem.");
+                txtErroLogin.setForeground(Color.white);
+            }
         }
     }//GEN-LAST:event_fazerLogin
 
@@ -210,45 +275,25 @@ public class JLogin extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JLogin().setVisible(true);
+                JLogin jl = new JLogin();
+                jl.setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnFazerLogin;
-    private javax.swing.JTextField campoSenha;
+    private javax.swing.JButton btnEditarVeiculo;
+    private javax.swing.JPasswordField campoSenha;
     private javax.swing.JTextField campoUser;
     private javax.swing.JPanel imageFrame;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel painelForm;
     private javax.swing.JPanel painelLogo;
+    private javax.swing.JLabel txtErroLogin;
     // End of variables declaration//GEN-END:variables
 }

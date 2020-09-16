@@ -8,7 +8,7 @@ package pif.desktop.DAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import pif.desktop.TELAS.C_OS_TELA;
+import pif.desktop.Classes.Colab;
 import pif.desktop.TELAS.TelaUtils;
 
 /**
@@ -17,7 +17,7 @@ import pif.desktop.TELAS.TelaUtils;
  */
 public class LoginDAO {
     
-    public int login(String user, String password){
+    public Colab login(String user, String password){
         /*
             MÉTODO PARA FAZER LOGIN
         */
@@ -32,8 +32,7 @@ public class LoginDAO {
         PreparedStatement pstm = null;
         ResultSet resultado=  null;
         TelaUtils u = new TelaUtils();
-        int idUser = 0;
- 
+        Colab co = new Colab();
         try {
             //Cria uma conexão com o banco
             conn = c.conectarAoBanco();
@@ -51,9 +50,8 @@ public class LoginDAO {
             resultado = pstm.executeQuery();
             
             if (resultado.next()){
-                idUser = resultado.getInt("user_id");
-            } else {
-                idUser = 0;
+                co.setColabCpf(resultado.getString("user_cpf"));
+                co.setColabNome(resultado.getString("user_name"));
             }       
         } catch (Exception e) {
             e.printStackTrace();
@@ -73,6 +71,6 @@ public class LoginDAO {
                 e.printStackTrace();
             }
        }
-       return idUser;
+       return co;
     } 
 }

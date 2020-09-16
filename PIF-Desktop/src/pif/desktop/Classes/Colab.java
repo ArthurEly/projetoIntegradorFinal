@@ -16,9 +16,6 @@ public class Colab {
     private String colabRg;
     private String colabNome;
     private String colabSobrenome;
-    private String colabContatoEmail;
-    private String colabContatoNumTel1;
-    private String colabContatoNumTel2;
     private String colabEndEstado;
     private String colabEndCep;
     private String colabEndCidade;
@@ -26,7 +23,8 @@ public class Colab {
     private String colabEndLograd;
     private String colabEndLogradNum;
     private String colabEndLogradComp;
-    private boolean colabTecnico;
+    private String colabDataNasc;
+    private String colabSenha;
     //declaração de variáveis
 
     /**
@@ -83,48 +81,6 @@ public class Colab {
      */
     public void setColabSobrenome(String colabSobrenome) {
         this.colabSobrenome = colabSobrenome;
-    }
-
-    /**
-     * @return the colabContatoEmail
-     */
-    public String getColabContatoEmail() {
-        return colabContatoEmail;
-    }
-
-    /**
-     * @param colabContatoEmail the colabContatoEmail to set
-     */
-    public void setColabContatoEmail(String colabContatoEmail) {
-        this.colabContatoEmail = colabContatoEmail;
-    }
-
-    /**
-     * @return the colabContatoNumTel1
-     */
-    public String getColabContatoNumTel1() {
-        return colabContatoNumTel1;
-    }
-
-    /**
-     * @param colabContatoNumTel1 the colabContatoNumTel1 to set
-     */
-    public void setColabContatoNumTel1(String colabContatoNumTel1) {
-        this.colabContatoNumTel1 = colabContatoNumTel1;
-    }
-
-    /**
-     * @return the colabContatoNumTel2
-     */
-    public String getColabContatoNumTel2() {
-        return colabContatoNumTel2;
-    }
-
-    /**
-     * @param colabContatoNumTel2 the colabContatoNumTel2 to set
-     */
-    public void setColabContatoNumTel2(String colabContatoNumTel2) {
-        this.colabContatoNumTel2 = colabContatoNumTel2;
     }
 
     /**
@@ -224,18 +180,32 @@ public class Colab {
     public void setColabEndLogradComp(String colabEndLogradComp) {
         this.colabEndLogradComp = colabEndLogradComp;
     }
-
+    
     /**
-     * @return the colabTecnico
+     * @return the dataNasc
      */
-    public boolean isColabTecnico() {
-        return colabTecnico;
+    public String getColabDataNasc() {
+        return colabDataNasc;
     }
 
     /**
-     * @param colabTecnico the colabTecnico to set
+     * @param dataNasc the dataNasc to set
      */
-    public void setColabTecnico(boolean colabTecnico) {
-        this.colabTecnico = colabTecnico;
-    } 
+    public void setColabDataNasc(String dataNasc) {
+        this.colabDataNasc = dataNasc;
+    }
+    
+        /**
+     * @return the colabSenha
+     */
+    public String getColabSenha() {
+        return colabSenha;
+    }
+
+    /**
+     * @param colabSenha the colabSenha to set
+     */
+    public void setColabSenha(String colabSenha) {
+        this.colabSenha = colabSenha;
+    }
 }

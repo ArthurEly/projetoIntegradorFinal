@@ -81,7 +81,6 @@
                           <Component id="txtErroPlaca" alignment="1" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtErroSituacaoVeiculo" max="32767" attributes="0"/>
                                   <Component id="titleSituacaoVeiculo" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="titleAtendente" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -91,6 +90,7 @@
                                   <Component id="campoAtendente" max="32767" attributes="0"/>
                               </Group>
                           </Group>
+                          <Component id="txtErroSituacaoVeiculo" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">

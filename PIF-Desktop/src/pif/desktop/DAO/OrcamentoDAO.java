@@ -23,9 +23,6 @@ import pif.desktop.Classes.data;
 public class OrcamentoDAO {
     
     public void cadastrarOrcamento(Orcamento orc, OS os){
-        /*
-            MÉTODO RESPONSÁVEL POR CADASTRAR (CREATE) AS INFORMAÇÕES NO BANCO DE DADOS
-        */
         Conexao c = new Conexao();
         c.conectarAoBanco();
         try{

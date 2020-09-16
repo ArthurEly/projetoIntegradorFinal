@@ -10,11 +10,12 @@ package pif.desktop.Classes;
  * @author arthu
  */
 public class Contato {
-    
+
     //declaração de variáveis
     private String clienteContatoEmail;
     private String clienteContatoNumTel1;
     private String clienteContatoNumTel2;
+    private String clienteContatoCpfnj;
     //declaração de variáveis
     
         /**
@@ -57,5 +58,19 @@ public class Contato {
      */
     public void setClienteContatoNumTel2(String clienteContatoNumTel2) {
         this.clienteContatoNumTel2 = clienteContatoNumTel2;
+    }
+    
+       /**
+     * @return the clienteContatoCpfnj
+     */
+    public String getClienteContatoCpfnj() {
+        return clienteContatoCpfnj;
+    }
+
+    /**
+     * @param clienteContatoCpfnj the clienteContatoCpfnj to set
+     */
+    public void setClienteContatoCpfnj(String clienteContatoCpfnj) {
+        this.clienteContatoCpfnj = clienteContatoCpfnj;
     }
 }

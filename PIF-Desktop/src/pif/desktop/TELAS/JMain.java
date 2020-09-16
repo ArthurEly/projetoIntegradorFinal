@@ -39,11 +39,8 @@ public class JMain extends javax.swing.JFrame {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         JImage bg = new JImage("resources/banner.png", true);
-
         initComponents();
-
         setContentPane(bg);
     }
 
@@ -105,7 +102,8 @@ public class JMain extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JMain().setVisible(true);
+                JMain jm = new JMain();
+                jm.setVisible(true);
             }
         });
     }

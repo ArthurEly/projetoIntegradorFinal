@@ -49,6 +49,22 @@ public class VeiculoDAO {
         }catch(SQLException e){
             System.out.println("erro ao encontrar o veículo:  "+e);
         }
-        return v;
+        c.desconectarDoBanco();
+        return v;      
+    }
+
+    public void atualizarVeiculo(String veiculoNumOs, String ano, String acessorios, String obs, String defeito, String situacao, String placa) {
+        String updateVeiculo = "UPDATE `veiculo_teste` SET `veiculo_ano`='"+ano+"',`veiculo_acessorios`='"+acessorios+"',`veiculo_observacoes`='"+obs+"',"
+                + "`veiculo_defeito_cliente`='"+defeito+"', `veiculo_situacao`='"+situacao+"' WHERE os_numero = "+veiculoNumOs;
+        Conexao c = new Conexao();
+        PreparedStatement preparador = null;
+        try{
+            preparador = c.conectarAoBanco().prepareStatement(updateVeiculo);         
+            preparador.execute();
+            preparador.close();
+        }catch(Exception e){
+            System.out.println("Erro na verificação:  "+e);
+        }
+        c.desconectarDoBanco();
     }
 }
