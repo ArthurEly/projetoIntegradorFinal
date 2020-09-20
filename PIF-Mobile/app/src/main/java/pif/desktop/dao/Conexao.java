@@ -16,7 +16,7 @@ public class Conexao {
 
     public Connection conectarAoBanco() {
         System.out.println("Iniciando conexão com o banco de dados.");
-        try{
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             conexao = (Connection) DriverManager.getConnection(DATABASE_URL, USERNAME, PASSWORD);
             System.out.println("Sucesso!");          

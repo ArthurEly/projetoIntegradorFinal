@@ -17,7 +17,10 @@ public class NetworkUtils {
     public static final String DB_TABLE_CLIENTE = "cliente" + suffix;
     public static final String DB_TABLE_CONTATO = "contato" + suffix;
 
-    public static final String DB_COL_CONTATO_ID = "contato_id";
+    public static final String DB_COL_CONTATO_CPF = "cliente_colab_cpf_ou_cnpj";
+    public static final String DB_COL_CONTATO_EMAIL = "cliente_colab_email";
+    public static final String DB_COL_CONTATO_TEL1 = "cliente_colab_telefone_1";
+    public static final String DB_COL_CONTATO_TEL2 = "cliente_colab_telefone_2";
 
     private static String domain = "https://pi.arttidev.com/";
 
