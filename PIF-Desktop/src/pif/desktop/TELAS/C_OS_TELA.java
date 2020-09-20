@@ -7,12 +7,15 @@ package pif.desktop.TELAS;
 
 import pif.desktop.Classes.USER_LOGADO;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 import javax.imageio.ImageIO;
+import javax.swing.JButton;
+import javax.swing.JPanel;
 import pif.desktop.Classes.Cliente;
 import pif.desktop.Classes.Colab;
 import pif.desktop.Classes.Contato;
@@ -23,6 +26,7 @@ import pif.desktop.Classes.Orcamento;
 import pif.desktop.Classes.VerificacaoStrings;
 import pif.desktop.DAO.CadastroDAO;
 import pif.desktop.DAO.ClienteDAO;
+import pif.desktop.DAO.ContatoDAO;
 import pif.desktop.DAO.OsDAO;
 
 /**
@@ -113,6 +117,7 @@ public class C_OS_TELA extends javax.swing.JFrame {
         OsDAO os = new OsDAO();
         txtNumeroOS.setText(os.numeroOsAtual());
         painelSecoes.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 40, 40)), "Seja bem-vindo(a) "+USER_LOGADO.getCOLAB_NOME()+"! Para qual seção deseja ir?", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12)));
+        this.setMinimumSize(new Dimension(1368,768));
     }
 
     /**
@@ -249,7 +254,7 @@ public class C_OS_TELA extends javax.swing.JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setFocusCycleRoot(false);
         setIconImage(icon);
-        setMinimumSize(new java.awt.Dimension(800, 600));
+        setMinimumSize(new java.awt.Dimension(1368, 768));
 
         painelSecoes.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 40, 40)), "Para qual seção deseja ir?", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
 
@@ -1410,7 +1415,7 @@ public class C_OS_TELA extends javax.swing.JFrame {
                 .addGroup(painelDoScrollLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(painelDoFormulario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 52, Short.MAX_VALUE))
+                .addGap(0, 229, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelDoScrollLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1429,7 +1434,7 @@ public class C_OS_TELA extends javax.swing.JFrame {
                     .addComponent(painelSecoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(painelCRUD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
+                        .addGap(22, 22, 22)
                         .addComponent(painelDeRolagem, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -1438,10 +1443,13 @@ public class C_OS_TELA extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addComponent(painelSecoes, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(painelCRUD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(painelDeRolagem, javax.swing.GroupLayout.DEFAULT_SIZE, 1457, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(painelDeRolagem, javax.swing.GroupLayout.DEFAULT_SIZE, 1667, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(painelCRUD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -1460,22 +1468,7 @@ public class C_OS_TELA extends javax.swing.JFrame {
         }
          
     }//GEN-LAST:event_irConsultaOS
-
-    private void irCadastroOS(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irCadastroOS
-//        u.irDePara(this, C_OS_TELA.getC_OS());
-    }//GEN-LAST:event_irCadastroOS
-
-    private void irInfoUser(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irInfoUser
-        if (!userAberto){
-            USER_TELA = new USER_TELA();
-            u.irDePara(this, USER_TELA);
-            C_OS_TELA.setUSER_TELA(USER_TELA); 
-            userAberto = true;
-        } else {
-            u.irDePara(this, getUSER_TELA());
-        }
-    }//GEN-LAST:event_irInfoUser
-
+  
     private void cadastrarDados(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cadastrarDados
         /*
             MÉTODO RESPONSÁVEL POR CADASTRAR OS DADOS DO CLIENTE
@@ -1961,21 +1954,40 @@ public class C_OS_TELA extends javax.swing.JFrame {
         if (campoCpfOuCnpj.getText().length() == 14 || campoCpfOuCnpj.getText().length() == 18){ 
             if (vs.isCPF(campoCpfOuCnpj.getText()) || vs.isCNPJ(campoCpfOuCnpj.getText())){
                 ClienteDAO cdao = new ClienteDAO();
-                if (cdao.verificarCliente(campoCpfOuCnpj.getText(),"cliente_teste")){
+                Cliente c = new Cliente();
+                c = cdao.consultarCliente(campoCpfOuCnpj.getText());
+                if (!c.getClienteEndEstado().equals("")){
+                    ContatoDAO cttdao = new ContatoDAO();
+                    Contato ctt = new Contato();
+                    ctt = cttdao.consultarContato(c.getClienteCpfOuCnpj());
                     campoDataNascimento.setEnabled(false);
+                    campoDataNascimento.setText(fs.botarData(c.getClienteDataNasc()));
                     campoRgOuIe.setEnabled(false);
+                    campoRgOuIe.setText(c.getClienteRgOuIe());
                     campoNomeOuRazao.setEnabled(false);
+                    campoNomeOuRazao.setText(c.getClienteNomeOuRazao());
                     campoSobrenomeOuFantasia.setEnabled(false);
+                    campoSobrenomeOuFantasia.setText(c.getClienteSobrenomeOuFantasia());
                     campoEmail.setEnabled(false);
+                    campoEmail.setText(ctt.getClienteContatoEmail());
                     campoNumTel1.setEnabled(false);
+                    campoNumTel1.setText(fs.botarTelefone(ctt.getClienteContatoNumTel1()));
                     campoNumTel2.setEnabled(false);
+                    campoNumTel2.setText(fs.botarTelefone(ctt.getClienteContatoNumTel2()));
                     caixaCombinacaoEstado.setEnabled(false);
+                    caixaCombinacaoEstado.setSelectedIndex(vs.verificarEstado(c.getClienteEndEstado()));
                     campoCep.setEnabled(false);
+                    campoCep.setText(fs.botarCep(c.getClienteEndCep()));
                     campoCidade.setEnabled(false);
+                    campoCidade.setText(c.getClienteEndCidade());
                     campoBairro.setEnabled(false);
+                    campoBairro.setText(c.getClienteEndBairro());
                     campoLograd.setEnabled(false);
+                    campoLograd.setText(c.getClienteEndLograd());
                     campoLogradNum.setEnabled(false);
+                    campoLogradNum.setText(c.getClienteEndLogradNum());
                     campoLogradComp.setEnabled(false);
+                    campoLogradComp.setText(c.getClienteEndLogradComp());
                     txtErroCpfOuCnpj.setForeground(new Color(0,160,40));
                     txtErroCpfOuCnpj.setText("Cliente já cadastrado!");
                 } else {
@@ -1987,19 +1999,33 @@ public class C_OS_TELA extends javax.swing.JFrame {
             }            
         } else {
             campoDataNascimento.setEnabled(true);
+            campoDataNascimento.setText("");
             campoRgOuIe.setEnabled(true);
+            campoRgOuIe.setText("");
             campoNomeOuRazao.setEnabled(true);
+            campoNomeOuRazao.setText("");
             campoSobrenomeOuFantasia.setEnabled(true);
+            campoSobrenomeOuFantasia.setText("");
             campoEmail.setEnabled(true);
+            campoEmail.setText("");
             campoNumTel1.setEnabled(true);
+            campoNumTel1.setText("");
             campoNumTel2.setEnabled(true);
+            campoNumTel2.setText("");
             caixaCombinacaoEstado.setEnabled(true);
+            caixaCombinacaoEstado.setSelectedIndex(0);
             campoCep.setEnabled(true);
+            campoCep.setText("");
             campoCidade.setEnabled(true);
+            campoCidade.setText("");
             campoBairro.setEnabled(true);
+            campoBairro.setText("");
             campoLograd.setEnabled(true);
+            campoLograd.setText("");
             campoLogradNum.setEnabled(true);
+            campoLogradNum.setText("");
             campoLogradComp.setEnabled(true);
+            campoLogradComp.setText("");
         }
     }//GEN-LAST:event_verificarCliente
     
@@ -2088,6 +2114,21 @@ public class C_OS_TELA extends javax.swing.JFrame {
         String txt = fs.data(campoDataNascimento.getText());
         campoDataNascimento.setText(txt);
     }//GEN-LAST:event_tecladaDataNascimento
+
+    private void irInfoUser(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irInfoUser
+        if (!userAberto){
+            USER_TELA = new USER_TELA();
+            u.irDePara(this, USER_TELA);
+            C_OS_TELA.setUSER_TELA(USER_TELA);
+            userAberto = true;
+        } else {
+            u.irDePara(this, getUSER_TELA());
+        }
+    }//GEN-LAST:event_irInfoUser
+
+    private void irCadastroOS(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irCadastroOS
+        //        u.irDePara(this, C_OS_TELA.getC_OS());
+    }//GEN-LAST:event_irCadastroOS
     //</editor-fold>
     
     /**

@@ -6,6 +6,7 @@
 package pif.desktop.TELAS.rascunhos;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
@@ -51,6 +52,7 @@ public class consulta_cliente extends javax.swing.JFrame {
         setIconImage(icon);         
         cliente = c;
         contato = ctt;
+        this.setMinimumSize(new Dimension(1368,768));
         if (c.isClientePj()==true){
             titleCpfnj.setText("CNPJ do cliente:");
             titleRgIe.setText("IE do cliente:");
@@ -74,17 +76,13 @@ public class consulta_cliente extends javax.swing.JFrame {
         
         campoEmail.setText(ctt.getClienteContatoEmail());
         campoNumTel1.setText(fs.botarTelefone(ctt.getClienteContatoNumTel1()));
-        campoNumTel2.setText(fs.botarTelefone(ctt.getClienteContatoNumTel2()));
-        
-        String[] estados = {"--", "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"};
-        int length = estados.length;
-        int i;
-        for (i=0;i<length;i++){
-            if (c.getClienteEndEstado().equals(estados[i])){
-                break;
-            }
+        String tel2 = ctt.getClienteContatoNumTel2();
+        if (tel2.equals("")){
+            campoNumTel2.setText("-");
+        } else {
+            campoNumTel2.setText(fs.botarTelefone(ctt.getClienteContatoNumTel2()));
         }
-        caixaCombinacaoEstado.setSelectedIndex(i);
+        caixaCombinacaoEstado.setSelectedIndex(vs.verificarEstado(c.getClienteEndEstado()));
         campoCep.setText(fs.botarCep(c.getClienteEndCep()));
         campoCidade.setText(c.getClienteEndCidade());
         campoBairro.setText(c.getClienteEndBairro());
@@ -146,6 +144,7 @@ public class consulta_cliente extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(icon);
+        setMinimumSize(new java.awt.Dimension(1368, 768));
 
         titleNomeRazao.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         titleNomeRazao.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -773,7 +772,13 @@ public class consulta_cliente extends javax.swing.JFrame {
                 ctt.setClienteContatoCpfnj(cliente.getClienteCpfOuCnpj());
                 ctt.setClienteContatoEmail(campoEmail.getText());
                 ctt.setClienteContatoNumTel1(fs.retirarFormatacao(campoNumTel1.getText()));
-                ctt.setClienteContatoNumTel2(fs.retirarFormatacao(campoNumTel2.getText()));
+                String tel2 = campoNumTel2.getText();
+                if (tel2.equals("-")){
+                    ctt.setClienteContatoNumTel1(tel2);
+                } else {
+                    ctt.setClienteContatoNumTel2(fs.retirarFormatacao(campoNumTel2.getText()));
+                }
+                
                 cdao.atualizarCliente(c);
                 cttdao.atualizarContato(ctt);
                 atualizarTela();

@@ -6,6 +6,7 @@
 package pif.desktop.TELAS.rascunhos;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.io.File;
@@ -59,6 +60,7 @@ public class consulta_os extends javax.swing.JFrame {
             e.printStackTrace();
         }  
         this.os = os;
+        this.setMinimumSize(new Dimension(1368,768));
         painelOs.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "OS de número " + os.getOsNumero(), javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
         campoCpfnj.setText(fs.botarCpfOuCnpj(os.getOsCpfnj()));
         campoPlaca.setText(os.getOsVeiculoPlaca());
@@ -300,7 +302,8 @@ public class consulta_os extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(icon);
-        setMinimumSize(new java.awt.Dimension(1300, 700));
+        setMinimumSize(new java.awt.Dimension(1368, 768));
+        setPreferredSize(new java.awt.Dimension(1368, 768));
 
         painelDeRolagem.setBorder(null);
         painelDeRolagem.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);

@@ -20,6 +20,8 @@ import java.awt.Color;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -104,8 +106,6 @@ public class JLogin extends javax.swing.JFrame {
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Senha:");
-
-        campoSenha.setText("jPasswordField1");
 
         javax.swing.GroupLayout painelFormLayout = new javax.swing.GroupLayout(painelForm);
         painelForm.setLayout(painelFormLayout);
@@ -251,6 +251,7 @@ public class JLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void fazerLogin(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fazerLogin
+        btnClicado(evt);
         ColabDAO cbdao = new ColabDAO();
         ContatoDAO cttdao = new ContatoDAO();
         Contato ctt = new Contato();
@@ -262,7 +263,7 @@ public class JLogin extends javax.swing.JFrame {
             Colab co = cbdao.verificarColab(ctt.getClienteContatoCpfnj());
             if (campoSenha.getText().equals(co.getColabSenha())){
                 boolean fecharTela = true;
-                u.irDeParaDiferenciado(this, new C_OS_TELA(co, ctt),800,600, fecharTela);
+                u.irDeParaDiferenciado(this, new C_OS_TELA(co, ctt),1368,768, fecharTela);
             } else {
                 System.out.println("doois");
                 txtErroLogin.setText("Senhas não coincidem.");
@@ -296,4 +297,18 @@ public class JLogin extends javax.swing.JFrame {
     private javax.swing.JPanel painelLogo;
     private javax.swing.JLabel txtErroLogin;
     // End of variables declaration//GEN-END:variables
+
+    private void btnClicado(java.awt.event.MouseEvent evt){
+        /*
+            MÉTODO RESPONSÁVEL POR MUDAR A COR DE FUNDO DO BOTAO QUANDO FOR CLICADO
+        */
+        evt.getComponent().setBackground(new Color(100,0,0));
+        new Timer().schedule(
+            new TimerTask(){
+                @Override
+                public void run(){
+                    evt.getComponent().setBackground(new Color(204,0,0));
+                }
+        }, 50);
+    }
 }

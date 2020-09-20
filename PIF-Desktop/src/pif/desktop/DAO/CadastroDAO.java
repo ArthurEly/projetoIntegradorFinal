@@ -9,7 +9,6 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import static java.sql.Types.NULL;
 import pif.desktop.Classes.Cliente;
-import pif.desktop.Classes.Colab;
 import pif.desktop.Classes.Contato;
 import pif.desktop.Classes.Veiculo;
 import pif.desktop.Classes.OS;
@@ -31,7 +30,7 @@ public class CadastroDAO {
         c.conectarAoBanco();
         if (jaCadastrado == false){
             try{
-            //conecta-se ao banco            
+            //conecta-se ao banco   
             String sqlCliente = "INSERT INTO cliente_teste (cliente_nome_ou_razao, cliente_sobrenome_ou_nome_fantasia,"
                     + "cliente_cpf_ou_cnpj, cliente_rg_ou_ie, cliente_pj, cliente_uf, cliente_cep, cliente_cidade,"
                     + "cliente_bairro, cliente_lograd, cliente_lograd_num, cliente_lograd_comp, cliente_nascimento, cliente_pass) VALUES (?, ?, ?, ?,"
@@ -148,7 +147,7 @@ public class CadastroDAO {
             consultaOrc.execute();
             //fecha a consulta ao banco e se desconecta dele
             consultaOrc.close();
-            c.desconectarDoBanco();               
+            c.desconectarDoBanco();            
         }catch(SQLException ex){
             System.out.println("Deu treta no orçamento: " + ex);
         }

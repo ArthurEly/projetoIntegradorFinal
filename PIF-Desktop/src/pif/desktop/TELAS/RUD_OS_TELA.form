@@ -27,7 +27,7 @@
       <Connection code="icon" type="code"/>
     </Property>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[800, 600]"/>
+      <Dimension value="[1368, 768]"/>
     </Property>
   </Properties>
   <SyntheticProperties>

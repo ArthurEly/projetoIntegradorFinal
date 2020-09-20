@@ -74,6 +74,7 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
         setTitle("Consultar uma ordem de serviço");
         initComponents();
         painelSecoes.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 40, 40)), "Seja bem-vindo(a) "+USER_LOGADO.getCOLAB_NOME()+"! Para qual seção deseja ir?", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12)));
+        this.setMinimumSize(new Dimension(1368,768));
     }
 
     /**
@@ -114,7 +115,7 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
         setIconImage(icon);
-        setMinimumSize(new java.awt.Dimension(800, 600));
+        setMinimumSize(new java.awt.Dimension(1368, 768));
 
         painelSecoes.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 40, 40)), "Para qual seção deseja ir?", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
@@ -454,11 +455,11 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
                             OrcamentoDAO orcDao = new OrcamentoDAO();                        
                             Orcs = orcDao.consultarOrcamento(OSs.get(0).getOsNumero());    
                             consulta_os consultaTela = new consulta_os(OSs.get(0),Orcs);
-                            u.irDeParaDiferenciado(this, consultaTela,1350,800);
+                            u.irDeParaDiferenciado(this, consultaTela,1368,768);
                         }
                         else{
                             //<editor-fold defaultstate="collapsed" desc="Tela">
-                            consulta_os_tela consultaTelaOs = new consulta_os_tela();
+                            consulta_tela consultaTelaOs = new consulta_tela();
                             JPanel jPai = new JPanel();
                             jPai.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 40, 0)), "Escolha o número de OS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
                             consultaTelaOs.setLayout(new GridLayout(1,1));                                                                                
@@ -673,7 +674,7 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
         OrcamentoDAO orcDao = new OrcamentoDAO();                          
         Orcs = orcDao.consultarOrcamento(OSs.get(i).getOsNumero());                          
         consulta_os consultaTela = new consulta_os(OSs.get(i),Orcs);
-        u.irDeParaDiferenciado(this, consultaTela,1350,800);
+        u.irDeParaDiferenciado(this, consultaTela,1368,768);
     }
  
     private void limparCampos(){

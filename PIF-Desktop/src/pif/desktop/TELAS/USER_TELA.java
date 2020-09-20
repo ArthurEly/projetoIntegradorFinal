@@ -64,15 +64,7 @@ public class USER_TELA extends javax.swing.JFrame {
         campoNumTel2.setText(fs.botarTelefone(USER_LOGADO.getCOLAB_CONTATO_NUM_TEL2()));
         campoRgIe.setText(USER_LOGADO.getCOLAB_RG());
         campoSobrenomeFantasia.setText(USER_LOGADO.getCOLAB_SOBRENOME());
-        String[] estados = {"--", "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"};
-        int length = estados.length;
-        int i;
-        for (i=0;i<length;i++){
-            if (USER_LOGADO.getCOLAB_ESTADO().equals(estados[i])){
-                break;
-            }
-        }
-        caixaCombinacaoEstado.setSelectedIndex(i);
+        caixaCombinacaoEstado.setSelectedIndex(vs.verificarEstado(USER_LOGADO.getCOLAB_ESTADO()));
     }
 
     /**
@@ -132,7 +124,8 @@ public class USER_TELA extends javax.swing.JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setFocusCycleRoot(false);
         setIconImage(icon);
-        setMinimumSize(new java.awt.Dimension(800, 600));
+        setMinimumSize(new java.awt.Dimension(1368, 768));
+        setPreferredSize(new java.awt.Dimension(1368, 768));
 
         painelSecoes.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 40, 40)), "Para qual seção deseja ir?", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
 
@@ -169,9 +162,9 @@ public class USER_TELA extends javax.swing.JFrame {
             painelSecoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelSecoesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnIrOS, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+                .addComponent(btnIrOS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(10, 10, 10)
-                .addComponent(btnIrUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+                .addComponent(btnIrUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         painelSecoesLayout.setVerticalGroup(
@@ -242,7 +235,7 @@ public class USER_TELA extends javax.swing.JFrame {
 
         campoEmail.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         campoEmail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        campoEmail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240)));
+        campoEmail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(180, 180, 180)));
         campoEmail.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         campoEmail.setEnabled(false);
 
@@ -252,7 +245,7 @@ public class USER_TELA extends javax.swing.JFrame {
 
         campoNumTel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         campoNumTel1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        campoNumTel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240)));
+        campoNumTel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(180, 180, 180)));
         campoNumTel1.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         campoNumTel1.setEnabled(false);
         campoNumTel1.setName("tel1"); // NOI18N
@@ -263,7 +256,7 @@ public class USER_TELA extends javax.swing.JFrame {
 
         campoNumTel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         campoNumTel2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        campoNumTel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240)));
+        campoNumTel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(180, 180, 180)));
         campoNumTel2.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         campoNumTel2.setEnabled(false);
         campoNumTel2.setName("tel2"); // NOI18N
@@ -273,7 +266,7 @@ public class USER_TELA extends javax.swing.JFrame {
         painelContatoLayout.setHorizontalGroup(
             painelContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelContatoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(326, Short.MAX_VALUE)
                 .addGroup(painelContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(painelContatoLayout.createSequentialGroup()
                         .addComponent(titleEmail)
@@ -287,7 +280,7 @@ public class USER_TELA extends javax.swing.JFrame {
                         .addGroup(painelContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(campoNumTel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(campoNumTel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(326, Short.MAX_VALUE))
         );
         painelContatoLayout.setVerticalGroup(
             painelContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -318,7 +311,7 @@ public class USER_TELA extends javax.swing.JFrame {
 
         campoCep.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         campoCep.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        campoCep.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240)));
+        campoCep.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(180, 180, 180)));
         campoCep.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         campoCep.setEnabled(false);
         campoCep.setName("cep"); // NOI18N
@@ -329,7 +322,7 @@ public class USER_TELA extends javax.swing.JFrame {
 
         campoCidade.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         campoCidade.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        campoCidade.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240)));
+        campoCidade.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(180, 180, 180)));
         campoCidade.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         campoCidade.setEnabled(false);
 
@@ -345,7 +338,7 @@ public class USER_TELA extends javax.swing.JFrame {
 
         campoBairro.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         campoBairro.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        campoBairro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240)));
+        campoBairro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(180, 180, 180)));
         campoBairro.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         campoBairro.setEnabled(false);
 
@@ -355,7 +348,7 @@ public class USER_TELA extends javax.swing.JFrame {
 
         campoLograd.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         campoLograd.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        campoLograd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240)));
+        campoLograd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(180, 180, 180)));
         campoLograd.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         campoLograd.setEnabled(false);
 
@@ -365,7 +358,7 @@ public class USER_TELA extends javax.swing.JFrame {
 
         campoLogradNum.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         campoLogradNum.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        campoLogradNum.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240)));
+        campoLogradNum.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(180, 180, 180)));
         campoLogradNum.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         campoLogradNum.setEnabled(false);
 
@@ -375,7 +368,7 @@ public class USER_TELA extends javax.swing.JFrame {
 
         campoLogradComp.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         campoLogradComp.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        campoLogradComp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240)));
+        campoLogradComp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(180, 180, 180)));
         campoLogradComp.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         campoLogradComp.setEnabled(false);
 
@@ -384,39 +377,40 @@ public class USER_TELA extends javax.swing.JFrame {
         painelEnderecoLayout.setHorizontalGroup(
             painelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelEnderecoLayout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(28, Short.MAX_VALUE)
                 .addGroup(painelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(painelEnderecoLayout.createSequentialGroup()
-                        .addComponent(titleLograd)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(campoLograd))
                     .addGroup(painelEnderecoLayout.createSequentialGroup()
                         .addComponent(titleLogradNum)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(campoLogradNum, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(398, 398, 398)
                         .addComponent(titleLogradComp)
                         .addGap(18, 18, 18)
-                        .addComponent(campoLogradComp, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(painelEnderecoLayout.createSequentialGroup()
-                        .addGroup(painelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(painelEnderecoLayout.createSequentialGroup()
-                                .addComponent(titleCidade)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(campoCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(painelEnderecoLayout.createSequentialGroup()
-                                .addComponent(titleEstado)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(caixaCombinacaoEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(painelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(titleBairro, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(titleCep, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(18, 18, 18)
-                        .addGroup(painelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(campoCep, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                            .addComponent(campoBairro))))
-                .addContainerGap())
+                        .addComponent(campoLogradComp, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(painelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(painelEnderecoLayout.createSequentialGroup()
+                            .addComponent(titleLograd)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(campoLograd))
+                        .addGroup(painelEnderecoLayout.createSequentialGroup()
+                            .addGroup(painelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(painelEnderecoLayout.createSequentialGroup()
+                                    .addComponent(titleCidade)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(campoCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(painelEnderecoLayout.createSequentialGroup()
+                                    .addComponent(titleEstado)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(caixaCombinacaoEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(342, 342, 342)
+                            .addGroup(painelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(titleBairro, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(titleCep, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addGap(18, 18, 18)
+                            .addGroup(painelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(campoCep)
+                                .addComponent(campoBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         painelEnderecoLayout.setVerticalGroup(
             painelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -466,17 +460,17 @@ public class USER_TELA extends javax.swing.JFrame {
             .addGroup(painelInfoUserLayout.createSequentialGroup()
                 .addGroup(painelInfoUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelInfoUserLayout.createSequentialGroup()
-                        .addGap(34, 34, 34)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(titleNomeRazao, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(campoNomeRazao))
                     .addGroup(painelInfoUserLayout.createSequentialGroup()
-                        .addContainerGap()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(painelInfoUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(painelContato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(painelEndereco, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(painelContato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(painelEndereco, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(painelInfoUserLayout.createSequentialGroup()
-                        .addGap(34, 34, 34)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(painelInfoUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(titleSobrenomeFantasia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(titleRgIe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -492,7 +486,7 @@ public class USER_TELA extends javax.swing.JFrame {
                             .addGroup(painelInfoUserLayout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addComponent(campoSobrenomeFantasia)))))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         painelInfoUserLayout.setVerticalGroup(
             painelInfoUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

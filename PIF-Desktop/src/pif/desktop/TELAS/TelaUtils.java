@@ -36,6 +36,7 @@ public class TelaUtils {
         */        
         esse.setBounds(desse.getX(), desse.getY(),largura,altura);
         esse.setExtendedState(desse.getExtendedState());
+        desse.setExtendedState(1);
         esse.setVisible(true);
     }
     
@@ -45,6 +46,7 @@ public class TelaUtils {
         */        
         esse.setBounds(desse.getX(), desse.getY(),largura,altura);
         esse.setExtendedState(desse.getExtendedState());
+        desse.setExtendedState(1);
         desse.dispose();
         esse.setVisible(true);
     }

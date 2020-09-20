@@ -222,5 +222,5 @@ public class Cliente {
      */
     public void setClienteDataNasc(String clienteDataNasc) {
         this.clienteDataNasc = clienteDataNasc;
-    }
+    }   
 }

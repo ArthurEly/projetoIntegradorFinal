@@ -88,8 +88,7 @@ public class ClienteDAO {
                 + "`cliente_lograd_comp`='"+c.getClienteEndLogradComp()+"' WHERE `cliente_cpf_ou_cnpj` ="+c.getClienteCpfOuCnpj();
         Conexao con = new Conexao();
         PreparedStatement preparador = null;
-        try{
-            System.out.println(updateCliente);
+        try{            
             preparador = con.conectarAoBanco().prepareStatement(updateCliente);         
             preparador.execute();
             preparador.close();
