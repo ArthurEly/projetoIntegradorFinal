@@ -190,11 +190,13 @@ public class VerificacaoStrings {
         String ano = Character.toString(data.charAt(6)) + Character.toString(data.charAt(7)) + Character.toString(data.charAt(8)) + Character.toString(data.charAt(9));
         int diaInt = Integer.parseInt(dia);
         int mesInt = Integer.parseInt(mes);
-        int anoInt = Integer.parseInt(ano);
-        if (d.ontem(diaInt, mesInt,anoInt)) {
-            avaliacao = false;
-        }else if (d.diaMesValido(diaInt,mesInt, anoInt)){
-            avaliacao = true;
+        int anoInt = Integer.parseInt(ano);      
+        if (d.diaMesValido(diaInt,mesInt, anoInt)){
+            if (d.ontem(diaInt, mesInt,anoInt)) {
+                avaliacao = false;
+            } else {
+                avaliacao = true;
+            }
         } else {
             avaliacao = false;
         }
@@ -209,10 +211,12 @@ public class VerificacaoStrings {
         int diaInt = Integer.parseInt(dia);
         int mesInt = Integer.parseInt(mes);
         int anoInt = Integer.parseInt(ano);
-        if (!d.ontem(diaInt, mesInt,anoInt)) {
-            avaliacao = false;
-        }else if (d.diaMesValido(diaInt,mesInt, anoInt)){
-            avaliacao = true;
+        if (d.diaMesValido(diaInt,mesInt, anoInt)){
+            if (d.ontem(diaInt, mesInt,anoInt)) {
+                avaliacao = true;
+            } else {
+                avaliacao = false;
+            }
         } else {
             avaliacao = false;
         }
@@ -601,9 +605,9 @@ public class VerificacaoStrings {
         } else if (tamanhoValido(evt,s,11) == false){
             avaliacao = "Data inválida.";
         } else if (data(s) == false){
-            avaliacao = "Data inválida.";
-        } else {
             avaliacao = "Data válida!";
+        } else {
+            avaliacao = "Data inválida.";
         }
         if (tamanhoMaximo(evt,s,11) == false){
             avaliacao = "erro";
@@ -641,15 +645,13 @@ public class VerificacaoStrings {
         return avaliacao; 
     }
 
-    public String dataNasc(KeyEvent evt, String s, boolean cpf) {
+    public String dataNasc(KeyEvent evt, String s) {
         String avaliacao = "";
         if (numeros(evt) == false){
             avaliacao = "Digite apenas números."; 
         } else if (tamanhoValido(evt,s,11) == false){
             avaliacao = "Data inválida.";
-        } else if (cpf && dataNasc(s) == false ){
-            avaliacao = "Data inválida.";
-        } else if (!cpf && dataCnpj(s) == false){
+        } else if (dataNasc(s) == false ){
             avaliacao = "Data inválida.";
         } else {
             avaliacao = "Data válida!";
@@ -658,7 +660,24 @@ public class VerificacaoStrings {
             avaliacao = "erro";
         }
         return avaliacao; 
-    }  
+    } 
+    
+    public String dataRelatorio(KeyEvent evt, String s){
+        String avaliacao = "";
+        if (numeros(evt) == false){
+            avaliacao = "Digite apenas números."; 
+        } else if (tamanhoValido(evt,s,11) == false){
+            avaliacao = "Data inválida.";
+        } else if (data(s)){
+            avaliacao = "Data válida!.";
+        } else {
+            avaliacao = "Data inválida.";
+        }
+        if (tamanhoMaximo(evt,s,11) == false){
+            avaliacao = "erro";
+        }
+        return avaliacao; 
+    }
        
     public int verificarEstado(String estado){
         String[] estados = {"--", "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"};
@@ -670,5 +689,22 @@ public class VerificacaoStrings {
             }
         }
         return i;
+    }
+
+    public String dataNascCnpj(KeyEvent evt, String text) {
+        String avaliacao = "";
+        if (numeros(evt) == false){
+            avaliacao = "Digite apenas números."; 
+        } else if (tamanhoValido(evt,text,11) == false){
+            avaliacao = "Data inválida.";
+        } else if (dataCnpj(text)){
+            avaliacao = "Data válida!";
+        } else {
+            avaliacao = "Data inválida.";
+        }
+        if (tamanhoMaximo(evt,text,11) == false){
+            avaliacao = "erro";
+        }
+        return avaliacao; 
     }
 }

@@ -5,6 +5,28 @@
  */
 package pif.desktop.TELAS;
 
+import java.awt.Color;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import javax.imageio.ImageIO;
+import javax.swing.JFrame;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PiePlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.DefaultPieDataset;
+import pif.desktop.Classes.FormatacaoStrings;
+import pif.desktop.Classes.OS;
+import pif.desktop.Classes.Orcamento;
+import pif.desktop.Classes.VerificacaoStrings;
+import pif.desktop.DAO.OrcamentoDAO;
+import pif.desktop.DAO.OsDAO;
+
 /**
  *
  * @author arthu
@@ -13,11 +35,21 @@ public class RELATORIO_TELA extends javax.swing.JFrame {
     
     TelaUtils u = new TelaUtils();
     boolean rudAberto;
+    Image icon;
+    FormatacaoStrings fs = new FormatacaoStrings();
+    VerificacaoStrings vs = new VerificacaoStrings();
     
     /**
      * Creates new form RELATORIO_TELA
      */
     public RELATORIO_TELA() {
+        try {
+            icon = ImageIO.read(new File("src/resources/icon.png"));           
+        } catch (IOException e) {
+            e.printStackTrace();
+        } 
+        this.setIconImage(icon);
+        this.setTitle("Relatórios da oficina");
         initComponents();
     }
 
@@ -42,19 +74,18 @@ public class RELATORIO_TELA extends javax.swing.JFrame {
         btnIrConsultaOS = new javax.swing.JButton();
         painelFormularioConsulta = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        campoData1Os = new javax.swing.JTextField();
+        campoData2Os = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        btnIrCadastroOS3 = new javax.swing.JButton();
         btnIrCadastroOS4 = new javax.swing.JButton();
+        btnIrCadastroOS9 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         btnIrCadastroOS1 = new javax.swing.JButton();
-        btnIrCadastroOS2 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        txtErroOs = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        campoData1Faturamento = new javax.swing.JTextField();
+        campoData2Faturamento = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         btnIrCadastroOS5 = new javax.swing.JButton();
@@ -62,7 +93,7 @@ public class RELATORIO_TELA extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         btnIrCadastroOS7 = new javax.swing.JButton();
         btnIrCadastroOS8 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        txtErroFaturamento = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -205,46 +236,56 @@ public class RELATORIO_TELA extends javax.swing.JFrame {
             painelCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelCRUDLayout.createSequentialGroup()
                 .addComponent(painelOpcoesCRUD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 423, Short.MAX_VALUE))
+                .addGap(0, 512, Short.MAX_VALUE))
         );
 
         painelFormularioConsulta.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 35, 35)), "Relatórios ", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 40, 0)), "Ver ORDENS DE SERVIÇO entre...", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
 
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.setText("adssaas");
+        campoData1Os.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        campoData1Os.setName("1"); // NOI18N
+        campoData1Os.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tecladaDataOs(evt);
+            }
+        });
 
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField2.setText("adssaas");
+        campoData2Os.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        campoData2Os.setName("2"); // NOI18N
+        campoData2Os.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tecladaDataOs(evt);
+            }
+        });
 
         jLabel1.setText("e");
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 40, 0)), "Ver relatório diário", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
 
-        btnIrCadastroOS3.setBackground(new java.awt.Color(204, 0, 0));
-        btnIrCadastroOS3.setForeground(new java.awt.Color(255, 255, 255));
-        btnIrCadastroOS3.setText("Gráfico em pizza");
-        btnIrCadastroOS3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(130, 0, 0), new java.awt.Color(130, 0, 0), new java.awt.Color(204, 0, 0), new java.awt.Color(204, 0, 0)));
-        btnIrCadastroOS3.setContentAreaFilled(false);
-        btnIrCadastroOS3.setFocusPainted(false);
-        btnIrCadastroOS3.setOpaque(true);
-        btnIrCadastroOS3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnIrCadastroOS3abrirGraficoPizza(evt);
-            }
-        });
-
         btnIrCadastroOS4.setBackground(new java.awt.Color(204, 0, 0));
         btnIrCadastroOS4.setForeground(new java.awt.Color(255, 255, 255));
-        btnIrCadastroOS4.setText("Gráfico em barras");
+        btnIrCadastroOS4.setText("Gráfico em barras de quantos SAÍRAM");
         btnIrCadastroOS4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(130, 0, 0), new java.awt.Color(130, 0, 0), new java.awt.Color(204, 0, 0), new java.awt.Color(204, 0, 0)));
         btnIrCadastroOS4.setContentAreaFilled(false);
         btnIrCadastroOS4.setFocusPainted(false);
         btnIrCadastroOS4.setOpaque(true);
         btnIrCadastroOS4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnIrCadastroOS4abrirGraficoBarra(evt);
+                abrirGraficoBarraSaida(evt);
+            }
+        });
+
+        btnIrCadastroOS9.setBackground(new java.awt.Color(204, 0, 0));
+        btnIrCadastroOS9.setForeground(new java.awt.Color(255, 255, 255));
+        btnIrCadastroOS9.setText("Gráfico em barras de quantos ENTRARAM");
+        btnIrCadastroOS9.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(130, 0, 0), new java.awt.Color(130, 0, 0), new java.awt.Color(204, 0, 0), new java.awt.Color(204, 0, 0)));
+        btnIrCadastroOS9.setContentAreaFilled(false);
+        btnIrCadastroOS9.setFocusPainted(false);
+        btnIrCadastroOS9.setOpaque(true);
+        btnIrCadastroOS9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                abrirGraficoBarraEntrada(evt);
             }
         });
 
@@ -252,22 +293,20 @@ public class RELATORIO_TELA extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(11, Short.MAX_VALUE)
-                .addComponent(btnIrCadastroOS3, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnIrCadastroOS4, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnIrCadastroOS4, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnIrCadastroOS9, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addComponent(btnIrCadastroOS4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                .addComponent(btnIrCadastroOS3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(18, 18, 18)
+                .addComponent(btnIrCadastroOS9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 40, 0)), "Ver relatório total", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
@@ -281,20 +320,7 @@ public class RELATORIO_TELA extends javax.swing.JFrame {
         btnIrCadastroOS1.setOpaque(true);
         btnIrCadastroOS1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                abrirGraficoPizza(evt);
-            }
-        });
-
-        btnIrCadastroOS2.setBackground(new java.awt.Color(204, 0, 0));
-        btnIrCadastroOS2.setForeground(new java.awt.Color(255, 255, 255));
-        btnIrCadastroOS2.setText("Gráfico em barras");
-        btnIrCadastroOS2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(130, 0, 0), new java.awt.Color(130, 0, 0), new java.awt.Color(204, 0, 0), new java.awt.Color(204, 0, 0)));
-        btnIrCadastroOS2.setContentAreaFilled(false);
-        btnIrCadastroOS2.setFocusPainted(false);
-        btnIrCadastroOS2.setOpaque(true);
-        btnIrCadastroOS2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                abrirGraficoBarra(evt);
+                abrirGraficoPizzaOs(evt);
             }
         });
 
@@ -302,26 +328,22 @@ public class RELATORIO_TELA extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(11, Short.MAX_VALUE)
-                .addComponent(btnIrCadastroOS1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnIrCadastroOS2, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(btnIrCadastroOS1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(11, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(btnIrCadastroOS2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
                 .addComponent(btnIrCadastroOS1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("txtErro");
+        txtErroOs.setForeground(new java.awt.Color(240, 240, 240));
+        txtErroOs.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtErroOs.setText("txtErro");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -329,17 +351,20 @@ public class RELATORIO_TELA extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap(85, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(campoData1Os, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(21, 21, 21)))
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(campoData2Os, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtErroOs, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(86, Short.MAX_VALUE))
         );
@@ -348,24 +373,34 @@ public class RELATORIO_TELA extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoData1Os, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoData2Os, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel4))
+                    .addComponent(txtErroOs))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 40, 0)), "Ver FATURAMENTO entre...", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
 
-        jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField3.setText("adssaas");
+        campoData1Faturamento.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        campoData1Faturamento.setName("1"); // NOI18N
+        campoData1Faturamento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tecladaDataFaturamento(evt);
+            }
+        });
 
-        jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField4.setText("adssaas");
+        campoData2Faturamento.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        campoData2Faturamento.setName("2"); // NOI18N
+        campoData2Faturamento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tecladaDataFaturamento(evt);
+            }
+        });
 
         jLabel2.setText("e");
 
@@ -380,7 +415,7 @@ public class RELATORIO_TELA extends javax.swing.JFrame {
         btnIrCadastroOS5.setOpaque(true);
         btnIrCadastroOS5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnIrCadastroOS5abrirGraficoPizza(evt);
+                abrirGraficoPizzaFaturamentoDiario(evt);
             }
         });
 
@@ -393,7 +428,7 @@ public class RELATORIO_TELA extends javax.swing.JFrame {
         btnIrCadastroOS6.setOpaque(true);
         btnIrCadastroOS6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnIrCadastroOS6abrirGraficoBarra(evt);
+                abrirGraficoBarraFaturamentoDiario(evt);
             }
         });
 
@@ -430,7 +465,7 @@ public class RELATORIO_TELA extends javax.swing.JFrame {
         btnIrCadastroOS7.setOpaque(true);
         btnIrCadastroOS7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnIrCadastroOS7abrirGraficoPizza(evt);
+                abrirGraficoPizzaFaturamentoTotal(evt);
             }
         });
 
@@ -443,7 +478,7 @@ public class RELATORIO_TELA extends javax.swing.JFrame {
         btnIrCadastroOS8.setOpaque(true);
         btnIrCadastroOS8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnIrCadastroOS8abrirGraficoBarra(evt);
+                abrirGraficoBarraFaturamentoTotal(evt);
             }
         });
 
@@ -469,8 +504,9 @@ public class RELATORIO_TELA extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("txtErro");
+        txtErroFaturamento.setForeground(new java.awt.Color(240, 240, 240));
+        txtErroFaturamento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtErroFaturamento.setText("txtErro");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -480,15 +516,15 @@ public class RELATORIO_TELA extends javax.swing.JFrame {
                 .addContainerGap(85, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoData1Faturamento, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(campoData2Faturamento, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtErroFaturamento, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(89, Short.MAX_VALUE))
         );
@@ -497,10 +533,10 @@ public class RELATORIO_TELA extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoData1Faturamento, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoData2Faturamento, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel3))
+                    .addComponent(txtErroFaturamento))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -528,7 +564,7 @@ public class RELATORIO_TELA extends javax.swing.JFrame {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35))
+                .addGap(56, 56, 56))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -576,37 +612,243 @@ public class RELATORIO_TELA extends javax.swing.JFrame {
         u.irDePara(this, C_OS_TELA.getC_OS());
     }//GEN-LAST:event_irCadastroOS
 
-    private void abrirGraficoPizza(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_abrirGraficoPizza
-        // TODO add your handling code here:
-    }//GEN-LAST:event_abrirGraficoPizza
+    private void abrirGraficoPizzaFaturamentoDiario(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_abrirGraficoPizzaFaturamentoDiario
+        JFrame jfPizaa = new JFrame();
+        DefaultPieDataset pizza = new DefaultPieDataset();
+        OrcamentoDAO orcdao = new OrcamentoDAO();
+        List<Orcamento> orcs = new ArrayList<>();
+        orcs = orcdao.consultarVendasDiarias(fs.retirarFormatacaoData(campoData1Faturamento.getText()), fs.retirarFormatacaoData(campoData2Faturamento.getText()));
+        for (int i=0;i<orcs.size();i++){
+            pizza.setValue(orcs.get(i).getOrcamento_data(), Double.parseDouble(orcs.get(i).getOrcamento_preco_pecas()) + Double.parseDouble(orcs.get(i).getOrcamento_preco_servicos()));
+        }
+        JFreeChart graficoPizza = ChartFactory.createPieChart("Faturamento entre "+campoData1Faturamento.getText()+" e "+campoData2Faturamento.getText(),pizza,true,true,false);
+        ChartPanel painelzadaP = new ChartPanel(graficoPizza);
+        jfPizaa.setIconImage(icon);
+        jfPizaa.setTitle("Faturamento diário");
+        jfPizaa.add(painelzadaP);
+        jfPizaa.setSize(950,700);
+        jfPizaa.setLocationRelativeTo(null);
+        jfPizaa.setVisible(true);
+    }//GEN-LAST:event_abrirGraficoPizzaFaturamentoDiario
 
-    private void abrirGraficoBarra(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_abrirGraficoBarra
-        // TODO add your handling code here:
-    }//GEN-LAST:event_abrirGraficoBarra
+    private void abrirGraficoBarraFaturamentoDiario(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_abrirGraficoBarraFaturamentoDiario
+        JFrame jfBarra = new JFrame();
+        DefaultCategoryDataset barra = new DefaultCategoryDataset();
+        OrcamentoDAO orcdao = new OrcamentoDAO();
+        List<Orcamento> orcs = new ArrayList<>();
+        orcs = orcdao.consultarVendasDiarias(fs.retirarFormatacaoData(campoData1Faturamento.getText()), fs.retirarFormatacaoData(campoData2Faturamento.getText()));
+        for (int i=0;i<orcs.size();i++){
+            barra.setValue(Double.parseDouble(orcs.get(i).getOrcamento_preco_pecas()) + Double.parseDouble(orcs.get(i).getOrcamento_preco_servicos()), orcs.get(i).getOrcamento_data(), "Venda de peças e serviços");
+        }
+        JFreeChart graficoBarra = ChartFactory.createBarChart("Gráfico do faturamento diário","Dia","Faturamento",barra,PlotOrientation.VERTICAL,true,true,false);
+        ChartPanel painelzadaB = new ChartPanel(graficoBarra);
+        jfBarra.setIconImage(icon);
+        jfBarra.setTitle("Faturamento diário");
+        jfBarra.add(painelzadaB);
+        jfBarra.setSize(950,700);
+        jfBarra.setLocationRelativeTo(null);
+        jfBarra.setVisible(true);
+    }//GEN-LAST:event_abrirGraficoBarraFaturamentoDiario
 
-    private void btnIrCadastroOS3abrirGraficoPizza(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIrCadastroOS3abrirGraficoPizza
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnIrCadastroOS3abrirGraficoPizza
+    private void tecladaDataFaturamento(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaDataFaturamento
+        if (evt.getComponent().getName().equals("1")){
+            if ("\b".equals(Character.toString(evt.getKeyChar()))){
+                campoData1Faturamento.setText(fs.apagar(campoData1Faturamento.getText(), evt.getComponent().getName()));
+            }
+            String txtV = vs.data(evt, campoData1Faturamento.getText());
+            if (txtV == ""){
+                txtErroFaturamento.setForeground(new Color(240,240,240));           
+            } 
+            else if (txtV.endsWith("números.")){
+                campoData1Faturamento.setText(campoData1Faturamento.getText().substring(0, campoData1Faturamento.getText().length()-1));
+            } 
+            else{           
+                txtErroFaturamento.setText(txtV);
+                if (txtV.endsWith(".")){
+                    txtErroFaturamento.setForeground(new Color(255,0,0));
+                } else {
+                    txtErroFaturamento.setForeground(new Color(0, 160, 40));
+                }           
+            }
+            if (campoData1Faturamento.getText().length() > 10){
+                int calc = campoData1Faturamento.getText().length() - 10;
+                campoData1Faturamento.setText(campoData1Faturamento.getText().substring(0,campoData1Faturamento.getText().length()-calc));
+            }
+            String txtF = fs.data(campoData1Faturamento.getText());
+            campoData1Faturamento.setText(txtF);
+        } else {
+            if ("\b".equals(Character.toString(evt.getKeyChar()))){
+            campoData2Faturamento.setText(fs.apagar(campoData2Faturamento.getText(), evt.getComponent().getName()));
+            }
+            String txtV = vs.data(evt, campoData2Faturamento.getText());
+            if (txtV == ""){
+                txtErroFaturamento.setForeground(new Color(240,240,240));           
+            } 
+            else if (txtV.endsWith("números.")){
+                campoData2Faturamento.setText(campoData2Faturamento.getText().substring(0, campoData2Faturamento.getText().length()-1));
+            } 
+            else{           
+                txtErroFaturamento.setText(txtV);
+                if (txtV.endsWith(".")){
+                    txtErroFaturamento.setForeground(new Color(255,0,0));
+                } else {
+                    txtErroFaturamento.setForeground(new Color(0, 160, 40));
+                }           
+            }
+            if (campoData2Faturamento.getText().length() > 10){
+                int calc = campoData2Faturamento.getText().length() - 10;
+                campoData2Faturamento.setText(campoData2Faturamento.getText().substring(0,campoData2Faturamento.getText().length()-calc));
+            }
+            String txtF = fs.data(campoData2Faturamento.getText());
+            campoData2Faturamento.setText(txtF);
+        }      
+    }//GEN-LAST:event_tecladaDataFaturamento
 
-    private void btnIrCadastroOS4abrirGraficoBarra(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIrCadastroOS4abrirGraficoBarra
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnIrCadastroOS4abrirGraficoBarra
+    private void tecladaDataOs(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaDataOs
+        if (evt.getComponent().getName().equals("1")){
+            if ("\b".equals(Character.toString(evt.getKeyChar()))){
+            campoData1Os.setText(fs.apagar(campoData1Os.getText(), evt.getComponent().getName()));
+            }
+            String txtV = vs.data(evt, campoData1Os.getText());
+            if (txtV == ""){
+                txtErroOs.setForeground(new Color(240,240,240));           
+            } 
+            else if (txtV.endsWith("números.")){
+                campoData1Os.setText(campoData1Os.getText().substring(0, campoData1Os.getText().length()-1));
+            } 
+            else{           
+                txtErroOs.setText(txtV);
+                if (txtV.endsWith(".")){
+                    txtErroOs.setForeground(new Color(255,0,0));
+                } else {
+                    txtErroOs.setForeground(new Color(0, 160, 40));
+                }           
+            }
+            if (campoData1Os.getText().length() > 10){
+                int calc = campoData1Os.getText().length() - 10;
+                campoData1Os.setText(campoData1Os.getText().substring(0,campoData1Os.getText().length()-calc));
+            }
+            String txtF = fs.data(campoData1Os.getText());
+            campoData1Os.setText(txtF);
+        } else {
+            if ("\b".equals(Character.toString(evt.getKeyChar()))){
+            campoData2Os.setText(fs.apagar(campoData2Os.getText(), evt.getComponent().getName()));
+            }
+            String txtV = vs.data(evt, campoData2Os.getText());
+            if (txtV == ""){
+                txtErroOs.setForeground(new Color(240,240,240));           
+            } 
+            else if (txtV.endsWith("números.")){
+                campoData2Os.setText(campoData2Os.getText().substring(0, campoData2Os.getText().length()-1));
+            } 
+            else{           
+                txtErroOs.setText(txtV);
+                if (txtV.endsWith(".")){
+                    txtErroOs.setForeground(new Color(255,0,0));
+                } else {
+                    txtErroOs.setForeground(new Color(0, 160, 40));
+                }           
+            }
+            if (campoData2Os.getText().length() > 10){
+                int calc = campoData2Os.getText().length() - 10;
+                campoData2Os.setText(campoData2Os.getText().substring(0,campoData2Os.getText().length()-calc));
+            }
+            String txtF = fs.data(campoData2Os.getText());
+            campoData2Os.setText(txtF);
+        }
+    }//GEN-LAST:event_tecladaDataOs
 
-    private void btnIrCadastroOS5abrirGraficoPizza(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIrCadastroOS5abrirGraficoPizza
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnIrCadastroOS5abrirGraficoPizza
+    private void abrirGraficoBarraFaturamentoTotal(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_abrirGraficoBarraFaturamentoTotal
+        JFrame jfBarra = new JFrame();
+        DefaultCategoryDataset barra = new DefaultCategoryDataset();
+        OrcamentoDAO orcdao = new OrcamentoDAO();
+        Orcamento orc = new Orcamento();
+        orc = orcdao.consultarVendasTotais(fs.retirarFormatacaoData(campoData1Faturamento.getText()), fs.retirarFormatacaoData(campoData2Faturamento.getText()));
+        barra.setValue(Double.parseDouble(orc.getOrcamento_preco_pecas()), "Peças", "Venda total de peças");
+        barra.setValue(Double.parseDouble(orc.getOrcamento_preco_servicos()), "Serviços", "Venda total de serviços");
+        JFreeChart graficoBarra = ChartFactory.createBarChart("Gráfico do faturamento total","Peças ou serviços","Faturamento",barra,PlotOrientation.VERTICAL,true,true,false);
+        ChartPanel painelzadaB = new ChartPanel(graficoBarra);
+        jfBarra.setIconImage(icon);
+        jfBarra.setTitle("Faturamento total");
+        jfBarra.add(painelzadaB);
+        jfBarra.setSize(950,700);
+        jfBarra.setLocationRelativeTo(null);
+        jfBarra.setVisible(true);
+    }//GEN-LAST:event_abrirGraficoBarraFaturamentoTotal
 
-    private void btnIrCadastroOS6abrirGraficoBarra(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIrCadastroOS6abrirGraficoBarra
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnIrCadastroOS6abrirGraficoBarra
+    private void abrirGraficoPizzaFaturamentoTotal(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_abrirGraficoPizzaFaturamentoTotal
+        JFrame jfPizaa = new JFrame();
+        DefaultPieDataset pizza = new DefaultPieDataset();
+        OrcamentoDAO orcdao = new OrcamentoDAO();
+        Orcamento orc = new Orcamento();
+        orc = orcdao.consultarVendasTotais(fs.retirarFormatacaoData(campoData1Faturamento.getText()), fs.retirarFormatacaoData(campoData2Faturamento.getText()));
+        pizza.setValue("Peças", Double.parseDouble(orc.getOrcamento_preco_pecas()));
+        pizza.setValue("Serviços", Double.parseDouble(orc.getOrcamento_preco_servicos()));
+        JFreeChart graficoPizza = ChartFactory.createPieChart("Faturamento entre "+campoData1Faturamento.getText()+" e "+campoData2Faturamento.getText(),pizza,true,true,false);
+        ChartPanel painelzadaP = new ChartPanel(graficoPizza);
+        jfPizaa.setIconImage(icon);
+        jfPizaa.setTitle("Faturamento total");
+        jfPizaa.add(painelzadaP);
+        jfPizaa.setSize(950,700);
+        jfPizaa.setLocationRelativeTo(null);
+        jfPizaa.setVisible(true);
+    }//GEN-LAST:event_abrirGraficoPizzaFaturamentoTotal
 
-    private void btnIrCadastroOS7abrirGraficoPizza(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIrCadastroOS7abrirGraficoPizza
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnIrCadastroOS7abrirGraficoPizza
+    private void abrirGraficoPizzaOs(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_abrirGraficoPizzaOs
+        JFrame jfPizaa = new JFrame();
+        DefaultPieDataset pizza = new DefaultPieDataset();
+        OsDAO osdao = new OsDAO();
+        OS os = new OS();
+        os = osdao.consultaOsSaidaEEntrada(fs.retirarFormatacaoData(campoData1Os.getText()), fs.retirarFormatacaoData(campoData2Os.getText()));
+        pizza.setValue("Saíram", Integer.parseInt(os.getQtdConcluida()));
+        pizza.setValue("Entraram", Integer.parseInt(os.getQtdOs()));
+        JFreeChart graficoPizza = ChartFactory.createPieChart("Entrada e saída de veículos entre "+campoData1Os.getText()+" e "+campoData2Os.getText(),pizza,true,true,false);
+        ChartPanel painelzadaP = new ChartPanel(graficoPizza);
+        jfPizaa.setIconImage(icon);
+        jfPizaa.setTitle("Entrada e saída de veículos");
+        jfPizaa.add(painelzadaP);
+        jfPizaa.setSize(950,700);
+        jfPizaa.setLocationRelativeTo(null);
+        jfPizaa.setVisible(true);
+    }//GEN-LAST:event_abrirGraficoPizzaOs
 
-    private void btnIrCadastroOS8abrirGraficoBarra(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIrCadastroOS8abrirGraficoBarra
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnIrCadastroOS8abrirGraficoBarra
+    private void abrirGraficoBarraSaida(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_abrirGraficoBarraSaida
+        JFrame jfPizaa = new JFrame();
+        DefaultCategoryDataset barra = new DefaultCategoryDataset();
+        OsDAO osdao = new OsDAO();
+        List<OS> oss = new ArrayList<>();
+        oss = osdao.consultaOsSaidaDiaria(fs.retirarFormatacaoData(campoData1Os.getText()), fs.retirarFormatacaoData(campoData2Os.getText()));
+        for (int i=0;i<oss.size();i++){
+            barra.setValue(Integer.parseInt(oss.get(i).getQtdOs()), oss.get(i).getOsDataSaida(), "Saída");
+        }
+        JFreeChart graficoBarra = ChartFactory.createBarChart("Gráfico da saída de veículos","Dia","Quantidade de veículos",barra,PlotOrientation.VERTICAL,true,true,false);
+        ChartPanel painelzadaB = new ChartPanel(graficoBarra);
+        jfPizaa.setIconImage(icon);
+        jfPizaa.setTitle("Saída de veículos");
+        jfPizaa.add(painelzadaB);
+        jfPizaa.setSize(950,700);
+        jfPizaa.setLocationRelativeTo(null);
+        jfPizaa.setVisible(true);
+    }//GEN-LAST:event_abrirGraficoBarraSaida
+
+    private void abrirGraficoBarraEntrada(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_abrirGraficoBarraEntrada
+        JFrame jfPizaa = new JFrame();
+        DefaultCategoryDataset barra = new DefaultCategoryDataset();
+        OsDAO osdao = new OsDAO();
+        List<OS> oss = new ArrayList<>();
+        oss = osdao.consultaOsEntradaDiaria(fs.retirarFormatacaoData(campoData1Os.getText()), fs.retirarFormatacaoData(campoData2Os.getText()));
+        for (int i=0;i<oss.size();i++){
+            barra.setValue(Integer.parseInt(oss.get(i).getQtdOs()), oss.get(i).getOsDataEntrada(), "Entrada");
+        }
+        JFreeChart graficoBarra = ChartFactory.createBarChart("Gráfico da entarda de veículos","Dia","Quantidade de veículos",barra,PlotOrientation.VERTICAL,true,true,false);
+        ChartPanel painelzadaB = new ChartPanel(graficoBarra);
+        jfPizaa.setIconImage(icon);
+        jfPizaa.setTitle("Entrada de veículos");
+        jfPizaa.add(painelzadaB);
+        jfPizaa.setSize(950,700);
+        jfPizaa.setLocationRelativeTo(null);
+        jfPizaa.setVisible(true);
+    }//GEN-LAST:event_abrirGraficoBarraEntrada
 
     /**
      * @param args the command line arguments
@@ -646,21 +888,22 @@ public class RELATORIO_TELA extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIrCadastroOS;
     private javax.swing.JButton btnIrCadastroOS1;
-    private javax.swing.JButton btnIrCadastroOS2;
-    private javax.swing.JButton btnIrCadastroOS3;
     private javax.swing.JButton btnIrCadastroOS4;
     private javax.swing.JButton btnIrCadastroOS5;
     private javax.swing.JButton btnIrCadastroOS6;
     private javax.swing.JButton btnIrCadastroOS7;
     private javax.swing.JButton btnIrCadastroOS8;
+    private javax.swing.JButton btnIrCadastroOS9;
     private javax.swing.JButton btnIrConsultaOS;
     private javax.swing.JButton btnIrOS;
     private javax.swing.JButton btnIrRelatorios;
     private javax.swing.JButton btnIrUsuario;
+    private javax.swing.JTextField campoData1Faturamento;
+    private javax.swing.JTextField campoData1Os;
+    private javax.swing.JTextField campoData2Faturamento;
+    private javax.swing.JTextField campoData2Os;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -669,13 +912,11 @@ public class RELATORIO_TELA extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JPanel painelCRUD;
     private javax.swing.JPanel painelFormularioConsulta;
     private javax.swing.JPanel painelOpcoesCRUD;
     private javax.swing.JPanel painelSecoes;
+    private javax.swing.JLabel txtErroFaturamento;
+    private javax.swing.JLabel txtErroOs;
     // End of variables declaration//GEN-END:variables
 }

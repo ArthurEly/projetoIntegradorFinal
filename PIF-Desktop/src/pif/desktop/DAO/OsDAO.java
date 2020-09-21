@@ -146,4 +146,92 @@ public class OsDAO {
         }
         c.desconectarDoBanco();
     }
+    
+    public List<OS> consultaOsEntradaDiaria(String dataEntrada, String dataSaida){
+        List<OS> OSs = new ArrayList<OS>();
+        String select = "SELECT DAY(`os_data_entrada`) as \"Dia entrada\", COUNT(`os_numero`) as \"Contador\" FROM `os_teste` "
+                + "WHERE `os_data_entrada` BETWEEN (\""+dataEntrada+"\") AND (\""+dataSaida+"\") GROUP BY DAY(`os_data_entrada`)";
+        System.out.println(select);
+        Conexao c = new Conexao();
+        Connection conexao = null;
+        PreparedStatement preparador = null;
+        ResultSet resultado = null;
+        try{
+            conexao = c.conectarAoBanco();           
+            preparador = conexao.prepareStatement(select);
+            resultado = preparador.executeQuery();
+            while(resultado != null && resultado.next()){
+                OS os = new OS();
+                os.setOsDataEntrada(resultado.getString("Dia entrada"));
+                os.setQtdOs(resultado.getString("Contador"));
+                OSs.add(os);
+            }          
+            conexao.close();
+        }catch(SQLException e){
+            System.out.println("ajfoldsa:  "+e);
+        }
+        c.desconectarDoBanco();
+        return OSs;
+    }
+    
+    public List<OS> consultaOsSaidaDiaria(String dataEntrada, String dataSaida){
+        List<OS> OSs = new ArrayList<OS>();
+        String select = "SELECT DAY(`os_data_saida`) as \"Dia saída\", COUNT(`os_numero`) as \"Contador\" FROM `os_teste` "
+                + "WHERE `os_data_saida` BETWEEN (\""+dataEntrada+"\") AND (\""+dataSaida+"\") GROUP BY DAY(`os_data_saida`)";
+        Conexao c = new Conexao();
+        Connection conexao = null;
+        PreparedStatement preparador = null;
+        ResultSet resultado = null;
+        try{
+            conexao = c.conectarAoBanco();           
+            preparador = conexao.prepareStatement(select);
+            resultado = preparador.executeQuery();
+            while(resultado != null && resultado.next()){
+                OS os = new OS();
+                os.setOsDataSaida(resultado.getString("Dia saída"));
+                os.setQtdOs(resultado.getString("Contador"));
+                OSs.add(os);
+            }          
+            conexao.close();
+        }catch(SQLException e){
+            System.out.println("ajfoldsa:  "+e);
+        }
+        c.desconectarDoBanco();
+        return OSs;
+    }
+    
+    public OS consultaOsSaidaEEntrada(String dataEntrada, String dataSaida){
+        OS os = new OS();
+        String abertas = "SELECT COUNT(os_numero) as \"Concluídas\" FROM `os_teste` WHERE `os_data_saida` BETWEEN (\""+dataEntrada+"\") AND (\""+dataSaida+"\")";
+        Conexao c = new Conexao();
+        Connection conexao = null;
+        PreparedStatement preparador = null;
+        ResultSet resultado = null;
+        try{
+            conexao = c.conectarAoBanco();           
+            preparador = conexao.prepareStatement(abertas);
+            resultado = preparador.executeQuery();
+            while(resultado != null && resultado.next()){
+                os.setQtdConcluida(resultado.getString("Concluídas"));
+            }          
+            conexao.close();
+        }catch(SQLException e){
+            System.out.println("ajfoldsa:  "+e);
+        }
+        String concluídas = "SELECT COUNT(os_numero) as \"Quantidade de OS\" FROM `os_teste` "
+                + "WHERE `os_data_entrada` BETWEEN (\""+dataEntrada+"\") AND (\""+dataSaida+"\")";
+        try{
+            conexao = c.conectarAoBanco();           
+            preparador = conexao.prepareStatement(concluídas);
+            resultado = preparador.executeQuery();
+            while(resultado != null && resultado.next()){               
+                os.setQtdOs(resultado.getString("Quantidade de OS"));
+            }          
+            conexao.close();
+        }catch(SQLException e){
+            System.out.println("ajfoldsa:  "+e);
+        }
+        c.desconectarDoBanco();
+        return os;
+    }
 }

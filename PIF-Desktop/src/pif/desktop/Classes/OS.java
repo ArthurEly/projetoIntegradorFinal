@@ -10,7 +10,7 @@ package pif.desktop.Classes;
  * @author arthu
  */
 public class OS {
- 
+
     //declaração de variáveis
     private String osDataEntrada;
     private String osPrevisaoSaida;
@@ -21,6 +21,8 @@ public class OS {
     private String osVeiculoSituacao;
     private String osColabNome;
     private String osNumero;
+    private String qtdConcluida;
+    private String qtdOs;
     //declaração de variáveis  
 
     /**
@@ -148,5 +150,31 @@ public class OS {
     public void setOsNumero(String osNumero) {
         this.osNumero = osNumero;
     }
-    
+    /**
+     * @return the qtdConcluida
+     */
+    public String getQtdConcluida() {
+        return qtdConcluida;
+    }
+
+    /**
+     * @param qtdConcluida the qtdConcluida to set
+     */
+    public void setQtdConcluida(String qtdConcluida) {
+        this.qtdConcluida = qtdConcluida;
+    }
+
+    /**
+     * @return the qtdAberta
+     */
+    public String getQtdOs() {
+        return qtdOs;
+    }
+
+    /**
+     * @param qtdAberta the qtdAberta to set
+     */
+    public void setQtdOs(String qtdOs) {
+        this.qtdOs = qtdOs;
+    }   
 }

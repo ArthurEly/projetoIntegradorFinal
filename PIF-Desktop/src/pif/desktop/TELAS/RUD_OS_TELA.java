@@ -26,6 +26,7 @@ import pif.desktop.Classes.VerificacaoStrings;
 import pif.desktop.DAO.ClienteDAO;
 import pif.desktop.DAO.OrcamentoDAO;
 import pif.desktop.DAO.OsDAO;
+import static pif.desktop.TELAS.C_OS_TELA.getRELATORIO;
 import pif.desktop.TELAS.rascunhos.consulta_os;
 
 /**
@@ -100,75 +101,75 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
                 irCadastroOS(evt);
             }
         });
-//        System.out.println(USER_LOGADO.isCOLAB_GERENTE());
-//        if (USER_LOGADO.isCOLAB_GERENTE()){
-//            //<editor-fold defaultstate="collapsed" desc="se for gerente">
-//            JButton btnIrRelatorios = new JButton();
-//            btnIrRelatorios.setBackground(new java.awt.Color(204, 0, 0));
-//            btnIrRelatorios.setForeground(new java.awt.Color(255, 255, 255));
-//            btnIrRelatorios.setText("Consultar relatórios de venda");
-//            btnIrRelatorios.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(130, 0, 0), new java.awt.Color(130, 0, 0), new java.awt.Color(204, 0, 0), new java.awt.Color(204, 0, 0)));
-//            btnIrRelatorios.setContentAreaFilled(false);
-//            btnIrRelatorios.setFocusPainted(false);
-//            btnIrRelatorios.setOpaque(true);
-////            btnIrRelatorios.addMouseListener(new java.awt.event.MouseAdapter() {
-////                public void mouseClicked(java.awt.event.MouseEvent evt) {
-////                    irRelatorios(evt);
-////                }
-////            });
-//            javax.swing.GroupLayout painelOpcoesCRUDLayout = new javax.swing.GroupLayout(jFilho);
-//            jFilho.setLayout(painelOpcoesCRUDLayout);
-//            painelOpcoesCRUDLayout.setHorizontalGroup(
-//                painelOpcoesCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                .addGroup(painelOpcoesCRUDLayout.createSequentialGroup()
-//                    .addGroup(painelOpcoesCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                        .addGroup(painelOpcoesCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                            .addGroup(painelOpcoesCRUDLayout.createSequentialGroup()
-//                                .addGap(10, 10, 10)
-//                                .addComponent(btnIrCadastroOS, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-//                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelOpcoesCRUDLayout.createSequentialGroup()
-//                                .addContainerGap()
-//                                .addComponent(btnIrRelatorios, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
-//                        .addComponent(btnIrConsultaOS, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-//                    .addContainerGap())
-//            );
-//            painelOpcoesCRUDLayout.setVerticalGroup(
-//                painelOpcoesCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelOpcoesCRUDLayout.createSequentialGroup()
-//                    .addContainerGap()
-//                    .addComponent(btnIrCadastroOS, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                    .addGap(18, 18, 18)
-//                    .addComponent(btnIrConsultaOS, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                    .addGap(18, 18, 18)
-//                    .addComponent(btnIrRelatorios, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                    .addContainerGap())
-//            );
-//            //</editor-fold>
-//        } else {
-//            //<editor-fold defaultstate="collapsed" desc="se nao for">
-//            javax.swing.GroupLayout painelOpcoesCRUDLayout = new javax.swing.GroupLayout(jFilho);
-//            jFilho.setLayout(painelOpcoesCRUDLayout);
-//            painelOpcoesCRUDLayout.setHorizontalGroup(
-//                painelOpcoesCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                .addGroup(painelOpcoesCRUDLayout.createSequentialGroup()
-//                    .addGap(10, 10, 10)
-//                    .addGroup(painelOpcoesCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                        .addComponent(btnIrCadastroOS, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                        .addComponent(btnIrConsultaOS, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-//                    .addContainerGap())
-//            );
-//            painelOpcoesCRUDLayout.setVerticalGroup(
-//                painelOpcoesCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelOpcoesCRUDLayout.createSequentialGroup()
-//                    .addContainerGap()
-//                    .addComponent(btnIrCadastroOS, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                    .addGap(18, 18, 18)
-//                    .addComponent(btnIrConsultaOS, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                    .addGap(18, 18, 18)
-//                    .addContainerGap())
-//            );
-//            //</editor-fold>
-//        }
+        System.out.println(USER_LOGADO.isCOLAB_GERENTE());
+        if (USER_LOGADO.isCOLAB_GERENTE()){
+            //<editor-fold defaultstate="collapsed" desc="se for gerente">
+            JButton btnIrRelatorios = new JButton();
+            btnIrRelatorios.setBackground(new java.awt.Color(204, 0, 0));
+            btnIrRelatorios.setForeground(new java.awt.Color(255, 255, 255));
+            btnIrRelatorios.setText("Consultar relatórios");
+            btnIrRelatorios.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(130, 0, 0), new java.awt.Color(130, 0, 0), new java.awt.Color(204, 0, 0), new java.awt.Color(204, 0, 0)));
+            btnIrRelatorios.setContentAreaFilled(false);
+            btnIrRelatorios.setFocusPainted(false);
+            btnIrRelatorios.setOpaque(true);
+            btnIrRelatorios.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    irRelatorios(evt);
+                }
+            });
+            javax.swing.GroupLayout painelOpcoesCRUDLayout = new javax.swing.GroupLayout(jFilho);
+            jFilho.setLayout(painelOpcoesCRUDLayout);
+            painelOpcoesCRUDLayout.setHorizontalGroup(
+                painelOpcoesCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(painelOpcoesCRUDLayout.createSequentialGroup()
+                    .addGroup(painelOpcoesCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(painelOpcoesCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(painelOpcoesCRUDLayout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(btnIrCadastroOS, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelOpcoesCRUDLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(btnIrRelatorios, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnIrConsultaOS, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap())
+            );
+            painelOpcoesCRUDLayout.setVerticalGroup(
+                painelOpcoesCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelOpcoesCRUDLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(btnIrCadastroOS, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
+                    .addComponent(btnIrConsultaOS, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
+                    .addComponent(btnIrRelatorios, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap())
+            );
+            //</editor-fold>
+        } else {
+            //<editor-fold defaultstate="collapsed" desc="se nao for">
+            javax.swing.GroupLayout painelOpcoesCRUDLayout = new javax.swing.GroupLayout(jFilho);
+            jFilho.setLayout(painelOpcoesCRUDLayout);
+            painelOpcoesCRUDLayout.setHorizontalGroup(
+                painelOpcoesCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(painelOpcoesCRUDLayout.createSequentialGroup()
+                    .addGap(10, 10, 10)
+                    .addGroup(painelOpcoesCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btnIrCadastroOS, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnIrConsultaOS, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap())
+            );
+            painelOpcoesCRUDLayout.setVerticalGroup(
+                painelOpcoesCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelOpcoesCRUDLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(btnIrCadastroOS, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
+                    .addComponent(btnIrConsultaOS, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
+                    .addContainerGap())
+            );
+            //</editor-fold>
+        }
         painelCRUD.add(jFilho);
         painelCRUD.setLayout(new GridLayout(1,1));
         //</editor-fold>      
@@ -462,6 +463,10 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     
+    private void irRelatorios(java.awt.event.MouseEvent evt) {                                             
+        u.irDePara(this, getRELATORIO());
+    }
+    
     private void irCadastroOS(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irCadastroOS
         u.irDePara(this, C_OS_TELA.getC_OS());
     }//GEN-LAST:event_irCadastroOS
@@ -475,7 +480,6 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
 //        try {
             String campo = "";
             String valor = "";
-            boolean numOS = false;
             if (vazioForm()){
                 txtErroConsulta.setForeground(Color.RED);
                 txtErroConsulta.setText("Preencha os campos.");   
@@ -499,7 +503,6 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
                     }else if(campoNumeroOS.isEnabled()){
                         campo = "os_numero";
                         valor = campoNumeroOS.getText();
-                        numOS = true;
                     }
                     valor = fs.retirarFormatacao(valor);
                     OsDAO osDao = new OsDAO();                       

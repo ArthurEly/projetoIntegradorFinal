@@ -107,4 +107,53 @@ public class OrcamentoDAO {
             System.out.println("Deu treta na exclusão do negócio aqui " + ex);
         }                 
     }
+    
+    public Orcamento consultarVendasTotais(String dataInicio, String dataFim){
+        Orcamento orc = new Orcamento();
+        String select = "SELECT SUM(`orcamento_preco_pecas`) as \"Orçamento total das peças\", SUM(`orcamento_preco_servicos`) as \"Orçamento total dos serviços\" FROM orcamento_teste "
+                + "WHERE `orcamento_data` BETWEEN ('"+dataInicio+"') AND ('"+dataFim+"')";
+        Conexao c = new Conexao();
+        Connection conexao = null;
+        PreparedStatement preparador = null;
+        ResultSet resultado = null;
+        try{
+            conexao = c.conectarAoBanco();           
+            preparador = conexao.prepareStatement(select);
+            resultado = preparador.executeQuery();
+            while(resultado != null && resultado.next()){               
+                orc.setOrcamento_preco_pecas(resultado.getString("Orçamento total das peças"));
+                orc.setOrcamento_preco_servicos(resultado.getString("Orçamento total dos serviços"));
+            }          
+            conexao.close();
+        }catch(SQLException e){
+            System.out.println("erro na consulta do orçamento: "+e);
+        }
+        return orc;
+    }
+    
+    public List<Orcamento> consultarVendasDiarias(String dataInicio, String dataFim){
+        List<Orcamento> Orcs = new ArrayList<>();
+        String select = "SELECT DAY(`orcamento_data`) as \"Dia\", SUM(`orcamento_preco_servicos`) as \"Orçamento total dos serviços\", SUM(`orcamento_preco_pecas`) as \"Orçamento total das peças\" FROM orcamento_teste "
+                + "WHERE `orcamento_data` BETWEEN ('"+dataInicio+"') AND ('"+dataFim+"') GROUP BY DAY(`orcamento_data`)";
+        Conexao c = new Conexao();
+        Connection conexao = null;
+        PreparedStatement preparador = null;
+        ResultSet resultado = null;
+        try{
+            conexao = c.conectarAoBanco();           
+            preparador = conexao.prepareStatement(select);
+            resultado = preparador.executeQuery();
+            while(resultado != null && resultado.next()){
+                Orcamento orc = new Orcamento();
+                orc.setOrcamento_preco_pecas(resultado.getString("Orçamento total das peças"));
+                orc.setOrcamento_preco_servicos(resultado.getString("Orçamento total dos serviços"));
+                orc.setOrcamento_data(resultado.getString("Dia"));
+                Orcs.add(orc);
+            }          
+            conexao.close();
+        }catch(SQLException e){
+            System.out.println("erro na consulta do orçamento: "+e);
+        }
+        return Orcs;
+    }
 }

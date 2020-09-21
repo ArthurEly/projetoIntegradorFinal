@@ -361,7 +361,7 @@ public class FormatacaoStrings {
             }
         }
         
-        if (campo.equals("data")){
+        if (campo.equals("data") || campo.equals("1") || campo.equals("2")){
             if ((s.length()+1) == 3 ||(s.length()+1) == 6){
                 s = s.substring(0, (s.length()-1));
             }

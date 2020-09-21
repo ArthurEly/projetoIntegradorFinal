@@ -180,7 +180,7 @@ public class JLogin extends javax.swing.JFrame {
 
         btnEditarVeiculo.setBackground(new java.awt.Color(204, 0, 0));
         btnEditarVeiculo.setForeground(new java.awt.Color(255, 255, 255));
-        btnEditarVeiculo.setText("Fazer login:");
+        btnEditarVeiculo.setText("Fazer login");
         btnEditarVeiculo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(130, 0, 0), new java.awt.Color(130, 0, 0), new java.awt.Color(204, 0, 0), new java.awt.Color(204, 0, 0)));
         btnEditarVeiculo.setContentAreaFilled(false);
         btnEditarVeiculo.setFocusPainted(false);

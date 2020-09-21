@@ -45,6 +45,20 @@ import pif.desktop.DAO.OsDAO;
 public class C_OS_TELA extends javax.swing.JFrame {
 
     /**
+     * @return the RELATORIO
+     */
+    public static RELATORIO_TELA getRELATORIO() {
+        return RELATORIO;
+    }
+
+    /**
+     * @param aRELATORIO the RELATORIO to set
+     */
+    public static void setRELATORIO(RELATORIO_TELA aRELATORIO) {
+        RELATORIO = aRELATORIO;
+    }
+
+    /**
      * @return the USER_TELA
      */
     public static USER_TELA getUSER_TELA() {
@@ -93,6 +107,7 @@ public class C_OS_TELA extends javax.swing.JFrame {
     private static RUD_OS_TELA RUD_OS;
     private static C_OS_TELA C_OS;
     private static USER_TELA USER_TELA;
+    private static RELATORIO_TELA RELATORIO;
     private FormatacaoStrings fs = new FormatacaoStrings();
     private VerificacaoStrings vs = new VerificacaoStrings();
 
@@ -131,8 +146,10 @@ public class C_OS_TELA extends javax.swing.JFrame {
         painelSecoes.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 40, 40)), "Seja bem-vindo(a) "+USER_LOGADO.getCOLAB_NOME()+"! Para qual seção deseja ir?", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12)));
         RUD_OS = new RUD_OS_TELA();
         USER_TELA = new USER_TELA();
+        RELATORIO = new RELATORIO_TELA();
         C_OS_TELA.setRUD_OS(RUD_OS);
         C_OS_TELA.setUSER_TELA(USER_TELA);
+        C_OS_TELA.setRELATORIO(RELATORIO);
         //<editor-fold defaultstate="collapsed" desc="Tela">
         JPanel jFilho = new JPanel();
         JButton btnIrConsultaOS = new JButton();
@@ -163,16 +180,16 @@ public class C_OS_TELA extends javax.swing.JFrame {
             JButton btnIrRelatorios = new JButton();
             btnIrRelatorios.setBackground(new java.awt.Color(204, 0, 0));
             btnIrRelatorios.setForeground(new java.awt.Color(255, 255, 255));
-            btnIrRelatorios.setText("Consultar relatórios de venda");
+            btnIrRelatorios.setText("Consultar relatórios");
             btnIrRelatorios.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(130, 0, 0), new java.awt.Color(130, 0, 0), new java.awt.Color(204, 0, 0), new java.awt.Color(204, 0, 0)));
             btnIrRelatorios.setContentAreaFilled(false);
             btnIrRelatorios.setFocusPainted(false);
             btnIrRelatorios.setOpaque(true);
-//            btnIrRelatorios.addMouseListener(new java.awt.event.MouseAdapter() {
-//                public void mouseClicked(java.awt.event.MouseEvent evt) {
-//                    irRelatorios(evt);
-//                }
-//            });
+            btnIrRelatorios.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    irRelatorios(evt);
+                }
+            });
             javax.swing.GroupLayout painelOpcoesCRUDLayout = new javax.swing.GroupLayout(jFilho);
             jFilho.setLayout(painelOpcoesCRUDLayout);
             painelOpcoesCRUDLayout.setHorizontalGroup(
@@ -229,44 +246,7 @@ public class C_OS_TELA extends javax.swing.JFrame {
         painelCRUD.add(jFilho);
         painelCRUD.setLayout(new GridLayout(1,1));
         this.setMinimumSize(new Dimension(1368,768));
-        //</editor-fold>
-        //<editor-fold defaultstate="collapsed" desc="pizza">
-        JFrame jfPizaa = new JFrame();
-        DefaultPieDataset pizza = new DefaultPieDataset();
-        pizza.setValue("Brasil", 5);
-        pizza.setValue("Alemanha", 4);
-        pizza.setValue("Itália", 4);
-        pizza.setValue("Argentina", 2);
-        pizza.setValue("Uruguai", 2);
-        pizza.setValue("Inglaterra", 1);
-        pizza.setValue("Espanha", 1);
-        pizza.setValue("França", 2);
-        JFreeChart graficoPizza = ChartFactory.createPieChart("Pau no cu Brasil campeao",pizza,true,true,false);
-        PiePlot fatia = (PiePlot) graficoPizza.getPlot();
-        fatia.setSectionPaint("Brasil", Color.yellow);
-        ChartPanel painelzadaP = new ChartPanel(graficoPizza);
-        jfPizaa.add(painelzadaP);
-        jfPizaa.setSize(950,700);
-        jfPizaa.setLocationRelativeTo(null);
-        jfPizaa.setVisible(true);
-        //</editor-fold>
-        //<editor-fold defaultstate="collapsed" desc="barras">
-        JFrame jfBarra = new JFrame();
-        DefaultCategoryDataset barra = new DefaultCategoryDataset();
-        barra.setValue(1400, "China","");
-        barra.setValue(1200, "Índia","");
-        barra.setValue(320, "EUA", "");
-        barra.setValue(210, "Brasil","");
-        barra.setValue(115,"Japão","");
-        barra.setValue(30,"Austrália","");
-        barra.setValue(18,"Portugal","");
-        JFreeChart graficoBarra = ChartFactory.createBarChart("A","B","C",barra,PlotOrientation.VERTICAL,true,true,false);
-        ChartPanel painelzadaB = new ChartPanel(graficoBarra);
-        jfBarra.add(painelzadaB);
-        jfBarra.setSize(950,700);
-        jfBarra.setLocationRelativeTo(null);
-        jfBarra.setVisible(true);
-        //</editor-fold>
+        //</editor-fold>           
     }
 
     /**
@@ -1551,17 +1531,17 @@ public class C_OS_TELA extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(painelCRUD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)
-                        .addComponent(painelDeRolagem, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                        .addComponent(painelDeRolagem, javax.swing.GroupLayout.DEFAULT_SIZE, 793, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
+                .addContainerGap()
                 .addComponent(painelSecoes, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(painelDeRolagem)
+                    .addComponent(painelDeRolagem, javax.swing.GroupLayout.DEFAULT_SIZE, 1666, Short.MAX_VALUE)
                     .addComponent(painelCRUD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -1573,6 +1553,11 @@ public class C_OS_TELA extends javax.swing.JFrame {
     private void irConsultaOS(java.awt.event.MouseEvent evt) {                                             
         u.irDePara(this, getRUD_OS());
     }  
+    
+    private void irRelatorios(java.awt.event.MouseEvent evt) {                                             
+        u.irDePara(this, getRELATORIO());
+    } 
+    
     private void cadastrarDados(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cadastrarDados
         /*
             MÉTODO RESPONSÁVEL POR CADASTRAR OS DADOS DO CLIENTE
@@ -2060,7 +2045,7 @@ public class C_OS_TELA extends javax.swing.JFrame {
                 ClienteDAO cdao = new ClienteDAO();
                 Cliente c = new Cliente();
                 c = cdao.consultarCliente(campoCpfOuCnpj.getText());
-                if (!c.getClienteEndEstado().equals("")){
+                if (c.getClienteEndEstado() != null){
                     ContatoDAO cttdao = new ContatoDAO();
                     Contato ctt = new Contato();
                     ctt = cttdao.consultarContato(c.getClienteCpfOuCnpj());
@@ -2190,31 +2175,49 @@ public class C_OS_TELA extends javax.swing.JFrame {
         if ("\b".equals(Character.toString(evt.getKeyChar()))){
             campoDataNascimento.setText(fs.apagar(campoDataNascimento.getText(), evt.getComponent().getName()));
         }
-        boolean cpf;
-        if (campoCpfOuCnpj.getText().length() == 11){
-            cpf = true;
-        } else {
-            cpf = false;
-        }
-        String txtV = vs.dataNasc(evt, campoDataNascimento.getText(),cpf);
-        if (txtV == ""){
-            txtErroDataNascimento.setForeground(new Color(240,240,240));           
-        } 
-        else if (txtV.endsWith("números.")){
-            campoDataNascimento.setText(campoDataNascimento.getText().substring(0, campoDataNascimento.getText().length()-1));
-        } 
-        else{            
-            txtErroDataNascimento.setText(txtV);
-            if (txtV.endsWith(".")){
-                txtErroDataNascimento.setForeground(new Color(255,0,0));
-            } else {
-                txtErroDataNascimento.setForeground(new Color(0, 160, 40));
-            }           
-        }
-        if (campoDataNascimento.getText().length() > 10){
-            int calc = campoDataNascimento.getText().length() - 10;
-            campoDataNascimento.setText(campoDataNascimento.getText().substring(0,campoDataNascimento.getText().length()-calc));
-        }
+        if (campoCpfOuCnpj.getText().length() == 14){
+            System.out.println("cpffffffff");
+            String txtV = vs.dataNasc(evt, campoDataNascimento.getText());
+            if (txtV == ""){
+                txtErroDataNascimento.setForeground(new Color(240,240,240));           
+            } 
+            else if (txtV.endsWith("números.")){
+                campoDataNascimento.setText(campoDataNascimento.getText().substring(0, campoDataNascimento.getText().length()-1));
+            } 
+            else{            
+                txtErroDataNascimento.setText(txtV);
+                if (txtV.endsWith(".")){
+                    txtErroDataNascimento.setForeground(new Color(255,0,0));
+                } else {
+                    txtErroDataNascimento.setForeground(new Color(0, 160, 40));
+                }           
+            }
+            if (campoDataNascimento.getText().length() > 10){
+                int calc = campoDataNascimento.getText().length() - 10;
+                campoDataNascimento.setText(campoDataNascimento.getText().substring(0,campoDataNascimento.getText().length()-calc));
+            }
+        } else if (campoCpfOuCnpj.getText().length() == 18){
+            System.out.println("cnpjjjjjjjj");
+            String txtV = vs.dataNascCnpj(evt, campoDataNascimento.getText());
+            if (txtV == ""){
+                txtErroDataNascimento.setForeground(new Color(240,240,240));           
+            } 
+            else if (txtV.endsWith("números.")){
+                campoDataNascimento.setText(campoDataNascimento.getText().substring(0, campoDataNascimento.getText().length()-1));
+            } 
+            else{            
+                txtErroDataNascimento.setText(txtV);
+                if (txtV.endsWith(".")){
+                    txtErroDataNascimento.setForeground(new Color(255,0,0));
+                } else {
+                    txtErroDataNascimento.setForeground(new Color(0, 160, 40));
+                }           
+            }
+            if (campoDataNascimento.getText().length() > 10){
+                int calc = campoDataNascimento.getText().length() - 10;
+                campoDataNascimento.setText(campoDataNascimento.getText().substring(0,campoDataNascimento.getText().length()-calc));
+            }
+        }    
         String txt = fs.data(campoDataNascimento.getText());
         campoDataNascimento.setText(txt);
     }//GEN-LAST:event_tecladaDataNascimento
