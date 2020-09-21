@@ -25,6 +25,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     Dialog loading;
     Connection c;
     User usuario;
+    boolean success = true;
 
     /**
      * Tela de login do usuário
@@ -93,6 +94,10 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                             @Override
                             public void run() {
                                 Toast.makeText(EMAIL.getContext(),finalResult,Toast.LENGTH_LONG).show();
+
+                                if (success) {
+                                    ActivityUtils.startActivity(self(),OSListActivity.class);
+                                }
                             }
                         });
                     }
@@ -100,5 +105,9 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
                 break;
         }
+    }
+
+    public Activity self() {
+        return this;
     }
 }
