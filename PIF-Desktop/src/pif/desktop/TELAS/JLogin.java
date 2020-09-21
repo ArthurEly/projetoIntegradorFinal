@@ -189,11 +189,6 @@ public class JLogin extends javax.swing.JFrame {
                 fazerLogin(evt);
             }
         });
-        btnFazerLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFazerLoginActionPerformed(evt);
-            }
-        });
 
         txtErroLogin.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtErroLogin.setForeground(new java.awt.Color(102, 102, 102));
