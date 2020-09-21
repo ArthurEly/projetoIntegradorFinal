@@ -30,6 +30,15 @@ public class TelaUtils {
 
     }
     
+    public void irDeParaLogin(javax.swing.JFrame desse, javax.swing.JFrame esse, int largura, int altura){
+        /*
+            FUNÇÃO QUE LEVA DA TELA QUE TU ESTÁ PARA A TELA QUE QUER IR, INDO DESSE (PRIMEIRA TELA) PARA ESSE (SEGUNDA TELA)
+        */        
+        esse.setLocationRelativeTo(null);
+        desse.dispose();
+        esse.setVisible(true);
+    }
+    
     public void irDeParaDiferenciado(javax.swing.JFrame desse, javax.swing.JFrame esse, int largura, int altura){
         /*
             FUNÇÃO QUE LEVA DA TELA QUE TU ESTÁ PARA A TELA QUE QUER IR, INDO DESSE (PRIMEIRA TELA) PARA ESSE (SEGUNDA TELA)
@@ -40,7 +49,7 @@ public class TelaUtils {
         esse.setVisible(true);
     }
     
-    public void irDeParaDiferenciado(javax.swing.JFrame desse, javax.swing.JFrame esse, int largura, int altura, boolean fecharTelaAntiga){
+    public void irDeParaDiferenciadoFechando(javax.swing.JFrame desse, javax.swing.JFrame esse, int largura, int altura, boolean fecharTelaAntiga){
         /*
             FUNÇÃO QUE LEVA DA TELA QUE TU ESTÁ PARA A TELA QUE QUER IR, INDO DESSE (PRIMEIRA TELA) PARA ESSE (SEGUNDA TELA)
         */        

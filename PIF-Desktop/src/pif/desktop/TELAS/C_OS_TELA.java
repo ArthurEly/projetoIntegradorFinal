@@ -16,7 +16,15 @@ import java.util.Timer;
 import java.util.TimerTask;
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PiePlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.DefaultPieDataset;
 import pif.desktop.Classes.Cliente;
 import pif.desktop.Classes.Colab;
 import pif.desktop.Classes.Contato;
@@ -47,7 +55,7 @@ public class C_OS_TELA extends javax.swing.JFrame {
      * @param USER_TELA the USER_TELA to set
      */
     public static void setUSER_TELA(USER_TELA USER_TELA) {
-        USER_TELA = USER_TELA;
+        C_OS_TELA.USER_TELA = USER_TELA;
     }
 
     /**
@@ -96,7 +104,8 @@ public class C_OS_TELA extends javax.swing.JFrame {
             icon = ImageIO.read(new File("src/resources/icon.png"));           
         } catch (IOException e) {
             e.printStackTrace();
-        }      
+        }    
+        this.setLocationRelativeTo(null);
         setC_OS(this);
         initComponents();
         painelDeRolagem.getVerticalScrollBar().setUnitIncrement(8);
@@ -120,7 +129,10 @@ public class C_OS_TELA extends javax.swing.JFrame {
         OsDAO os = new OsDAO();
         txtNumeroOS.setText(os.numeroOsAtual());
         painelSecoes.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 40, 40)), "Seja bem-vindo(a) "+USER_LOGADO.getCOLAB_NOME()+"! Para qual seção deseja ir?", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12)));
-        
+        RUD_OS = new RUD_OS_TELA();
+        USER_TELA = new USER_TELA();
+        C_OS_TELA.setRUD_OS(RUD_OS);
+        C_OS_TELA.setUSER_TELA(USER_TELA);
         //<editor-fold defaultstate="collapsed" desc="Tela">
         JPanel jFilho = new JPanel();
         JButton btnIrConsultaOS = new JButton();
@@ -217,6 +229,43 @@ public class C_OS_TELA extends javax.swing.JFrame {
         painelCRUD.add(jFilho);
         painelCRUD.setLayout(new GridLayout(1,1));
         this.setMinimumSize(new Dimension(1368,768));
+        //</editor-fold>
+        //<editor-fold defaultstate="collapsed" desc="pizza">
+        JFrame jfPizaa = new JFrame();
+        DefaultPieDataset pizza = new DefaultPieDataset();
+        pizza.setValue("Brasil", 5);
+        pizza.setValue("Alemanha", 4);
+        pizza.setValue("Itália", 4);
+        pizza.setValue("Argentina", 2);
+        pizza.setValue("Uruguai", 2);
+        pizza.setValue("Inglaterra", 1);
+        pizza.setValue("Espanha", 1);
+        pizza.setValue("França", 2);
+        JFreeChart graficoPizza = ChartFactory.createPieChart("Pau no cu Brasil campeao",pizza,true,true,false);
+        PiePlot fatia = (PiePlot) graficoPizza.getPlot();
+        fatia.setSectionPaint("Brasil", Color.yellow);
+        ChartPanel painelzadaP = new ChartPanel(graficoPizza);
+        jfPizaa.add(painelzadaP);
+        jfPizaa.setSize(950,700);
+        jfPizaa.setLocationRelativeTo(null);
+        jfPizaa.setVisible(true);
+        //</editor-fold>
+        //<editor-fold defaultstate="collapsed" desc="barras">
+        JFrame jfBarra = new JFrame();
+        DefaultCategoryDataset barra = new DefaultCategoryDataset();
+        barra.setValue(1400, "China","");
+        barra.setValue(1200, "Índia","");
+        barra.setValue(320, "EUA", "");
+        barra.setValue(210, "Brasil","");
+        barra.setValue(115,"Japão","");
+        barra.setValue(30,"Austrália","");
+        barra.setValue(18,"Portugal","");
+        JFreeChart graficoBarra = ChartFactory.createBarChart("A","B","C",barra,PlotOrientation.VERTICAL,true,true,false);
+        ChartPanel painelzadaB = new ChartPanel(graficoBarra);
+        jfBarra.add(painelzadaB);
+        jfBarra.setSize(950,700);
+        jfBarra.setLocationRelativeTo(null);
+        jfBarra.setVisible(true);
         //</editor-fold>
     }
 
@@ -353,6 +402,7 @@ public class C_OS_TELA extends javax.swing.JFrame {
         setFocusCycleRoot(false);
         setIconImage(icon);
         setMinimumSize(new java.awt.Dimension(1368, 768));
+        setPreferredSize(new java.awt.Dimension(1368, 768));
 
         painelSecoes.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 40, 40)), "Para qual seção deseja ir?", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
 
@@ -389,9 +439,9 @@ public class C_OS_TELA extends javax.swing.JFrame {
             painelSecoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelSecoesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnIrOS, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+                .addComponent(btnIrOS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(10, 10, 10)
-                .addComponent(btnIrUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+                .addComponent(btnIrUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         painelSecoesLayout.setVerticalGroup(
@@ -414,7 +464,7 @@ public class C_OS_TELA extends javax.swing.JFrame {
         );
         painelCRUDLayout.setVerticalGroup(
             painelCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1646, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         painelDeRolagem.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 40, 40)), "Formulário de cadastro de OS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
@@ -1409,19 +1459,19 @@ public class C_OS_TELA extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(txtErroCpfOuCnpj)
-                .addGap(30, 30, 30)
+                .addGap(27, 27, 27)
                 .addComponent(txtErroRgOuIe)
                 .addGap(25, 25, 25)
                 .addComponent(txtErroNomeOuRazao)
                 .addGap(23, 23, 23)
                 .addComponent(txtErroSobrenomeOuFantasia)
-                .addGap(68, 68, 68)
+                .addGap(74, 74, 74)
                 .addComponent(txtErroEmail)
                 .addGap(18, 18, 18)
                 .addComponent(txtErroNumTel1)
                 .addGap(18, 18, 18)
                 .addComponent(txtErroNumTel2)
-                .addGap(49, 49, 49)
+                .addGap(43, 43, 43)
                 .addComponent(txtErroCep)
                 .addGap(18, 18, 18)
                 .addComponent(txtErroCidade)
@@ -1431,7 +1481,7 @@ public class C_OS_TELA extends javax.swing.JFrame {
                 .addComponent(txtErroLograd)
                 .addGap(21, 21, 21)
                 .addComponent(txtErroLogradComp)
-                .addGap(40, 40, 40)
+                .addGap(46, 46, 46)
                 .addComponent(txtErroVeiculoTipo)
                 .addGap(18, 18, 18)
                 .addComponent(txtErroVeiculoFabricante)
@@ -1445,11 +1495,11 @@ public class C_OS_TELA extends javax.swing.JFrame {
                 .addComponent(txtErroVeiculoAno)
                 .addGap(18, 18, 18)
                 .addComponent(txtErroVeiculoAcessorios)
-                .addGap(76, 76, 76)
+                .addGap(70, 70, 70)
                 .addComponent(txtErroVeiculoDefeitoCliente)
                 .addGap(88, 88, 88)
                 .addComponent(txtErroVeiculoObservacoes)
-                .addGap(158, 158, 158)
+                .addGap(161, 161, 161)
                 .addComponent(txtErroPrecoPeca)
                 .addGap(18, 18, 18)
                 .addComponent(txtErroDescricaoPeca)
@@ -1467,13 +1517,13 @@ public class C_OS_TELA extends javax.swing.JFrame {
         painelDoScrollLayout.setHorizontalGroup(
             painelDoScrollLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelDoScrollLayout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
+                .addContainerGap(29, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(painelDoFormulario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         painelDoScrollLayout.setVerticalGroup(
             painelDoScrollLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1481,11 +1531,11 @@ public class C_OS_TELA extends javax.swing.JFrame {
                 .addGroup(painelDoScrollLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(painelDoFormulario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 229, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelDoScrollLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(0, 246, Short.MAX_VALUE))
+            .addGroup(painelDoScrollLayout.createSequentialGroup()
+                .addGap(60, 60, 60)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         painelDeRolagem.setViewportView(painelDoScroll);
@@ -1509,13 +1559,10 @@ public class C_OS_TELA extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addComponent(painelSecoes, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(painelDeRolagem, javax.swing.GroupLayout.DEFAULT_SIZE, 1667, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(painelCRUD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(painelDeRolagem)
+                    .addComponent(painelCRUD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -1524,14 +1571,7 @@ public class C_OS_TELA extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
   
     private void irConsultaOS(java.awt.event.MouseEvent evt) {                                             
-        if (!rudAberto){
-            RUD_OS = new RUD_OS_TELA();
-            u.irDePara(this, RUD_OS);
-            C_OS_TELA.setRUD_OS(RUD_OS);
-            rudAberto = true;
-        } else {
-            u.irDePara(this, getRUD_OS());
-        }
+        u.irDePara(this, getRUD_OS());
     }  
     private void cadastrarDados(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cadastrarDados
         /*
@@ -2418,43 +2458,53 @@ public class C_OS_TELA extends javax.swing.JFrame {
     
     private boolean vazioForm(){
         boolean vazio=true;
-        if (campoRgOuIe.isEnabled()){
-            if (     
-            campoDataNascimento.getText().equals("") ||
-            campoCpfOuCnpj.getText().equals("") ||
-            campoCpfOuCnpj.getText().equals("") ||
-            campoRgOuIe.getText().equals("") ||
-            campoNomeOuRazao.getText().equals("") ||
-            campoSobrenomeOuFantasia.getText().equals("") ||
-            campoEmail.getText().equals("") ||
-            campoNumTel1.getText().equals("") ||
-            caixaCombinacaoEstado.getSelectedIndex() == 0 ||
-            campoCep.getText().equals("") ||
-            campoCidade.getText().equals("") ||
-            campoBairro.getText().equals("") ||
-            campoLograd.getText().equals("") ||
-            campoLogradNum.getText().equals("") ||
-            campoLogradComp.getText().equals("") ||
-            campoVeiculoTipo.getText().equals("") ||
-            campoVeiculoFabricante.getText().equals("") ||
-            campoVeiculoModelo.getText().equals("") ||
-            campoVeiculoPlaca.getText().equals("") ||
-            campoVeiculoCor.getText().equals("") ||
-            campoVeiculoAno.getText().equals("") ||
-            campoVeiculoAcessorios.getText().equals("") ||
-            campoVeiculoDefeitoCliente.getText().equals("") ||
-            campoPrevisaoSaida.getText().equals("") ||
-            campoVeiculoObservacoes.getText().equals("") ||
-            campoPrecoPeca.getText().equals("") 
-            ){
-                vazio = true;
-            }
-            else{
-                vazio = false;
-            } 
-        } else {
+        if ( campoDataNascimento.getText().equals("") ||
+        campoCpfOuCnpj.getText().equals("") ||
+        campoCpfOuCnpj.getText().equals("") ||
+        campoRgOuIe.getText().equals("") ||
+        campoNomeOuRazao.getText().equals("") ||
+        campoSobrenomeOuFantasia.getText().equals("") ||
+        campoEmail.getText().equals("") ||
+        campoNumTel1.getText().equals("") ||
+        caixaCombinacaoEstado.getSelectedIndex() == 0 ||
+        campoCep.getText().equals("") ||
+        campoCidade.getText().equals("") ||
+        campoBairro.getText().equals("") ||
+        campoLograd.getText().equals("") ||
+        campoLogradNum.getText().equals("") ||
+        campoLogradComp.getText().equals("") ||
+        campoVeiculoTipo.getText().equals("") ||
+        campoVeiculoFabricante.getText().equals("") ||
+        campoVeiculoModelo.getText().equals("") ||
+        campoVeiculoPlaca.getText().equals("") ||
+        campoVeiculoCor.getText().equals("") ||
+        campoVeiculoAno.getText().equals("") ||
+        campoVeiculoAcessorios.getText().equals("") ||
+        campoVeiculoDefeitoCliente.getText().equals("") ||
+        campoPrevisaoSaida.getText().equals("") ||
+        campoVeiculoObservacoes.getText().equals("")
+        ){
+            vazio = true;
+        } 
+        else{
             vazio = false;
-        }           
+        }  
+        if (campoPrecoPeca.getText().equals("") && campoPrecoServico.getText().equals("")){
+                vazio = true;
+        }   else if (campoPrecoPeca.getText().equals("")){
+                if (campoDescricaoServico.getText().equals("")){
+                   vazio = true;
+                }
+        }   else if (campoPrecoServico.getText().equals("")){
+                if (campoDescricaoPeca.getText().equals("")){
+                    vazio = true;
+                } 
+        }   else if (!campoPrecoPeca.getText().equals("") && !campoPrecoServico.getText().equals("")
+                && !campoDescricaoServico.getText().equals("") && !campoDescricaoPeca.getText().equals("")){
+                    vazio = false;
+        }   else {
+                vazio = true;
+        }
         return vazio;
     }
     

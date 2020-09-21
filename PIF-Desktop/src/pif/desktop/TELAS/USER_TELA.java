@@ -150,11 +150,6 @@ public class USER_TELA extends javax.swing.JFrame {
         btnIrUsuario.setContentAreaFilled(false);
         btnIrUsuario.setFocusPainted(false);
         btnIrUsuario.setOpaque(true);
-        btnIrUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                irInfoUser(evt);
-            }
-        });
 
         javax.swing.GroupLayout painelSecoesLayout = new javax.swing.GroupLayout(painelSecoes);
         painelSecoes.setLayout(painelSecoesLayout);
@@ -549,10 +544,6 @@ public class USER_TELA extends javax.swing.JFrame {
     private void irCadastroOS(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irCadastroOS
         u.irDePara(this, C_OS_TELA.getC_OS());
     }//GEN-LAST:event_irCadastroOS
-
-    private void irInfoUser(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irInfoUser
-        // u.irDePara(this, C_OS_TELA.getC_CLIENTE());
-    }//GEN-LAST:event_irInfoUser
     
     /**
      * @param args the command line arguments

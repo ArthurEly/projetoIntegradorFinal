@@ -212,6 +212,7 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
         setBackground(new java.awt.Color(0, 0, 0));
         setIconImage(icon);
         setMinimumSize(new java.awt.Dimension(1368, 768));
+        setPreferredSize(new java.awt.Dimension(1368, 768));
 
         painelSecoes.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 40, 40)), "Para qual seção deseja ir?", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
@@ -466,7 +467,7 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
     }//GEN-LAST:event_irCadastroOS
 
     private void irInfoUser(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irInfoUser
-        u.irDePara(this, new USER_TELA());
+        u.irDePara(this, C_OS_TELA.getUSER_TELA());
     }//GEN-LAST:event_irInfoUser
 
     private void consultarOs(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_consultarOs

@@ -190,7 +190,7 @@
           <Color blue="66" green="66" red="66" type="rgb"/>
         </Property>
       </Properties>
-<<<<<<< HEAD
+
 
       <Layout>
         <DimensionLayout dim="0">
@@ -263,12 +263,10 @@
         </Component>
       </SubComponents>
     </Container>
-=======
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="fazerLogin"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFazerLoginActionPerformed"/>
       </Events>
     </Component>
->>>>>>> b9a91aa6dcfeabf7ef79b3c55d492394a12bffa8
   </SubComponents>
 </Form>

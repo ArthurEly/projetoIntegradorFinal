@@ -145,6 +145,7 @@ public class consulta_cliente extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(icon);
         setMinimumSize(new java.awt.Dimension(1368, 768));
+        setPreferredSize(new java.awt.Dimension(1368, 768));
 
         titleNomeRazao.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         titleNomeRazao.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
