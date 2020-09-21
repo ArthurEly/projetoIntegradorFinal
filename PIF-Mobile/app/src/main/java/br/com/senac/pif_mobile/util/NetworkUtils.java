@@ -12,8 +12,28 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class NetworkUtils {
-    public static void getJSON(String url) {
+    private static final String suffix = "_teste";
 
+    public static final String DB_TABLE_CLIENTE = "cliente" + suffix;
+    public static final String DB_TABLE_CONTATO = "contato" + suffix;
+
+    public static final String DB_COL_CONTATO_CPF = "cliente_colab_cpf_ou_cnpj";
+    public static final String DB_COL_CONTATO_EMAIL = "cliente_colab_email";
+    public static final String DB_COL_CONTATO_TEL1 = "cliente_colab_telefone_1";
+    public static final String DB_COL_CONTATO_TEL2 = "cliente_colab_telefone_2";
+
+    private static String domain = "https://pi.arttidev.com/";
+
+    public static String urlizeGet(String table) {
+        return domain + "get.php?table=" + table;
+    }
+
+    public static String urlizeGet(String table,String where, String equals) {
+        return domain + "get.php?table=" + table + "&where=" + where + "&equals_where=" + where;
+    }
+
+    public static String getJSON(String url) {
+        return downloadTextFile(url);
     }
 
     private static String downloadTextFile(String url) {

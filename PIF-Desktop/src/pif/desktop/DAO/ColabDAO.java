@@ -45,6 +45,8 @@ public class ColabDAO {
                 cb.setColabEndLogradComp(resultado.getString("colab_lograd_comp"));
                 cb.setColabDataNasc(resultado.getString("colab_nascimento"));
                 cb.setColabSenha(resultado.getString("colab_pass"));
+                cb.setIsGerente(resultado.getBoolean("colab_gerente"));
+                cb.setIsTecnico(resultado.getBoolean("colab_tecnico"));
             }       
         } catch (Exception e) {
             System.out.println("erro no colab1: "+e);

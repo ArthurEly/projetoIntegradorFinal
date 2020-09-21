@@ -40,7 +40,7 @@ public class JLogin extends javax.swing.JFrame {
     Image icon;
     JImage logo;
     TelaUtils u = new TelaUtils();
-    
+
     /**
      * Creates new form JLogin
      */
@@ -189,6 +189,11 @@ public class JLogin extends javax.swing.JFrame {
                 fazerLogin(evt);
             }
         });
+        btnFazerLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFazerLoginActionPerformed(evt);
+            }
+        });
 
         txtErroLogin.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtErroLogin.setForeground(new java.awt.Color(102, 102, 102));
@@ -226,12 +231,22 @@ public class JLogin extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(painelForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(painelLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+=======
+                    .addComponent(painelLogo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(painelForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnFazerLogin))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+>>>>>>> b9a91aa6dcfeabf7ef79b3c55d492394a12bffa8
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -251,6 +266,7 @@ public class JLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void fazerLogin(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fazerLogin
+<<<<<<< HEAD
         btnClicado(evt);
         ColabDAO cbdao = new ColabDAO();
         ContatoDAO cttdao = new ContatoDAO();
@@ -259,6 +275,14 @@ public class JLogin extends javax.swing.JFrame {
         if (ctt.getClienteContatoCpfnj() == null){            
             txtErroLogin.setText("Usuário não cadastrado!");
             txtErroLogin.setForeground(Color.white);
+=======
+        LoginDAO login = new LoginDAO();
+        int id = login.login(campoUser.getText(), campoSenha.getText());
+        if (id != 0) {
+            u.irDePara(this, C_OS_TELA.getC_OS());
+            C_OS_TELA.getC_OS().setIdDoUser(id);
+            C_OS_TELA.getC_OS().getId().setText("ID do usuário é: " + C_OS_TELA.getC_OS().getIdDoUser());
+>>>>>>> b9a91aa6dcfeabf7ef79b3c55d492394a12bffa8
         } else {
             Colab co = cbdao.verificarColab(ctt.getClienteContatoCpfnj());
             if (campoSenha.getText().equals(co.getColabSenha())){
@@ -271,6 +295,10 @@ public class JLogin extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_fazerLogin
+
+    private void btnFazerLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFazerLoginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnFazerLoginActionPerformed
 
     /**
      * @param args the command line arguments

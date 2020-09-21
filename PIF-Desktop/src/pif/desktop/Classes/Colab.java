@@ -10,7 +10,7 @@ package pif.desktop.Classes;
  * @author arthu
  */
 public class Colab {
-    
+ 
     //declaração de variáveis
     private String colabCpf;
     private String colabRg;
@@ -25,6 +25,8 @@ public class Colab {
     private String colabEndLogradComp;
     private String colabDataNasc;
     private String colabSenha;
+    private boolean isTecnico;
+    private boolean isGerente;
     //declaração de variáveis
 
     /**
@@ -207,5 +209,33 @@ public class Colab {
      */
     public void setColabSenha(String colabSenha) {
         this.colabSenha = colabSenha;
+    }
+    
+        /**
+     * @return the isTecnico
+     */
+    public boolean isIsTecnico() {
+        return isTecnico;
+    }
+
+    /**
+     * @param isTecnico the isTecnico to set
+     */
+    public void setIsTecnico(boolean isTecnico) {
+        this.isTecnico = isTecnico;
+    }
+
+    /**
+     * @return the isGerente
+     */
+    public boolean isIsGerente() {
+        return isGerente;
+    }
+
+    /**
+     * @param isGerente the isGerente to set
+     */
+    public void setIsGerente(boolean isGerente) {
+        this.isGerente = isGerente;
     }
 }

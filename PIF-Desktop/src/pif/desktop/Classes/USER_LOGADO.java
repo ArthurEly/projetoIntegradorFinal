@@ -10,7 +10,7 @@ package pif.desktop.Classes;
  * @author arthu
  */
 public class USER_LOGADO {
-    
+
     private static String COLAB_NOME = new String();
     private static String COLAB_SOBRENOME = new String();
     private static String COLAB_CPF = new String();
@@ -26,6 +26,8 @@ public class USER_LOGADO {
     private static String COLAB_CONTATO_EMAIL = new String();
     private static String COLAB_CONTATO_NUM_TEL1 = new String();
     private static String COLAB_CONTATO_NUM_TEL2 = new String();
+    private static boolean COLAB_IS_TEC;
+    private static boolean COLAB_IS_GERENTE;
     
     /**
      * @return the COLAB_NOME
@@ -235,5 +237,33 @@ public class USER_LOGADO {
      */
     public static void setCOLAB_CONTATO_NUM_TEL2(String aCOLAB_CONTATO_NUM_TEL2) {
         COLAB_CONTATO_NUM_TEL2 = aCOLAB_CONTATO_NUM_TEL2;
+    }
+    
+        /**
+     * @return the COLAB_IS_TEC
+     */
+    public static boolean isCOLAB_TEC() {
+        return COLAB_IS_TEC;
+    }
+
+    /**
+     * @param aCOLAB_IS_TEC the COLAB_IS_TEC to set
+     */
+    public static void setCOLAB_TEC(boolean aCOLAB_IS_TEC) {
+        COLAB_IS_TEC = aCOLAB_IS_TEC;
+    }
+
+    /**
+     * @return the COLAB_IS_GERENTE
+     */
+    public static boolean isCOLAB_GERENTE() {
+        return COLAB_IS_GERENTE;
+    }
+
+    /**
+     * @param aCOLAB_IS_GERENTE the COLAB_IS_GERENTE to set
+     */
+    public static void setCOLAB_GERENTE(boolean aCOLAB_IS_GERENTE) {
+        COLAB_IS_GERENTE = aCOLAB_IS_GERENTE;
     }
 }
