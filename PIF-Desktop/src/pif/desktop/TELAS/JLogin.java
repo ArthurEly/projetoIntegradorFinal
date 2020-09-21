@@ -267,7 +267,6 @@ public class JLogin extends javax.swing.JFrame {
         } else {
             Colab co = cbdao.verificarColab(ctt.getClienteContatoCpfnj());
             if (campoSenha.getText().equals(co.getColabSenha())){
-                boolean fecharTela = true;
                 u.irDeParaLogin(this, new C_OS_TELA(co, ctt),768,1368);
             } else {
                 System.out.println("doois");
