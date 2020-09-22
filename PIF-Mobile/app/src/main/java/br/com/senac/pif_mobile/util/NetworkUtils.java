@@ -41,6 +41,15 @@ public class NetworkUtils {
     public static final String DB_COL_CLIENTE_NASCIMENTO = "cliente_nascimento";
     public static final String DB_COL_CLIENTE_JURIDICO = "cliente_pj";
 
+    public static final String DB_COL_OS_NUMERO = "os_numero";
+    public static final String DB_COL_OS_ENTRADA = "os_data_entrada";
+    public static final String DB_COL_OS_PREVISAO = "os_previsao_saida";
+    public static final String DB_COL_OS_SAIDA = "os_data_saida";
+    public static final String DB_COL_OS_COLABORADOR = "colaborador_nome_atendimento";
+
+    public static final String DB_COL_VEICULO_PLACA = "veiculo_placa";
+    public static final String DB_COL_VEICULO_SITUACAO = "veiculo_situacao";
+
     private static String domain = "https://pi.arttidev.com/";
 
     public static String urlizeGet(String table) {

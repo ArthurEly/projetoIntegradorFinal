@@ -3,13 +3,21 @@ package br.com.senac.pif_mobile;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.Date;
+
 import br.com.senac.pif_mobile.util.Linux;
 import br.com.senac.pif_mobile.util.NetworkUtils;
+import br.com.senac.pif_mobile.util.TimeUtils;
 
 import static br.com.senac.pif_mobile.util.NetworkUtils.runOnNetworkThread;
 
@@ -43,7 +51,7 @@ public class OSListActivity extends AppCompatActivity {
     }
 
     public void carregaOses() {
-        //Cria um loading:
+        //Cria um loading (no processo da UI):
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -55,7 +63,7 @@ public class OSListActivity extends AppCompatActivity {
             }
         });
 
-        //Enquanto isso...
+        //Enquanto isso (no processo da INTERNET)...
         runOnNetworkThread(new Runnable() {
             @Override
             public void run() {
@@ -64,12 +72,42 @@ public class OSListActivity extends AppCompatActivity {
                 // @TODO: teste, apagar depois:
                 System.out.println(result);
 
+                try {
+                    JSONArray json = new JSONArray(result);
 
+                    for (int XXX = 0; XXX < json.length(); XXX++) {
+                        JSONObject js = json.getJSONObject(XXX);
+
+                        int num = Integer.parseInt(js.getString(NetworkUtils.DB_COL_OS_NUMERO));
+                        String placa = js.getString(NetworkUtils.DB_COL_VEICULO_PLACA);
+                        OS.SITUACAO sit = OS.getSituation(js.getString(NetworkUtils.DB_COL_VEICULO_SITUACAO));
+
+                        // @TODO: PAREI AQUI:
+                        Date entrada = new Date();
+                        entrada.setDate();
+                        entrada.setMonth();
+                        entrada.setYear();
+                        Date previsão = new Date();
+                        previsão.setDate();
+                        previsão.setMonth();
+                        previsão.setYear();
+                        Date saida = new Date();
+                        saida.setDate();
+                        saida.setMonth();
+                        saida.setYear();
+                        String colaborador = js.getString(NetworkUtils.DB_COL_OS_COLABORADOR);
+
+                        OS os = new OS(num,placa,sit,entrada,previsão,saida,colaborador);
+                        insertOS(os);
+                    }
+                } catch (JSONException e) {
+                    Log.e("NetworkThread", "ERRO DO JSON DENOVO", e);
+                }
             }
         });
     }
 
     public void insertOS(OS os /*parecido com o User, que pena!*/) {
-        // @TODO: PAREI AQUI
+        //@TODO: INSERIR UM ITEM NA LISTA;
     }
 }

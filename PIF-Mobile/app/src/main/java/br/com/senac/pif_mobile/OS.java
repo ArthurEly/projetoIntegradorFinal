@@ -21,7 +21,7 @@ import java.util.Date;
  * bah, lembrei agora
  * dai tu n vai ter como testar pq eu deixo o celular do meu lado, na cama
  * mas só se tu quiser usar o pc pra fazer alguma coisa a mais, mas testar nao vai dar kkkkkk
- * vai demorar pra testar agr, ah entao tranquilo 
+ * vai demorar pra testar agr, ah entao tranquilo
  */
 public class OS {
     public enum SITUACAO {
@@ -30,9 +30,10 @@ public class OS {
         AGUARDANDO_PEÇAS, //ESPERANDO A CENTRAL DE PEÇAS ENtrEGAR
         EM_PROCESSO_DE_MANUTENCAO, //VEÍCULO SENDO CONSERTADO
         AGUARDANDO_DEVOLUÇÂO, //O CLIENTE DEVE BUSCAR
-        CONCLUIDO // MAIS NADA PRA FAZER
-        //algum cliente tonto ia se perguntar oq seria "em espera" (concordo)
+        CONCLUIDO, // MAIS NADA PRA FAZER
+
         //situação extra (em caso de falhas ou algo assim:
+        BLOQUEADO //CARRO ESTÁ BLOQUEADO POR ALGUM MOTIVO EM ESPECÍFICO
     }
     private int num = 0;
     private String sign = "AAA0000";
@@ -105,5 +106,17 @@ public class OS {
 
     public void setCollab(String collab) {
         this.collab = collab;
+    }
+
+    public static SITUACAO getSituation(String jsonValue) {
+        switch (jsonValue) {
+            case "NULL": return SITUACAO.NA_FILA;
+            case "EM_ANALISE": return SITUACAO.EM_ANALISE;
+            case "AGUARDANDO_PEÇAS": return SITUACAO.AGUARDANDO_PEÇAS;
+            case "EM_PROCESSO_DE_MANUTENCAO": return SITUACAO.EM_PROCESSO_DE_MANUTENCAO;
+            case "AGUARDANDO_DEVOLUÇÂO": return SITUACAO.AGUARDANDO_DEVOLUÇÂO;
+            case "CONCLUIDO": return SITUACAO.CONCLUIDO;
+            default: return  SITUACAO.NA_FILA;
+        }
     }
 }
