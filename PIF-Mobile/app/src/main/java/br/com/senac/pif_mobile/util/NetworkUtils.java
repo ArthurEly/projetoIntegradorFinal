@@ -19,6 +19,9 @@ public class NetworkUtils {
     public static final String DB_TABLE_CLIENTE = "cliente" + suffix;
     public static final String DB_TABLE_CONTATO = "contato" + suffix;
     public static final String DB_TABLE_OS = "os" + suffix;
+    public static final String DB_TABLE_VEICULO = "veiculo" + suffix;
+    public static final String DB_TABLE_PARECER = "parecer_tecnico" + suffix;
+    public static final String DB_TABLE_ORCAMENTO = "orcamento" + suffix;
 
     public static final String DB_COL_CONTATO_CPF = "cliente_colab_cpf_ou_cnpj";
     public static final String DB_COL_CONTATO_EMAIL = "cliente_colab_email";
@@ -50,6 +53,18 @@ public class NetworkUtils {
     public static final String DB_COL_VEICULO_PLACA = "veiculo_placa";
     public static final String DB_COL_VEICULO_SITUACAO = "veiculo_situacao";
 
+    public static final String DB_COL_PARECER_OS_NUMERO = "os_numero";
+    public static final String DB_COL_PARECER_DATA  = "parecer_data";
+    public static final String DB_COL_PARECER_COLABORADOR  = "colab_nome_tecnico";
+    public static final String DB_COL_PARECER_DESCRICAO  = "parecer_descricao";
+
+    public static final String DB_COL_ORCAMENTO_OS_NUMERO = "os_numero";
+    public static final String DB_COL_ORCAMENTO_PRECO_PECAS = "orcamento_preco_pecas";
+    public static final String DB_COL_ORCAMENTO_DESCRICAO_PECAS = "orcamento_descricao_pecas";
+    public static final String DB_COL_ORCAMENTO_PRECO_SERVICOS = "orcamento_preco_servicos";
+    public static final String DB_COL_ORCAMENTO_DESCRICAO_SERVICOS = "orcamento_descricao_servicos";
+    public static final String DB_COL_ORCAMENTO_DATA = "orcamento_data";
+
     private static String domain = "https://pi.arttidev.com/";
 
     public static String urlizeGet(String table) {
@@ -58,7 +73,6 @@ public class NetworkUtils {
 
     public static String urlizeGet(String table,String where, String equals) {
         return domain + "get.php?table=" + table + "&where=" + where + "&equals_where=" + equals;
-        //que burricek..kkk.kkk.
     }
 
     public static String getJSON(String url) {

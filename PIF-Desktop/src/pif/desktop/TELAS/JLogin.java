@@ -72,7 +72,9 @@ public class JLogin extends javax.swing.JFrame {
         logo = new JImage("resources/logo.png", true);
         logo.setSize(logo.getImageWidth(), logo.getImageHeight());
         imageFrame.add(logo);
-        this.getContentPane().setBackground(new Color(102,102,102));
+        this.getContentPane().setBackground(new Color(51,51,51));
+        jPanel3.setBackground(new Color(51,51,51));
+        txtErroLogin.setForeground(new Color(51,51,51));
     }
 
     /**

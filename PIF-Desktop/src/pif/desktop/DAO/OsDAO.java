@@ -131,7 +131,7 @@ public class OsDAO {
         c.desconectarDoBanco();
     }
     
-    public void atualizarSituacaoOs(String veiculoNumOs, String situacao, String placa){
+    public void atualizarSituacaoOs(String veiculoNumOs, String situacao){
         String updateSituacao = "UPDATE `os_teste` SET `veiculo_situacao`='"+situacao+"' "
                 + "WHERE os_numero = "+veiculoNumOs;
         Conexao c = new Conexao();

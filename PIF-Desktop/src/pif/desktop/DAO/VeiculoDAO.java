@@ -67,4 +67,18 @@ public class VeiculoDAO {
         }
         c.desconectarDoBanco();
     }
+    
+    public void atualizarVeiculoSituacao(String situacao, String veiculoNumOs) {
+        String updateVeiculo = "UPDATE `veiculo_teste` SET `veiculo_situacao`='"+situacao+"' WHERE os_numero = "+veiculoNumOs;
+        Conexao c = new Conexao();
+        PreparedStatement preparador = null;
+        try{
+            preparador = c.conectarAoBanco().prepareStatement(updateVeiculo);         
+            preparador.execute();
+            preparador.close();
+        }catch(Exception e){
+            System.out.println("Erro na verificação:  "+e);
+        }
+        c.desconectarDoBanco();
+    }
 }

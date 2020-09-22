@@ -605,9 +605,9 @@ public class VerificacaoStrings {
         } else if (tamanhoValido(evt,s,11) == false){
             avaliacao = "Data inválida.";
         } else if (data(s) == false){
-            avaliacao = "Data válida!";
-        } else {
             avaliacao = "Data inválida.";
+        } else {
+            avaliacao = "Data válida!";
         }
         if (tamanhoMaximo(evt,s,11) == false){
             avaliacao = "erro";
@@ -685,6 +685,18 @@ public class VerificacaoStrings {
         int i;
         for (i=0;i<length;i++){
             if (estado.equals(estados[i])){
+                break;
+            }
+        }
+        return i;
+    }
+    
+    public int verificarSituacao(String situacao){
+        String[] situacoes = {"Na fila", "Em análise", "Aguardando peças", "Em processo de manutenção", "Aguardando devolução", "Concluído!"};
+        int length = situacoes.length;
+        int i;
+        for (i=0;i<length;i++){
+            if (situacao.equals(situacoes[i])){
                 break;
             }
         }

@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 import javax.imageio.ImageIO;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -29,6 +30,7 @@ import pif.desktop.Classes.VerificacaoStrings;
 import pif.desktop.DAO.OsDAO;
 import pif.desktop.DAO.ParecerDAO;
 import pif.desktop.DAO.VeiculoDAO;
+import static pif.desktop.TELAS.rascunhos.consulta_os.caixaSituacao;
 
 /**
  *
@@ -41,6 +43,8 @@ public class consulta_veiculo extends javax.swing.JFrame {
     Veiculo vzao;
     FormatacaoStrings fs = new FormatacaoStrings();
     VerificacaoStrings vs = new VerificacaoStrings();
+    consulta_os telinha;
+    boolean concluido;
     
     /**
      * Creates new form consulta_veiculo
@@ -51,7 +55,7 @@ public class consulta_veiculo extends javax.swing.JFrame {
             icon = ImageIO.read(new File("src/resources/icon.png"));           
         } catch (IOException e) {
             e.printStackTrace();
-        } 
+        }     
         vzao = v;
         painelInformacoesVeiculo.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Veículo de placa " + v.getVeiculoPlaca(), javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
         campoAcessorios.setText(v.getVeiculoAcessorios());
@@ -61,7 +65,26 @@ public class consulta_veiculo extends javax.swing.JFrame {
         campoFabricante.setText(v.getVeiculoFabricante());
         campoModelo.setText(v.getVeiculoModelo());
         campoObservacoes.setText(v.getVeiculoObservacoes());
-        campoSituacao.setText(v.getVeiculoSituacao());
+        if (v.getVeiculoSituacao() == null){
+           caixaSituacao.setSelectedIndex(0); 
+        } else if (v.getVeiculoSituacao().equals("Concluído!")){
+            String[] items = {"Na fila", "Em análise", "Aguardando peças", "Em processo de manutenção", "Aguardando devolução", "Concluído!"};
+            DefaultComboBoxModel model = new DefaultComboBoxModel(items);
+            caixaSituacao.setModel(model);
+            caixaSituacao.setSelectedIndex(vs.verificarSituacao(v.getVeiculoSituacao()));
+            btnEditarVeiculo.setEnabled(false);
+            btnEditarVeiculo.setBorderPainted(false);
+            btnEditarVeiculo.setBackground(new java.awt.Color(100, 0, 0));
+            btnAdicionarParecer.setEnabled(false);
+            btnAdicionarParecer.setBorderPainted(false);
+            btnAdicionarParecer.setBackground(new java.awt.Color(100, 0, 0));
+            btnLimparCampoParecer.setEnabled(false);
+            btnLimparCampoParecer.setBorderPainted(false);
+            btnLimparCampoParecer.setBackground(new java.awt.Color(100, 0, 0));    
+            concluido = true;
+        }else{
+           caixaSituacao.setSelectedIndex(vs.verificarSituacao(v.getVeiculoSituacao())); 
+        }
         campoTipo.setText(v.getVeiculoTipo());
         setIconImage(icon);     
         setTitle("Veículo de placa "+v.getVeiculoPlaca());  
@@ -107,7 +130,19 @@ public class consulta_veiculo extends javax.swing.JFrame {
             areaDescricaoParecer.setText(prc.getParecerDescricao());
             jsp.setViewportView(areaDescricaoParecer);
             
-            btnExcluirParecer.setBackground(new java.awt.Color(204, 0, 0));
+            if (concluido){
+                btnExcluirParecer.setBackground(new java.awt.Color(100, 0, 0));
+                btnExcluirParecer.setEnabled(false);
+                btnExcluirParecer.setBorderPainted(false);
+            } else {
+                btnExcluirParecer.setBackground(new java.awt.Color(204, 0, 0));
+                btnExcluirParecer.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                        btnClicado(evt);
+                        excluirParecerTecnico(evt);
+                    }
+                });
+            }
             btnExcluirParecer.setForeground(new java.awt.Color(255, 255, 255));
             btnExcluirParecer.setText("Excluir");
             btnExcluirParecer.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(130, 0, 0), new java.awt.Color(130, 0, 0), new java.awt.Color(204, 0, 0), new java.awt.Color(204, 0, 0)));
@@ -115,12 +150,6 @@ public class consulta_veiculo extends javax.swing.JFrame {
             btnExcluirParecer.setFocusPainted(false);
             btnExcluirParecer.setOpaque(true);
             btnExcluirParecer.setName(prc.getParecerData());
-            btnExcluirParecer.addMouseListener(new java.awt.event.MouseAdapter() {
-                public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    btnClicado(evt);
-                    excluirParecerTecnico(evt);
-                }
-            });
             
             jFilho.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(190, 190, 190)));    
             //</editor-fold>            
@@ -215,7 +244,6 @@ public class consulta_veiculo extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         campoDefeito = new javax.swing.JTextArea();
         titleSituacao = new javax.swing.JLabel();
-        campoSituacao = new javax.swing.JTextField();
         btnEditarVeiculo = new javax.swing.JButton();
         txtErroAno = new javax.swing.JLabel();
         txtErroAcessorios = new javax.swing.JLabel();
@@ -224,6 +252,7 @@ public class consulta_veiculo extends javax.swing.JFrame {
         titleCor = new javax.swing.JLabel();
         campoCor = new javax.swing.JTextField();
         txtErroSituacao = new javax.swing.JLabel();
+        caixaSituacao = new javax.swing.JComboBox<>();
         painelDeRolagemPareceresTecnicos = new javax.swing.JScrollPane();
         painelParaManterOScroll = new javax.swing.JPanel();
         painelAddParecer = new javax.swing.JPanel();
@@ -337,18 +366,6 @@ public class consulta_veiculo extends javax.swing.JFrame {
         titleSituacao.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         titleSituacao.setText("Situação do veículo:");
 
-        campoSituacao.setBackground(new java.awt.Color(240, 240, 240));
-        campoSituacao.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        campoSituacao.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        campoSituacao.setBorder(null);
-        campoSituacao.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        campoSituacao.setEnabled(false);
-        campoSituacao.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                tecladaSituacao(evt);
-            }
-        });
-
         btnEditarVeiculo.setBackground(new java.awt.Color(204, 0, 0));
         btnEditarVeiculo.setForeground(new java.awt.Color(255, 255, 255));
         btnEditarVeiculo.setText("Editar veículo");
@@ -392,6 +409,11 @@ public class consulta_veiculo extends javax.swing.JFrame {
         txtErroSituacao.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtErroSituacao.setText("jLabel1");
 
+        caixaSituacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Na fila", "Em análise", "Aguardando peças", "Em processo de manutenção", "Aguardando devolução" }));
+        caixaSituacao.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 40, 0)));
+        caixaSituacao.setEnabled(false);
+        caixaSituacao.setFocusable(false);
+
         javax.swing.GroupLayout painelInformacoesVeiculoLayout = new javax.swing.GroupLayout(painelInformacoesVeiculo);
         painelInformacoesVeiculo.setLayout(painelInformacoesVeiculoLayout);
         painelInformacoesVeiculoLayout.setHorizontalGroup(
@@ -419,7 +441,6 @@ public class consulta_veiculo extends javax.swing.JFrame {
                             .addComponent(campoCor)
                             .addComponent(txtErroObservacoes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtErroAno, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(campoSituacao)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
                             .addComponent(campoTipo)
                             .addComponent(campoFabricante)
@@ -428,7 +449,8 @@ public class consulta_veiculo extends javax.swing.JFrame {
                             .addComponent(campoAcessorios)
                             .addComponent(campoObservacoes)
                             .addComponent(txtErroAcessorios, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtErroDefeito, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(txtErroDefeito, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(caixaSituacao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         painelInformacoesVeiculoLayout.setVerticalGroup(
@@ -476,11 +498,11 @@ public class consulta_veiculo extends javax.swing.JFrame {
                         .addComponent(titleDefeito)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtErroDefeito)
-                .addGap(15, 15, 15)
+                .addGap(11, 11, 11)
                 .addGroup(painelInformacoesVeiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(titleSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campoSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
+                    .addComponent(caixaSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
                 .addComponent(txtErroSituacao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(btnEditarVeiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -634,51 +656,63 @@ public class consulta_veiculo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void limparCamposParecer(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_limparCamposParecer
-        btnClicado(evt);
-        limparCampos();
+        if (!concluido){
+            btnClicado(evt);
+            limparCampos();
+        }
     }//GEN-LAST:event_limparCamposParecer
 
     private void adicionarParecer(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adicionarParecer
-        ParecerDAO pdao = new ParecerDAO();
-        ParecerTecnico prc = new ParecerTecnico();
-        prc.setOsNumero(vzao.getVeiculoNumOs());
-        prc.setParecerDescricao(areaDescricaoParecerAdd.getText());
-        //ver aqui bundao
-        prc.setColabNomeTecnico(USER_LOGADO.getCOLAB_NOME());
-        pdao.adicionarParecerTecnico(prc);
-        atualizarTela();
+        if (!concluido){
+            btnClicado(evt);
+            ParecerDAO pdao = new ParecerDAO();
+            ParecerTecnico prc = new ParecerTecnico();
+            if (USER_LOGADO.isCOLAB_TEC()){
+                prc.setOsNumero(vzao.getVeiculoNumOs());
+                prc.setParecerDescricao(areaDescricaoParecerAdd.getText());
+                prc.setColabNomeTecnico(USER_LOGADO.getCOLAB_NOME());
+                pdao.adicionarParecerTecnico(prc);           
+                atualizarTela();
+            } else {
+                txtErroAddParecer.setText("Você não tem permissão para realizar essa função.");
+                txtErroAddParecer.setForeground(Color.red);
+            }
+        }
     }//GEN-LAST:event_adicionarParecer
 
     private void editarVeiculo(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarVeiculo
-        btnClicado(evt);
-        contadorEditar++;
-        if (contadorEditar == 1){
-            int dialogButton = JOptionPane.YES_NO_OPTION;
-            int dialogResult = JOptionPane.showConfirmDialog (null, "Tem certeza que deseja habilitar os campos para a edição?","Aviso!",dialogButton);
-            if(dialogResult == JOptionPane.YES_OPTION){
-                habilitarCampos();
-            } else {
-                contadorEditar--;
+        if (!"Concluído!".equals(vzao.getVeiculoSituacao())){
+            btnClicado(evt);
+            contadorEditar++;
+            if (contadorEditar == 1){
+                int dialogButton = JOptionPane.YES_NO_OPTION;
+                int dialogResult = JOptionPane.showConfirmDialog (null, "Tem certeza que deseja habilitar os campos para a edição?","Aviso!",dialogButton);
+                if(dialogResult == JOptionPane.YES_OPTION){
+                    habilitarCampos();
+                } else {
+                    contadorEditar--;
+                }
             }
+            else if (contadorEditar == 2){
+                int dialogButton = JOptionPane.YES_NO_OPTION;
+                int dialogResult = JOptionPane.showConfirmDialog (null, "Tem certeza que deseja editar os dados dessa ordem desse veículo?","Aviso!",dialogButton);
+                if(dialogResult == JOptionPane.YES_OPTION){
+                    VeiculoDAO vdao = new VeiculoDAO();
+                    OsDAO osdao = new OsDAO();
+                    String ano = campoAno.getText();
+                    String acessorios = campoAcessorios.getText();
+                    String obs = campoObservacoes.getText();
+                    String defeito = campoDefeito.getText();
+                    String situacao = caixaSituacao.getSelectedItem().toString();
+                    consulta_os.caixaSituacao.setSelectedItem(caixaSituacao.getSelectedItem());
+                    osdao.atualizarSituacaoOs(vzao.getVeiculoNumOs(), situacao);
+                    vdao.atualizarVeiculo(vzao.getVeiculoNumOs(),ano,acessorios,obs,defeito,situacao,vzao.getVeiculoPlaca());
+                    atualizarTela();
+                } else {
+                    contadorEditar--;
+                }           
+            }   
         }
-        else if (contadorEditar == 2){
-            int dialogButton = JOptionPane.YES_NO_OPTION;
-            int dialogResult = JOptionPane.showConfirmDialog (null, "Tem certeza que deseja editar os dados dessa ordem desse veículo?","Aviso!",dialogButton);
-            if(dialogResult == JOptionPane.YES_OPTION){
-                VeiculoDAO vdao = new VeiculoDAO();
-                OsDAO osdao = new OsDAO();
-                String ano = campoAno.getText();
-                String acessorios = campoAcessorios.getText();
-                String obs = campoObservacoes.getText();
-                String defeito = campoDefeito.getText();
-                String situacao = campoSituacao.getText();
-                osdao.atualizarSituacaoOs(vzao.getVeiculoNumOs(), situacao, ano);
-                vdao.atualizarVeiculo(vzao.getVeiculoNumOs(),ano,acessorios,obs,defeito,situacao,vzao.getVeiculoPlaca());
-                atualizarTela();
-            } else {
-                contadorEditar--;
-            }           
-        }  
     }//GEN-LAST:event_editarVeiculo
 
     private void tecladaAno(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaAno
@@ -737,28 +771,14 @@ public class consulta_veiculo extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tecladaDefeito
 
-    private void tecladaSituacao(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaSituacao
-        if (vs.nome30(evt, campoSituacao.getText()) == ""){
-            txtErroSituacao.setForeground(new Color(240,240,240));
-        } else {
-            String txt = vs.nome30(evt, campoSituacao.getText());
-            txtErroSituacao.setText(txt);
-            if (txt.endsWith(".")){
-                txtErroSituacao.setForeground(new Color(255,0,0));
-            } else {
-                txtErroSituacao.setForeground(new Color(0, 160, 40));
-            }
-        }
-    }//GEN-LAST:event_tecladaSituacao
-
     private void tecladaParecer(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaParecer
         if (vs.veiculo255(evt, areaDescricaoParecerAdd.getText()) == ""){
-            txtErroAddParecer.setForeground(new Color(240,240,240));           
+            txtErroAddParecer.setForeground(new Color(220,220,220));           
         } else {
             String txt = vs.veiculo255(evt, areaDescricaoParecerAdd.getText());
             txtErroAddParecer.setText(txt);
             if (txt.endsWith(".")){
-                txtErroAddParecer.setForeground(new Color(220,220,220));
+                txtErroAddParecer.setForeground(new Color(255,0,0));
             } else {
                 txtErroAddParecer.setForeground(new Color(0, 160, 40));
             }           
@@ -800,6 +820,7 @@ public class consulta_veiculo extends javax.swing.JFrame {
     private javax.swing.JButton btnAdicionarParecer;
     private javax.swing.JButton btnEditarVeiculo;
     private javax.swing.JButton btnLimparCampoParecer;
+    private javax.swing.JComboBox<String> caixaSituacao;
     private javax.swing.JTextField campoAcessorios;
     private javax.swing.JTextField campoAno;
     private javax.swing.JTextField campoCor;
@@ -807,7 +828,6 @@ public class consulta_veiculo extends javax.swing.JFrame {
     private javax.swing.JTextField campoFabricante;
     private javax.swing.JTextField campoModelo;
     private javax.swing.JTextField campoObservacoes;
-    private javax.swing.JTextField campoSituacao;
     private javax.swing.JTextField campoTipo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -879,11 +899,8 @@ public class consulta_veiculo extends javax.swing.JFrame {
         campoObservacoes.setEnabled(true);
         campoObservacoes.setBackground(Color.white);
         campoObservacoes.setForeground(Color.black);
-        campoObservacoes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
-        campoSituacao.setEnabled(true);
-        campoSituacao.setBackground(Color.white);
-        campoSituacao.setForeground(Color.black);
-        campoSituacao.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        campoObservacoes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));       
+        caixaSituacao.setEnabled(true);
     }
     
     private void atualizarTela(){

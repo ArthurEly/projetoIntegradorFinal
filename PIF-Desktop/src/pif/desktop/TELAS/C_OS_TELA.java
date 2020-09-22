@@ -2062,7 +2062,11 @@ public class C_OS_TELA extends javax.swing.JFrame {
                     campoNumTel1.setEnabled(false);
                     campoNumTel1.setText(fs.botarTelefone(ctt.getClienteContatoNumTel1()));
                     campoNumTel2.setEnabled(false);
-                    campoNumTel2.setText(fs.botarTelefone(ctt.getClienteContatoNumTel2()));
+                    if (ctt.getClienteContatoNumTel2().length() < 9){
+                        campoNumTel2.setText("-"); 
+                    } else {
+                        campoNumTel2.setText(fs.botarTelefone(ctt.getClienteContatoNumTel2()));
+                    }
                     caixaCombinacaoEstado.setEnabled(false);
                     caixaCombinacaoEstado.setSelectedIndex(vs.verificarEstado(c.getClienteEndEstado()));
                     campoCep.setEnabled(false);

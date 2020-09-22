@@ -190,11 +190,7 @@
           <Color blue="66" green="66" red="66" type="rgb"/>
         </Property>
       </Properties>
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 984e90cac8ca1c4add6e2f6695d38e8908a9caa1
+      
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
@@ -233,7 +229,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Fazer login:"/>
+            <Property name="text" type="java.lang.String" value="Fazer login"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                 <BevelBorder>

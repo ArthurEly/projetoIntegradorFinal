@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 import javax.imageio.ImageIO;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -49,6 +50,7 @@ public class consulta_os extends javax.swing.JFrame {
     private static OS os;
     Image icon;
     TelaUtils u;
+    boolean concluido;
     /**
      * Creates new form rascunho_tela
      */
@@ -64,15 +66,37 @@ public class consulta_os extends javax.swing.JFrame {
         painelOs.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "OS de número " + os.getOsNumero(), javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
         campoCpfnj.setText(fs.botarCpfOuCnpj(os.getOsCpfnj()));
         campoPlaca.setText(os.getOsVeiculoPlaca());
-        campoSituacaoVeiculo.setText(os.getOsVeiculoSituacao());
+        System.out.println("situacaio: "+os.getOsVeiculoSituacao());
+        if (os.getOsDataSaida() != null){
+            campoDataSaida.setText(fs.botarData(os.getOsDataSaida()));
+            String[] items = {"Na fila", "Em análise", "Aguardando peças", "Em processo de manutenção", "Aguardando devolução", "Concluído!"};
+            DefaultComboBoxModel model = new DefaultComboBoxModel(items);
+            caixaSituacao.setModel(model);
+            btnEditarOs.setEnabled(false);
+            btnEditarOs.setBorderPainted(false);
+            btnEditarOs.setBackground(new java.awt.Color(100, 0, 0));
+            btnConcluirOs.setEnabled(false);
+            btnConcluirOs.setBorderPainted(false);
+            btnConcluirOs.setBackground(new java.awt.Color(100, 0, 0));
+            btnAdicionarOrcamento.setEnabled(false);
+            btnAdicionarOrcamento.setBorderPainted(false);
+            btnAdicionarOrcamento.setBackground(new java.awt.Color(100, 0, 0));
+            btnLimparCamposOrcamento.setEnabled(false);
+            btnLimparCamposOrcamento.setBorderPainted(false);
+            btnLimparCamposOrcamento.setBackground(new java.awt.Color(100, 0, 0));
+            concluido = true;
+        } else {
+            campoDataSaida.setText("");         
+        }       
+        if (os.getOsVeiculoSituacao() == null){
+           caixaSituacao.setSelectedIndex(0); 
+        } else {
+           caixaSituacao.setSelectedIndex(vs.verificarSituacao(os.getOsVeiculoSituacao())); 
+        }
         campoAtendente.setText(os.getOsColabNome());       
         campoDataEntrada.setText(fs.botarData(os.getOsDataEntrada()));
         campoPrevisaoSaida.setText(fs.botarData(os.getOsPrevisaoSaida()));
-        if (os.getOsDataSaida() != null){
-            campoDataSaida.setText(fs.botarData(os.getOsDataSaida()));
-        } else {
-            campoDataSaida.setText("");
-        }
+        
         setIconImage(icon);     
         setTitle("OS de número "+os.getOsNumero());  
         painelDeRolagemPecasEServicos.getVerticalScrollBar().setUnitIncrement(8); 
@@ -149,21 +173,26 @@ public class consulta_os extends javax.swing.JFrame {
             campoData.setDisabledTextColor(new java.awt.Color(0, 0, 0));
             campoData.setEnabled(false);
             
-            
             btnExcluirItem = new JButton();
-            btnExcluirItem.setBackground(new java.awt.Color(204, 0, 0));
+            if (concluido){
+                btnExcluirItem.setBackground(new java.awt.Color(100, 0, 0));
+                btnExcluirItem.setEnabled(false);
+                btnExcluirItem.setBorderPainted(false);
+            } else {
+                btnExcluirItem.setBackground(new java.awt.Color(204, 0, 0));
+                btnExcluirItem.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                        btnClicado(evt);
+                        excluirItemOrcamento(evt);
+                    }
+                });
+            }
             btnExcluirItem.setForeground(new java.awt.Color(255, 255, 255));
             btnExcluirItem.setText("Excluir");
             btnExcluirItem.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(130, 0, 0), new java.awt.Color(130, 0, 0), new java.awt.Color(204, 0, 0), new java.awt.Color(204, 0, 0)));
             btnExcluirItem.setContentAreaFilled(false);
             btnExcluirItem.setFocusPainted(false);
-            btnExcluirItem.setOpaque(true);
-            btnExcluirItem.addMouseListener(new java.awt.event.MouseAdapter() {
-                public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    btnClicado(evt);
-                    excluirItemOrcamento(evt);
-                }
-            });
+            btnExcluirItem.setOpaque(true);  
             btnExcluirItem.setName(o.getOrcamento_data());
             //</editor-fold>            
             //<editor-fold defaultstate="collapsed" desc="Layout do painel">
@@ -262,7 +291,6 @@ public class consulta_os extends javax.swing.JFrame {
         titleAtendente = new javax.swing.JLabel();
         campoCpfnj = new javax.swing.JTextField();
         campoPlaca = new javax.swing.JTextField();
-        campoSituacaoVeiculo = new javax.swing.JTextField();
         campoAtendente = new javax.swing.JTextField();
         titleDataEntrada = new javax.swing.JLabel();
         campoDataEntrada = new javax.swing.JTextField();
@@ -299,6 +327,7 @@ public class consulta_os extends javax.swing.JFrame {
         btnEditarOs = new javax.swing.JButton();
         btnConcluirOs = new javax.swing.JButton();
         txtConclusaoOs = new javax.swing.JLabel();
+        caixaSituacao = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(icon);
@@ -343,18 +372,6 @@ public class consulta_os extends javax.swing.JFrame {
         campoPlaca.setBorder(null);
         campoPlaca.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         campoPlaca.setEnabled(false);
-
-        campoSituacaoVeiculo.setBackground(new java.awt.Color(240, 240, 240));
-        campoSituacaoVeiculo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        campoSituacaoVeiculo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        campoSituacaoVeiculo.setBorder(null);
-        campoSituacaoVeiculo.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        campoSituacaoVeiculo.setEnabled(false);
-        campoSituacaoVeiculo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                tecladaSituacao(evt);
-            }
-        });
 
         campoAtendente.setBackground(new java.awt.Color(240, 240, 240));
         campoAtendente.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -679,6 +696,11 @@ public class consulta_os extends javax.swing.JFrame {
         txtConclusaoOs.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtConclusaoOs.setText("Ordem de serviço já concluída");
 
+        caixaSituacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Na fila", "Em análise", "Aguardando peças", "Em processo de manutenção", "Aguardando devolução" }));
+        caixaSituacao.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 40, 0)));
+        caixaSituacao.setEnabled(false);
+        caixaSituacao.setFocusable(false);
+
         javax.swing.GroupLayout painelOsLayout = new javax.swing.GroupLayout(painelOs);
         painelOs.setLayout(painelOsLayout);
         painelOsLayout.setHorizontalGroup(
@@ -693,18 +715,18 @@ public class consulta_os extends javax.swing.JFrame {
                     .addComponent(txtErroAtendente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(painelOsLayout.createSequentialGroup()
                         .addComponent(titlePlaca)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(campoPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txtErroCpfnj, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtErroPlaca, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(painelOsLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelOsLayout.createSequentialGroup()
                         .addGroup(painelOsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(titleSituacaoVeiculo)
                             .addComponent(titleAtendente))
                         .addGap(25, 25, 25)
-                        .addGroup(painelOsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(campoSituacaoVeiculo, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
-                            .addComponent(campoAtendente)))
+                        .addGroup(painelOsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(campoAtendente, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(caixaSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(txtErroSituacaoVeiculo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(26, 26, 26)
                 .addGroup(painelOsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -782,7 +804,7 @@ public class consulta_os extends javax.swing.JFrame {
                         .addGap(16, 16, 16)
                         .addGroup(painelOsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(titleSituacaoVeiculo)
-                            .addComponent(campoSituacaoVeiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(caixaSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtErroSituacaoVeiculo)
                         .addGap(18, 18, 18)
@@ -794,7 +816,7 @@ public class consulta_os extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(painelDeRolagemPecasEServicos, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtConclusaoOs, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
+                .addComponent(txtConclusaoOs, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(painelOsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelOsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -851,7 +873,7 @@ public class consulta_os extends javax.swing.JFrame {
     }//GEN-LAST:event_irAoCliente
 
     private void editarOs(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarOs
-        if (campoDataSaida.getText().equals("")){
+        if (!concluido){
             btnClicado(evt);
             contadorEditar++;
             if (contadorEditar == 1){
@@ -869,8 +891,10 @@ public class consulta_os extends javax.swing.JFrame {
                 if(dialogResult == JOptionPane.YES_OPTION){
                     String numeroOs = os.getOsNumero();
                     String previsaoSaida = fs.retirarFormatacaoData(campoPrevisaoSaida.getText());
-                    String situacaoVeiculo = campoSituacaoVeiculo.getText();
+                    String situacaoVeiculo = caixaSituacao.getSelectedItem().toString();
                     OsDAO osdao = new OsDAO();
+                    VeiculoDAO vdao = new VeiculoDAO();
+                    vdao.atualizarVeiculoSituacao(situacaoVeiculo, numeroOs);
                     osdao.atualizarOs(numeroOs,previsaoSaida,situacaoVeiculo);   
                     atualizarTela();
                 } else {
@@ -881,10 +905,16 @@ public class consulta_os extends javax.swing.JFrame {
     }//GEN-LAST:event_editarOs
 
     private void concluirOs(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_concluirOs
-        if (campoDataSaida.getText().equals("")){
+        if (!concluido){
             btnClicado(evt);
             OsDAO osdao = new OsDAO();
             osdao.concluirOs(os.getOsNumero());
+            String numeroOs = os.getOsNumero();
+            String previsaoSaida = fs.retirarFormatacaoData(campoPrevisaoSaida.getText());
+            String situacaoVeiculo = "Concluído!";
+            VeiculoDAO vdao = new VeiculoDAO();
+            vdao.atualizarVeiculoSituacao(situacaoVeiculo, numeroOs);
+            osdao.atualizarOs(numeroOs,previsaoSaida,situacaoVeiculo);   
             atualizarTela();
         }
     }//GEN-LAST:event_concluirOs
@@ -990,7 +1020,7 @@ public class consulta_os extends javax.swing.JFrame {
     }//GEN-LAST:event_tecladaPrecoPeca
 
     private void adicionarOrcamento(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adicionarOrcamento
-        if (campoDataSaida.getText().equals("")){
+        if (!concluido){
             btnClicado(evt);
             Orcamento orc = new Orcamento();
             if (campoDataSaida.getText().equals("")){
@@ -1013,8 +1043,10 @@ public class consulta_os extends javax.swing.JFrame {
     }//GEN-LAST:event_adicionarOrcamento
 
     private void limparCampos(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_limparCampos
-        btnClicado(evt);
-        limparCampos();
+        if (!concluido){
+            btnClicado(evt);
+            limparCampos();
+        } 
     }//GEN-LAST:event_limparCampos
     
     //<editor-fold defaultstate="collapsed" desc="métodos teclados">
@@ -1071,20 +1103,6 @@ public class consulta_os extends javax.swing.JFrame {
         String txt = fs.data(campoPrevisaoSaida.getText());
         campoPrevisaoSaida.setText(txt);
     }//GEN-LAST:event_tecladaPrevisaoSaida
-
-    private void tecladaSituacao(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaSituacao
-        if (vs.nome30(evt, campoSituacaoVeiculo.getText()) == ""){
-            txtErroSituacaoVeiculo.setForeground(new Color(240,240,240));
-        } else {
-            String txt = vs.nome30(evt, campoSituacaoVeiculo.getText());
-            txtErroSituacaoVeiculo.setText(txt);
-            if (txt.endsWith(".")){
-                txtErroSituacaoVeiculo.setForeground(new Color(255,0,0));
-            } else {
-                txtErroSituacaoVeiculo.setForeground(new Color(0, 160, 40));
-            }
-        }
-    }//GEN-LAST:event_tecladaSituacao
     //</editor-fold>
     
     
@@ -1124,6 +1142,7 @@ public class consulta_os extends javax.swing.JFrame {
     private javax.swing.JButton btnIrParaOCliente;
     private javax.swing.JButton btnIrParaOVeiculo;
     private javax.swing.JButton btnLimparCamposOrcamento;
+    public static javax.swing.JComboBox<String> caixaSituacao;
     private javax.swing.JTextField campoAtendente;
     private javax.swing.JTextField campoCpfnj;
     private javax.swing.JTextField campoDataEntrada;
@@ -1134,7 +1153,6 @@ public class consulta_os extends javax.swing.JFrame {
     private javax.swing.JTextField campoPrecoPecasAdd;
     private javax.swing.JTextField campoPrecoServicosAdd;
     private javax.swing.JTextField campoPrevisaoSaida;
-    private javax.swing.JTextField campoSituacaoVeiculo;
     private javax.swing.JLabel cifrao2;
     private javax.swing.JLabel cifrao3;
     private javax.swing.JPanel painelAddItemOrcamento;
@@ -1224,13 +1242,10 @@ public class consulta_os extends javax.swing.JFrame {
         campoPrevisaoSaida.setBackground(Color.white);
         campoPrevisaoSaida.setForeground(Color.black);
         campoPrevisaoSaida.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
-        campoSituacaoVeiculo.setEnabled(true);
-        campoSituacaoVeiculo.setBackground(Color.white);
-        campoSituacaoVeiculo.setForeground(Color.black);
-        campoSituacaoVeiculo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        caixaSituacao.setEnabled(true);
     }
     
-    private void atualizarTela(){
+    public void atualizarTela(){
         this.setVisible(false);
         List<Orcamento> orcs = new ArrayList<>();
         List<OS> OSs = new ArrayList<>();

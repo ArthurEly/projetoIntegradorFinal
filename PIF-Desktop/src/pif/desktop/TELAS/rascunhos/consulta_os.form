@@ -32,12 +32,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="painelDeRolagem" alignment="0" pref="1300" max="32767" attributes="0"/>
+          <Component id="painelDeRolagem" alignment="0" pref="1368" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="painelDeRolagem" alignment="0" pref="658" max="32767" attributes="0"/>
+          <Component id="painelDeRolagem" alignment="0" pref="768" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -77,20 +77,20 @@
                           <Component id="txtErroAtendente" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="titlePlaca" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="51" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Component id="campoPlaca" min="-2" pref="285" max="-2" attributes="0"/>
                           </Group>
                           <Component id="txtErroCpfnj" alignment="0" max="32767" attributes="0"/>
                           <Component id="txtErroPlaca" alignment="1" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="titleSituacaoVeiculo" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="titleAtendente" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="campoSituacaoVeiculo" pref="285" max="32767" attributes="0"/>
-                                  <Component id="campoAtendente" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="campoAtendente" min="-2" pref="285" max="-2" attributes="0"/>
+                                  <Component id="caixaSituacao" min="-2" pref="283" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Component id="txtErroSituacaoVeiculo" alignment="0" max="32767" attributes="0"/>
@@ -129,7 +129,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="txtConclusaoOs" max="32767" attributes="0"/>
-                          <Component id="painelDeRolagemPecasEServicos" alignment="1" pref="1280" max="32767" attributes="0"/>
+                          <Component id="painelDeRolagemPecasEServicos" alignment="1" pref="1348" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="btnIrParaOCliente" min="-2" pref="150" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -189,7 +189,7 @@
                               <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="titleSituacaoVeiculo" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="campoSituacaoVeiculo" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                                  <Component id="caixaSituacao" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="txtErroSituacaoVeiculo" min="-2" max="-2" attributes="0"/>
@@ -205,7 +205,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="painelDeRolagemPecasEServicos" min="-2" pref="300" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtConclusaoOs" pref="82" max="32767" attributes="0"/>
+                      <Component id="txtConclusaoOs" pref="145" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" alignment="0" groupAlignment="3" attributes="0">
@@ -294,27 +294,6 @@
                 </Property>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="campoSituacaoVeiculo">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="f0" green="f0" red="f0" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="12" style="0"/>
-                </Property>
-                <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="null"/>
-                </Property>
-                <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="0" type="rgb"/>
-                </Property>
-                <Property name="enabled" type="boolean" value="false"/>
-              </Properties>
-              <Events>
-                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tecladaSituacao"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="campoAtendente">
               <Properties>
@@ -803,7 +782,7 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <EmptySpace min="0" pref="1223" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="1289" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
@@ -936,6 +915,32 @@
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Ordem de servi&#xe7;o j&#xe1; conclu&#xed;da"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="caixaSituacao">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="5">
+                    <StringItem index="0" value="Na fila"/>
+                    <StringItem index="1" value="Em an&#xe1;lise"/>
+                    <StringItem index="2" value="Aguardando pe&#xe7;as"/>
+                    <StringItem index="3" value="Em processo de manuten&#xe7;&#xe3;o"/>
+                    <StringItem index="4" value="Aguardando devolu&#xe7;&#xe3;o"/>
+                  </StringArray>
+                </Property>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder>
+                      <Color PropertyName="color" blue="0" green="28" red="e6" type="rgb"/>
+                    </LineBorder>
+                  </Border>
+                </Property>
+                <Property name="enabled" type="boolean" value="false"/>
+                <Property name="focusable" type="boolean" value="false"/>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
