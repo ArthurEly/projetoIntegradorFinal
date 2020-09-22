@@ -1,5 +1,9 @@
 package br.com.senac.pif_mobile;
 
+import android.app.Activity;
+import android.util.Log;
+import android.widget.Toast;
+
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,6 +30,7 @@ public class User {
     private Date birth;
     private String password;
     private String RG;
+    private PersonaType persona;
 
     /**
      * Cria um usuário
@@ -38,7 +43,7 @@ public class User {
      * @param birth
      * @param password
      */
-    public User(int id, String name, String surname, ArrayList<Contact> contacts, Location location, Date birth, String password) {
+    public User(int id, String name, String surname, ArrayList<Contact> contacts, Location location, Date birth, String password, PersonaType persona /*REFERÊNCIA*/) {
         this.ID = id;
         this.name = name;
         this.surname = surname;
@@ -46,6 +51,7 @@ public class User {
         this.location = location;
         this.birth = birth;
         this.password = password;
+        this.persona = persona;
     }
 
     /**
@@ -62,7 +68,6 @@ public class User {
      * Uma classe usada internamente para contatos
      */
     public static class Contact {
-        private PersonaType personaType;
         private String email;
         private String cell1;
         private String cell2;
@@ -70,13 +75,11 @@ public class User {
         /**
          * Cria um contato
          *
-         * @param type
          * @param email
          * @param cell1
          * @param cell2
          */
-        public Contact(PersonaType type, String email, String cell1, @Nullable String cell2) {
-            this.personaType = type;
+        public Contact(String email, String cell1, @Nullable String cell2) {
             this.email = email;
             this.cell1 = cell1;
             this.cell2 = cell2;
@@ -89,7 +92,6 @@ public class User {
          */
         public Contact(String json) {
             //esses valores serão mostrados caso haja um erro no try abaixo:
-            PersonaType pt;
             String email = "null@null.com";
             String cell1 = "00000000000000";
             String cell2 = "0";
@@ -99,44 +101,9 @@ public class User {
                 email = j.getString(NetworkUtils.DB_COL_CONTATO_EMAIL);
                 cell1 = j.getString(NetworkUtils.DB_COL_CONTATO_TEL1);
                 cell2 = j.getString(NetworkUtils.DB_COL_CONTATO_TEL2);
-                pt = new PersonaType(j.getString(NetworkUtils.DB_COL_CONTATO_CPF));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-        }
-
-        public String getCpf() {
-            return personaType.cpf;
-        }
-
-        //seta um cpf e remove o cnpj, pois um cliente não pode ter os 2.
-        public void setCpf(String cpf) {
-            this.personaType.operator = false;
-            this.personaType.cpf = cpf;
-            this.personaType.cnpj = "NULL";
-        }
-
-        public String getCnpj() {
-            return personaType.cnpj;
-        }
-
-        //seta um cnpj e remove o cpf, pois um cliente não pode ter os 2.
-        public void setCnpj(String cnpj) {
-            this.personaType.operator = true;
-            this.personaType.cpf = "NULL";
-            this.personaType.cnpj = cnpj;
-        }
-
-        public boolean isOperator() {
-            return  this.personaType.isOperator();
-        }
-
-        public PersonaType getPersonaType() {
-            return personaType;
-        }
-
-        public void setPersonaType(PersonaType personaType) {
-            this.personaType = personaType;
         }
 
         public String getEmail() {
@@ -226,11 +193,12 @@ public class User {
     public static class Location {
         private String city;
         private String state;
-        private String country;
-        private String street;
         private int number = 0;
+        private String neighborhood;
         private String cep;
-        private String logrator;
+        private String logrator; // acho q escrevi errado
+        private String logrator_comp;
+
 
         /**
          * cria uma localização desconhecida
@@ -238,8 +206,9 @@ public class User {
         public Location() {
             this.city = "NULL";
             this.state = "NULL";
-            this.country = "NULL";
-            this.street = "NULL";
+            this.neighborhood = "NULL";
+            this.logrator_comp = "NULL";
+            this.logrator = "NULL";
             this.number = 0;
             this.cep = "000000-000";
         }
@@ -249,13 +218,11 @@ public class User {
          *
          * @param city
          * @param state
-         * @param country
-         * @param street
          * @param number
          * @param cep
          * @param logrator
          */
-        public Location(@Nullable String city,@Nullable String state,@Nullable String country,@Nullable String street,@Nullable int number,@Nullable String cep, @Nullable  String logrator) {
+        public Location(@Nullable String city,@Nullable String state,@Nullable String logrator,@Nullable  int number,@Nullable  String cep,@Nullable String neighborhood,@Nullable String logrator_comp) {
             if (city == null) {
                 this.city = "NULL";
             } else {
@@ -268,18 +235,6 @@ public class User {
                 this.state = state;
             }
 
-            if (country == null) {
-                this.country = "NULL";
-            } else {
-                this.country = country;
-            }
-
-            if (street == null) {
-                this.street = "NULL";
-            } else {
-                this.street = street;
-            }
-
             if (cep == null) {
                 this.cep = "000000-000";
             } else {
@@ -290,6 +245,18 @@ public class User {
                 this.logrator = "NULL";
             } else {
                 this.logrator = logrator;
+            }
+
+            if (logrator_comp == null) {
+                this.logrator_comp = "NULL";
+            } else {
+                this.logrator_comp = logrator_comp;
+            }
+
+            if (neighborhood == null) {
+                this.neighborhood = "NULL";
+            } else {
+                this.neighborhood = neighborhood;
             }
 
             this.number = number;
@@ -309,22 +276,6 @@ public class User {
 
         public void setState(String state) {
             this.state = state;
-        }
-
-        public String getCountry() {
-            return country;
-        }
-
-        public void setCountry(String country) {
-            this.country = country;
-        }
-
-        public String getStreet() {
-            return street;
-        }
-
-        public void setStreet(String street) {
-            this.street = street;
         }
 
         public int getNumber() {
@@ -350,6 +301,22 @@ public class User {
         public void setLogrator(String logrator) {
             this.logrator = logrator;
         }
+
+        public String getNeighborhood() {
+            return neighborhood;
+        }
+
+        public void setNeighborhood(String neighborhood) {
+            this.neighborhood = neighborhood;
+        }
+
+        public String getLogrator_comp() {
+            return logrator_comp;
+        }
+
+        public void setLogrator_comp(String logrator_comp) {
+            this.logrator_comp = logrator_comp;
+        }
     }
 
     public int getID() {
@@ -369,7 +336,7 @@ public class User {
     }
 
     public Contact getContact(int index) {
-        return contact.get(index);
+         return contact.get(index);
     }
 
     public void setContact(int index, Contact contact) {
@@ -418,22 +385,6 @@ public class User {
         this.location.state = state;
     }
 
-    public String getCountry() {
-        return location.country;
-    }
-
-    public void setCountry(String country) {
-        this.location.country = country;
-    }
-
-    public String getStreet() {
-        return location.street;
-    }
-
-    public void setStreet(String street) {
-        this.location.street = street;
-    }
-
     public int getNumber() {
         return location.number;
     }
@@ -471,11 +422,45 @@ public class User {
         this.surname = surname;
     }
 
+    public String getFullName() {
+        return name + " " + surname;
+    }
+
     public String getRG() {
         return RG;
     }
 
     public void setRG(String RG) {
         this.RG = RG;
+    }
+
+    public PersonaType getPersona() {
+        return persona;
+    }
+
+    public void setPersona(PersonaType persona) {
+        this.persona = persona;
+    }
+
+    /**
+     * APENAS PARA CONFIRMAR OS DADOS
+     */
+    public void printUser() {
+        Log.i("User Manager", "Dados do usuário:\n\n" +
+                "ID: " + getID() + "\n" +
+                "NOME: " + getName() + '\n' +
+                "SOBRENOME: " + getSurname() + "\n" +
+                "SENHA: " + getPassword()
+        );
+    }
+    public void printUser(Activity act) {
+        String mensagem = "Dados do usuário:\n\n" +
+                "ID: " + getID() + "\n" +
+                "NOME: " + getName() + '\n' +
+                "SOBRENOME: " + getSurname() + "\n" +
+                "SENHA: " + getPassword();
+
+        Log.i("User Manager", mensagem);
+        Toast.makeText(act,mensagem,Toast.LENGTH_LONG).show();
     }
 }

@@ -2041,7 +2041,7 @@ public class C_OS_TELA extends javax.swing.JFrame {
        
     private void verificarCliente(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_verificarCliente
         if (campoCpfOuCnpj.getText().length() == 14 || campoCpfOuCnpj.getText().length() == 18){ 
-            if (vs.isCPF(campoCpfOuCnpj.getText()) || vs.isCNPJ(campoCpfOuCnpj.getText())){
+//            if (vs.isCPF(campoCpfOuCnpj.getText()) || vs.isCNPJ(campoCpfOuCnpj.getText())){
                 ClienteDAO cdao = new ClienteDAO();
                 Cliente c = new Cliente();
                 c = cdao.consultarCliente(campoCpfOuCnpj.getText());
@@ -2082,10 +2082,10 @@ public class C_OS_TELA extends javax.swing.JFrame {
                 } else {
                     System.out.println("Cliente top.");
                 } 
-            } else{
-                txtErroCpfOuCnpj.setText("Dígito verificador não condiz.");
-                txtErroCpfOuCnpj.setForeground(Color.RED);
-            }            
+//            } else{
+//                txtErroCpfOuCnpj.setText("Dígito verificador não condiz.");
+//                txtErroCpfOuCnpj.setForeground(Color.RED);
+//            }            
         } else {
             campoDataNascimento.setEnabled(true);
             campoDataNascimento.setText("");

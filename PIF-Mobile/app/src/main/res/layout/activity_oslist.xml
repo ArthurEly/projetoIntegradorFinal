@@ -23,17 +23,24 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/WELCOME"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Bem Vindo, {{USERNAME}}"
             android:layout_margin="10dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"/>
 
+        <!--PROBLEMA AQUI HMMMM ORIENTATION??? e o loading, ta certinho? é o que eu acho
+        também, mas eu quero que apareça uma tela de carregando no lugar que vai a OS a ahhhhh
+        NOPE,é no Scrollview, tem que dizer pra ele que só tem 1 view nele, mas eu n sei como-->
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:clipToPadding="true">
+            android:clipToPadding="true"
+            android:fillViewport="true">
+
             <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="10dp"
