@@ -25,7 +25,7 @@ public class OSListActivity extends AppCompatActivity {
     TextView WELCOME_TEXT;
     User usuario;
     LinearLayout OSView;
-    String cpf
+    String cpf;
 
     public OSListActivity() {
         usuario = Global.USUARIO;
@@ -75,6 +75,7 @@ public class OSListActivity extends AppCompatActivity {
                 try {
                     JSONArray json = new JSONArray(result);
 
+                    OSView.removeAllViews();
                     for (int XXX = 0; XXX < json.length(); XXX++) {
                         JSONObject js = json.getJSONObject(XXX);
 
@@ -84,17 +85,17 @@ public class OSListActivity extends AppCompatActivity {
 
                         // @TODO: PAREI AQUI:
                         Date entrada = new Date();
-                        entrada.setDate();
-                        entrada.setMonth();
-                        entrada.setYear();
+                        entrada.setDate(TimeUtils.getDayBySQL(js.getString(NetworkUtils.DB_COL_OS_ENTRADA)));
+                        entrada.setMonth(TimeUtils.getMonthBySQL(js.getString(NetworkUtils.DB_COL_OS_ENTRADA)));
+                        entrada.setYear(TimeUtils.getYearBySQL(js.getString(NetworkUtils.DB_COL_OS_ENTRADA)));
                         Date previsão = new Date();
-                        previsão.setDate();
-                        previsão.setMonth();
-                        previsão.setYear();
+                        previsão.setDate(TimeUtils.getDayBySQL(js.getString(NetworkUtils.DB_COL_OS_PREVISAO)));
+                        previsão.setMonth(TimeUtils.getMonthBySQL(js.getString(NetworkUtils.DB_COL_OS_PREVISAO)));
+                        previsão.setYear(TimeUtils.getYearBySQL(js.getString(NetworkUtils.DB_COL_OS_PREVISAO)));
                         Date saida = new Date();
-                        saida.setDate();
-                        saida.setMonth();
-                        saida.setYear();
+                        saida.setDate(TimeUtils.getDayBySQL(js.getString(NetworkUtils.DB_COL_OS_SAIDA)));
+                        saida.setMonth(TimeUtils.getMonthBySQL(js.getString(NetworkUtils.DB_COL_OS_SAIDA)));
+                        saida.setYear(TimeUtils.getYearBySQL(js.getString(NetworkUtils.DB_COL_OS_SAIDA)));
                         String colaborador = js.getString(NetworkUtils.DB_COL_OS_COLABORADOR);
 
                         OS os = new OS(num,placa,sit,entrada,previsão,saida,colaborador);
@@ -108,6 +109,9 @@ public class OSListActivity extends AppCompatActivity {
     }
 
     public void insertOS(OS os /*parecido com o User, que pena!*/) {
-        //@TODO: INSERIR UM ITEM NA LISTA;
+        View v = getLayoutInflater().inflate(R.layout.widget_os,null);
+        ((TextView) v.findViewById(R.id.OS_ID)).setText(os.getNum());
+
+        OSView.addView(v);
     }
 }
