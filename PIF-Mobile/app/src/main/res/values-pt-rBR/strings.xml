@@ -6,4 +6,11 @@
     <string name="txt_password">Senha</string>
     <string name="txt_i_am_an_operator"><u>Sou um Operador</u></string>
     <string name="txt_signon">Fazer o Login</string>
+    <string name="carname">Modelo do Carro</string>
+    <string name="carsign">Placa <s>de video</s></string>
+    <string name="parecer">Pareceres Técnicos</string>
+    <string name="orcas">Orçamentos</string>
+    <string name="description">Descrição</string>
+    <string name="product">Peça</string>
+    <string name="price">Preço</string>
 </resources>

@@ -5,4 +5,11 @@
     <string name="txt_password">Password</string>
     <string name="txt_i_am_an_operator"><u>I\'m an Operator</u></string>
     <string name="txt_signon">Sign-On</string>
+    <string name="carname">Car Model</string>
+    <string name="carsign">Sign</string>
+    <string name="parecer">Technical Details</string>
+    <string name="orcas">Budget</string>
+    <string name="description">Description</string>
+    <string name="price">Price</string>
+    <string name="product">Product</string>
 </resources>

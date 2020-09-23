@@ -17,6 +17,10 @@ import java.util.ArrayList;
 
 import br.com.senac.pif_mobile.R;
 
+
+/**
+ * NÃO UTILIZADO POR CONTER BUGS FATAIS
+ */
 public class DottedEditText extends LinearLayout {
     private AttributeSet attr;
     private int fields = 2;

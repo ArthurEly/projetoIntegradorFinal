@@ -692,7 +692,7 @@ public class VerificacaoStrings {
     }
     
     public int verificarSituacao(String situacao){
-        String[] situacoes = {"Na fila", "Em análise", "Aguardando peças", "Em processo de manutenção", "Aguardando devolução", "Concluído!"};
+        String[] situacoes = {"Na fila", "Em análise", "Aguardando peças", "Em processo de manutenção", "Aguardando devolução", "Bloqueado", "Concluído!"};
         int length = situacoes.length;
         int i;
         for (i=0;i<length;i++){

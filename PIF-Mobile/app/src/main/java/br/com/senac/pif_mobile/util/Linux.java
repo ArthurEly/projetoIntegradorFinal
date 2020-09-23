@@ -11,7 +11,19 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Collections;
 
+/**
+ * Essa classe eu (Eduardo) peguei emprestada de outro projeto meu, ela
+ * serve pra executar alguns comandos Linux integrados no Android
+ */
 public class Linux {
+    /**
+     * Essa função executa o curl (a base para a conexão do app)
+     * O curl faz um "download" da pagina web na ram (no nosso caso um php com layout JSON)
+     *
+     * @param params
+     * @param url
+     * @return
+     */
     public static String curl(@Nullable String[] params, String url) {
         try {
             if (params == null) {
@@ -39,6 +51,13 @@ public class Linux {
         }
     }
 
+    /**
+     * O wget também faz o download de uma pagina, mas tem pequenas diferenças (nas quais eu não me lembro)
+     *
+     * @param params
+     * @param url
+     * @return
+     */
     public static String wget(@Nullable String[] params, String url) {
         try {
             String args = TextUtils.join(" ", params);

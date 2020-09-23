@@ -52,6 +52,15 @@ public class NetworkUtils {
 
     public static final String DB_COL_VEICULO_PLACA = "veiculo_placa";
     public static final String DB_COL_VEICULO_SITUACAO = "veiculo_situacao";
+    public static final String DB_COL_VEICULO_TIPO = "veiculo_tipo";
+    public static final String DB_COL_VEICULO_FAB = "veiculo_fabricante";
+    public static final String DB_COL_VEICULO_MODELO = "veiculo_modelo";
+    public static final String DB_COL_VEICULO_COR = "veiculo_cor";
+    public static final String DB_COL_VEICULO_ANO = "veiculo_ano";
+    public static final String DB_COL_VEICULO_ACESSORIOS = "veiculo_acessorios";
+    public static final String DB_COL_VEICULO_OBS = "veiculo_observacoes";
+    public static final String DB_COL_VEICULO_DEFEITO = "veiculo_defeito_cliente";
+    //acho q foi
 
     public static final String DB_COL_PARECER_OS_NUMERO = "os_numero";
     public static final String DB_COL_PARECER_DATA  = "parecer_data";

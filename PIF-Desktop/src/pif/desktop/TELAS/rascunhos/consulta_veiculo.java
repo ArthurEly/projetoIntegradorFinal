@@ -68,7 +68,7 @@ public class consulta_veiculo extends javax.swing.JFrame {
         if (v.getVeiculoSituacao() == null){
            caixaSituacao.setSelectedIndex(0); 
         } else if (v.getVeiculoSituacao().equals("Concluído!")){
-            String[] items = {"Na fila", "Em análise", "Aguardando peças", "Em processo de manutenção", "Aguardando devolução", "Concluído!"};
+            String[] items = {"Na fila", "Em análise", "Aguardando peças", "Em processo de manutenção", "Aguardando devolução", "Bloqueado", "Concluído!"};
             DefaultComboBoxModel model = new DefaultComboBoxModel(items);
             caixaSituacao.setModel(model);
             caixaSituacao.setSelectedIndex(vs.verificarSituacao(v.getVeiculoSituacao()));
@@ -409,7 +409,7 @@ public class consulta_veiculo extends javax.swing.JFrame {
         txtErroSituacao.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtErroSituacao.setText("jLabel1");
 
-        caixaSituacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Na fila", "Em análise", "Aguardando peças", "Em processo de manutenção", "Aguardando devolução" }));
+        caixaSituacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Na fila", "Em análise", "Aguardando peças", "Em processo de manutenção", "Aguardando devolução", "Bloqueado" }));
         caixaSituacao.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 40, 0)));
         caixaSituacao.setEnabled(false);
         caixaSituacao.setFocusable(false);

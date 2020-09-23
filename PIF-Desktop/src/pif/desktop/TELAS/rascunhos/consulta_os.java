@@ -69,7 +69,7 @@ public class consulta_os extends javax.swing.JFrame {
         System.out.println("situacaio: "+os.getOsVeiculoSituacao());
         if (os.getOsDataSaida() != null){
             campoDataSaida.setText(fs.botarData(os.getOsDataSaida()));
-            String[] items = {"Na fila", "Em análise", "Aguardando peças", "Em processo de manutenção", "Aguardando devolução", "Concluído!"};
+            String[] items = {"Na fila", "Em análise", "Aguardando peças", "Em processo de manutenção", "Aguardando devolução", "Bloqueado", "Concluído!"};
             DefaultComboBoxModel model = new DefaultComboBoxModel(items);
             caixaSituacao.setModel(model);
             btnEditarOs.setEnabled(false);
@@ -105,6 +105,7 @@ public class consulta_os extends javax.swing.JFrame {
         JLabel titlePrecoPecas,titlePrecoServico,titleDescPeca,titleDescServico,titleData, cifrao1, cifrao2;
         JTextField campoPrecoPecas, campoPrecoServico, campoDescPeca, campoDescServico, campoData;
         JButton btnExcluirItem;
+        //tamanho do array do orcamento
         for (int i=0;i<orc.size();i++){
             //<editor-fold defaultstate="collapsed" desc="Painel">
             //<editor-fold defaultstate="collapsed" desc="Declaração de variáveis e atribuição de valores">
@@ -332,7 +333,6 @@ public class consulta_os extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(icon);
         setMinimumSize(new java.awt.Dimension(1368, 768));
-        setPreferredSize(new java.awt.Dimension(1368, 768));
 
         painelDeRolagem.setBorder(null);
         painelDeRolagem.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -606,7 +606,7 @@ public class consulta_os extends javax.swing.JFrame {
         painelOrcamentoPecasEServicos.setLayout(painelOrcamentoPecasEServicosLayout);
         painelOrcamentoPecasEServicosLayout.setHorizontalGroup(
             painelOrcamentoPecasEServicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1223, Short.MAX_VALUE)
+            .addGap(0, 1289, Short.MAX_VALUE)
         );
         painelOrcamentoPecasEServicosLayout.setVerticalGroup(
             painelOrcamentoPecasEServicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -696,7 +696,7 @@ public class consulta_os extends javax.swing.JFrame {
         txtConclusaoOs.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtConclusaoOs.setText("Ordem de serviço já concluída");
 
-        caixaSituacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Na fila", "Em análise", "Aguardando peças", "Em processo de manutenção", "Aguardando devolução" }));
+        caixaSituacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Na fila", "Em análise", "Aguardando peças", "Em processo de manutenção", "Aguardando devolução", "Bloqueado" }));
         caixaSituacao.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 40, 0)));
         caixaSituacao.setEnabled(false);
         caixaSituacao.setFocusable(false);
@@ -754,7 +754,7 @@ public class consulta_os extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(painelOsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtConclusaoOs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(painelDeRolagemPecasEServicos, javax.swing.GroupLayout.DEFAULT_SIZE, 1280, Short.MAX_VALUE)
+                    .addComponent(painelDeRolagemPecasEServicos, javax.swing.GroupLayout.DEFAULT_SIZE, 1348, Short.MAX_VALUE)
                     .addGroup(painelOsLayout.createSequentialGroup()
                         .addComponent(btnIrParaOCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -816,7 +816,7 @@ public class consulta_os extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(painelDeRolagemPecasEServicos, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtConclusaoOs, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
+                .addComponent(txtConclusaoOs, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(painelOsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelOsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -833,11 +833,11 @@ public class consulta_os extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(painelDeRolagem, javax.swing.GroupLayout.DEFAULT_SIZE, 1300, Short.MAX_VALUE)
+            .addComponent(painelDeRolagem, javax.swing.GroupLayout.DEFAULT_SIZE, 1368, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(painelDeRolagem, javax.swing.GroupLayout.DEFAULT_SIZE, 658, Short.MAX_VALUE)
+            .addComponent(painelDeRolagem, javax.swing.GroupLayout.DEFAULT_SIZE, 768, Short.MAX_VALUE)
         );
 
         pack();

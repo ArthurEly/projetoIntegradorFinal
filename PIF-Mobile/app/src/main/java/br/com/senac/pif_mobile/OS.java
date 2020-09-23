@@ -6,22 +6,7 @@ import java.util.Date;
 
 
 /**
- * Terminei, pode ir lá fazer. até mais!! Acho que vou fazer amannha, nao deve demorar muito, pode continuar usando o pc
- * eu vou dormir, mó sono e amanha vou acordar cedo
- * dai tenta desligar o pc, acho que dá kkkkkkk
- * enooois até amanha
- *
- * quer dizer
- * se quiser usar o pc tbm ksadj
- * lfsa
- *
- * cara, quando tu acordar, vai aperecer na tua tela "NO OPERATING SYSTEM"
- * vai nada, nao é nem loco jjkkkkkk
- * to confiando em ti em seu filha d aputa ksksksk
- * bah, lembrei agora
- * dai tu n vai ter como testar pq eu deixo o celular do meu lado, na cama
- * mas só se tu quiser usar o pc pra fazer alguma coisa a mais, mas testar nao vai dar kkkkkk
- * vai demorar pra testar agr, ah entao tranquilo
+ * GETTERS E SETTERS DA TABELA os
  */
 public class OS {
     public enum SITUACAO {
@@ -110,13 +95,31 @@ public class OS {
 
     public static SITUACAO getSituation(String jsonValue) {
         switch (jsonValue) {
-            case "NULL": return SITUACAO.NA_FILA;
-            case "EM_ANALISE": return SITUACAO.EM_ANALISE;
-            case "AGUARDANDO_PEÇAS": return SITUACAO.AGUARDANDO_PEÇAS;
-            case "EM_PROCESSO_DE_MANUTENCAO": return SITUACAO.EM_PROCESSO_DE_MANUTENCAO;
-            case "AGUARDANDO_DEVOLUÇÂO": return SITUACAO.AGUARDANDO_DEVOLUÇÂO;
-            case "CONCLUIDO": return SITUACAO.CONCLUIDO;
+            case "Na fila": return SITUACAO.NA_FILA; //aquele "NA_FILA" é pra ser o que ta no banco de dados e que vai vir no json, né? exato ok, só que no bd ta um bucado diferente
+            case "Em análise": return SITUACAO.EM_ANALISE; //pq eu deixei como no combo box, pra ficar mais bonito visualmente
+            case "Aguardando peças": return SITUACAO.AGUARDANDO_PEÇAS;
+            case "Em processo de manutenção": return SITUACAO.EM_PROCESSO_DE_MANUTENCAO;
+            case "Aguardando devolução": return SITUACAO.AGUARDANDO_DEVOLUÇÂO;
+            case "Concluído!": return SITUACAO.CONCLUIDO;
+            case "Bloqueado": return SITUACAO.BLOQUEADO;
             default: return  SITUACAO.NA_FILA;
+        }
+    }
+
+    public static int situationPercentage() {
+        return 100 / 5; //100% do progresso dividido por todas as situações exceto Na Fila (0%) e Bloqueado (INDETERMINADO)
+    }
+
+    public static int getSituationPercentage(SITUACAO sit) {
+        switch (sit) {
+            case BLOQUEADO: return -1; //INDETERMINADO
+            case NA_FILA: return 0; //0%
+            case EM_ANALISE: return situationPercentage() * 1; //primeiro estagio da barra de progresso (de 5)
+            case AGUARDANDO_PEÇAS: return situationPercentage() * 2;
+            case EM_PROCESSO_DE_MANUTENCAO: return situationPercentage() * 3;
+            case AGUARDANDO_DEVOLUÇÂO: return situationPercentage() * 4;
+            case CONCLUIDO: return situationPercentage() * 5; //100%
+            default: return -1;
         }
     }
 }

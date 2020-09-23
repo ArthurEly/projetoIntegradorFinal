@@ -2062,7 +2062,7 @@ public class C_OS_TELA extends javax.swing.JFrame {
                     campoNumTel1.setEnabled(false);
                     campoNumTel1.setText(fs.botarTelefone(ctt.getClienteContatoNumTel1()));
                     campoNumTel2.setEnabled(false);
-                    if (ctt.getClienteContatoNumTel2().length() < 9){
+                    if (ctt.getClienteContatoNumTel2().length() == 0){
                         campoNumTel2.setText("-"); 
                     } else {
                         campoNumTel2.setText(fs.botarTelefone(ctt.getClienteContatoNumTel2()));
