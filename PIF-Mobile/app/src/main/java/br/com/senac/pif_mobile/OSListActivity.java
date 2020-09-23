@@ -226,14 +226,24 @@ public class OSListActivity extends AppCompatActivity {
         double total = 0.00;
 
         for (int x = 0; x < orca.lista.toArray().length;x++) {
+            Oramento.Informações i = orca.getInfo(x);
             View v = getLayoutInflater().inflate(R.layout.widget_orca,null);
             v.setBackgroundColor(colour);
+            String data = i.getDate().getDate() + "/" + i.getDate().getMonth() + "/" + i.getDate().getYear();
+            String hora = i.getDate().getHours() + ":" + i.getDate().getMinutes() + ":" + i.getDate().getSeconds();
 
             if (colour == 0x333333) {
                 colour = 0x555555;
             } else {
                 colour = 0x333333;
             }
+
+            ((TextView) v.findViewById(R.id.PRODUCT)).setText(i.getName());
+            ((TextView) v.findViewById(R.id.PRICE)).setText(i.getPrice() + "");
+            ((TextView) v.findViewById(R.id.DATA)).setText(data);
+            ((TextView) v.findViewById(R.id.HORA)).setText(hora);
+            ((TextView) v.findViewById(R.id.MSG)).setText(i.getDescription());
+
 
             l.addView(v);
 
