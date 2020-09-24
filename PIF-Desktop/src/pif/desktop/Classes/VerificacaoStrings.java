@@ -401,7 +401,7 @@ public class VerificacaoStrings {
                 }
             }              
             if(tamanhoMaximo(evt,s,18) == false){
-                avaliacao = "erro";
+                
             } 
         }   
         return avaliacao; 
@@ -423,7 +423,7 @@ public class VerificacaoStrings {
                 }
             }             
             if(tamanhoMaximo(evt,s,10) == false){
-                avaliacao = "erro";
+                
             } 
         }   
         return avaliacao; 
@@ -435,7 +435,7 @@ public class VerificacaoStrings {
             avaliacao = "Digite apenas letras."; 
         }        
         if (tamanhoMaximo(evt,s,30) == false){
-            avaliacao = "erro";
+            
         }
         return avaliacao; 
     }
@@ -446,7 +446,7 @@ public class VerificacaoStrings {
             avaliacao = "Digite apenas letras."; 
         }        
         if (tamanhoMaximo(evt,s,30) == false){
-            avaliacao = "erro";
+            
         }
         return avaliacao; 
     }
@@ -457,7 +457,7 @@ public class VerificacaoStrings {
             avaliacao = "Digite apenas letras."; 
         }        
         if (tamanhoMaximo(evt,s,50) == false){
-            avaliacao = "erro";
+            
         }
         return avaliacao; 
     }
@@ -472,7 +472,7 @@ public class VerificacaoStrings {
             avaliacao = "Email válido!";
         }             
         if (tamanhoMaximo(evt,s,100) == false){
-            avaliacao = "erro";
+            
         }
         return avaliacao; 
     }
@@ -490,7 +490,7 @@ public class VerificacaoStrings {
         }
         
         if (tamanhoMaximo(evt,s,14) == false){
-            avaliacao = "erro";
+            
         }
         return avaliacao; 
     }
@@ -505,7 +505,7 @@ public class VerificacaoStrings {
             avaliacao = "CEP válido!";
         }
         if (tamanhoMaximo(evt,s,9) == false){
-            avaliacao = "erro";
+            
         }
         return avaliacao; 
     }
@@ -527,7 +527,7 @@ public class VerificacaoStrings {
             avaliacao = "Digite apenas números.";
         }       
         if (tamanhoMaximo(evt,s,6) == false){
-            avaliacao = "erro";
+            
         }
         return avaliacao;
     }
@@ -538,7 +538,7 @@ public class VerificacaoStrings {
             avaliacao = "Digite apenas letras."; 
         }        
         if (tamanhoMaximo(evt,s,25) == false){
-            avaliacao = "erro";
+            
         }
         return avaliacao; 
     }
@@ -549,7 +549,7 @@ public class VerificacaoStrings {
             avaliacao = "Digite apenas letras."; 
         }        
         if (tamanhoMaximo(evt,s,25) == false){
-            avaliacao = "erro";
+            
         }
         return avaliacao; 
     }
@@ -564,7 +564,7 @@ public class VerificacaoStrings {
             avaliacao = "Ano válido!";
         }         
         if (tamanhoMaximo(evt,s,4) == false){
-            avaliacao = "erro";
+            
         }
         return avaliacao; 
     }
@@ -575,7 +575,7 @@ public class VerificacaoStrings {
             avaliacao = "Digite letras ou números."; 
         }        
         if (tamanhoMaximo(evt,s,255) == false){
-            avaliacao = "erro";
+            
         }
         return avaliacao; 
     }
@@ -593,7 +593,7 @@ public class VerificacaoStrings {
             avaliacao = "Placa válida!";
         }
         else if (tamanhoMaximo(evt,s,7) == false){
-            avaliacao = "erro";
+            
         }
         return avaliacao; 
     }
@@ -610,7 +610,7 @@ public class VerificacaoStrings {
             avaliacao = "Data válida!";
         }
         if (tamanhoMaximo(evt,s,11) == false){
-            avaliacao = "erro";
+            
         }
         return avaliacao; 
     }
@@ -629,7 +629,7 @@ public class VerificacaoStrings {
             avaliacao = "Digite apenas números.";                         
         }        
         if(tamanhoMaximo(evt,s,10) == false){
-            avaliacao = "erro";
+            evt.consume();
         }           
         return avaliacao; 
     }
@@ -640,7 +640,7 @@ public class VerificacaoStrings {
             avaliacao = "Digite apenas letras."; 
         }        
         if (tamanhoMaximo(evt,s,30) == false){
-            avaliacao = "erro";
+            
         }
         return avaliacao; 
     }
@@ -657,7 +657,7 @@ public class VerificacaoStrings {
             avaliacao = "Data válida!";
         }
         if (tamanhoMaximo(evt,s,11) == false){
-            avaliacao = "erro";
+            
         }
         return avaliacao; 
     } 
@@ -674,7 +674,7 @@ public class VerificacaoStrings {
             avaliacao = "Data inválida.";
         }
         if (tamanhoMaximo(evt,s,11) == false){
-            avaliacao = "erro";
+            
         }
         return avaliacao; 
     }
@@ -715,7 +715,7 @@ public class VerificacaoStrings {
             avaliacao = "Data inválida.";
         }
         if (tamanhoMaximo(evt,text,11) == false){
-            avaliacao = "erro";
+            
         }
         return avaliacao; 
     }

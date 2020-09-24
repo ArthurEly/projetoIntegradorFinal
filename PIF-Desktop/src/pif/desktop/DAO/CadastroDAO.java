@@ -51,7 +51,7 @@ public class CadastroDAO {
             consultaCliente.setString(11, cliente.getClienteEndLogradNum());
             consultaCliente.setString(12, cliente.getClienteEndLogradComp());
             consultaCliente.setString(13, cliente.getClienteDataNasc());
-            consultaCliente.setString(14, "");
+            consultaCliente.setString(14, cliente.getClienteCpfOuCnpj());
             //executa a query no banco de dados           
             consultaCliente.execute();
             //fecha a consulta ao banco e se desconecta dele
