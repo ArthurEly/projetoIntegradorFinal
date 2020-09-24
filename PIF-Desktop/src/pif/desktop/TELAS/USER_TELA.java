@@ -38,18 +38,17 @@ public class USER_TELA extends javax.swing.JFrame {
 //
 //    public static RUD_CLIENTE_TELA RUD_CLIENTE = new RUD_CLIENTE_TELA();
 //    public static C_CLIENTE_TELA C_CLIENTE = new C_CLIENTE_TELA();
-
     /**
      * Creates new form CADASTRAR_OS
      */
-    public USER_TELA() {   
+    public USER_TELA() {
         try {
-            icon = ImageIO.read(new File("src/resources/icon.png"));           
+            icon = ImageIO.read(getClass().getResource("/resources/icon.png"));
         } catch (IOException e) {
             e.printStackTrace();
-        }      
+        }
         initComponents();
-        painelSecoes.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 40, 40)), "Seja bem-vindo(a) "+USER_LOGADO.getCOLAB_NOME()+"! Para qual seção deseja ir?", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12)));
+        painelSecoes.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 40, 40)), "Seja bem-vindo(a) " + USER_LOGADO.getCOLAB_NOME() + "! Para qual seção deseja ir?", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12)));
         campoBairro.setText(USER_LOGADO.getCOLAB_BAIRRO());
         campoCep.setText(fs.botarCep(USER_LOGADO.getCOLAB_CEP()));
         campoCidade.setText(USER_LOGADO.getCOLAB_CIDADE());
@@ -323,7 +322,6 @@ public class USER_TELA extends javax.swing.JFrame {
 
         caixaCombinacaoEstado.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         caixaCombinacaoEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--", "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
-        caixaCombinacaoEstado.setBorder(null);
         caixaCombinacaoEstado.setEnabled(false);
         caixaCombinacaoEstado.setFocusable(false);
 
@@ -544,7 +542,7 @@ public class USER_TELA extends javax.swing.JFrame {
     private void irCadastroOS(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irCadastroOS
         u.irDePara(this, C_OS_TELA.getC_OS());
     }//GEN-LAST:event_irCadastroOS
-    
+
     /**
      * @param args the command line arguments
      */
@@ -570,11 +568,11 @@ public class USER_TELA extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(USER_TELA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>     
-        //</editor-fold>     
-        /* Create and display the form */                  
+        //</editor-fold>
+        //</editor-fold>
+        /* Create and display the form */
     }
-    
+
     //<editor-fold defaultstate="collapsed" desc="Coisas do javax">
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIrOS;
@@ -617,15 +615,15 @@ public class USER_TELA extends javax.swing.JFrame {
     private javax.swing.JLabel titleSobrenomeFantasia;
     // End of variables declaration//GEN-END:variables
     //</editor-fold>
-   
-    private void btnClicado(java.awt.event.MouseEvent evt){
-        evt.getComponent().setBackground(new Color(100,0,0));
+
+    private void btnClicado(java.awt.event.MouseEvent evt) {
+        evt.getComponent().setBackground(new Color(100, 0, 0));
         new Timer().schedule(
-            new TimerTask(){
-                @Override
-                public void run(){
-                    evt.getComponent().setBackground(new Color(204,0,0));
-                }
+                new TimerTask() {
+            @Override
+            public void run() {
+                evt.getComponent().setBackground(new Color(204, 0, 0));
+            }
         }, 50);
-    } 
+    }
 }

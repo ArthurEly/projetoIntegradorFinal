@@ -35,7 +35,7 @@ public class JMain extends javax.swing.JFrame {
      */
     public JMain() {
         try {
-            icon = ImageIO.read(new File("src/resources/icon.png"));
+            icon = ImageIO.read(getClass().getResource("/resources/icon.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

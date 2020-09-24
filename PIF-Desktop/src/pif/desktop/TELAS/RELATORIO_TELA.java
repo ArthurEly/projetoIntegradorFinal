@@ -32,22 +32,22 @@ import pif.desktop.DAO.OsDAO;
  * @author arthu
  */
 public class RELATORIO_TELA extends javax.swing.JFrame {
-    
+
     TelaUtils u = new TelaUtils();
     boolean rudAberto;
     Image icon;
     FormatacaoStrings fs = new FormatacaoStrings();
     VerificacaoStrings vs = new VerificacaoStrings();
-    
+
     /**
      * Creates new form RELATORIO_TELA
      */
     public RELATORIO_TELA() {
         try {
-            icon = ImageIO.read(new File("src/resources/icon.png"));           
+            icon = ImageIO.read(getClass().getResource("/resources/icon.png"));
         } catch (IOException e) {
             e.printStackTrace();
-        } 
+        }
         this.setIconImage(icon);
         this.setTitle("Relatórios da oficina");
         initComponents();
@@ -331,7 +331,7 @@ public class RELATORIO_TELA extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnIrCadastroOS1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -437,7 +437,7 @@ public class RELATORIO_TELA extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(11, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnIrCadastroOS5, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(jPanel5Layout.createSequentialGroup()
@@ -487,7 +487,7 @@ public class RELATORIO_TELA extends javax.swing.JFrame {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(11, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnIrCadastroOS7, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(jPanel6Layout.createSequentialGroup()
@@ -550,11 +550,9 @@ public class RELATORIO_TELA extends javax.swing.JFrame {
             painelFormularioConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelFormularioConsultaLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(painelFormularioConsultaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(painelFormularioConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         painelFormularioConsultaLayout.setVerticalGroup(
@@ -618,15 +616,15 @@ public class RELATORIO_TELA extends javax.swing.JFrame {
         OrcamentoDAO orcdao = new OrcamentoDAO();
         List<Orcamento> orcs = new ArrayList<>();
         orcs = orcdao.consultarVendasDiarias(fs.retirarFormatacaoData(campoData1Faturamento.getText()), fs.retirarFormatacaoData(campoData2Faturamento.getText()));
-        for (int i=0;i<orcs.size();i++){
+        for (int i = 0; i < orcs.size(); i++) {
             pizza.setValue(orcs.get(i).getOrcamento_data(), Double.parseDouble(orcs.get(i).getOrcamento_preco_pecas()) + Double.parseDouble(orcs.get(i).getOrcamento_preco_servicos()));
         }
-        JFreeChart graficoPizza = ChartFactory.createPieChart("Faturamento entre "+campoData1Faturamento.getText()+" e "+campoData2Faturamento.getText(),pizza,true,true,false);
+        JFreeChart graficoPizza = ChartFactory.createPieChart("Faturamento entre " + campoData1Faturamento.getText() + " e " + campoData2Faturamento.getText(), pizza, true, true, false);
         ChartPanel painelzadaP = new ChartPanel(graficoPizza);
         jfPizaa.setIconImage(icon);
         jfPizaa.setTitle("Faturamento diário");
         jfPizaa.add(painelzadaP);
-        jfPizaa.setSize(950,700);
+        jfPizaa.setSize(950, 700);
         jfPizaa.setLocationRelativeTo(null);
         jfPizaa.setVisible(true);
     }//GEN-LAST:event_abrirGraficoPizzaFaturamentoDiario
@@ -637,121 +635,113 @@ public class RELATORIO_TELA extends javax.swing.JFrame {
         OrcamentoDAO orcdao = new OrcamentoDAO();
         List<Orcamento> orcs = new ArrayList<>();
         orcs = orcdao.consultarVendasDiarias(fs.retirarFormatacaoData(campoData1Faturamento.getText()), fs.retirarFormatacaoData(campoData2Faturamento.getText()));
-        for (int i=0;i<orcs.size();i++){
+        for (int i = 0; i < orcs.size(); i++) {
             barra.setValue(Double.parseDouble(orcs.get(i).getOrcamento_preco_pecas()) + Double.parseDouble(orcs.get(i).getOrcamento_preco_servicos()), orcs.get(i).getOrcamento_data(), "Venda de peças e serviços");
         }
-        JFreeChart graficoBarra = ChartFactory.createBarChart("Gráfico do faturamento diário","Dia","Faturamento",barra,PlotOrientation.VERTICAL,true,true,false);
+        JFreeChart graficoBarra = ChartFactory.createBarChart("Gráfico do faturamento diário", "Dia", "Faturamento", barra, PlotOrientation.VERTICAL, true, true, false);
         ChartPanel painelzadaB = new ChartPanel(graficoBarra);
         jfBarra.setIconImage(icon);
         jfBarra.setTitle("Faturamento diário");
         jfBarra.add(painelzadaB);
-        jfBarra.setSize(950,700);
+        jfBarra.setSize(950, 700);
         jfBarra.setLocationRelativeTo(null);
         jfBarra.setVisible(true);
     }//GEN-LAST:event_abrirGraficoBarraFaturamentoDiario
 
     private void tecladaDataFaturamento(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaDataFaturamento
-        if (evt.getComponent().getName().equals("1")){
-            if ("\b".equals(Character.toString(evt.getKeyChar()))){
+        if (evt.getComponent().getName().equals("1")) {
+            if ("\b".equals(Character.toString(evt.getKeyChar()))) {
                 campoData1Faturamento.setText(fs.apagar(campoData1Faturamento.getText(), evt.getComponent().getName()));
             }
             String txtV = vs.data(evt, campoData1Faturamento.getText());
-            if (txtV == ""){
-                txtErroFaturamento.setForeground(new Color(240,240,240));           
-            } 
-            else if (txtV.endsWith("números.")){
-                campoData1Faturamento.setText(campoData1Faturamento.getText().substring(0, campoData1Faturamento.getText().length()-1));
-            } 
-            else{           
+            if (txtV == "") {
+                txtErroFaturamento.setForeground(new Color(240, 240, 240));
+            } else if (txtV.endsWith("números.")) {
+                campoData1Faturamento.setText(campoData1Faturamento.getText().substring(0, campoData1Faturamento.getText().length() - 1));
+            } else {
                 txtErroFaturamento.setText(txtV);
-                if (txtV.endsWith(".")){
-                    txtErroFaturamento.setForeground(new Color(255,0,0));
+                if (txtV.endsWith(".")) {
+                    txtErroFaturamento.setForeground(new Color(255, 0, 0));
                 } else {
                     txtErroFaturamento.setForeground(new Color(0, 160, 40));
-                }           
+                }
             }
-            if (campoData1Faturamento.getText().length() > 10){
+            if (campoData1Faturamento.getText().length() > 10) {
                 int calc = campoData1Faturamento.getText().length() - 10;
-                campoData1Faturamento.setText(campoData1Faturamento.getText().substring(0,campoData1Faturamento.getText().length()-calc));
+                campoData1Faturamento.setText(campoData1Faturamento.getText().substring(0, campoData1Faturamento.getText().length() - calc));
             }
             String txtF = fs.data(campoData1Faturamento.getText());
             campoData1Faturamento.setText(txtF);
         } else {
-            if ("\b".equals(Character.toString(evt.getKeyChar()))){
-            campoData2Faturamento.setText(fs.apagar(campoData2Faturamento.getText(), evt.getComponent().getName()));
+            if ("\b".equals(Character.toString(evt.getKeyChar()))) {
+                campoData2Faturamento.setText(fs.apagar(campoData2Faturamento.getText(), evt.getComponent().getName()));
             }
             String txtV = vs.data(evt, campoData2Faturamento.getText());
-            if (txtV == ""){
-                txtErroFaturamento.setForeground(new Color(240,240,240));           
-            } 
-            else if (txtV.endsWith("números.")){
-                campoData2Faturamento.setText(campoData2Faturamento.getText().substring(0, campoData2Faturamento.getText().length()-1));
-            } 
-            else{           
+            if (txtV == "") {
+                txtErroFaturamento.setForeground(new Color(240, 240, 240));
+            } else if (txtV.endsWith("números.")) {
+                campoData2Faturamento.setText(campoData2Faturamento.getText().substring(0, campoData2Faturamento.getText().length() - 1));
+            } else {
                 txtErroFaturamento.setText(txtV);
-                if (txtV.endsWith(".")){
-                    txtErroFaturamento.setForeground(new Color(255,0,0));
+                if (txtV.endsWith(".")) {
+                    txtErroFaturamento.setForeground(new Color(255, 0, 0));
                 } else {
                     txtErroFaturamento.setForeground(new Color(0, 160, 40));
-                }           
+                }
             }
-            if (campoData2Faturamento.getText().length() > 10){
+            if (campoData2Faturamento.getText().length() > 10) {
                 int calc = campoData2Faturamento.getText().length() - 10;
-                campoData2Faturamento.setText(campoData2Faturamento.getText().substring(0,campoData2Faturamento.getText().length()-calc));
+                campoData2Faturamento.setText(campoData2Faturamento.getText().substring(0, campoData2Faturamento.getText().length() - calc));
             }
             String txtF = fs.data(campoData2Faturamento.getText());
             campoData2Faturamento.setText(txtF);
-        }      
+        }
     }//GEN-LAST:event_tecladaDataFaturamento
 
     private void tecladaDataOs(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaDataOs
-        if (evt.getComponent().getName().equals("1")){
-            if ("\b".equals(Character.toString(evt.getKeyChar()))){
-            campoData1Os.setText(fs.apagar(campoData1Os.getText(), evt.getComponent().getName()));
+        if (evt.getComponent().getName().equals("1")) {
+            if ("\b".equals(Character.toString(evt.getKeyChar()))) {
+                campoData1Os.setText(fs.apagar(campoData1Os.getText(), evt.getComponent().getName()));
             }
             String txtV = vs.data(evt, campoData1Os.getText());
-            if (txtV == ""){
-                txtErroOs.setForeground(new Color(240,240,240));           
-            } 
-            else if (txtV.endsWith("números.")){
-                campoData1Os.setText(campoData1Os.getText().substring(0, campoData1Os.getText().length()-1));
-            } 
-            else{           
+            if (txtV == "") {
+                txtErroOs.setForeground(new Color(240, 240, 240));
+            } else if (txtV.endsWith("números.")) {
+                campoData1Os.setText(campoData1Os.getText().substring(0, campoData1Os.getText().length() - 1));
+            } else {
                 txtErroOs.setText(txtV);
-                if (txtV.endsWith(".")){
-                    txtErroOs.setForeground(new Color(255,0,0));
+                if (txtV.endsWith(".")) {
+                    txtErroOs.setForeground(new Color(255, 0, 0));
                 } else {
                     txtErroOs.setForeground(new Color(0, 160, 40));
-                }           
+                }
             }
-            if (campoData1Os.getText().length() > 10){
+            if (campoData1Os.getText().length() > 10) {
                 int calc = campoData1Os.getText().length() - 10;
-                campoData1Os.setText(campoData1Os.getText().substring(0,campoData1Os.getText().length()-calc));
+                campoData1Os.setText(campoData1Os.getText().substring(0, campoData1Os.getText().length() - calc));
             }
             String txtF = fs.data(campoData1Os.getText());
             campoData1Os.setText(txtF);
         } else {
-            if ("\b".equals(Character.toString(evt.getKeyChar()))){
-            campoData2Os.setText(fs.apagar(campoData2Os.getText(), evt.getComponent().getName()));
+            if ("\b".equals(Character.toString(evt.getKeyChar()))) {
+                campoData2Os.setText(fs.apagar(campoData2Os.getText(), evt.getComponent().getName()));
             }
             String txtV = vs.data(evt, campoData2Os.getText());
-            if (txtV == ""){
-                txtErroOs.setForeground(new Color(240,240,240));           
-            } 
-            else if (txtV.endsWith("números.")){
-                campoData2Os.setText(campoData2Os.getText().substring(0, campoData2Os.getText().length()-1));
-            } 
-            else{           
+            if (txtV == "") {
+                txtErroOs.setForeground(new Color(240, 240, 240));
+            } else if (txtV.endsWith("números.")) {
+                campoData2Os.setText(campoData2Os.getText().substring(0, campoData2Os.getText().length() - 1));
+            } else {
                 txtErroOs.setText(txtV);
-                if (txtV.endsWith(".")){
-                    txtErroOs.setForeground(new Color(255,0,0));
+                if (txtV.endsWith(".")) {
+                    txtErroOs.setForeground(new Color(255, 0, 0));
                 } else {
                     txtErroOs.setForeground(new Color(0, 160, 40));
-                }           
+                }
             }
-            if (campoData2Os.getText().length() > 10){
+            if (campoData2Os.getText().length() > 10) {
                 int calc = campoData2Os.getText().length() - 10;
-                campoData2Os.setText(campoData2Os.getText().substring(0,campoData2Os.getText().length()-calc));
+                campoData2Os.setText(campoData2Os.getText().substring(0, campoData2Os.getText().length() - calc));
             }
             String txtF = fs.data(campoData2Os.getText());
             campoData2Os.setText(txtF);
@@ -766,12 +756,12 @@ public class RELATORIO_TELA extends javax.swing.JFrame {
         orc = orcdao.consultarVendasTotais(fs.retirarFormatacaoData(campoData1Faturamento.getText()), fs.retirarFormatacaoData(campoData2Faturamento.getText()));
         barra.setValue(Double.parseDouble(orc.getOrcamento_preco_pecas()), "Peças", "Venda total de peças");
         barra.setValue(Double.parseDouble(orc.getOrcamento_preco_servicos()), "Serviços", "Venda total de serviços");
-        JFreeChart graficoBarra = ChartFactory.createBarChart("Gráfico do faturamento total","Peças ou serviços","Faturamento",barra,PlotOrientation.VERTICAL,true,true,false);
+        JFreeChart graficoBarra = ChartFactory.createBarChart("Gráfico do faturamento total", "Peças ou serviços", "Faturamento", barra, PlotOrientation.VERTICAL, true, true, false);
         ChartPanel painelzadaB = new ChartPanel(graficoBarra);
         jfBarra.setIconImage(icon);
         jfBarra.setTitle("Faturamento total");
         jfBarra.add(painelzadaB);
-        jfBarra.setSize(950,700);
+        jfBarra.setSize(950, 700);
         jfBarra.setLocationRelativeTo(null);
         jfBarra.setVisible(true);
     }//GEN-LAST:event_abrirGraficoBarraFaturamentoTotal
@@ -784,12 +774,12 @@ public class RELATORIO_TELA extends javax.swing.JFrame {
         orc = orcdao.consultarVendasTotais(fs.retirarFormatacaoData(campoData1Faturamento.getText()), fs.retirarFormatacaoData(campoData2Faturamento.getText()));
         pizza.setValue("Peças", Double.parseDouble(orc.getOrcamento_preco_pecas()));
         pizza.setValue("Serviços", Double.parseDouble(orc.getOrcamento_preco_servicos()));
-        JFreeChart graficoPizza = ChartFactory.createPieChart("Faturamento entre "+campoData1Faturamento.getText()+" e "+campoData2Faturamento.getText(),pizza,true,true,false);
+        JFreeChart graficoPizza = ChartFactory.createPieChart("Faturamento entre " + campoData1Faturamento.getText() + " e " + campoData2Faturamento.getText(), pizza, true, true, false);
         ChartPanel painelzadaP = new ChartPanel(graficoPizza);
         jfPizaa.setIconImage(icon);
         jfPizaa.setTitle("Faturamento total");
         jfPizaa.add(painelzadaP);
-        jfPizaa.setSize(950,700);
+        jfPizaa.setSize(950, 700);
         jfPizaa.setLocationRelativeTo(null);
         jfPizaa.setVisible(true);
     }//GEN-LAST:event_abrirGraficoPizzaFaturamentoTotal
@@ -802,12 +792,12 @@ public class RELATORIO_TELA extends javax.swing.JFrame {
         os = osdao.consultaOsSaidaEEntrada(fs.retirarFormatacaoData(campoData1Os.getText()), fs.retirarFormatacaoData(campoData2Os.getText()));
         pizza.setValue("Saíram", Integer.parseInt(os.getQtdConcluida()));
         pizza.setValue("Entraram", Integer.parseInt(os.getQtdOs()));
-        JFreeChart graficoPizza = ChartFactory.createPieChart("Entrada e saída de veículos entre "+campoData1Os.getText()+" e "+campoData2Os.getText(),pizza,true,true,false);
+        JFreeChart graficoPizza = ChartFactory.createPieChart("Entrada e saída de veículos entre " + campoData1Os.getText() + " e " + campoData2Os.getText(), pizza, true, true, false);
         ChartPanel painelzadaP = new ChartPanel(graficoPizza);
         jfPizaa.setIconImage(icon);
         jfPizaa.setTitle("Entrada e saída de veículos");
         jfPizaa.add(painelzadaP);
-        jfPizaa.setSize(950,700);
+        jfPizaa.setSize(950, 700);
         jfPizaa.setLocationRelativeTo(null);
         jfPizaa.setVisible(true);
     }//GEN-LAST:event_abrirGraficoPizzaOs
@@ -818,15 +808,15 @@ public class RELATORIO_TELA extends javax.swing.JFrame {
         OsDAO osdao = new OsDAO();
         List<OS> oss = new ArrayList<>();
         oss = osdao.consultaOsSaidaDiaria(fs.retirarFormatacaoData(campoData1Os.getText()), fs.retirarFormatacaoData(campoData2Os.getText()));
-        for (int i=0;i<oss.size();i++){
+        for (int i = 0; i < oss.size(); i++) {
             barra.setValue(Integer.parseInt(oss.get(i).getQtdOs()), oss.get(i).getOsDataSaida(), "Saída");
         }
-        JFreeChart graficoBarra = ChartFactory.createBarChart("Gráfico da saída de veículos","Dia","Quantidade de veículos",barra,PlotOrientation.VERTICAL,true,true,false);
+        JFreeChart graficoBarra = ChartFactory.createBarChart("Gráfico da saída de veículos", "Dia", "Quantidade de veículos", barra, PlotOrientation.VERTICAL, true, true, false);
         ChartPanel painelzadaB = new ChartPanel(graficoBarra);
         jfPizaa.setIconImage(icon);
         jfPizaa.setTitle("Saída de veículos");
         jfPizaa.add(painelzadaB);
-        jfPizaa.setSize(950,700);
+        jfPizaa.setSize(950, 700);
         jfPizaa.setLocationRelativeTo(null);
         jfPizaa.setVisible(true);
     }//GEN-LAST:event_abrirGraficoBarraSaida
@@ -837,15 +827,15 @@ public class RELATORIO_TELA extends javax.swing.JFrame {
         OsDAO osdao = new OsDAO();
         List<OS> oss = new ArrayList<>();
         oss = osdao.consultaOsEntradaDiaria(fs.retirarFormatacaoData(campoData1Os.getText()), fs.retirarFormatacaoData(campoData2Os.getText()));
-        for (int i=0;i<oss.size();i++){
+        for (int i = 0; i < oss.size(); i++) {
             barra.setValue(Integer.parseInt(oss.get(i).getQtdOs()), oss.get(i).getOsDataEntrada(), "Entrada");
         }
-        JFreeChart graficoBarra = ChartFactory.createBarChart("Gráfico da entarda de veículos","Dia","Quantidade de veículos",barra,PlotOrientation.VERTICAL,true,true,false);
+        JFreeChart graficoBarra = ChartFactory.createBarChart("Gráfico da entarda de veículos", "Dia", "Quantidade de veículos", barra, PlotOrientation.VERTICAL, true, true, false);
         ChartPanel painelzadaB = new ChartPanel(graficoBarra);
         jfPizaa.setIconImage(icon);
         jfPizaa.setTitle("Entrada de veículos");
         jfPizaa.add(painelzadaB);
-        jfPizaa.setSize(950,700);
+        jfPizaa.setSize(950, 700);
         jfPizaa.setLocationRelativeTo(null);
         jfPizaa.setVisible(true);
     }//GEN-LAST:event_abrirGraficoBarraEntrada
@@ -857,7 +847,7 @@ public class RELATORIO_TELA extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {

@@ -52,37 +52,35 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
     Image icon;
     private TelaUtils u = new TelaUtils();
     private VerificacaoStrings vs = new VerificacaoStrings();
-    private FormatacaoStrings fs = new FormatacaoStrings();  
-    private List<OS> OSs = new ArrayList<>();  
-    private List<Orcamento> Orcs = new ArrayList<>();  
+    private FormatacaoStrings fs = new FormatacaoStrings();
+    private List<OS> OSs = new ArrayList<>();
+    private List<Orcamento> Orcs = new ArrayList<>();
     private int i;
-    
+
 //    private static RUD_EQUIP_TELA RUD_EQUIP = new RUD_EQUIP_TELA();
 //    private static C_EQUIP_TELA C_EQUIP = new C_EQUIP_TELA();
-
 //    public static RUD_CLIENTE_TELA RUD_CLIENTE = new RUD_CLIENTE_TELA();
 //    public static C_CLIENTE_TELA C_CLIENTE = new C_CLIENTE_TELA();
-
     /**
      * Creates new form CADASTRAR_OS
      */
     public RUD_OS_TELA() {
         try {
-            icon = ImageIO.read(new File("src/resources/icon.png"));           
+            icon = ImageIO.read(getClass().getResource("/resources/icon.png"));
         } catch (IOException e) {
             e.printStackTrace();
-        }      
+        }
         setTitle("Consultar uma ordem de serviço");
         initComponents();
-        painelSecoes.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 40, 40)), "Seja bem-vindo(a) "+USER_LOGADO.getCOLAB_NOME()+"! Para qual seção deseja ir?", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12)));
-       
+        painelSecoes.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 40, 40)), "Seja bem-vindo(a) " + USER_LOGADO.getCOLAB_NOME() + "! Para qual seção deseja ir?", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12)));
+
         //<editor-fold defaultstate="collapsed" desc="Tela">
         JPanel jFilho = new JPanel();
         JButton btnIrConsultaOS = new JButton();
         JButton btnIrCadastroOS = new JButton();
         btnIrConsultaOS.setBackground(new java.awt.Color(100, 0, 0));
         btnIrConsultaOS.setForeground(new java.awt.Color(255, 255, 255));
-        btnIrConsultaOS.setText("Consultar uma OS");     
+        btnIrConsultaOS.setText("Consultar uma OS");
         btnIrConsultaOS.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(150, 0, 0)));
         btnIrConsultaOS.setContentAreaFilled(false);
         btnIrConsultaOS.setFocusPainted(false);
@@ -91,7 +89,7 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
         btnIrCadastroOS.setBackground(new java.awt.Color(204, 0, 0));
         btnIrCadastroOS.setForeground(new java.awt.Color(255, 255, 255));
         btnIrCadastroOS.setText("Cadastrar uma OS");
-        btnIrCadastroOS.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(130, 0, 0), new java.awt.Color(130, 0, 0), new java.awt.Color(204, 0, 0), new java.awt.Color(204, 0, 0)));               
+        btnIrCadastroOS.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(130, 0, 0), new java.awt.Color(130, 0, 0), new java.awt.Color(204, 0, 0), new java.awt.Color(204, 0, 0)));
         btnIrCadastroOS.setBorderPainted(true);
         btnIrCadastroOS.setContentAreaFilled(false);
         btnIrCadastroOS.setFocusPainted(false);
@@ -102,7 +100,7 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
             }
         });
         System.out.println(USER_LOGADO.isCOLAB_GERENTE());
-        if (USER_LOGADO.isCOLAB_GERENTE()){
+        if (USER_LOGADO.isCOLAB_GERENTE()) {
             //<editor-fold defaultstate="collapsed" desc="se for gerente">
             JButton btnIrRelatorios = new JButton();
             btnIrRelatorios.setBackground(new java.awt.Color(204, 0, 0));
@@ -120,29 +118,29 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
             javax.swing.GroupLayout painelOpcoesCRUDLayout = new javax.swing.GroupLayout(jFilho);
             jFilho.setLayout(painelOpcoesCRUDLayout);
             painelOpcoesCRUDLayout.setHorizontalGroup(
-                painelOpcoesCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(painelOpcoesCRUDLayout.createSequentialGroup()
-                    .addGroup(painelOpcoesCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(painelOpcoesCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    painelOpcoesCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(painelOpcoesCRUDLayout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(btnIrCadastroOS, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelOpcoesCRUDLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(btnIrRelatorios, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(btnIrConsultaOS, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap())
+                                    .addGroup(painelOpcoesCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(painelOpcoesCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(painelOpcoesCRUDLayout.createSequentialGroup()
+                                                            .addGap(10, 10, 10)
+                                                            .addComponent(btnIrCadastroOS, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelOpcoesCRUDLayout.createSequentialGroup()
+                                                            .addContainerGap()
+                                                            .addComponent(btnIrRelatorios, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(btnIrConsultaOS, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addContainerGap())
             );
             painelOpcoesCRUDLayout.setVerticalGroup(
-                painelOpcoesCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelOpcoesCRUDLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(btnIrCadastroOS, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(18, 18, 18)
-                    .addComponent(btnIrConsultaOS, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(18, 18, 18)
-                    .addComponent(btnIrRelatorios, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap())
+                    painelOpcoesCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelOpcoesCRUDLayout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addComponent(btnIrCadastroOS, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(btnIrConsultaOS, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(btnIrRelatorios, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addContainerGap())
             );
             //</editor-fold>
         } else {
@@ -150,30 +148,30 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
             javax.swing.GroupLayout painelOpcoesCRUDLayout = new javax.swing.GroupLayout(jFilho);
             jFilho.setLayout(painelOpcoesCRUDLayout);
             painelOpcoesCRUDLayout.setHorizontalGroup(
-                painelOpcoesCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(painelOpcoesCRUDLayout.createSequentialGroup()
-                    .addGap(10, 10, 10)
-                    .addGroup(painelOpcoesCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btnIrCadastroOS, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnIrConsultaOS, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap())
+                    painelOpcoesCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(painelOpcoesCRUDLayout.createSequentialGroup()
+                                    .addGap(10, 10, 10)
+                                    .addGroup(painelOpcoesCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(btnIrCadastroOS, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(btnIrConsultaOS, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addContainerGap())
             );
             painelOpcoesCRUDLayout.setVerticalGroup(
-                painelOpcoesCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelOpcoesCRUDLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(btnIrCadastroOS, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(18, 18, 18)
-                    .addComponent(btnIrConsultaOS, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(18, 18, 18)
-                    .addContainerGap())
+                    painelOpcoesCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelOpcoesCRUDLayout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addComponent(btnIrCadastroOS, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(btnIrConsultaOS, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addContainerGap())
             );
             //</editor-fold>
         }
         painelCRUD.add(jFilho);
-        painelCRUD.setLayout(new GridLayout(1,1));
-        //</editor-fold>      
-        this.setMinimumSize(new Dimension(1368,768));
+        painelCRUD.setLayout(new GridLayout(1, 1));
+        //</editor-fold>
+        this.setMinimumSize(new Dimension(1368, 768));
     }
 
     /**
@@ -462,11 +460,11 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-    
-    private void irRelatorios(java.awt.event.MouseEvent evt) {                                             
+
+    private void irRelatorios(java.awt.event.MouseEvent evt) {
         u.irDePara(this, getRELATORIO());
     }
-    
+
     private void irCadastroOS(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irCadastroOS
         u.irDePara(this, C_OS_TELA.getC_OS());
     }//GEN-LAST:event_irCadastroOS
@@ -478,88 +476,87 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
     private void consultarOs(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_consultarOs
         btnClicado(evt);
 //        try {
-            String campo = "";
-            String valor = "";
-            if (vazioForm()){
-                txtErroConsulta.setForeground(Color.RED);
-                txtErroConsulta.setText("Preencha os campos.");   
+        String campo = "";
+        String valor = "";
+        if (vazioForm()) {
+            txtErroConsulta.setForeground(Color.RED);
+            txtErroConsulta.setText("Preencha os campos.");
+        } else {
+            if (erroForm()) {
+                txtErroConsulta.setText("Há algum erro.");
             } else {
-                if(erroForm()){
-                    txtErroConsulta.setText("Há algum erro.");
-                }else{
-                    if (campoCpfOuCnpj.isEnabled()){
-                        if (campoCpfOuCnpj.getText().length() == 14 || campoCpfOuCnpj.getText().length() == 18){ 
-                            ClienteDAO cdao = new ClienteDAO();
-                            if (cdao.verificarCliente(campoCpfOuCnpj.getText(),"os_teste")==false){
-                                
-                            } else {
-                                campo = "cliente_cpf_ou_cnpj";     
-                                valor = fs.zerosAEsquerda(campoCpfOuCnpj.getText());
-                            }
-                        }                        
-                    }else if(campoPlaca.isEnabled()){
-                        campo = "veiculo_placa";
-                        valor = "'"+campoPlaca.getText()+"'";                       
-                    }else if(campoNumeroOS.isEnabled()){
-                        campo = "os_numero";
-                        valor = campoNumeroOS.getText();
-                    }
-                    valor = fs.retirarFormatacao(valor);
-                    OsDAO osDao = new OsDAO();                       
-                    OSs = osDao.consultaOs(campo, valor); 
-                    if (OSs.size() == 0){
-                        txtErroConsulta.setForeground(Color.RED);
-                        txtErroConsulta.setText("Ordem de serviço inexistente."); 
-                    } else{
-                        if(OSs.size() == 1){
-                            OrcamentoDAO orcDao = new OrcamentoDAO();                        
-                            Orcs = orcDao.consultarOrcamento(OSs.get(0).getOsNumero());    
-                            consulta_os consultaTela = new consulta_os(OSs.get(0),Orcs);
-                            u.irDeParaDiferenciado(this, consultaTela,1368,768);
-                        }
-                        else{
-                            //<editor-fold defaultstate="collapsed" desc="Tela">
-                            consulta_tela consultaTelaOs = new consulta_tela();
-                            JPanel jPai = new JPanel();
-                            jPai.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 40, 0)), "Escolha o número de OS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
-                            consultaTelaOs.setLayout(new GridLayout(1,1));                                                                                
-                            for(int i=0; i<=getOSs().size()-1;i++){
-                                OS os;
-                                os = getOSs().get(i);
-                                JButton butao = new JButton();
-                                butao.setForeground(new java.awt.Color(255, 255, 255));
-                                butao.setBackground(new java.awt.Color(204, 0, 0));  
-                                butao.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(130, 0, 0), new java.awt.Color(130, 0, 0), new java.awt.Color(204, 0, 0), new java.awt.Color(204, 0, 0)));                             
-                                butao.setPreferredSize(new Dimension(100, 30));
-                                butao.setText(os.getOsNumero());
-                                butao.setName(String.valueOf(i));
-                                butao.setFocusable(false);
-                                butao.setToolTipText("");                                
-                                butao.setContentAreaFilled(false);
-                                butao.setOpaque(true);
-                                butao.addMouseListener(new java.awt.event.MouseAdapter() {
-                                            @Override
-                                            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                                                btnClicado(evt);
-                                                mudarTela(evt);
-                                            }
-                                        });
-                                jPai.add(butao);
-                            } 
-                            consultaTelaOs.add(jPai);
-                            consultaTelaOs.setLocationRelativeTo(null);
-                            consultaTelaOs.setIconImage(icon);
-                            consultaTelaOs.setTitle("Escolha uma ordem de serviço");
-                            consultaTelaOs.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-                            consultaTelaOs.setVisible(true);
-                            //</editor-fold>
+                if (campoCpfOuCnpj.isEnabled()) {
+                    if (campoCpfOuCnpj.getText().length() == 14 || campoCpfOuCnpj.getText().length() == 18) {
+                        ClienteDAO cdao = new ClienteDAO();
+                        if (cdao.verificarCliente(campoCpfOuCnpj.getText(), "os_teste") == false) {
+
+                        } else {
+                            campo = "cliente_cpf_ou_cnpj";
+                            valor = fs.zerosAEsquerda(campoCpfOuCnpj.getText());
                         }
                     }
-                }  
-            }                        
+                } else if (campoPlaca.isEnabled()) {
+                    campo = "veiculo_placa";
+                    valor = "'" + campoPlaca.getText() + "'";
+                } else if (campoNumeroOS.isEnabled()) {
+                    campo = "os_numero";
+                    valor = campoNumeroOS.getText();
+                }
+                valor = fs.retirarFormatacao(valor);
+                OsDAO osDao = new OsDAO();
+                OSs = osDao.consultaOs(campo, valor);
+                if (OSs.size() == 0) {
+                    txtErroConsulta.setForeground(Color.RED);
+                    txtErroConsulta.setText("Ordem de serviço inexistente.");
+                } else {
+                    if (OSs.size() == 1) {
+                        OrcamentoDAO orcDao = new OrcamentoDAO();
+                        Orcs = orcDao.consultarOrcamento(OSs.get(0).getOsNumero());
+                        consulta_os consultaTela = new consulta_os(OSs.get(0), Orcs);
+                        u.irDeParaDiferenciado(this, consultaTela, 1368, 768);
+                    } else {
+                        //<editor-fold defaultstate="collapsed" desc="Tela">
+                        consulta_tela consultaTelaOs = new consulta_tela();
+                        JPanel jPai = new JPanel();
+                        jPai.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 40, 0)), "Escolha o número de OS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+                        consultaTelaOs.setLayout(new GridLayout(1, 1));
+                        for (int i = 0; i <= getOSs().size() - 1; i++) {
+                            OS os;
+                            os = getOSs().get(i);
+                            JButton butao = new JButton();
+                            butao.setForeground(new java.awt.Color(255, 255, 255));
+                            butao.setBackground(new java.awt.Color(204, 0, 0));
+                            butao.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(130, 0, 0), new java.awt.Color(130, 0, 0), new java.awt.Color(204, 0, 0), new java.awt.Color(204, 0, 0)));
+                            butao.setPreferredSize(new Dimension(100, 30));
+                            butao.setText(os.getOsNumero());
+                            butao.setName(String.valueOf(i));
+                            butao.setFocusable(false);
+                            butao.setToolTipText("");
+                            butao.setContentAreaFilled(false);
+                            butao.setOpaque(true);
+                            butao.addMouseListener(new java.awt.event.MouseAdapter() {
+                                @Override
+                                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                                    btnClicado(evt);
+                                    mudarTela(evt);
+                                }
+                            });
+                            jPai.add(butao);
+                        }
+                        consultaTelaOs.add(jPai);
+                        consultaTelaOs.setLocationRelativeTo(null);
+                        consultaTelaOs.setIconImage(icon);
+                        consultaTelaOs.setTitle("Escolha uma ordem de serviço");
+                        consultaTelaOs.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+                        consultaTelaOs.setVisible(true);
+                        //</editor-fold>
+                    }
+                }
+            }
+        }
 //        }catch(Exception e){
 //            System.out.println("Erro aca: "+e);
-//        }   
+//        }
     }//GEN-LAST:event_consultarOs
 
     private void limparCampos(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_limparCampos
@@ -569,88 +566,88 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
         campoPlaca.setEnabled(true);
         campoNumeroOS.setEnabled(true);
     }//GEN-LAST:event_limparCampos
-    
+
     //<editor-fold defaultstate="collapsed" desc="métodos teclados">
     private void tecladaNumOs(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaNumOs
-        if (vs.numeroOS(evt, campoNumeroOS.getText()) == ""){
-            txtErroConsulta.setForeground(new Color(240,240,240));           
+        if (vs.numeroOS(evt, campoNumeroOS.getText()) == "") {
+            txtErroConsulta.setForeground(new Color(240, 240, 240));
         } else {
             String txt = vs.numeroOS(evt, campoNumeroOS.getText());
             txtErroConsulta.setText(txt);
-            if (txt.endsWith(".")){
-                txtErroConsulta.setForeground(new Color(255,0,0));
+            if (txt.endsWith(".")) {
+                txtErroConsulta.setForeground(new Color(255, 0, 0));
             } else {
                 txtErroConsulta.setForeground(new Color(0, 160, 40));
-            }           
-        }   
+            }
+        }
     }//GEN-LAST:event_tecladaNumOs
 
     private void tecladaPlaca(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaPlaca
-        if (vs.veiculoPlaca(evt, campoPlaca.getText()) == ""){
-            txtErroConsulta.setForeground(new Color(240,240,240));           
+        if (vs.veiculoPlaca(evt, campoPlaca.getText()) == "") {
+            txtErroConsulta.setForeground(new Color(240, 240, 240));
         } else {
             String txt = vs.veiculoPlaca(evt, campoPlaca.getText());
             txtErroConsulta.setText(txt);
-            if (txt.endsWith(".")){
-                txtErroConsulta.setForeground(new Color(255,0,0));
+            if (txt.endsWith(".")) {
+                txtErroConsulta.setForeground(new Color(255, 0, 0));
             } else {
                 txtErroConsulta.setForeground(new Color(0, 160, 40));
-            }           
+            }
         }
-        if (campoPlaca.getText().length() > 7){
+        if (campoPlaca.getText().length() > 7) {
             int calc = campoPlaca.getText().length() - 7;
-            campoPlaca.setText(campoPlaca.getText().substring(0,campoPlaca.getText().length()-calc));
-        }  
-        if ((campoPlaca.getText().length()+1) >=1 && !"".equals(campoPlaca.getText())){
+            campoPlaca.setText(campoPlaca.getText().substring(0, campoPlaca.getText().length() - calc));
+        }
+        if ((campoPlaca.getText().length() + 1) >= 1 && !"".equals(campoPlaca.getText())) {
             campoNumeroOS.setEnabled(false);
             campoCpfOuCnpj.setEnabled(false);
         } else {
             campoNumeroOS.setEnabled(true);
             campoCpfOuCnpj.setEnabled(true);
         }
-        
+
         String txt = fs.placa(campoPlaca.getText());
         campoPlaca.setText(txt);
     }//GEN-LAST:event_tecladaPlaca
 
     private void tecladaCpf(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaCpf
-        if ("\b".equals(Character.toString(evt.getKeyChar()))){
+        if ("\b".equals(Character.toString(evt.getKeyChar()))) {
             campoCpfOuCnpj.setText(fs.apagar(campoCpfOuCnpj.getText(), evt.getComponent().getName()));
         }
-        if (vs.cpfOuCnpj(evt, campoCpfOuCnpj.getText()) == ""){
-            txtErroConsulta.setForeground(new Color(240,240,240));
+        if (vs.cpfOuCnpj(evt, campoCpfOuCnpj.getText()) == "") {
+            txtErroConsulta.setForeground(new Color(240, 240, 240));
         } else {
             String txt = vs.cpfOuCnpj(evt, campoCpfOuCnpj.getText());
             txtErroConsulta.setText(txt);
-            if (txt.endsWith(".")){
-                txtErroConsulta.setForeground(new Color(255,0,0));
+            if (txt.endsWith(".")) {
+                txtErroConsulta.setForeground(new Color(255, 0, 0));
             } else {
                 txtErroConsulta.setForeground(new Color(0, 160, 40));
             }
         }
         String txt = fs.cpfOuCnpj(evt, campoCpfOuCnpj.getText());
-        campoCpfOuCnpj.setText(txt);       
+        campoCpfOuCnpj.setText(txt);
     }//GEN-LAST:event_tecladaCpf
     //</editor-fold>
-    
+
     private void desabilitarCampos(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_desabilitarCampos
-        if (evt.getComponent().getName().equals("cpfnj")){
-            if (campoCpfOuCnpj.getText().length() >=1 && !"".equals(campoCpfOuCnpj.getText())){
-            campoNumeroOS.setEnabled(false);
-            campoPlaca.setEnabled(false);
+        if (evt.getComponent().getName().equals("cpfnj")) {
+            if (campoCpfOuCnpj.getText().length() >= 1 && !"".equals(campoCpfOuCnpj.getText())) {
+                campoNumeroOS.setEnabled(false);
+                campoPlaca.setEnabled(false);
             } else {
                 campoNumeroOS.setEnabled(true);
                 campoPlaca.setEnabled(true);
-            } 
-        }else if(evt.getComponent().getName().equals("numOs")){
-            if (campoNumeroOS.getText().length() >=1 && !"".equals(campoNumeroOS.getText())){
+            }
+        } else if (evt.getComponent().getName().equals("numOs")) {
+            if (campoNumeroOS.getText().length() >= 1 && !"".equals(campoNumeroOS.getText())) {
                 campoPlaca.setEnabled(false);
                 campoCpfOuCnpj.setEnabled(false);
             } else {
                 campoPlaca.setEnabled(true);
                 campoCpfOuCnpj.setEnabled(true);
-            }            
-        }     
+            }
+        }
     }//GEN-LAST:event_desabilitarCampos
 
     /**
@@ -684,11 +681,11 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 RUD_OS_TELA ss = new RUD_OS_TELA();
-                ss.setVisible(true);                            
+                ss.setVisible(true);
             }
-        });       
+        });
     }
-    
+
     //<editor-fold defaultstate="collapsed" desc="Coisas do javax">
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel RcpfOuCnpj;
@@ -711,54 +708,52 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
     private javax.swing.JPanel painelSecoes;
     private javax.swing.JLabel txtErroConsulta;
     // End of variables declaration//GEN-END:variables
-   //</editor-fold>
+    //</editor-fold>
 
-    private void btnClicado(java.awt.event.MouseEvent evt){
+    private void btnClicado(java.awt.event.MouseEvent evt) {
         /*
             MÉTODO RESPONSÁVEL POR MUDAR A COR DE FUNDO DO BOTAO QUANDO FOR CLICADO
-        */
-        evt.getComponent().setBackground(new Color(100,0,0));
+         */
+        evt.getComponent().setBackground(new Color(100, 0, 0));
         new Timer().schedule(
-            new TimerTask(){
-                @Override
-                public void run(){
-                    evt.getComponent().setBackground(new Color(204,0,0));
-                }
+                new TimerTask() {
+            @Override
+            public void run() {
+                evt.getComponent().setBackground(new Color(204, 0, 0));
+            }
         }, 50);
     }
-    
-    private void mudarTela(java.awt.event.MouseEvent evt){         
-        i = Integer.parseInt(evt.getComponent().getName());  
-        OrcamentoDAO orcDao = new OrcamentoDAO();                          
-        Orcs = orcDao.consultarOrcamento(OSs.get(i).getOsNumero());                          
-        consulta_os consultaTela = new consulta_os(OSs.get(i),Orcs);
-        u.irDeParaDiferenciado(this, consultaTela,1368,768);
+
+    private void mudarTela(java.awt.event.MouseEvent evt) {
+        i = Integer.parseInt(evt.getComponent().getName());
+        OrcamentoDAO orcDao = new OrcamentoDAO();
+        Orcs = orcDao.consultarOrcamento(OSs.get(i).getOsNumero());
+        consulta_os consultaTela = new consulta_os(OSs.get(i), Orcs);
+        u.irDeParaDiferenciado(this, consultaTela, 1368, 768);
     }
- 
-    private void limparCampos(){
+
+    private void limparCampos() {
         campoCpfOuCnpj.setText("");
         campoNumeroOS.setText("");
         campoPlaca.setText("");
-        txtErroConsulta.setForeground(new Color(240,240,240));
+        txtErroConsulta.setForeground(new Color(240, 240, 240));
     }
-    
-    private boolean vazioForm(){
+
+    private boolean vazioForm() {
         boolean vazio;
-        if (
-            campoCpfOuCnpj.isEnabled() && campoCpfOuCnpj.getText().equals("") ||
-            campoNumeroOS.isEnabled() && campoNumeroOS.getText().equals("") ||
-            campoPlaca.isEnabled() && campoPlaca.getText().equals("")
-            ){
+        if (campoCpfOuCnpj.isEnabled() && campoCpfOuCnpj.getText().equals("")
+                || campoNumeroOS.isEnabled() && campoNumeroOS.getText().equals("")
+                || campoPlaca.isEnabled() && campoPlaca.getText().equals("")) {
             vazio = true;
-        }else{
+        } else {
             vazio = false;
         }
         return vazio;
     }
-    
-    private boolean erroForm(){
-        boolean erro=false;     
-        if (txtErroConsulta.getForeground().getRed() == 255){
+
+    private boolean erroForm() {
+        boolean erro = false;
+        if (txtErroConsulta.getForeground().getRed() == 255) {
             erro = true;
         }
         return erro;
