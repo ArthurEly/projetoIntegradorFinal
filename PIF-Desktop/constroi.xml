@@ -35,10 +35,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
             <manifest>
                 <attribute name="Main-Class" value="${main.class}"/>
             </manifest>
-
-            <fileset dir="${src}/..">
-                <include name="src/**/*.png" />
-            </fileset>
         </jar>
 
         <zip destfile="${store.jar}">
