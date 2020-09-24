@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -238,11 +237,11 @@ public class OSListActivity extends AppCompatActivity {
                 colour = 0x333333;
             }
 
-            ((TextView) v.findViewById(R.id.PRODUCT)).setText(i.getName());
-            ((TextView) v.findViewById(R.id.PRICE)).setText(i.getPrice() + "");
-            ((TextView) v.findViewById(R.id.DATA)).setText(data);
-            ((TextView) v.findViewById(R.id.HORA)).setText(hora);
-            ((TextView) v.findViewById(R.id.MSG)).setText(i.getDescription());
+            ((TextView) v.findViewById(R.id.PRODUCT_PIECE_DESCRIPTION)).setText(i.getPiece_description());
+            ((TextView) v.findViewById(R.id.PIECE_PRICE)).setText(i.getPiece_price() + "");
+            ((TextView) v.findViewById(R.id.PRODUCT_SERVICE_DESCRIPTION)).setText(i.getService_description());
+            ((TextView) v.findViewById(R.id.PRICE_SERVICE)).setText(i.getService_price() + "");
+            ((TextView) v.findViewById(R.id.DATA)).setText(data+" às "+hora);
 
 
             l.addView(v);

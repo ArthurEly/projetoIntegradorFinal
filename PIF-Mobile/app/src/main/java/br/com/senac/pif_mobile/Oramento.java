@@ -48,50 +48,18 @@ public class Oramento /*IH*/ {
     }
 
     public static class Informações {
-        private double price = 0.00;
-        private String name = "Dildo Rosa";
-        private double service = 0.00;
-        private String description = "Presentinho pra você!";
+        private double piece_price = 0.00;
+        private double service_price = 0.00;
+        private String piece_description = "Presentinho pra você!";
+        private String service_description = "Presentinho pra você!";
         private Date date;
 
-        public Informações(double price, String name, double service, String description, Date date) {
-            this.price = price;
-            this.name = name;
-            this.service = service;
-            this.description = description;
+        public Informações(double piece_price, String piece_description, double service_price, String service_description, Date date) {
+            this.setPiece_price(piece_price);
+            this.setPiece_description(piece_description);
+            this.setService_price(service_price);
+            this.setService_description(service_description);
             this.date = date;
-        }
-
-        public double getPrice() {
-            return price;
-        }
-
-        public void setPrice(double price) {
-            this.price = price;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public double getService() {
-            return service;
-        }
-
-        public void setService(double service) {
-            this.service = service;
-        }
-
-        public String getDescription() {
-            return description;
-        }
-
-        public void setDescription(String description) {
-            this.description = description;
         }
 
         public Date getDate() {
@@ -100,6 +68,38 @@ public class Oramento /*IH*/ {
 
         public void setDate(Date date) {
             this.date = date;
+        }
+
+        public double getPiece_price() {
+            return piece_price;
+        }
+
+        public void setPiece_price(double piece_price) {
+            this.piece_price = piece_price;
+        }
+
+        public double getService_price() {
+            return service_price;
+        }
+
+        public void setService_price(double service_price) {
+            this.service_price = service_price;
+        }
+
+        public String getPiece_description() {
+            return piece_description;
+        }
+
+        public void setPiece_description(String piece_description) {
+            this.piece_description = piece_description;
+        }
+
+        public String getService_description() {
+            return service_description;
+        }
+
+        public void setService_description(String service_description) {
+            this.service_description = service_description;
         }
     }
 

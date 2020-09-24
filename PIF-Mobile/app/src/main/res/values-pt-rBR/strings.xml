@@ -11,6 +11,7 @@
     <string name="parecer">Pareceres Técnicos</string>
     <string name="orcas">Orçamentos</string>
     <string name="description">Descrição</string>
-    <string name="product">Peça</string>
     <string name="price">Preço</string>
+    <string name="piece_description">Descrição do peça</string>
+    <string name="service_description">Descrição do serviço</string>
 </resources>

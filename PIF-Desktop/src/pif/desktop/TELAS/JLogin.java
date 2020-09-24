@@ -74,6 +74,8 @@ public class JLogin extends javax.swing.JFrame {
         imageFrame.add(logo);
         this.getContentPane().setBackground(new Color(51,51,51));
         jPanel3.setBackground(new Color(51,51,51));
+        jLabel1.setText("Usuário");
+        jLabel2.setText("Senha");
         txtErroLogin.setForeground(new Color(51,51,51));
     }
 

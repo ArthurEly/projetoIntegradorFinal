@@ -11,5 +11,6 @@
     <string name="orcas">Budget</string>
     <string name="description">Description</string>
     <string name="price">Price</string>
-    <string name="product">Product</string>
+    <string name="piece_description">Piece description</string>
+    <string name="service_description">Service description</string>
 </resources>
