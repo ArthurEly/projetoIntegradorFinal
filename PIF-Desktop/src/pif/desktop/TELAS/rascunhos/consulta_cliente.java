@@ -932,17 +932,17 @@ public class consulta_cliente extends javax.swing.JFrame {
     
     private void atualizarTela(){
         this.setVisible(false);
-        List<Orcamento> orcs = new ArrayList<>();
-        List<OS> OSs = new ArrayList<>();
-        OrcamentoDAO orcDao = new OrcamentoDAO();
-        OsDAO osDao = new OsDAO();                       
-//        OSs = osDao.consultaOs("os_numero", os.getOsNumero());
-//        orcs = orcDao.consultarOrcamento(os.getOsNumero());
-//        consulta_os novaTela = new consulta_os(OSs.get(0),orcs);
-//        //por algum motivo, o método de mudar de tela ta dando erro. Tentar arrumar depois
-//        novaTela.setBounds(this.getX(), this.getY(),this.getWidth(),this.getHeight());
-//        novaTela.setExtendedState(this.getExtendedState());
-//        this.dispose();
-//        novaTela.setVisible(true);
+        Cliente c = new Cliente();
+        ClienteDAO cdao = new ClienteDAO(); 
+        Contato ctt = new Contato();
+        ContatoDAO cttdao = new ContatoDAO();
+        c = cdao.consultarCliente(cliente.getClienteCpfOuCnpj());
+        ctt = cttdao.consultarContato(cliente.getClienteCpfOuCnpj());
+        consulta_cliente novaTela = new consulta_cliente(c, ctt);
+        //por algum motivo, o método de mudar de tela ta dando erro. Tentar arrumar depois
+        novaTela.setBounds(this.getX(), this.getY(),this.getWidth(),this.getHeight());
+        novaTela.setExtendedState(this.getExtendedState());
+        this.dispose();
+        novaTela.setVisible(true);
     } 
 }

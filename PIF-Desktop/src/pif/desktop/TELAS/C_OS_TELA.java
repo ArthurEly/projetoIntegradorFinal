@@ -2492,6 +2492,7 @@ public class C_OS_TELA extends javax.swing.JFrame {
         campoVeiculoObservacoes.getText().equals("")
         ){
             vazio = true;
+            return vazio;
         } 
         else{
             vazio = false;
