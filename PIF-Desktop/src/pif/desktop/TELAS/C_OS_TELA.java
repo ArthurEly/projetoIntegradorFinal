@@ -102,7 +102,7 @@ public class C_OS_TELA extends javax.swing.JFrame {
 
     Image icon;
     private TelaUtils u = new TelaUtils();
-    private boolean rudAberto; 
+    private boolean rudAberto;
     private boolean userAberto;
     private static RUD_OS_TELA RUD_OS;
     private static C_OS_TELA C_OS;
@@ -114,12 +114,12 @@ public class C_OS_TELA extends javax.swing.JFrame {
     /**
      * Creates new form CADASTRAR_OS
      */
-    public C_OS_TELA(Colab cb, Contato ctt) {   
+    public C_OS_TELA(Colab cb, Contato ctt) {
         try {
-            icon = ImageIO.read(new File("src/resources/icon.png"));           
+            icon = ImageIO.read(getClass().getResource("/resources/icon.png"));
         } catch (IOException e) {
             e.printStackTrace();
-        }    
+        }
         this.setLocationRelativeTo(null);
         setC_OS(this);
         initComponents();
@@ -143,7 +143,7 @@ public class C_OS_TELA extends javax.swing.JFrame {
         USER_LOGADO.setCOLAB_GERENTE(cb.isIsGerente());
         OsDAO os = new OsDAO();
         txtNumeroOS.setText(os.numeroOsAtual());
-        painelSecoes.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 40, 40)), "Seja bem-vindo(a) "+USER_LOGADO.getCOLAB_NOME()+"! Para qual seção deseja ir?", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12)));
+        painelSecoes.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 40, 40)), "Seja bem-vindo(a) " + USER_LOGADO.getCOLAB_NOME() + "! Para qual seção deseja ir?", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12)));
         RUD_OS = new RUD_OS_TELA();
         USER_TELA = new USER_TELA();
         RELATORIO = new RELATORIO_TELA();
@@ -174,8 +174,8 @@ public class C_OS_TELA extends javax.swing.JFrame {
         btnIrCadastroOS.setBorderPainted(false);
         btnIrCadastroOS.setContentAreaFilled(false);
         btnIrCadastroOS.setFocusPainted(false);
-        btnIrCadastroOS.setOpaque(true);   
-        if (USER_LOGADO.isCOLAB_GERENTE()){
+        btnIrCadastroOS.setOpaque(true);
+        if (USER_LOGADO.isCOLAB_GERENTE()) {
             //<editor-fold defaultstate="collapsed" desc="se for gerente">
             JButton btnIrRelatorios = new JButton();
             btnIrRelatorios.setBackground(new java.awt.Color(204, 0, 0));
@@ -193,29 +193,29 @@ public class C_OS_TELA extends javax.swing.JFrame {
             javax.swing.GroupLayout painelOpcoesCRUDLayout = new javax.swing.GroupLayout(jFilho);
             jFilho.setLayout(painelOpcoesCRUDLayout);
             painelOpcoesCRUDLayout.setHorizontalGroup(
-                painelOpcoesCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(painelOpcoesCRUDLayout.createSequentialGroup()
-                    .addGroup(painelOpcoesCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(painelOpcoesCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    painelOpcoesCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(painelOpcoesCRUDLayout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(btnIrCadastroOS, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelOpcoesCRUDLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(btnIrRelatorios, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(btnIrConsultaOS, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap())
+                                    .addGroup(painelOpcoesCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(painelOpcoesCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(painelOpcoesCRUDLayout.createSequentialGroup()
+                                                            .addGap(10, 10, 10)
+                                                            .addComponent(btnIrCadastroOS, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelOpcoesCRUDLayout.createSequentialGroup()
+                                                            .addContainerGap()
+                                                            .addComponent(btnIrRelatorios, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(btnIrConsultaOS, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addContainerGap())
             );
             painelOpcoesCRUDLayout.setVerticalGroup(
-                painelOpcoesCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelOpcoesCRUDLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(btnIrCadastroOS, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(18, 18, 18)
-                    .addComponent(btnIrConsultaOS, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(18, 18, 18)
-                    .addComponent(btnIrRelatorios, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap())
+                    painelOpcoesCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelOpcoesCRUDLayout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addComponent(btnIrCadastroOS, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(btnIrConsultaOS, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(btnIrRelatorios, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addContainerGap())
             );
             //</editor-fold>
         } else {
@@ -223,30 +223,30 @@ public class C_OS_TELA extends javax.swing.JFrame {
             javax.swing.GroupLayout painelOpcoesCRUDLayout = new javax.swing.GroupLayout(jFilho);
             jFilho.setLayout(painelOpcoesCRUDLayout);
             painelOpcoesCRUDLayout.setHorizontalGroup(
-                painelOpcoesCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(painelOpcoesCRUDLayout.createSequentialGroup()
-                    .addGap(10, 10, 10)
-                    .addGroup(painelOpcoesCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btnIrCadastroOS, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnIrConsultaOS, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap())
+                    painelOpcoesCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(painelOpcoesCRUDLayout.createSequentialGroup()
+                                    .addGap(10, 10, 10)
+                                    .addGroup(painelOpcoesCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(btnIrCadastroOS, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(btnIrConsultaOS, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addContainerGap())
             );
             painelOpcoesCRUDLayout.setVerticalGroup(
-                painelOpcoesCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelOpcoesCRUDLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(btnIrCadastroOS, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(18, 18, 18)
-                    .addComponent(btnIrConsultaOS, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(18, 18, 18)
-                    .addContainerGap())
+                    painelOpcoesCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelOpcoesCRUDLayout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addComponent(btnIrCadastroOS, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(btnIrConsultaOS, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addContainerGap())
             );
             //</editor-fold>
         }
         painelCRUD.add(jFilho);
-        painelCRUD.setLayout(new GridLayout(1,1));
-        this.setMinimumSize(new Dimension(1368,768));
-        //</editor-fold>           
+        painelCRUD.setLayout(new GridLayout(1, 1));
+        this.setMinimumSize(new Dimension(1368, 768));
+        //</editor-fold>
     }
 
     /**
@@ -1549,33 +1549,33 @@ public class C_OS_TELA extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-  
-    private void irConsultaOS(java.awt.event.MouseEvent evt) {                                             
+
+    private void irConsultaOS(java.awt.event.MouseEvent evt) {
         u.irDePara(this, getRUD_OS());
-    }  
-    
-    private void irRelatorios(java.awt.event.MouseEvent evt) {                                             
+    }
+
+    private void irRelatorios(java.awt.event.MouseEvent evt) {
         u.irDePara(this, getRELATORIO());
-    } 
-    
+    }
+
     private void cadastrarDados(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cadastrarDados
         /*
             MÉTODO RESPONSÁVEL POR CADASTRAR OS DADOS DO CLIENTE
-        */
+         */
         btnClicado(evt);
-        if (vazioForm() == true){
+        if (vazioForm() == true) {
             txtErroCadastrar.setText("Algum campo do formulário está vazio.");
-            txtErroCadastrar.setForeground(new Color(255,0,0));
-        } else if (erroForm()){
+            txtErroCadastrar.setForeground(new Color(255, 0, 0));
+        } else if (erroForm()) {
             txtErroCadastrar.setText("Algum campo do formulário apresenta um erro.");
-            txtErroCadastrar.setForeground(new Color(255,0,0));
-        }else{
+            txtErroCadastrar.setForeground(new Color(255, 0, 0));
+        } else {
             Cliente cliente = new Cliente();
             cliente.setClienteCpfOuCnpj(fs.retirarFormatacao(campoCpfOuCnpj.getText()));
-            cliente.setClienteRgOuIe(campoRgOuIe.getText());       
+            cliente.setClienteRgOuIe(campoRgOuIe.getText());
             cliente.setClienteNomeOuRazao(campoNomeOuRazao.getText());
             cliente.setClienteSobrenomeOuFantasia(campoSobrenomeOuFantasia.getText());
-            if (campoCpfOuCnpj.getText().length() > 14){
+            if (campoCpfOuCnpj.getText().length() > 14) {
                 cliente.setClientePj(true);
             } else {
                 cliente.setClientePj(false);
@@ -1587,10 +1587,10 @@ public class C_OS_TELA extends javax.swing.JFrame {
             cliente.setClienteEndLograd(campoLograd.getText());
             cliente.setClienteEndLogradNum(campoLogradNum.getText());
             cliente.setClienteEndLogradComp(campoLogradComp.getText());
-            if (campoDataNascimento.isEnabled()){
+            if (campoDataNascimento.isEnabled()) {
                 cliente.setClienteDataNasc(fs.retirarFormatacaoData(campoDataNascimento.getText()));
             } else {
-            
+
             }
 
             Contato contato = new Contato();
@@ -1612,131 +1612,131 @@ public class C_OS_TELA extends javax.swing.JFrame {
             veiculo.setVeiculoAcessorios(campoVeiculoAcessorios.getText());
             veiculo.setVeiculoDefeitoCliente(campoVeiculoDefeitoCliente.getText());
             veiculo.setVeiculoObservacoes(campoVeiculoObservacoes.getText());
-            
-            Orcamento o = new Orcamento();           
+
+            Orcamento o = new Orcamento();
             o.setOrcamento_preco_pecas(fs.retirarFormatacaoDinheiro(campoPrecoPeca.getText()));
             o.setOrcamento_preco_servicos(fs.retirarFormatacaoDinheiro(campoPrecoServico.getText()));
             o.setOrcamento_descricao_pecas(fs.retirarFormatacaoDinheiro(campoDescricaoPeca.getText()));
             o.setOrcamento_descricao_servicos(fs.retirarFormatacaoDinheiro(campoDescricaoServico.getText()));
 
             CadastroDAO cadastrar = new CadastroDAO();
-            if (campoRgOuIe.isEnabled()){
+            if (campoRgOuIe.isEnabled()) {
                 cadastrar.cadastrarDados(cliente, contato, veiculo, os, o, false);
-            }else{
+            } else {
                 cadastrar.cadastrarDados(cliente, contato, veiculo, os, o, true);
-            }               
+            }
             txtErroCadastrar.setForeground(new Color(0, 160, 40));
             txtErroCadastrar.setText("Usuário cadastrado com sucesso!");
             OsDAO osdao = new OsDAO();
             txtNumeroOS.setText(osdao.numeroOsAtual());
-            limparCampos();           
+            limparCampos();
         }
     }//GEN-LAST:event_cadastrarDados
 
     private void btnPressionado(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPressionado
-        evt.getComponent().setBackground(new Color(100,0,0));
+        evt.getComponent().setBackground(new Color(100, 0, 0));
     }//GEN-LAST:event_btnPressionado
 
     private void btnSolto(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSolto
-        evt.getComponent().setBackground(new Color(204,0,0));
+        evt.getComponent().setBackground(new Color(204, 0, 0));
     }//GEN-LAST:event_btnSolto
 
     private void limparDados(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_limparDados
         btnClicado(evt);
         limparCampos();
     }//GEN-LAST:event_limparDados
-    
+
     //<editor-fold defaultstate="collapsed" desc="métodos teclados">
     private void tecladaRg(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaRg
         String txtV = vs.rgOuIe(evt, campoRgOuIe.getText());
-        if (txtV == ""){
-            txtErroRgOuIe.setForeground(new Color(240,240,240));           
-        } else {           
+        if (txtV == "") {
+            txtErroRgOuIe.setForeground(new Color(240, 240, 240));
+        } else {
             txtErroRgOuIe.setText(txtV);
-            if (txtV.endsWith(".")){
-                txtErroRgOuIe.setForeground(new Color(255,0,0));
+            if (txtV.endsWith(".")) {
+                txtErroRgOuIe.setForeground(new Color(255, 0, 0));
             } else {
                 txtErroRgOuIe.setForeground(new Color(0, 160, 40));
-            }           
-        }              
+            }
+        }
     }//GEN-LAST:event_tecladaRg
-    
+
     private void tecladaNomeOuRazao(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaNomeOuRazao
         String txtV = vs.nomes30(evt, campoNomeOuRazao.getText());
-        if (txtV == ""){
-            txtErroNomeOuRazao.setForeground(new Color(240,240,240));           
-        } else {     
+        if (txtV == "") {
+            txtErroNomeOuRazao.setForeground(new Color(240, 240, 240));
+        } else {
             txtErroNomeOuRazao.setText(txtV);
-            if (txtV.endsWith(".")){
-                txtErroNomeOuRazao.setForeground(new Color(255,0,0));
+            if (txtV.endsWith(".")) {
+                txtErroNomeOuRazao.setForeground(new Color(255, 0, 0));
             } else {
                 txtErroNomeOuRazao.setForeground(new Color(0, 160, 40));
-            }           
+            }
         }
     }//GEN-LAST:event_tecladaNomeOuRazao
 
     private void tecladaSobrenomeOuFantasia(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaSobrenomeOuFantasia
         String txtV = vs.sobrenomeOuFantasia(evt, campoSobrenomeOuFantasia.getText());
-        if (txtV == ""){
-            txtErroSobrenomeOuFantasia.setForeground(new Color(240,240,240));           
-        } else {  
+        if (txtV == "") {
+            txtErroSobrenomeOuFantasia.setForeground(new Color(240, 240, 240));
+        } else {
             txtErroSobrenomeOuFantasia.setText(txtV);
-            if (txtV.endsWith(".")){
-                txtErroSobrenomeOuFantasia.setForeground(new Color(255,0,0));
+            if (txtV.endsWith(".")) {
+                txtErroSobrenomeOuFantasia.setForeground(new Color(255, 0, 0));
             } else {
                 txtErroSobrenomeOuFantasia.setForeground(new Color(0, 160, 40));
-            }           
+            }
         }
     }//GEN-LAST:event_tecladaSobrenomeOuFantasia
 
     private void tecladaEmail(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaEmail
         String txtV = vs.email(evt, campoEmail.getText());
-        if (txtV == ""){
-            txtErroEmail.setForeground(new Color(240,240,240));           
+        if (txtV == "") {
+            txtErroEmail.setForeground(new Color(240, 240, 240));
         } else {
             txtErroEmail.setText(txtV);
-            if (txtV.endsWith(".")){
-                txtErroEmail.setForeground(new Color(255,0,0));
+            if (txtV.endsWith(".")) {
+                txtErroEmail.setForeground(new Color(255, 0, 0));
             } else {
                 txtErroEmail.setForeground(new Color(0, 160, 40));
-            }           
+            }
         }
     }//GEN-LAST:event_tecladaEmail
 
     private void tecladaCpf(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaCpf
         /*
         SERVE PARA AS VERIFICAÇÕES E FORMATAÇÕES DE STRINGS
-        */
-        if ("\b".equals(Character.toString(evt.getKeyChar()))){
+         */
+        if ("\b".equals(Character.toString(evt.getKeyChar()))) {
             campoCpfOuCnpj.setText(fs.apagar(campoCpfOuCnpj.getText(), evt.getComponent().getName()));
         }
         String txtV = vs.cpfOuCnpj(evt, campoCpfOuCnpj.getText());
-        if (txtV == ""){
-            txtErroCpfOuCnpj.setForeground(new Color(240,240,240));
-        } else {           
+        if (txtV == "") {
+            txtErroCpfOuCnpj.setForeground(new Color(240, 240, 240));
+        } else {
             txtErroCpfOuCnpj.setText(txtV);
-            if (txtV.endsWith(".")){
-                txtErroCpfOuCnpj.setForeground(new Color(255,0,0));
+            if (txtV.endsWith(".")) {
+                txtErroCpfOuCnpj.setForeground(new Color(255, 0, 0));
             } else {
                 txtErroCpfOuCnpj.setForeground(new Color(0, 160, 40));
             }
         }
         String txtF = fs.cpfOuCnpj(evt, campoCpfOuCnpj.getText());
-        campoCpfOuCnpj.setText(txtF);  
+        campoCpfOuCnpj.setText(txtF);
     }//GEN-LAST:event_tecladaCpf
 
     private void tecladaTel(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaTel
-        if ("tel1".equals(evt.getComponent().getName())){
-            if ("\b".equals(Character.toString(evt.getKeyChar()))){
-            campoNumTel1.setText(fs.apagar(campoNumTel1.getText(), evt.getComponent().getName()));
+        if ("tel1".equals(evt.getComponent().getName())) {
+            if ("\b".equals(Character.toString(evt.getKeyChar()))) {
+                campoNumTel1.setText(fs.apagar(campoNumTel1.getText(), evt.getComponent().getName()));
             }
             String txtV = vs.telefone(evt, campoNumTel1.getText());
-            if (txtV == ""){
-                txtErroNumTel1.setForeground(new Color(240,240,240));
-            } else {               
+            if (txtV == "") {
+                txtErroNumTel1.setForeground(new Color(240, 240, 240));
+            } else {
                 txtErroNumTel1.setText(txtV);
-                if (txtV.endsWith(".")){
-                    txtErroNumTel1.setForeground(new Color(255,0,0));
+                if (txtV.endsWith(".")) {
+                    txtErroNumTel1.setForeground(new Color(255, 0, 0));
                 } else {
                     txtErroNumTel1.setForeground(new Color(0, 160, 40));
                 }
@@ -1744,174 +1744,174 @@ public class C_OS_TELA extends javax.swing.JFrame {
             String txtF = fs.telefone1(evt, campoNumTel1.getText());
             campoNumTel1.setText(txtF);
         } else {
-            if ("\b".equals(Character.toString(evt.getKeyChar()))){
-            campoNumTel2.setText(fs.apagar(campoNumTel2.getText(), evt.getComponent().getName()));
+            if ("\b".equals(Character.toString(evt.getKeyChar()))) {
+                campoNumTel2.setText(fs.apagar(campoNumTel2.getText(), evt.getComponent().getName()));
             }
             String txtV = vs.telefone(evt, campoNumTel2.getText());
-            if (txtV == ""){
-                txtErroNumTel2.setForeground(new Color(240,240,240));
-            } else {               
+            if (txtV == "") {
+                txtErroNumTel2.setForeground(new Color(240, 240, 240));
+            } else {
                 txtErroNumTel2.setText(txtV);
-                if (txtV.endsWith(".")){
-                    txtErroNumTel2.setForeground(new Color(255,0,0));
+                if (txtV.endsWith(".")) {
+                    txtErroNumTel2.setForeground(new Color(255, 0, 0));
                 } else {
                     txtErroNumTel2.setForeground(new Color(0, 160, 40));
                 }
             }
-            if (campoNumTel2.getText().length() == 0){
-                txtErroNumTel2.setForeground(new Color(240,240,240));
+            if (campoNumTel2.getText().length() == 0) {
+                txtErroNumTel2.setForeground(new Color(240, 240, 240));
             }
             String txtF = fs.telefone2(evt, campoNumTel2.getText());
             campoNumTel2.setText(txtF);
-        }       
+        }
     }//GEN-LAST:event_tecladaTel
 
     private void tecladaCep(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaCep
-        if ("\b".equals(Character.toString(evt.getKeyChar()))){
+        if ("\b".equals(Character.toString(evt.getKeyChar()))) {
             campoCep.setText(fs.apagar(campoCep.getText(), evt.getComponent().getName()));
-            }
-            String txtV = vs.cep(evt, campoCep.getText());
-            if (txtV == ""){
-                txtErroCep.setForeground(new Color(240,240,240));
+        }
+        String txtV = vs.cep(evt, campoCep.getText());
+        if (txtV == "") {
+            txtErroCep.setForeground(new Color(240, 240, 240));
+        } else {
+            txtErroCep.setText(txtV);
+            if (txtV.endsWith(".")) {
+                txtErroCep.setForeground(new Color(255, 0, 0));
             } else {
-                txtErroCep.setText(txtV);
-                if (txtV.endsWith(".")){
-                    txtErroCep.setForeground(new Color(255,0,0));
-                } else {
-                    txtErroCep.setForeground(new Color(0, 160, 40));
-                }
+                txtErroCep.setForeground(new Color(0, 160, 40));
             }
-            String txtF = fs.cep(campoCep.getText());
-            campoCep.setText(txtF);
+        }
+        String txtF = fs.cep(campoCep.getText());
+        campoCep.setText(txtF);
     }//GEN-LAST:event_tecladaCep
 
     private void tecladoCidade(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladoCidade
         String txtV = vs.nomes30(evt, campoCidade.getText());
-        if (txtV == ""){
-            txtErroCidade.setForeground(new Color(240,240,240));           
-        } else {  
+        if (txtV == "") {
+            txtErroCidade.setForeground(new Color(240, 240, 240));
+        } else {
             txtErroCidade.setText(txtV);
-            if (txtV.endsWith(".")){
-                txtErroCidade.setForeground(new Color(255,0,0));
+            if (txtV.endsWith(".")) {
+                txtErroCidade.setForeground(new Color(255, 0, 0));
             } else {
                 txtErroCidade.setForeground(new Color(0, 160, 40));
-            }           
+            }
         }
     }//GEN-LAST:event_tecladoCidade
 
     private void tecladaBairro(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaBairro
         String txtV = vs.nomes30(evt, campoBairro.getText());
-        if (txtV == ""){
-            txtErroBairro.setForeground(new Color(240,240,240));           
-        } else {        
+        if (txtV == "") {
+            txtErroBairro.setForeground(new Color(240, 240, 240));
+        } else {
             txtErroBairro.setText(txtV);
-            if (txtV.endsWith(".")){
-                txtErroBairro.setForeground(new Color(255,0,0));
+            if (txtV.endsWith(".")) {
+                txtErroBairro.setForeground(new Color(255, 0, 0));
             } else {
                 txtErroBairro.setForeground(new Color(0, 160, 40));
-            }           
+            }
         }
     }//GEN-LAST:event_tecladaBairro
 
     private void tecladaLograd(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaLograd
         String txtV = vs.lograd(evt, campoLograd.getText());
-        if (txtV == ""){
-            txtErroLograd.setForeground(new Color(240,240,240));           
-        } else {           
+        if (txtV == "") {
+            txtErroLograd.setForeground(new Color(240, 240, 240));
+        } else {
             txtErroLograd.setText(txtV);
-            if (txtV.endsWith(".")){
-                txtErroLograd.setForeground(new Color(255,0,0));
+            if (txtV.endsWith(".")) {
+                txtErroLograd.setForeground(new Color(255, 0, 0));
             } else {
                 txtErroLograd.setForeground(new Color(0, 160, 40));
-            }           
+            }
         }
     }//GEN-LAST:event_tecladaLograd
 
     private void tecladaLogradNum(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaLogradNum
         String txtV = vs.logradNum(evt, campoLogradNum.getText());
-        if (txtV == ""){
-            txtErroLogradNum.setForeground(new Color(240,240,240));           
-        } else {           
+        if (txtV == "") {
+            txtErroLogradNum.setForeground(new Color(240, 240, 240));
+        } else {
             txtErroLogradNum.setText(txtV);
-            if (txtV.endsWith(".")){
-                txtErroLogradNum.setForeground(new Color(255,0,0));
+            if (txtV.endsWith(".")) {
+                txtErroLogradNum.setForeground(new Color(255, 0, 0));
             } else {
                 txtErroLogradNum.setForeground(new Color(0, 160, 40));
-            }           
+            }
         }
     }//GEN-LAST:event_tecladaLogradNum
 
     private void tecladaLogradComp(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaLogradComp
         String txtV = vs.nomes30(evt, campoLogradComp.getText());
-        if (txtV == ""){
-            txtErroLogradComp.setForeground(new Color(240,240,240));           
-        } else {     
+        if (txtV == "") {
+            txtErroLogradComp.setForeground(new Color(240, 240, 240));
+        } else {
             txtErroLogradComp.setText(txtV);
-            if (txtV.endsWith(".")){
-                txtErroLogradComp.setForeground(new Color(255,0,0));
+            if (txtV.endsWith(".")) {
+                txtErroLogradComp.setForeground(new Color(255, 0, 0));
             } else {
                 txtErroLogradComp.setForeground(new Color(0, 160, 40));
-            }           
+            }
         }
     }//GEN-LAST:event_tecladaLogradComp
 
     private void tecladaVeiculoTipo(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaVeiculoTipo
         String txtV = vs.veiculo25(evt, campoVeiculoTipo.getText());
-        if (txtV == ""){
-            txtErroVeiculoTipo.setForeground(new Color(240,240,240));           
-        } else {  
+        if (txtV == "") {
+            txtErroVeiculoTipo.setForeground(new Color(240, 240, 240));
+        } else {
             txtErroVeiculoTipo.setText(txtV);
-            if (txtV.endsWith(".")){
-                txtErroVeiculoTipo.setForeground(new Color(255,0,0));
+            if (txtV.endsWith(".")) {
+                txtErroVeiculoTipo.setForeground(new Color(255, 0, 0));
             } else {
                 txtErroVeiculoTipo.setForeground(new Color(0, 160, 40));
-            }           
+            }
         }
     }//GEN-LAST:event_tecladaVeiculoTipo
 
     private void tecladaVeiculoFabricante(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaVeiculoFabricante
         String txtV = vs.veiculo25(evt, campoVeiculoFabricante.getText());
-        if (txtV == ""){
-            txtErroVeiculoFabricante.setForeground(new Color(240,240,240));           
-        } else {           
+        if (txtV == "") {
+            txtErroVeiculoFabricante.setForeground(new Color(240, 240, 240));
+        } else {
             txtErroVeiculoFabricante.setText(txtV);
-            if (txtV.endsWith(".")){
-                txtErroVeiculoFabricante.setForeground(new Color(255,0,0));
+            if (txtV.endsWith(".")) {
+                txtErroVeiculoFabricante.setForeground(new Color(255, 0, 0));
             } else {
                 txtErroVeiculoFabricante.setForeground(new Color(0, 160, 40));
-            }           
+            }
         }
     }//GEN-LAST:event_tecladaVeiculoFabricante
 
     private void tecladaVeiculoModelo(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaVeiculoModelo
         String txtV = vs.veiculoModelo(evt, campoVeiculoModelo.getText());
-        if (txtV == ""){
-            txtErroVeiculoModelo.setForeground(new Color(240,240,240));           
-        } else {           
+        if (txtV == "") {
+            txtErroVeiculoModelo.setForeground(new Color(240, 240, 240));
+        } else {
             txtErroVeiculoModelo.setText(txtV);
-            if (txtV.endsWith(".")){
-                txtErroVeiculoModelo.setForeground(new Color(255,0,0));
+            if (txtV.endsWith(".")) {
+                txtErroVeiculoModelo.setForeground(new Color(255, 0, 0));
             } else {
                 txtErroVeiculoModelo.setForeground(new Color(0, 160, 40));
-            }           
+            }
         }
     }//GEN-LAST:event_tecladaVeiculoModelo
 
     private void tecladaVeiculoPlaca(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaVeiculoPlaca
         String txtV = vs.veiculoPlaca(evt, campoVeiculoPlaca.getText());
-        if (txtV == ""){
-            txtErroVeiculoPlaca.setForeground(new Color(240,240,240));           
-        } else {           
+        if (txtV == "") {
+            txtErroVeiculoPlaca.setForeground(new Color(240, 240, 240));
+        } else {
             txtErroVeiculoPlaca.setText(txtV);
-            if (txtV.endsWith(".")){
-                txtErroVeiculoPlaca.setForeground(new Color(255,0,0));
+            if (txtV.endsWith(".")) {
+                txtErroVeiculoPlaca.setForeground(new Color(255, 0, 0));
             } else {
                 txtErroVeiculoPlaca.setForeground(new Color(0, 160, 40));
-            }           
+            }
         }
-        if (campoVeiculoPlaca.getText().length() > 7){
+        if (campoVeiculoPlaca.getText().length() > 7) {
             int calc = campoVeiculoPlaca.getText().length() - 7;
-            campoVeiculoPlaca.setText(campoVeiculoPlaca.getText().substring(0,campoVeiculoPlaca.getText().length()-calc));
+            campoVeiculoPlaca.setText(campoVeiculoPlaca.getText().substring(0, campoVeiculoPlaca.getText().length() - calc));
         }
         String txtF = fs.placa(campoVeiculoPlaca.getText());
         campoVeiculoPlaca.setText(txtF);
@@ -1919,177 +1919,174 @@ public class C_OS_TELA extends javax.swing.JFrame {
 
     private void tecladaVeiculoCor(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaVeiculoCor
         String txtV = vs.veiculo25(evt, campoVeiculoCor.getText());
-        if (txtV == ""){
-            txtErroVeiculoCor.setForeground(new Color(240,240,240));           
-        } else {           
+        if (txtV == "") {
+            txtErroVeiculoCor.setForeground(new Color(240, 240, 240));
+        } else {
             txtErroVeiculoCor.setText(txtV);
-            if (txtV.endsWith(".")){
-                txtErroVeiculoCor.setForeground(new Color(255,0,0));
+            if (txtV.endsWith(".")) {
+                txtErroVeiculoCor.setForeground(new Color(255, 0, 0));
             } else {
                 txtErroVeiculoCor.setForeground(new Color(0, 160, 40));
-            }           
+            }
         }
     }//GEN-LAST:event_tecladaVeiculoCor
 
     private void tecladaVeiculoAno(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaVeiculoAno
         String txtV = vs.veiculoAno(evt, campoVeiculoAno.getText());
-        if (vs.veiculoAno(evt, campoVeiculoAno.getText()) == ""){
-            txtErroVeiculoAno.setForeground(new Color(240,240,240));           
-        } else {          
+        if (vs.veiculoAno(evt, campoVeiculoAno.getText()) == "") {
+            txtErroVeiculoAno.setForeground(new Color(240, 240, 240));
+        } else {
             txtErroVeiculoAno.setText(txtV);
-            if (txtV.endsWith(".")){
-                txtErroVeiculoAno.setForeground(new Color(255,0,0));
+            if (txtV.endsWith(".")) {
+                txtErroVeiculoAno.setForeground(new Color(255, 0, 0));
             } else {
                 txtErroVeiculoAno.setForeground(new Color(0, 160, 40));
-            }           
+            }
         }
     }//GEN-LAST:event_tecladaVeiculoAno
 
     private void tecladaVeiculoAcessorios(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaVeiculoAcessorios
         String txtV = vs.veiculo255(evt, campoVeiculoAcessorios.getText());
-        if (vs.veiculo255(evt, campoVeiculoAcessorios.getText()) == ""){
-            txtErroVeiculoAcessorios.setForeground(new Color(240,240,240));           
-        } else {           
+        if (vs.veiculo255(evt, campoVeiculoAcessorios.getText()) == "") {
+            txtErroVeiculoAcessorios.setForeground(new Color(240, 240, 240));
+        } else {
             txtErroVeiculoAcessorios.setText(txtV);
-            if (txtV.endsWith(".")){
-                txtErroVeiculoAcessorios.setForeground(new Color(255,0,0));
+            if (txtV.endsWith(".")) {
+                txtErroVeiculoAcessorios.setForeground(new Color(255, 0, 0));
             } else {
                 txtErroVeiculoAcessorios.setForeground(new Color(0, 160, 40));
-            }           
+            }
         }
     }//GEN-LAST:event_tecladaVeiculoAcessorios
 
     private void tecladaVeiculoObservacoes(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaVeiculoObservacoes
         String txtV = vs.veiculo255(evt, campoVeiculoObservacoes.getText());
-        if (vs.veiculo255(evt, campoVeiculoObservacoes.getText()) == ""){
-            txtErroVeiculoObservacoes.setForeground(new Color(240,240,240));           
-        } else {           
+        if (vs.veiculo255(evt, campoVeiculoObservacoes.getText()) == "") {
+            txtErroVeiculoObservacoes.setForeground(new Color(240, 240, 240));
+        } else {
             txtErroVeiculoObservacoes.setText(txtV);
-            if (txtV.endsWith(".")){
-                txtErroVeiculoObservacoes.setForeground(new Color(255,0,0));
+            if (txtV.endsWith(".")) {
+                txtErroVeiculoObservacoes.setForeground(new Color(255, 0, 0));
             } else {
                 txtErroVeiculoObservacoes.setForeground(new Color(0, 160, 40));
-            }           
+            }
         }
     }//GEN-LAST:event_tecladaVeiculoObservacoes
 
     private void tecladaPrecoPeca(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaPrecoPeca
-        if ("\b".equals(Character.toString(evt.getKeyChar()))){
+        if ("\b".equals(Character.toString(evt.getKeyChar()))) {
             campoPrecoPeca.setText(fs.apagar(campoPrecoPeca.getText(), evt.getComponent().getName()));
         }
         String txt = vs.orcamento(evt, campoPrecoPeca.getText());
-        if ("".equals(txt)){
-            if (campoPrecoPeca.getText().length() >= 10){
+        if ("".equals(txt)) {
+            if (campoPrecoPeca.getText().length() >= 10) {
                 evt.consume();
-                txtErroPrecoPeca.setForeground(new Color(255,0,0));
+                txtErroPrecoPeca.setForeground(new Color(255, 0, 0));
                 txtErroPrecoPeca.setText("Tamanho máximo atingido.");
             } else {
-                txtErroPrecoPeca.setForeground(new Color(240,240,240));
-                String txtF = fs.dinheiro(evt,campoPrecoPeca.getText());
+                txtErroPrecoPeca.setForeground(new Color(240, 240, 240));
+                String txtF = fs.dinheiro(evt, campoPrecoPeca.getText());
                 campoPrecoPeca.setText(txtF);
             }
-        }
-        else{
+        } else {
             txtErroPrecoPeca.setText(txt);
-            if (txt.endsWith("números.")){
-                txtErroPrecoPeca.setForeground(new Color(255,0,0));
+            if (txt.endsWith("números.")) {
+                txtErroPrecoPeca.setForeground(new Color(255, 0, 0));
             }
-        }           
+        }
     }//GEN-LAST:event_tecladaPrecoPeca
 
     private void tecladaPrevisaoSaida(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaPrevisaoSaida
-        if ("\b".equals(Character.toString(evt.getKeyChar()))){
+        if ("\b".equals(Character.toString(evt.getKeyChar()))) {
             campoPrevisaoSaida.setText(fs.apagar(campoPrevisaoSaida.getText(), evt.getComponent().getName()));
         }
         String txtV = vs.data(evt, campoPrevisaoSaida.getText());
-        if (txtV == ""){
-            txtErroPrevisaoSaida.setForeground(new Color(240,240,240));           
-        } 
-        else if (txtV.endsWith("números.")){
-            campoPrevisaoSaida.setText(campoPrevisaoSaida.getText().substring(0, campoPrevisaoSaida.getText().length()-1));
-        } 
-        else{           
+        if (txtV == "") {
+            txtErroPrevisaoSaida.setForeground(new Color(240, 240, 240));
+        } else if (txtV.endsWith("números.")) {
+            campoPrevisaoSaida.setText(campoPrevisaoSaida.getText().substring(0, campoPrevisaoSaida.getText().length() - 1));
+        } else {
             txtErroPrevisaoSaida.setText(txtV);
-            if (txtV.endsWith(".")){
-                txtErroPrevisaoSaida.setForeground(new Color(255,0,0));
+            if (txtV.endsWith(".")) {
+                txtErroPrevisaoSaida.setForeground(new Color(255, 0, 0));
             } else {
                 txtErroPrevisaoSaida.setForeground(new Color(0, 160, 40));
-            }           
+            }
         }
-        if (campoPrevisaoSaida.getText().length() > 10){
+        if (campoPrevisaoSaida.getText().length() > 10) {
             int calc = campoPrevisaoSaida.getText().length() - 10;
-            campoPrevisaoSaida.setText(campoPrevisaoSaida.getText().substring(0,campoPrevisaoSaida.getText().length()-calc));
+            campoPrevisaoSaida.setText(campoPrevisaoSaida.getText().substring(0, campoPrevisaoSaida.getText().length() - calc));
         }
         String txtF = fs.data(campoPrevisaoSaida.getText());
         campoPrevisaoSaida.setText(txtF);
     }//GEN-LAST:event_tecladaPrevisaoSaida
 
     private void tecladaVeiculoDefeitoCliente(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaVeiculoDefeitoCliente
-        if (vs.veiculo255(evt, campoVeiculoDefeitoCliente.getText()) == ""){
-            txtErroVeiculoDefeitoCliente.setForeground(new Color(240,240,240));           
+        if (vs.veiculo255(evt, campoVeiculoDefeitoCliente.getText()) == "") {
+            txtErroVeiculoDefeitoCliente.setForeground(new Color(240, 240, 240));
         } else {
             String txt = vs.veiculo255(evt, campoVeiculoDefeitoCliente.getText());
             txtErroVeiculoDefeitoCliente.setText(txt);
-            if (txt.endsWith(".")){
-                txtErroVeiculoDefeitoCliente.setForeground(new Color(255,0,0));
+            if (txt.endsWith(".")) {
+                txtErroVeiculoDefeitoCliente.setForeground(new Color(255, 0, 0));
             } else {
                 txtErroVeiculoDefeitoCliente.setForeground(new Color(0, 160, 40));
-            }           
+            }
         }
     }//GEN-LAST:event_tecladaVeiculoDefeitoCliente
     //</editor-fold>
-       
+
     private void verificarCliente(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_verificarCliente
-        if (campoCpfOuCnpj.getText().length() == 14 || campoCpfOuCnpj.getText().length() == 18){ 
+        if (campoCpfOuCnpj.getText().length() == 14 || campoCpfOuCnpj.getText().length() == 18) {
 //            if (vs.isCPF(campoCpfOuCnpj.getText()) || vs.isCNPJ(campoCpfOuCnpj.getText())){
-                ClienteDAO cdao = new ClienteDAO();
-                Cliente c = new Cliente();
-                c = cdao.consultarCliente(campoCpfOuCnpj.getText());
-                if (c.getClienteEndEstado() != null){
-                    ContatoDAO cttdao = new ContatoDAO();
-                    Contato ctt = new Contato();
-                    ctt = cttdao.consultarContato(c.getClienteCpfOuCnpj());
-                    campoDataNascimento.setEnabled(false);
-                    campoDataNascimento.setText(fs.botarData(c.getClienteDataNasc()));
-                    campoRgOuIe.setEnabled(false);
-                    campoRgOuIe.setText(c.getClienteRgOuIe());
-                    campoNomeOuRazao.setEnabled(false);
-                    campoNomeOuRazao.setText(c.getClienteNomeOuRazao());
-                    campoSobrenomeOuFantasia.setEnabled(false);
-                    campoSobrenomeOuFantasia.setText(c.getClienteSobrenomeOuFantasia());
-                    campoEmail.setEnabled(false);
-                    campoEmail.setText(ctt.getClienteContatoEmail());
-                    campoNumTel1.setEnabled(false);
-                    campoNumTel1.setText(fs.botarTelefone(ctt.getClienteContatoNumTel1()));
-                    campoNumTel2.setEnabled(false);
-                    if (ctt.getClienteContatoNumTel2() == null){
-                        campoNumTel2.setText("-"); 
-                    } else {
-                        campoNumTel2.setText(fs.botarTelefone(ctt.getClienteContatoNumTel2()));
-                    }
-                    caixaCombinacaoEstado.setEnabled(false);
-                    caixaCombinacaoEstado.setSelectedIndex(vs.verificarEstado(c.getClienteEndEstado()));
-                    campoCep.setEnabled(false);
-                    campoCep.setText(fs.botarCep(c.getClienteEndCep()));
-                    campoCidade.setEnabled(false);
-                    campoCidade.setText(c.getClienteEndCidade());
-                    campoBairro.setEnabled(false);
-                    campoBairro.setText(c.getClienteEndBairro());
-                    campoLograd.setEnabled(false);
-                    campoLograd.setText(c.getClienteEndLograd());
-                    campoLogradNum.setEnabled(false);
-                    campoLogradNum.setText(c.getClienteEndLogradNum());
-                    campoLogradComp.setEnabled(false);
-                    campoLogradComp.setText(c.getClienteEndLogradComp());
-                    txtErroCpfOuCnpj.setForeground(new Color(0,160,40));
-                    txtErroCpfOuCnpj.setText("Cliente já cadastrado!");
+            ClienteDAO cdao = new ClienteDAO();
+            Cliente c = new Cliente();
+            c = cdao.consultarCliente(campoCpfOuCnpj.getText());
+            if (c.getClienteEndEstado() != null) {
+                ContatoDAO cttdao = new ContatoDAO();
+                Contato ctt = new Contato();
+                ctt = cttdao.consultarContato(c.getClienteCpfOuCnpj());
+                campoDataNascimento.setEnabled(false);
+                campoDataNascimento.setText(fs.botarData(c.getClienteDataNasc()));
+                campoRgOuIe.setEnabled(false);
+                campoRgOuIe.setText(c.getClienteRgOuIe());
+                campoNomeOuRazao.setEnabled(false);
+                campoNomeOuRazao.setText(c.getClienteNomeOuRazao());
+                campoSobrenomeOuFantasia.setEnabled(false);
+                campoSobrenomeOuFantasia.setText(c.getClienteSobrenomeOuFantasia());
+                campoEmail.setEnabled(false);
+                campoEmail.setText(ctt.getClienteContatoEmail());
+                campoNumTel1.setEnabled(false);
+                campoNumTel1.setText(fs.botarTelefone(ctt.getClienteContatoNumTel1()));
+                campoNumTel2.setEnabled(false);
+                if (ctt.getClienteContatoNumTel2() == null) {
+                    campoNumTel2.setText("-");
                 } else {
-                    System.out.println("Cliente top.");
-                } 
+                    campoNumTel2.setText(fs.botarTelefone(ctt.getClienteContatoNumTel2()));
+                }
+                caixaCombinacaoEstado.setEnabled(false);
+                caixaCombinacaoEstado.setSelectedIndex(vs.verificarEstado(c.getClienteEndEstado()));
+                campoCep.setEnabled(false);
+                campoCep.setText(fs.botarCep(c.getClienteEndCep()));
+                campoCidade.setEnabled(false);
+                campoCidade.setText(c.getClienteEndCidade());
+                campoBairro.setEnabled(false);
+                campoBairro.setText(c.getClienteEndBairro());
+                campoLograd.setEnabled(false);
+                campoLograd.setText(c.getClienteEndLograd());
+                campoLogradNum.setEnabled(false);
+                campoLogradNum.setText(c.getClienteEndLogradNum());
+                campoLogradComp.setEnabled(false);
+                campoLogradComp.setText(c.getClienteEndLogradComp());
+                txtErroCpfOuCnpj.setForeground(new Color(0, 160, 40));
+                txtErroCpfOuCnpj.setText("Cliente já cadastrado!");
+            } else {
+                System.out.println("Cliente top.");
+            }
 //            } else{
 //                txtErroCpfOuCnpj.setText("Dígito verificador não condiz.");
 //                txtErroCpfOuCnpj.setForeground(Color.RED);
-//            }            
+//            }
         } else {
             campoDataNascimento.setEnabled(true);
             campoDataNascimento.setText("");
@@ -2121,113 +2118,108 @@ public class C_OS_TELA extends javax.swing.JFrame {
             campoLogradComp.setText("");
         }
     }//GEN-LAST:event_verificarCliente
-    
+
     //<editor-fold defaultstate="collapsed" desc="métodos teclados">
     private void tecladaDescricaoPecas(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaDescricaoPecas
-        if (vs.nome30(evt, campoDescricaoPeca.getText()) == ""){
-            txtErroPrecoPeca.setForeground(new Color(240,240,240));           
+        if (vs.nome30(evt, campoDescricaoPeca.getText()) == "") {
+            txtErroPrecoPeca.setForeground(new Color(240, 240, 240));
         } else {
             String txt = vs.nome30(evt, campoDescricaoPeca.getText());
             txtErroPrecoPeca.setText(txt);
-            if (txt.endsWith(".")){
-                txtErroPrecoPeca.setForeground(new Color(255,0,0));
+            if (txt.endsWith(".")) {
+                txtErroPrecoPeca.setForeground(new Color(255, 0, 0));
             } else {
                 txtErroPrecoPeca.setForeground(new Color(0, 160, 40));
-            }           
+            }
         }
     }//GEN-LAST:event_tecladaDescricaoPecas
 
     private void tecladaPrecoServico(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaPrecoServico
-        if ("\b".equals(Character.toString(evt.getKeyChar()))){
+        if ("\b".equals(Character.toString(evt.getKeyChar()))) {
             campoPrecoServico.setText(fs.apagar(campoPrecoServico.getText(), evt.getComponent().getName()));
         }
-        String txt = vs.orcamento(evt, campoPrecoServico.getText());        
-        if ("".equals(txt)){
-            if (campoPrecoServico.getText().length() >= 10){
+        String txt = vs.orcamento(evt, campoPrecoServico.getText());
+        if ("".equals(txt)) {
+            if (campoPrecoServico.getText().length() >= 10) {
                 evt.consume();
-                txtErroPrecoServico.setForeground(new Color(255,0,0));
+                txtErroPrecoServico.setForeground(new Color(255, 0, 0));
                 txtErroPrecoServico.setText("Tamanho máximo atingido.");
             } else {
-                txtErroPrecoServico.setForeground(new Color(240,240,240));
-                String txtF = fs.dinheiro(evt,campoPrecoServico.getText());
+                txtErroPrecoServico.setForeground(new Color(240, 240, 240));
+                String txtF = fs.dinheiro(evt, campoPrecoServico.getText());
                 campoPrecoServico.setText(txtF);
-            } 
-        } 
-        else{ 
+            }
+        } else {
             txtErroPrecoServico.setText(txt);
-            if (txt.endsWith("números.")){
-                txtErroPrecoServico.setForeground(new Color(255,0,0));
-            }            
-        } 
+            if (txt.endsWith("números.")) {
+                txtErroPrecoServico.setForeground(new Color(255, 0, 0));
+            }
+        }
     }//GEN-LAST:event_tecladaPrecoServico
 
     private void tecladaDescricaoServico(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaDescricaoServico
-        if (vs.nome30(evt, campoDescricaoServico.getText()) == ""){
-            txtErroPrecoServico.setForeground(new Color(240,240,240));           
+        if (vs.nome30(evt, campoDescricaoServico.getText()) == "") {
+            txtErroPrecoServico.setForeground(new Color(240, 240, 240));
         } else {
             String txt = vs.nome30(evt, campoDescricaoServico.getText());
             txtErroPrecoServico.setText(txt);
-            if (txt.endsWith(".")){
-                txtErroPrecoServico.setForeground(new Color(255,0,0));
+            if (txt.endsWith(".")) {
+                txtErroPrecoServico.setForeground(new Color(255, 0, 0));
             } else {
                 txtErroPrecoServico.setForeground(new Color(0, 160, 40));
-            }           
+            }
         }
     }//GEN-LAST:event_tecladaDescricaoServico
 
     private void tecladaDataNascimento(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tecladaDataNascimento
-        if ("\b".equals(Character.toString(evt.getKeyChar()))){
+        if ("\b".equals(Character.toString(evt.getKeyChar()))) {
             campoDataNascimento.setText(fs.apagar(campoDataNascimento.getText(), evt.getComponent().getName()));
         }
-        if (campoCpfOuCnpj.getText().length() == 14){
+        if (campoCpfOuCnpj.getText().length() == 14) {
             System.out.println("cpffffffff");
             String txtV = vs.dataNasc(evt, campoDataNascimento.getText());
-            if (txtV == ""){
-                txtErroDataNascimento.setForeground(new Color(240,240,240));           
-            } 
-            else if (txtV.endsWith("números.")){
-                campoDataNascimento.setText(campoDataNascimento.getText().substring(0, campoDataNascimento.getText().length()-1));
-            } 
-            else{            
+            if (txtV == "") {
+                txtErroDataNascimento.setForeground(new Color(240, 240, 240));
+            } else if (txtV.endsWith("números.")) {
+                campoDataNascimento.setText(campoDataNascimento.getText().substring(0, campoDataNascimento.getText().length() - 1));
+            } else {
                 txtErroDataNascimento.setText(txtV);
-                if (txtV.endsWith(".")){
-                    txtErroDataNascimento.setForeground(new Color(255,0,0));
+                if (txtV.endsWith(".")) {
+                    txtErroDataNascimento.setForeground(new Color(255, 0, 0));
                 } else {
                     txtErroDataNascimento.setForeground(new Color(0, 160, 40));
-                }           
+                }
             }
-            if (campoDataNascimento.getText().length() > 10){
+            if (campoDataNascimento.getText().length() > 10) {
                 int calc = campoDataNascimento.getText().length() - 10;
-                campoDataNascimento.setText(campoDataNascimento.getText().substring(0,campoDataNascimento.getText().length()-calc));
+                campoDataNascimento.setText(campoDataNascimento.getText().substring(0, campoDataNascimento.getText().length() - calc));
             }
-        } else if (campoCpfOuCnpj.getText().length() == 18){
+        } else if (campoCpfOuCnpj.getText().length() == 18) {
             System.out.println("cnpjjjjjjjj");
             String txtV = vs.dataNascCnpj(evt, campoDataNascimento.getText());
-            if (txtV == ""){
-                txtErroDataNascimento.setForeground(new Color(240,240,240));           
-            } 
-            else if (txtV.endsWith("números.")){
-                campoDataNascimento.setText(campoDataNascimento.getText().substring(0, campoDataNascimento.getText().length()-1));
-            } 
-            else{            
+            if (txtV == "") {
+                txtErroDataNascimento.setForeground(new Color(240, 240, 240));
+            } else if (txtV.endsWith("números.")) {
+                campoDataNascimento.setText(campoDataNascimento.getText().substring(0, campoDataNascimento.getText().length() - 1));
+            } else {
                 txtErroDataNascimento.setText(txtV);
-                if (txtV.endsWith(".")){
-                    txtErroDataNascimento.setForeground(new Color(255,0,0));
+                if (txtV.endsWith(".")) {
+                    txtErroDataNascimento.setForeground(new Color(255, 0, 0));
                 } else {
                     txtErroDataNascimento.setForeground(new Color(0, 160, 40));
-                }           
+                }
             }
-            if (campoDataNascimento.getText().length() > 10){
+            if (campoDataNascimento.getText().length() > 10) {
                 int calc = campoDataNascimento.getText().length() - 10;
-                campoDataNascimento.setText(campoDataNascimento.getText().substring(0,campoDataNascimento.getText().length()-calc));
+                campoDataNascimento.setText(campoDataNascimento.getText().substring(0, campoDataNascimento.getText().length() - calc));
             }
-        }    
+        }
         String txt = fs.data(campoDataNascimento.getText());
         campoDataNascimento.setText(txt);
     }//GEN-LAST:event_tecladaDataNascimento
 
     private void irInfoUser(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irInfoUser
-        if (!userAberto){
+        if (!userAberto) {
             USER_TELA = new USER_TELA();
             u.irDePara(this, USER_TELA);
             C_OS_TELA.setUSER_TELA(USER_TELA);
@@ -2241,7 +2233,7 @@ public class C_OS_TELA extends javax.swing.JFrame {
         //        u.irDePara(this, C_OS_TELA.getC_OS());
     }//GEN-LAST:event_irCadastroOS
     //</editor-fold>
-    
+
     /**
      * @param args the command line arguments
      */
@@ -2267,10 +2259,10 @@ public class C_OS_TELA extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(C_OS_TELA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>     
-        /* Create and display the form */                  
+        //</editor-fold>
+        /* Create and display the form */
     }
-    
+
     //<editor-fold defaultstate="collapsed" desc="Coisas do javax">
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;
@@ -2388,14 +2380,14 @@ public class C_OS_TELA extends javax.swing.JFrame {
     private static javax.swing.JLabel txtNumeroOS;
     // End of variables declaration//GEN-END:variables
     //</editor-fold>
-    
-    private void limparCampos(){
+
+    private void limparCampos() {
         /*
             MÉTODO REPSONSÁVEL POR LIMPAR OS CAMPOS
-        */
+         */
         campoDataNascimento.setText("");
         campoCpfOuCnpj.setText("");
-        campoRgOuIe.setText("");        
+        campoRgOuIe.setText("");
         campoNomeOuRazao.setText("");
         campoSobrenomeOuFantasia.setText("");
         campoEmail.setText("");
@@ -2419,31 +2411,31 @@ public class C_OS_TELA extends javax.swing.JFrame {
         campoPrevisaoSaida.setText("");
         campoVeiculoObservacoes.setText("");
         campoPrecoPeca.setText("");
-        campoPrecoServico.setText(""); 
+        campoPrecoServico.setText("");
         campoDescricaoPeca.setText("");
         campoDescricaoServico.setText("");
         txtErroBairro.setForeground(new Color(240, 240, 240));
         txtErroCep.setForeground(new Color(240, 240, 240));
         txtErroCidade.setForeground(new Color(240, 240, 240));
-        txtErroCpfOuCnpj.setForeground(new Color(240, 240, 240)); 
-        txtErroDataNascimento.setForeground(new Color(240, 240, 240)); 
-        txtErroEmail.setForeground(new Color(240, 240, 240)); 
-        txtErroLograd.setForeground(new Color(240, 240, 240)); 
+        txtErroCpfOuCnpj.setForeground(new Color(240, 240, 240));
+        txtErroDataNascimento.setForeground(new Color(240, 240, 240));
+        txtErroEmail.setForeground(new Color(240, 240, 240));
+        txtErroLograd.setForeground(new Color(240, 240, 240));
         txtErroLogradComp.setForeground(new Color(240, 240, 240));
         txtErroLogradNum.setForeground(new Color(240, 240, 240));
-        txtErroNomeOuRazao.setForeground(new Color(240, 240, 240)); 
-        txtErroNumTel1.setForeground(new Color(240, 240, 240)); 
+        txtErroNomeOuRazao.setForeground(new Color(240, 240, 240));
+        txtErroNumTel1.setForeground(new Color(240, 240, 240));
         txtErroNumTel2.setForeground(new Color(240, 240, 240));
-        txtErroPrecoPeca.setForeground(new Color(240, 240, 240)); 
-        txtErroPrecoServico.setForeground(new Color(240, 240, 240)); 
-        txtErroDescricaoPeca.setForeground(new Color(240, 240, 240)); 
+        txtErroPrecoPeca.setForeground(new Color(240, 240, 240));
+        txtErroPrecoServico.setForeground(new Color(240, 240, 240));
+        txtErroDescricaoPeca.setForeground(new Color(240, 240, 240));
         txtErroDescricaoServico.setForeground(new Color(240, 240, 240));
-        txtErroPrevisaoSaida.setForeground(new Color(240, 240, 240)); 
+        txtErroPrevisaoSaida.setForeground(new Color(240, 240, 240));
         txtErroRgOuIe.setForeground(new Color(240, 240, 240));
         txtErroSobrenomeOuFantasia.setForeground(new Color(240, 240, 240));
         txtErroVeiculoAcessorios.setForeground(new Color(240, 240, 240));
         txtErroVeiculoAno.setForeground(new Color(240, 240, 240));
-        txtErroVeiculoCor.setForeground(new Color(240, 240, 240)); 
+        txtErroVeiculoCor.setForeground(new Color(240, 240, 240));
         txtErroVeiculoDefeitoCliente.setForeground(new Color(240, 240, 240));
         txtErroVeiculoFabricante.setForeground(new Color(240, 240, 240));
         txtErroVeiculoModelo.setForeground(new Color(240, 240, 240));
@@ -2451,107 +2443,108 @@ public class C_OS_TELA extends javax.swing.JFrame {
         txtErroVeiculoPlaca.setForeground(new Color(240, 240, 240));
         txtErroVeiculoTipo.setForeground(new Color(240, 240, 240));
     }
-    
-    private void btnClicado(java.awt.event.MouseEvent evt){
-        evt.getComponent().setBackground(new Color(100,0,0));
+
+    private void btnClicado(java.awt.event.MouseEvent evt) {
+        evt.getComponent().setBackground(new Color(100, 0, 0));
         new Timer().schedule(
-            new TimerTask(){
-                @Override
-                public void run(){
-                    evt.getComponent().setBackground(new Color(204,0,0));
-                }
+                new TimerTask() {
+            @Override
+            public void run() {
+                evt.getComponent().setBackground(new Color(204, 0, 0));
+            }
         }, 50);
     }
-    
-    private boolean vazioForm(){
-        boolean vazio=true;
-        if ( campoDataNascimento.getText().equals("") ||
-        campoCpfOuCnpj.getText().equals("") ||
-        campoCpfOuCnpj.getText().equals("") ||
-        campoRgOuIe.getText().equals("") ||
-        campoNomeOuRazao.getText().equals("") ||
-        campoSobrenomeOuFantasia.getText().equals("") ||
-        campoEmail.getText().equals("") ||
-        campoNumTel1.getText().equals("") ||
-        caixaCombinacaoEstado.getSelectedIndex() == 0 ||
-        campoCep.getText().equals("") ||
-        campoCidade.getText().equals("") ||
-        campoBairro.getText().equals("") ||
-        campoLograd.getText().equals("") ||
-        campoLogradNum.getText().equals("") ||
-        campoLogradComp.getText().equals("") ||
-        campoVeiculoTipo.getText().equals("") ||
-        campoVeiculoFabricante.getText().equals("") ||
-        campoVeiculoModelo.getText().equals("") ||
-        campoVeiculoPlaca.getText().equals("") ||
-        campoVeiculoCor.getText().equals("") ||
-        campoVeiculoAno.getText().equals("") ||
-        campoVeiculoAcessorios.getText().equals("") ||
-        campoVeiculoDefeitoCliente.getText().equals("") ||
-        campoPrevisaoSaida.getText().equals("") ||
-        campoVeiculoObservacoes.getText().equals("")
-        ){
+
+    private boolean vazioForm() {
+        boolean vazio = true;
+        if (campoDataNascimento.getText().equals("")
+                || campoCpfOuCnpj.getText().equals("")
+                || campoCpfOuCnpj.getText().equals("")
+                || campoRgOuIe.getText().equals("")
+                || campoNomeOuRazao.getText().equals("")
+                || campoSobrenomeOuFantasia.getText().equals("")
+                || campoEmail.getText().equals("")
+                || campoNumTel1.getText().equals("")
+                || caixaCombinacaoEstado.getSelectedIndex() == 0
+                || campoCep.getText().equals("")
+                || campoCidade.getText().equals("")
+                || campoBairro.getText().equals("")
+                || campoLograd.getText().equals("")
+                || campoLogradNum.getText().equals("")
+                || campoLogradComp.getText().equals("")
+                || campoVeiculoTipo.getText().equals("")
+                || campoVeiculoFabricante.getText().equals("")
+                || campoVeiculoModelo.getText().equals("")
+                || campoVeiculoPlaca.getText().equals("")
+                || campoVeiculoCor.getText().equals("")
+                || campoVeiculoAno.getText().equals("")
+                || campoVeiculoAcessorios.getText().equals("")
+                || campoVeiculoDefeitoCliente.getText().equals("")
+                || campoPrevisaoSaida.getText().equals("")
+                || campoVeiculoObservacoes.getText().equals("")) {
             vazio = true;
+<<<<<<< HEAD
             return vazio;
         } 
         else{
+=======
+        } else {
+>>>>>>> 0c6dfb276562a504647a7778e668393657a4d8a9
             vazio = false;
-        }  
-        if (campoPrecoPeca.getText().equals("") && campoPrecoServico.getText().equals("")){
+        }
+        if (campoPrecoPeca.getText().equals("") && campoPrecoServico.getText().equals("")) {
+            vazio = true;
+        } else if (campoPrecoPeca.getText().equals("")) {
+            if (campoDescricaoServico.getText().equals("")) {
                 vazio = true;
-        }   else if (campoPrecoPeca.getText().equals("")){
-                if (campoDescricaoServico.getText().equals("")){
-                   vazio = true;
-                }
-        }   else if (campoPrecoServico.getText().equals("")){
-                if (campoDescricaoPeca.getText().equals("")){
-                    vazio = true;
-                } 
-        }   else if (!campoPrecoPeca.getText().equals("") && !campoPrecoServico.getText().equals("")
-                && !campoDescricaoServico.getText().equals("") && !campoDescricaoPeca.getText().equals("")){
-                    vazio = false;
-        }   else {
+            }
+        } else if (campoPrecoServico.getText().equals("")) {
+            if (campoDescricaoPeca.getText().equals("")) {
                 vazio = true;
+            }
+        } else if (!campoPrecoPeca.getText().equals("") && !campoPrecoServico.getText().equals("")
+                && !campoDescricaoServico.getText().equals("") && !campoDescricaoPeca.getText().equals("")) {
+            vazio = false;
+        } else {
+            vazio = true;
         }
         return vazio;
     }
-    
-    private boolean erroForm(){       
+
+    private boolean erroForm() {
         boolean erro;
-        if (
-            txtErroDataNascimento.getForeground().getRed() == 255 ||
-            txtErroBairro.getForeground().getRed() == 255 || 
-            txtErroCep.getForeground().getRed() == 255 || 
-            txtErroCidade.getForeground().getRed() == 255 ||  
-            txtErroCpfOuCnpj.getForeground().getRed() == 255 || 
-            txtErroEmail.getForeground().getRed() == 255 || 
-            txtErroLograd.getForeground().getRed() == 255 ||  
-            txtErroLogradComp.getForeground().getRed() == 255 ||  
-            txtErroLogradNum.getForeground().getRed() == 255 || 
-            txtErroNomeOuRazao.getForeground().getRed() == 255 || 
-            txtErroNumTel1.getForeground().getRed() == 255 ||  
-            txtErroNumTel2.getForeground().getRed() == 255 || 
-            txtErroPrecoPeca.getForeground().getRed() == 255 ||  
-            txtErroPrecoServico.getForeground().getRed() == 255 || 
-            txtErroDescricaoPeca.getForeground().getRed() == 255 || 
-            txtErroDescricaoServico.getForeground().getRed() == 255 || 
-            txtErroPrevisaoSaida.getForeground().getRed() == 255 || 
-            txtErroRgOuIe.getForeground().getRed() == 255 || 
-            txtErroSobrenomeOuFantasia.getForeground().getRed() == 255 ||  
-            txtErroVeiculoAcessorios.getForeground().getRed() == 255 || 
-            txtErroVeiculoAno.getForeground().getRed() == 255 || 
-            txtErroVeiculoCor.getForeground().getRed() == 255 || 
-            txtErroVeiculoDefeitoCliente.getForeground().getRed() == 255 ||  
-            txtErroVeiculoFabricante.getForeground().getRed() == 255 ||  
-            txtErroVeiculoModelo.getForeground().getRed() == 255 ||  
-            txtErroVeiculoObservacoes.getForeground().getRed() == 255 || 
-            txtErroVeiculoPlaca.getForeground().getRed() == 255 || 
-            txtErroVeiculoTipo.getForeground().getRed() == 255                 
-            ){
+        if (txtErroDataNascimento.getForeground().getRed() == 255
+                || txtErroBairro.getForeground().getRed() == 255
+                || txtErroCep.getForeground().getRed() == 255
+                || txtErroCidade.getForeground().getRed() == 255
+                || txtErroCpfOuCnpj.getForeground().getRed() == 255
+                || txtErroEmail.getForeground().getRed() == 255
+                || txtErroLograd.getForeground().getRed() == 255
+                || txtErroLogradComp.getForeground().getRed() == 255
+                || txtErroLogradNum.getForeground().getRed() == 255
+                || txtErroNomeOuRazao.getForeground().getRed() == 255
+                || txtErroNumTel1.getForeground().getRed() == 255
+                || txtErroNumTel2.getForeground().getRed() == 255
+                || txtErroPrecoPeca.getForeground().getRed() == 255
+                || txtErroPrecoServico.getForeground().getRed() == 255
+                || txtErroDescricaoPeca.getForeground().getRed() == 255
+                || txtErroDescricaoServico.getForeground().getRed() == 255
+                || txtErroPrevisaoSaida.getForeground().getRed() == 255
+                || txtErroRgOuIe.getForeground().getRed() == 255
+                || txtErroSobrenomeOuFantasia.getForeground().getRed() == 255
+                || txtErroVeiculoAcessorios.getForeground().getRed() == 255
+                || txtErroVeiculoAno.getForeground().getRed() == 255
+                || txtErroVeiculoCor.getForeground().getRed() == 255
+                || txtErroVeiculoDefeitoCliente.getForeground().getRed() == 255
+                || txtErroVeiculoFabricante.getForeground().getRed() == 255
+                || txtErroVeiculoModelo.getForeground().getRed() == 255
+                || txtErroVeiculoObservacoes.getForeground().getRed() == 255
+                || txtErroVeiculoPlaca.getForeground().getRed() == 255
+                || txtErroVeiculoTipo.getForeground().getRed() == 255) {
             erro = true;
-        }else{
+        } else {
             erro = false;
         }
         return erro;
-    }   
+    }
 }

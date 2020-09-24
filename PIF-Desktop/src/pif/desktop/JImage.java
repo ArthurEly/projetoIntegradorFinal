@@ -35,13 +35,13 @@ public class JImage extends JComponent {
         String urlFinal;
 
         if (internal) {
-            urlFinal = "src/" + url;
+            urlFinal = "/" + url;
         } else {
             urlFinal = url;
         }
 
         try {
-            image = ImageIO.read(new File(urlFinal));
+            image = ImageIO.read(getClass().getResource(urlFinal));
         } catch (IOException e) {
             e.printStackTrace();
         }

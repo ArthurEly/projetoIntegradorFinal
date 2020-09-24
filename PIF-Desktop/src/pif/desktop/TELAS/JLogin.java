@@ -1,4 +1,4 @@
- /*
+/*
  * Copyright (C) 2020 EduApps (Eduardo Procópio Gomez)
  *
  * This program is free software: you can redistribute it and/or modify
@@ -48,7 +48,7 @@ public class JLogin extends javax.swing.JFrame {
     public JLogin() {
         JLogin.setDefaultLookAndFeelDecorated(true);
         try {
-            icon = ImageIO.read(new File("src/resources/icon.png"));
+            icon = ImageIO.read(getClass().getResource("/resources/icon.png"));
         } catch (IOException ex) {
             Logger.getLogger(JLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -72,11 +72,11 @@ public class JLogin extends javax.swing.JFrame {
         logo = new JImage("resources/logo.png", true);
         logo.setSize(logo.getImageWidth(), logo.getImageHeight());
         imageFrame.add(logo);
-        this.getContentPane().setBackground(new Color(51,51,51));
-        jPanel3.setBackground(new Color(51,51,51));
+        this.getContentPane().setBackground(new Color(51, 51, 51));
+        jPanel3.setBackground(new Color(51, 51, 51));
         jLabel1.setText("Usuário");
         jLabel2.setText("Senha");
-        txtErroLogin.setForeground(new Color(51,51,51));
+        txtErroLogin.setForeground(new Color(51, 51, 51));
     }
 
     /**
@@ -265,13 +265,13 @@ public class JLogin extends javax.swing.JFrame {
         ContatoDAO cttdao = new ContatoDAO();
         Contato ctt = new Contato();
         ctt = cttdao.consultarContatoLogin(campoUser.getText());
-        if (ctt.getClienteContatoCpfnj() == null){            
+        if (ctt.getClienteContatoCpfnj() == null) {
             txtErroLogin.setText("Usuário não cadastrado!");
             txtErroLogin.setForeground(Color.white);
         } else {
             Colab co = cbdao.verificarColab(ctt.getClienteContatoCpfnj());
-            if (campoSenha.getText().equals(co.getColabSenha())){
-                u.irDeParaLogin(this, new C_OS_TELA(co, ctt),768,1368);
+            if (campoSenha.getText().equals(co.getColabSenha())) {
+                u.irDeParaLogin(this, new C_OS_TELA(co, ctt), 768, 1368);
             } else {
                 System.out.println("doois");
                 txtErroLogin.setText("Senhas não coincidem.");
@@ -310,17 +310,17 @@ public class JLogin extends javax.swing.JFrame {
     private javax.swing.JLabel txtErroLogin;
     // End of variables declaration//GEN-END:variables
 
-    private void btnClicado(java.awt.event.MouseEvent evt){
+    private void btnClicado(java.awt.event.MouseEvent evt) {
         /*
             MÉTODO RESPONSÁVEL POR MUDAR A COR DE FUNDO DO BOTAO QUANDO FOR CLICADO
-        */
-        evt.getComponent().setBackground(new Color(100,0,0));
+         */
+        evt.getComponent().setBackground(new Color(100, 0, 0));
         new Timer().schedule(
-            new TimerTask(){
-                @Override
-                public void run(){
-                    evt.getComponent().setBackground(new Color(204,0,0));
-                }
+                new TimerTask() {
+            @Override
+            public void run() {
+                evt.getComponent().setBackground(new Color(204, 0, 0));
+            }
         }, 50);
     }
 }
