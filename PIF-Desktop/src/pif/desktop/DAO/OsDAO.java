@@ -151,7 +151,6 @@ public class OsDAO {
         List<OS> OSs = new ArrayList<OS>();
         String select = "SELECT DAY(`os_data_entrada`) as \"Dia entrada\", COUNT(`os_numero`) as \"Contador\" FROM `os_teste` "
                 + "WHERE `os_data_entrada` BETWEEN (\""+dataEntrada+"\") AND (\""+dataSaida+"\") GROUP BY DAY(`os_data_entrada`)";
-        System.out.println(select);
         Conexao c = new Conexao();
         Connection conexao = null;
         PreparedStatement preparador = null;

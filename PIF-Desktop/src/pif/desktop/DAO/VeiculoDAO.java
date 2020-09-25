@@ -21,7 +21,6 @@ public class VeiculoDAO {
     public Veiculo consultarVeiculo(String placa, String numeroOs){
         Veiculo v = new Veiculo();
         String select = "SELECT * FROM `veiculo_teste` WHERE `veiculo_placa` ="+placa+" AND `os_numero` = "+numeroOs;
-        System.out.println(select);
         Conexao c = new Conexao();
         Connection conexao = null;
         PreparedStatement preparador = null;
@@ -41,7 +40,6 @@ public class VeiculoDAO {
                 v.setVeiculoObservacoes(resultado.getString("veiculo_observacoes"));
                 v.setVeiculoDefeitoCliente(resultado.getString("veiculo_defeito_cliente"));  
                 v.setVeiculoSituacao(resultado.getString("veiculo_situacao"));  
-                v.setVeiculoParecerTecnico(resultado.getString("parecer_tecnico")); 
                 v.setVeiculoNumOs(resultado.getString("os_numero")); 
                 v.setVeiculoDono(resultado.getString("veiculo_dono")); 
             }          

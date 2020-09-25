@@ -85,7 +85,7 @@ public class CadastroDAO {
        
         try{
             String sqlEquip = "INSERT INTO `veiculo_teste`(`veiculo_placa`, `veiculo_tipo`, `veiculo_fabricante`, `veiculo_modelo`, `veiculo_cor`, `veiculo_ano`, `veiculo_acessorios`, "
-                    + "`veiculo_observacoes`, `veiculo_defeito_cliente`,`parecer_tecnico`,`os_numero`, `veiculo_dono`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    + "`veiculo_observacoes`, `veiculo_defeito_cliente`,`os_numero`, `veiculo_dono`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             //prepara a query sql acima para jogar dentro do banco de dados
             PreparedStatement consultaVeiculo = c.getConexao().prepareStatement(sqlEquip);
             //bota os parametros nos lugares correspondentes
@@ -99,8 +99,7 @@ public class CadastroDAO {
             consultaVeiculo.setString(8, veiculo.getVeiculoObservacoes());
             consultaVeiculo.setString(9, veiculo.getVeiculoDefeitoCliente());
             consultaVeiculo.setString(10, os.getOsNumero());
-            consultaVeiculo.setString(11, os.getOsNumero());
-            consultaVeiculo.setString(12, cliente.getClienteCpfOuCnpj());
+            consultaVeiculo.setString(11, cliente.getClienteCpfOuCnpj());
             //executa a query no banco de dados
             consultaVeiculo.execute();
         }catch(SQLException ex){

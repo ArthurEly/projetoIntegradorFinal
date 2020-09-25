@@ -615,6 +615,23 @@ public class VerificacaoStrings {
         return avaliacao; 
     }
     
+    public String dataOntem(KeyEvent evt, String s){
+        String avaliacao = "";
+        if (numeros(evt) == false){
+            avaliacao = "Digite apenas números."; 
+        } else if (tamanhoValido(evt,s,11) == false){
+            avaliacao = "Data inválida.";
+        } else if (data(s)){
+            avaliacao = "Data inválida.";
+        } else {
+            avaliacao = "Data válida!";
+        }
+        if (tamanhoMaximo(evt,s,11) == false){
+            
+        }
+        return avaliacao; 
+    }
+    
     public String orcamento (KeyEvent evt, String s){
         String avaliacao = "";
         if (numeros(evt) == false){

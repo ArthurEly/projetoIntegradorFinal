@@ -2038,55 +2038,55 @@ public class C_OS_TELA extends javax.swing.JFrame {
 
     private void verificarCliente(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_verificarCliente
         if (campoCpfOuCnpj.getText().length() == 14 || campoCpfOuCnpj.getText().length() == 18) {
-//            if (vs.isCPF(campoCpfOuCnpj.getText()) || vs.isCNPJ(campoCpfOuCnpj.getText())){
-            ClienteDAO cdao = new ClienteDAO();
-            Cliente c = new Cliente();
-            c = cdao.consultarCliente(campoCpfOuCnpj.getText());
-            if (c.getClienteEndEstado() != null) {
-                ContatoDAO cttdao = new ContatoDAO();
-                Contato ctt = new Contato();
-                ctt = cttdao.consultarContato(c.getClienteCpfOuCnpj());
-                campoDataNascimento.setEnabled(false);
-                campoDataNascimento.setText(fs.botarData(c.getClienteDataNasc()));
-                campoRgOuIe.setEnabled(false);
-                campoRgOuIe.setText(c.getClienteRgOuIe());
-                campoNomeOuRazao.setEnabled(false);
-                campoNomeOuRazao.setText(c.getClienteNomeOuRazao());
-                campoSobrenomeOuFantasia.setEnabled(false);
-                campoSobrenomeOuFantasia.setText(c.getClienteSobrenomeOuFantasia());
-                campoEmail.setEnabled(false);
-                campoEmail.setText(ctt.getClienteContatoEmail());
-                campoNumTel1.setEnabled(false);
-                campoNumTel1.setText(fs.botarTelefone(ctt.getClienteContatoNumTel1()));
-                campoNumTel2.setEnabled(false);
-                if (ctt.getClienteContatoNumTel2() == null) {
-                    campoNumTel2.setText("-");
+            if (vs.isCPF(campoCpfOuCnpj.getText()) || vs.isCNPJ(campoCpfOuCnpj.getText())){
+                ClienteDAO cdao = new ClienteDAO();
+                Cliente c = new Cliente();
+                c = cdao.consultarCliente(campoCpfOuCnpj.getText());
+                if (c.getClienteEndEstado() != null) {
+                    ContatoDAO cttdao = new ContatoDAO();
+                    Contato ctt = new Contato();
+                    ctt = cttdao.consultarContato(c.getClienteCpfOuCnpj());
+                    campoDataNascimento.setEnabled(false);
+                    campoDataNascimento.setText(fs.botarData(c.getClienteDataNasc()));
+                    campoRgOuIe.setEnabled(false);
+                    campoRgOuIe.setText(c.getClienteRgOuIe());
+                    campoNomeOuRazao.setEnabled(false);
+                    campoNomeOuRazao.setText(c.getClienteNomeOuRazao());
+                    campoSobrenomeOuFantasia.setEnabled(false);
+                    campoSobrenomeOuFantasia.setText(c.getClienteSobrenomeOuFantasia());
+                    campoEmail.setEnabled(false);
+                    campoEmail.setText(ctt.getClienteContatoEmail());
+                    campoNumTel1.setEnabled(false);
+                    campoNumTel1.setText(fs.botarTelefone(ctt.getClienteContatoNumTel1()));
+                    campoNumTel2.setEnabled(false);
+                    if (ctt.getClienteContatoNumTel2() == null) {
+                        campoNumTel2.setText("-");
+                    } else {
+                        campoNumTel2.setText(fs.botarTelefone(ctt.getClienteContatoNumTel2()));
+                    }
+                    caixaCombinacaoEstado.setEnabled(false);
+                    caixaCombinacaoEstado.setSelectedIndex(vs.verificarEstado(c.getClienteEndEstado()));
+                    campoCep.setEnabled(false);
+                    campoCep.setText(fs.botarCep(c.getClienteEndCep()));
+                    campoCidade.setEnabled(false);
+                    campoCidade.setText(c.getClienteEndCidade());
+                    campoBairro.setEnabled(false);
+                    campoBairro.setText(c.getClienteEndBairro());
+                    campoLograd.setEnabled(false);
+                    campoLograd.setText(c.getClienteEndLograd());
+                    campoLogradNum.setEnabled(false);
+                    campoLogradNum.setText(c.getClienteEndLogradNum());
+                    campoLogradComp.setEnabled(false);
+                    campoLogradComp.setText(c.getClienteEndLogradComp());
+                    txtErroCpfOuCnpj.setForeground(new Color(0, 160, 40));
+                    txtErroCpfOuCnpj.setText("Cliente já cadastrado!");
                 } else {
-                    campoNumTel2.setText(fs.botarTelefone(ctt.getClienteContatoNumTel2()));
+                    //nada
                 }
-                caixaCombinacaoEstado.setEnabled(false);
-                caixaCombinacaoEstado.setSelectedIndex(vs.verificarEstado(c.getClienteEndEstado()));
-                campoCep.setEnabled(false);
-                campoCep.setText(fs.botarCep(c.getClienteEndCep()));
-                campoCidade.setEnabled(false);
-                campoCidade.setText(c.getClienteEndCidade());
-                campoBairro.setEnabled(false);
-                campoBairro.setText(c.getClienteEndBairro());
-                campoLograd.setEnabled(false);
-                campoLograd.setText(c.getClienteEndLograd());
-                campoLogradNum.setEnabled(false);
-                campoLogradNum.setText(c.getClienteEndLogradNum());
-                campoLogradComp.setEnabled(false);
-                campoLogradComp.setText(c.getClienteEndLogradComp());
-                txtErroCpfOuCnpj.setForeground(new Color(0, 160, 40));
-                txtErroCpfOuCnpj.setText("Cliente já cadastrado!");
-            } else {
-                System.out.println("Cliente top.");
+            } else{
+                txtErroCpfOuCnpj.setText("Dígito verificador não condiz.");
+                txtErroCpfOuCnpj.setForeground(Color.RED);
             }
-//            } else{
-//                txtErroCpfOuCnpj.setText("Dígito verificador não condiz.");
-//                txtErroCpfOuCnpj.setForeground(Color.RED);
-//            }
         } else {
             campoDataNascimento.setEnabled(true);
             campoDataNascimento.setText("");
@@ -2176,7 +2176,6 @@ public class C_OS_TELA extends javax.swing.JFrame {
             campoDataNascimento.setText(fs.apagar(campoDataNascimento.getText(), evt.getComponent().getName()));
         }
         if (campoCpfOuCnpj.getText().length() == 14) {
-            System.out.println("cpffffffff");
             String txtV = vs.dataNasc(evt, campoDataNascimento.getText());
             if (txtV == "") {
                 txtErroDataNascimento.setForeground(new Color(240, 240, 240));
@@ -2195,7 +2194,6 @@ public class C_OS_TELA extends javax.swing.JFrame {
                 campoDataNascimento.setText(campoDataNascimento.getText().substring(0, campoDataNascimento.getText().length() - calc));
             }
         } else if (campoCpfOuCnpj.getText().length() == 18) {
-            System.out.println("cnpjjjjjjjj");
             String txtV = vs.dataNascCnpj(evt, campoDataNascimento.getText());
             if (txtV == "") {
                 txtErroDataNascimento.setForeground(new Color(240, 240, 240));
@@ -2483,13 +2481,9 @@ public class C_OS_TELA extends javax.swing.JFrame {
                 || campoPrevisaoSaida.getText().equals("")
                 || campoVeiculoObservacoes.getText().equals("")) {
             vazio = true;
-<<<<<<< HEAD
             return vazio;
         } 
         else{
-=======
-        } else {
->>>>>>> 0c6dfb276562a504647a7778e668393657a4d8a9
             vazio = false;
         }
         if (campoPrecoPeca.getText().equals("") && campoPrecoServico.getText().equals("")) {

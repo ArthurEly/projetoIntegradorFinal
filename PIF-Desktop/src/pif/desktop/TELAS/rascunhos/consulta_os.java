@@ -66,7 +66,6 @@ public class consulta_os extends javax.swing.JFrame {
         painelOs.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "OS de número " + os.getOsNumero(), javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
         campoCpfnj.setText(fs.botarCpfOuCnpj(os.getOsCpfnj()));
         campoPlaca.setText(os.getOsVeiculoPlaca());
-        System.out.println("situacaio: "+os.getOsVeiculoSituacao());
         if (os.getOsDataSaida() != null){
             campoDataSaida.setText(fs.botarData(os.getOsDataSaida()));
             String[] items = {"Na fila", "Em análise", "Aguardando peças", "Em processo de manutenção", "Aguardando devolução", "Bloqueado", "Concluído!"};

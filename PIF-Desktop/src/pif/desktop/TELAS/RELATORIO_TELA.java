@@ -11,6 +11,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import org.jfree.chart.ChartFactory;
@@ -653,7 +655,7 @@ public class RELATORIO_TELA extends javax.swing.JFrame {
             if ("\b".equals(Character.toString(evt.getKeyChar()))) {
                 campoData1Faturamento.setText(fs.apagar(campoData1Faturamento.getText(), evt.getComponent().getName()));
             }
-            String txtV = vs.data(evt, campoData1Faturamento.getText());
+            String txtV = vs.dataOntem(evt, campoData1Faturamento.getText());
             if (txtV == "") {
                 txtErroFaturamento.setForeground(new Color(240, 240, 240));
             } else if (txtV.endsWith("números.")) {
@@ -676,7 +678,7 @@ public class RELATORIO_TELA extends javax.swing.JFrame {
             if ("\b".equals(Character.toString(evt.getKeyChar()))) {
                 campoData2Faturamento.setText(fs.apagar(campoData2Faturamento.getText(), evt.getComponent().getName()));
             }
-            String txtV = vs.data(evt, campoData2Faturamento.getText());
+            String txtV = vs.dataOntem(evt, campoData2Faturamento.getText());
             if (txtV == "") {
                 txtErroFaturamento.setForeground(new Color(240, 240, 240));
             } else if (txtV.endsWith("números.")) {
@@ -703,7 +705,7 @@ public class RELATORIO_TELA extends javax.swing.JFrame {
             if ("\b".equals(Character.toString(evt.getKeyChar()))) {
                 campoData1Os.setText(fs.apagar(campoData1Os.getText(), evt.getComponent().getName()));
             }
-            String txtV = vs.data(evt, campoData1Os.getText());
+            String txtV = vs.dataOntem(evt, campoData1Os.getText());
             if (txtV == "") {
                 txtErroOs.setForeground(new Color(240, 240, 240));
             } else if (txtV.endsWith("números.")) {
@@ -726,7 +728,7 @@ public class RELATORIO_TELA extends javax.swing.JFrame {
             if ("\b".equals(Character.toString(evt.getKeyChar()))) {
                 campoData2Os.setText(fs.apagar(campoData2Os.getText(), evt.getComponent().getName()));
             }
-            String txtV = vs.data(evt, campoData2Os.getText());
+            String txtV = vs.dataOntem(evt, campoData2Os.getText());
             if (txtV == "") {
                 txtErroOs.setForeground(new Color(240, 240, 240));
             } else if (txtV.endsWith("números.")) {
@@ -749,95 +751,120 @@ public class RELATORIO_TELA extends javax.swing.JFrame {
     }//GEN-LAST:event_tecladaDataOs
 
     private void abrirGraficoBarraFaturamentoTotal(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_abrirGraficoBarraFaturamentoTotal
-        JFrame jfBarra = new JFrame();
-        DefaultCategoryDataset barra = new DefaultCategoryDataset();
-        OrcamentoDAO orcdao = new OrcamentoDAO();
-        Orcamento orc = new Orcamento();
-        orc = orcdao.consultarVendasTotais(fs.retirarFormatacaoData(campoData1Faturamento.getText()), fs.retirarFormatacaoData(campoData2Faturamento.getText()));
-        barra.setValue(Double.parseDouble(orc.getOrcamento_preco_pecas()), "Peças", "Venda total de peças");
-        barra.setValue(Double.parseDouble(orc.getOrcamento_preco_servicos()), "Serviços", "Venda total de serviços");
-        JFreeChart graficoBarra = ChartFactory.createBarChart("Gráfico do faturamento total", "Peças ou serviços", "Faturamento", barra, PlotOrientation.VERTICAL, true, true, false);
-        ChartPanel painelzadaB = new ChartPanel(graficoBarra);
-        jfBarra.setIconImage(icon);
-        jfBarra.setTitle("Faturamento total");
-        jfBarra.add(painelzadaB);
-        jfBarra.setSize(950, 700);
-        jfBarra.setLocationRelativeTo(null);
-        jfBarra.setVisible(true);
+        if (!vazioFaturamento()){
+            if (!erroFaturamento()){
+                btnClicado(evt);
+                    JFrame jfBarra = new JFrame();
+                    DefaultCategoryDataset barra = new DefaultCategoryDataset();
+                    OrcamentoDAO orcdao = new OrcamentoDAO();
+                    Orcamento orc = new Orcamento();
+                    orc = orcdao.consultarVendasTotais(fs.retirarFormatacaoData(campoData1Faturamento.getText()), fs.retirarFormatacaoData(campoData2Faturamento.getText()));
+                    barra.setValue(Double.parseDouble(orc.getOrcamento_preco_pecas()), "Peças", "Venda total de peças");
+                    barra.setValue(Double.parseDouble(orc.getOrcamento_preco_servicos()), "Serviços", "Venda total de serviços");
+                    JFreeChart graficoBarra = ChartFactory.createBarChart("Gráfico do faturamento total", "Peças ou serviços", "Faturamento", barra, PlotOrientation.VERTICAL, true, true, false);
+                    ChartPanel painelzadaB = new ChartPanel(graficoBarra);
+                    jfBarra.setIconImage(icon);
+                    jfBarra.setTitle("Faturamento total");
+                    jfBarra.add(painelzadaB);
+                    jfBarra.setSize(950, 700);
+                    jfBarra.setLocationRelativeTo(null);
+                    jfBarra.setVisible(true);
+            }
+        }
     }//GEN-LAST:event_abrirGraficoBarraFaturamentoTotal
 
     private void abrirGraficoPizzaFaturamentoTotal(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_abrirGraficoPizzaFaturamentoTotal
-        JFrame jfPizaa = new JFrame();
-        DefaultPieDataset pizza = new DefaultPieDataset();
-        OrcamentoDAO orcdao = new OrcamentoDAO();
-        Orcamento orc = new Orcamento();
-        orc = orcdao.consultarVendasTotais(fs.retirarFormatacaoData(campoData1Faturamento.getText()), fs.retirarFormatacaoData(campoData2Faturamento.getText()));
-        pizza.setValue("Peças", Double.parseDouble(orc.getOrcamento_preco_pecas()));
-        pizza.setValue("Serviços", Double.parseDouble(orc.getOrcamento_preco_servicos()));
-        JFreeChart graficoPizza = ChartFactory.createPieChart("Faturamento entre " + campoData1Faturamento.getText() + " e " + campoData2Faturamento.getText(), pizza, true, true, false);
-        ChartPanel painelzadaP = new ChartPanel(graficoPizza);
-        jfPizaa.setIconImage(icon);
-        jfPizaa.setTitle("Faturamento total");
-        jfPizaa.add(painelzadaP);
-        jfPizaa.setSize(950, 700);
-        jfPizaa.setLocationRelativeTo(null);
-        jfPizaa.setVisible(true);
+        if (!vazioFaturamento()){
+            if (!erroFaturamento()){
+                btnClicado(evt);
+                    JFrame jfPizaa = new JFrame();
+                    DefaultPieDataset pizza = new DefaultPieDataset();
+                    OrcamentoDAO orcdao = new OrcamentoDAO();
+                    Orcamento orc = new Orcamento();
+                    orc = orcdao.consultarVendasTotais(fs.retirarFormatacaoData(campoData1Faturamento.getText()), fs.retirarFormatacaoData(campoData2Faturamento.getText()));
+                    pizza.setValue("Peças", Double.parseDouble(orc.getOrcamento_preco_pecas()));
+                    pizza.setValue("Serviços", Double.parseDouble(orc.getOrcamento_preco_servicos()));
+                    JFreeChart graficoPizza = ChartFactory.createPieChart("Faturamento entre " + campoData1Faturamento.getText() + " e " + campoData2Faturamento.getText(), pizza, true, true, false);
+                    ChartPanel painelzadaP = new ChartPanel(graficoPizza);
+                    jfPizaa.setIconImage(icon);
+                    jfPizaa.setTitle("Faturamento total");
+                    jfPizaa.add(painelzadaP);
+                    jfPizaa.setSize(950, 700);
+                    jfPizaa.setLocationRelativeTo(null);
+                    jfPizaa.setVisible(true);
+            }
+        }
     }//GEN-LAST:event_abrirGraficoPizzaFaturamentoTotal
 
     private void abrirGraficoPizzaOs(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_abrirGraficoPizzaOs
-        JFrame jfPizaa = new JFrame();
-        DefaultPieDataset pizza = new DefaultPieDataset();
-        OsDAO osdao = new OsDAO();
-        OS os = new OS();
-        os = osdao.consultaOsSaidaEEntrada(fs.retirarFormatacaoData(campoData1Os.getText()), fs.retirarFormatacaoData(campoData2Os.getText()));
-        pizza.setValue("Saíram", Integer.parseInt(os.getQtdConcluida()));
-        pizza.setValue("Entraram", Integer.parseInt(os.getQtdOs()));
-        JFreeChart graficoPizza = ChartFactory.createPieChart("Entrada e saída de veículos entre " + campoData1Os.getText() + " e " + campoData2Os.getText(), pizza, true, true, false);
-        ChartPanel painelzadaP = new ChartPanel(graficoPizza);
-        jfPizaa.setIconImage(icon);
-        jfPizaa.setTitle("Entrada e saída de veículos");
-        jfPizaa.add(painelzadaP);
-        jfPizaa.setSize(950, 700);
-        jfPizaa.setLocationRelativeTo(null);
-        jfPizaa.setVisible(true);
+        if (!vazioOs()){
+            if (!erroOs()){
+                btnClicado(evt);
+                JFrame jfPizaa = new JFrame();
+                DefaultPieDataset pizza = new DefaultPieDataset();
+                OsDAO osdao = new OsDAO();
+                OS os = new OS();
+                os = osdao.consultaOsSaidaEEntrada(fs.retirarFormatacaoData(campoData1Os.getText()), fs.retirarFormatacaoData(campoData2Os.getText()));
+                pizza.setValue("Saíram", Integer.parseInt(os.getQtdConcluida()));
+                pizza.setValue("Entraram", Integer.parseInt(os.getQtdOs()));
+                JFreeChart graficoPizza = ChartFactory.createPieChart("Entrada e saída de veículos entre " + campoData1Os.getText() + " e " + campoData2Os.getText(), pizza, true, true, false);
+                ChartPanel painelzadaP = new ChartPanel(graficoPizza);
+                jfPizaa.setIconImage(icon);
+                jfPizaa.setTitle("Entrada e saída de veículos");
+                jfPizaa.add(painelzadaP);
+                jfPizaa.setSize(950, 700);
+                jfPizaa.setLocationRelativeTo(null);
+                jfPizaa.setVisible(true);
+            }          
+        } 
     }//GEN-LAST:event_abrirGraficoPizzaOs
 
     private void abrirGraficoBarraSaida(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_abrirGraficoBarraSaida
-        JFrame jfPizaa = new JFrame();
-        DefaultCategoryDataset barra = new DefaultCategoryDataset();
-        OsDAO osdao = new OsDAO();
-        List<OS> oss = new ArrayList<>();
-        oss = osdao.consultaOsSaidaDiaria(fs.retirarFormatacaoData(campoData1Os.getText()), fs.retirarFormatacaoData(campoData2Os.getText()));
-        for (int i = 0; i < oss.size(); i++) {
-            barra.setValue(Integer.parseInt(oss.get(i).getQtdOs()), oss.get(i).getOsDataSaida(), "Saída");
+        if (!vazioOs()){
+            if (!erroOs()){
+                btnClicado(evt);
+                JFrame jfPizaa = new JFrame();
+                DefaultCategoryDataset barra = new DefaultCategoryDataset();
+                OsDAO osdao = new OsDAO();
+                List<OS> oss = new ArrayList<>();
+                oss = osdao.consultaOsSaidaDiaria(fs.retirarFormatacaoData(campoData1Os.getText()), fs.retirarFormatacaoData(campoData2Os.getText()));
+                for (int i = 0; i < oss.size(); i++) {
+                    barra.setValue(Integer.parseInt(oss.get(i).getQtdOs()), oss.get(i).getOsDataSaida(), "Saída");
+                }
+                JFreeChart graficoBarra = ChartFactory.createBarChart("Gráfico da saída de veículos", "Dia", "Quantidade de veículos", barra, PlotOrientation.VERTICAL, true, true, false);
+                ChartPanel painelzadaB = new ChartPanel(graficoBarra);
+                jfPizaa.setIconImage(icon);
+                jfPizaa.setTitle("Saída de veículos");
+                jfPizaa.add(painelzadaB);
+                jfPizaa.setSize(950, 700);
+                jfPizaa.setLocationRelativeTo(null);
+                jfPizaa.setVisible(true);
+            }
         }
-        JFreeChart graficoBarra = ChartFactory.createBarChart("Gráfico da saída de veículos", "Dia", "Quantidade de veículos", barra, PlotOrientation.VERTICAL, true, true, false);
-        ChartPanel painelzadaB = new ChartPanel(graficoBarra);
-        jfPizaa.setIconImage(icon);
-        jfPizaa.setTitle("Saída de veículos");
-        jfPizaa.add(painelzadaB);
-        jfPizaa.setSize(950, 700);
-        jfPizaa.setLocationRelativeTo(null);
-        jfPizaa.setVisible(true);
     }//GEN-LAST:event_abrirGraficoBarraSaida
 
     private void abrirGraficoBarraEntrada(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_abrirGraficoBarraEntrada
-        JFrame jfPizaa = new JFrame();
-        DefaultCategoryDataset barra = new DefaultCategoryDataset();
-        OsDAO osdao = new OsDAO();
-        List<OS> oss = new ArrayList<>();
-        oss = osdao.consultaOsEntradaDiaria(fs.retirarFormatacaoData(campoData1Os.getText()), fs.retirarFormatacaoData(campoData2Os.getText()));
-        for (int i = 0; i < oss.size(); i++) {
-            barra.setValue(Integer.parseInt(oss.get(i).getQtdOs()), oss.get(i).getOsDataEntrada(), "Entrada");
+        if (!vazioOs()){
+            if (!erroOs()){
+                btnClicado(evt);
+                JFrame jfPizaa = new JFrame();
+                DefaultCategoryDataset barra = new DefaultCategoryDataset();
+                OsDAO osdao = new OsDAO();
+                List<OS> oss = new ArrayList<>();
+                oss = osdao.consultaOsEntradaDiaria(fs.retirarFormatacaoData(campoData1Os.getText()), fs.retirarFormatacaoData(campoData2Os.getText()));
+                for (int i = 0; i < oss.size(); i++) {
+                    barra.setValue(Integer.parseInt(oss.get(i).getQtdOs()), oss.get(i).getOsDataEntrada(), "Entrada");
+                }
+                JFreeChart graficoBarra = ChartFactory.createBarChart("Gráfico da entarda de veículos", "Dia", "Quantidade de veículos", barra, PlotOrientation.VERTICAL, true, true, false);
+                ChartPanel painelzadaB = new ChartPanel(graficoBarra);
+                jfPizaa.setIconImage(icon);
+                jfPizaa.setTitle("Entrada de veículos");
+                jfPizaa.add(painelzadaB);
+                jfPizaa.setSize(950, 700);
+                jfPizaa.setLocationRelativeTo(null);
+                jfPizaa.setVisible(true);
+            }
         }
-        JFreeChart graficoBarra = ChartFactory.createBarChart("Gráfico da entarda de veículos", "Dia", "Quantidade de veículos", barra, PlotOrientation.VERTICAL, true, true, false);
-        ChartPanel painelzadaB = new ChartPanel(graficoBarra);
-        jfPizaa.setIconImage(icon);
-        jfPizaa.setTitle("Entrada de veículos");
-        jfPizaa.add(painelzadaB);
-        jfPizaa.setSize(950, 700);
-        jfPizaa.setLocationRelativeTo(null);
-        jfPizaa.setVisible(true);
     }//GEN-LAST:event_abrirGraficoBarraEntrada
 
     /**
@@ -909,4 +936,50 @@ public class RELATORIO_TELA extends javax.swing.JFrame {
     private javax.swing.JLabel txtErroFaturamento;
     private javax.swing.JLabel txtErroOs;
     // End of variables declaration//GEN-END:variables
+    
+    private void btnClicado(java.awt.event.MouseEvent evt) {
+        /*
+            MÉTODO RESPONSÁVEL POR MUDAR A COR DE FUNDO DO BOTAO QUANDO FOR CLICADO
+         */
+        evt.getComponent().setBackground(new Color(100, 0, 0));
+        new Timer().schedule(
+                new TimerTask() {
+            @Override
+            public void run() {
+                evt.getComponent().setBackground(new Color(204, 0, 0));
+            }
+        }, 50);
+    }
+    
+    private boolean erroFaturamento(){
+        boolean temErro = false;
+        if (txtErroFaturamento.getForeground().getRed() == 255){
+            temErro = true;
+        } 
+        return temErro;
+    }
+    
+    private boolean erroOs(){
+        boolean temErro = false;
+        if (txtErroOs.getForeground().getRed() == 255){
+            temErro = true;
+        } 
+        return temErro;
+    }
+    
+    private boolean vazioFaturamento(){
+        boolean vazio = false;
+        if (campoData1Faturamento.getText().equals("") || campoData2Faturamento.getText().equals("")){
+            vazio = true;
+        }
+        return vazio;
+    }
+    
+    private boolean vazioOs(){ 
+        boolean vazio = false;
+        if (campoData1Os.getText().equals("") || campoData2Os.getText().equals("")){
+            vazio = true;
+        }
+        return vazio;
+    }
 }

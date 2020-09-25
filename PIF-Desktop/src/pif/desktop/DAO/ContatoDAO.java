@@ -32,7 +32,6 @@ public class ContatoDAO {
         try{
             conexao = con.conectarAoBanco();           
             preparador = conexao.prepareStatement(select);
-            System.out.println(select);
             resultado = preparador.executeQuery();
             if (resultado.next()){
                 ctt.setClienteContatoEmail(resultado.getString("cliente_colab_email"));
@@ -60,7 +59,6 @@ public class ContatoDAO {
         try{
             conexao = con.conectarAoBanco();           
             preparador = conexao.prepareStatement(select);
-            System.out.println(select);
             resultado = preparador.executeQuery();
             if (resultado.next()){
                 ctt.setClienteContatoEmail(email);

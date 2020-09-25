@@ -99,7 +99,6 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
                 irCadastroOS(evt);
             }
         });
-        System.out.println(USER_LOGADO.isCOLAB_GERENTE());
         if (USER_LOGADO.isCOLAB_GERENTE()) {
             //<editor-fold defaultstate="collapsed" desc="se for gerente">
             JButton btnIrRelatorios = new JButton();
@@ -475,7 +474,7 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
 
     private void consultarOs(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_consultarOs
         btnClicado(evt);
-//        try {
+        try {
         String campo = "";
         String valor = "";
         if (vazioForm()) {
@@ -554,9 +553,9 @@ public class RUD_OS_TELA extends javax.swing.JFrame {
                 }
             }
         }
-//        }catch(Exception e){
-//            System.out.println("Erro aca: "+e);
-//        }
+        }catch(Exception e){
+            System.out.println("Erro aqui: "+e);
+        }
     }//GEN-LAST:event_consultarOs
 
     private void limparCampos(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_limparCampos

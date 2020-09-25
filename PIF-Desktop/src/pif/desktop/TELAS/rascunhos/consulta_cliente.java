@@ -77,7 +77,7 @@ public class consulta_cliente extends javax.swing.JFrame {
         campoEmail.setText(ctt.getClienteContatoEmail());
         campoNumTel1.setText(fs.botarTelefone(ctt.getClienteContatoNumTel1()));
         String tel2 = ctt.getClienteContatoNumTel2();
-        if (tel2.equals("")){
+        if (tel2.equals("") || tel2.equals("0") || tel2 == null){
             campoNumTel2.setText("-");
         } else {
             campoNumTel2.setText(fs.botarTelefone(ctt.getClienteContatoNumTel2()));

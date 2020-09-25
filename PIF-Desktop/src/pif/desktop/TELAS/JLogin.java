@@ -29,7 +29,6 @@ import pif.desktop.Classes.Colab;
 import pif.desktop.Classes.Contato;
 import pif.desktop.DAO.ColabDAO;
 import pif.desktop.DAO.ContatoDAO;
-import pif.desktop.DAO.LoginDAO;
 import pif.desktop.JImage;
 
 /**
