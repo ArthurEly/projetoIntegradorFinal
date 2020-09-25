@@ -31,11 +31,21 @@ public class Oramento /*IH*/ {
                     TimeUtils.getMinutesBySQL(x.getString(NetworkUtils.DB_COL_ORCAMENTO_DATA)),
                     TimeUtils.getSecondsBySQL(x.getString(NetworkUtils.DB_COL_ORCAMENTO_DATA))
             );
+            String price = "0";
+            String price2 = "0";
+
+            if (!x.getString(NetworkUtils.DB_COL_ORCAMENTO_PRECO_PECAS).equals("")) {
+                price = x.getString(NetworkUtils.DB_COL_ORCAMENTO_PRECO_PECAS);
+            }
+
+            if (!x.getString(NetworkUtils.DB_COL_ORCAMENTO_PRECO_SERVICOS).equals("")) {
+                price2 = x.getString(NetworkUtils.DB_COL_ORCAMENTO_PRECO_SERVICOS);
+            }
 
             lista.add(new Informações(
-                    Double.parseDouble(x.getString(NetworkUtils.DB_COL_ORCAMENTO_PRECO_PECAS)),
+                    Double.parseDouble(price), //criamos um if
                     x.getString(NetworkUtils.DB_COL_ORCAMENTO_DESCRICAO_PECAS),
-                    Double.parseDouble(x.getString(NetworkUtils.DB_COL_ORCAMENTO_PRECO_SERVICOS)),
+                    Double.parseDouble(price2),
                     x.getString(NetworkUtils.DB_COL_ORCAMENTO_DESCRICAO_SERVICOS),
                     data
             ));

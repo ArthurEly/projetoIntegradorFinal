@@ -117,12 +117,20 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             public void run() {
                 String result = "[]";
                 String contactResult = "[]";
+                /*
+                    ele tem que buscar na tabela contato algum email que corresponde com o inserido, buscando junto o cpf do cliente
+                    depois, com o cpf do cliente trazido do contato, ele verifica se as senhas coincidem
+                    se coincidirem, ele traz todas as informações do cliente provavel q funcione, mas só
 
-                //executa o comando curl do linux, presente em todos os androids
-                result = Linux.curl(null,NetworkUtils.urlizeGet(NetworkUtils.DB_TABLE_CLIENTE));
+                    eu fiz assim no desktop ^ e funfou bem
+                */
 
+                result = Linux.curl(null,NetworkUtils.urlizeGet(NetworkUtils.DB_TABLE_CLIENTE,NetworkUtils.DB_COL_CLIENTE_CPF,EMAIL.getText().toString()));
+                //mas acho q se tiver dois clientes com a mesma senha da treta, sim, é que o email deveria tar na mesma tabela,,  dao upodemos trocar o email pelo cpf, hmmm, verdade oq c acha? podemos trocar
+                //e deixar a senha como a data de nascimento, ou o rg, mas a senha ta funfando , mas ok deu nisso pq n tem a tabela login kkk vdd
                 try {
-                    JSONObject json = new JSONArray(result).getJSONObject(0); //pega o primeiro usuário da lista SQL (convertida pra JSON)
+                    JSONArray obj = new JSONArray(result);
+                    JSONObject json = obj.getJSONObject(0); //aqui ta certo acho que o problema é a pesquisa o problema é o contatos q ta zero tb
 
                     /**
                      *
@@ -172,7 +180,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                         JSONObject contatoJSON = js.getJSONObject(XXX); //aqui o erro
 
                         //pega os valores
-                        String EMAIL = contatoJSON.getString(NetworkUtils.DB_COL_CONTATO_EMAIL);
+                        String EMAILz = contatoJSON.getString(NetworkUtils.DB_COL_CONTATO_EMAIL);
                         String CELL1 = contatoJSON.getString(NetworkUtils.DB_COL_CONTATO_TEL1);
                         String CELL2 = contatoJSON.getString(NetworkUtils.DB_COL_CONTATO_TEL2);
 
@@ -181,12 +189,18 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
                         //checa se existe um CELL2:
                         if (CELL2.equals("NULL") || CELL2.equals("0") /*SUPORTEI OS DOIS*/)  {
-                            contact = new User.Contact(EMAIL,CELL1,null);
+                            contact = new User.Contact(EMAILz,CELL1,null);
                         } else {
-                            contact = new User.Contact(EMAIL,CELL1,CELL2);
+                            contact = new User.Contact(EMAILz,CELL1,CELL2);
                         }
 
                         contacts.add(contact);
+
+                        /**
+                         * MENTIRA:
+                         * O PRIMEIRO CONTATO É O PRINCIPAL
+                         */
+                        validalogin(EMAIL.getText().toString(),PASSWORD.getText().toString(),usuario.getContact(XXX).getEmail(), senha);
                     }
 
                     usuario = new User(
@@ -203,11 +217,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                     //salva o usuário na "RAM" (zuado falar isso)
                     Global.USUARIO = usuario;
 
-                    /**
-                     * MENTIRA:
-                     * O PRIMEIRO CONTATO É O PRINCIPAL
-                     */
-                   // validalogin(EMAIL.getText().toString(),PASSWORD.getText().toString(),usuario.getContact(0).getEmail(), senha);
+
                 } catch (JSONException e) {
                     System.err.println("Erro de JSON!");
                     e.printStackTrace();
