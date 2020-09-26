@@ -1,0 +1,13 @@
+/* 
+   pizza
+   para mostrar um parâmetro mais abrangente, mostrando tudo q foi vendido nas duas áreas
+*/
+SELECT SUM(`orcamento_preco_pecas`) as "Orçamento total das peças", SUM(`orcamento_preco_servicos`) as "Orçamento total dos serviços" FROM orcamento_teste WHERE `orcamento_data` BETWEEN ('2020-09-11') AND ('2020-09-17')
+
+
+/*
+   barra
+   para mostrar quando vendeu em cada dia
+*/
+SELECT DAY(`orcamento_data`) as "Dia", SUM(`orcamento_preco_servicos`) as "Orçamento total dos serviços", SUM(`orcamento_preco_pecas`) as "Orçamento total das peças" FROM orcamento_teste WHERE `orcamento_data` BETWEEN ('?') AND ('?') GROUP BY DAY(`orcamento_data`)
+

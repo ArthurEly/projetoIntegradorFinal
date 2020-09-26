@@ -1,0 +1,9 @@
+Total
+SELECT COUNT(os_numero) as "Concluídas" FROM `os_teste` WHERE `os_data_saida` BETWEEN ("?") AND ("?")
+SELECT COUNT(os_numero) as "Número de OS" FROM `os_teste` WHERE `os_data_entrada` BETWEEN ("?") AND ("?")
+
+Quantos saíram em cada dia
+SELECT DAY(`os_data_saida`) as "Data saída", COUNT(`os_numero`) as "Contador" FROM `os_teste` WHERE `os_data_saida` BETWEEN ("?") AND ("?") GROUP BY DAY(`os_data_saida`)
+
+Quantos entraram em cada dia
+SELECT DAY(`os_data_entrada`) as "Dia entrada", COUNT(`os_numero`) as "Contador" FROM `os_teste` WHERE `os_data_entrada` BETWEEN ("?") AND ("?") GROUP BY DAY(`os_data_entrada`)
