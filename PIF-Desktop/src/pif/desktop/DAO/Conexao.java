@@ -8,7 +8,7 @@ public class Conexao {
 
     private static final String USERNAME = "u618559852_arttidev";
 
-    private static final String PASSWORD = "ArThUr040203716228";
+    private static final String PASSWORD = "1234abc";
 
     private static final String DATABASE_URL = "jdbc:mysql://sql132.main-hosting.eu/u618559852_pif";
     
